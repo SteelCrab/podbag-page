@@ -47,6 +47,7 @@ Hinahati ng podbag ang bawat layer sa mga file, at iniimbak ang bawat file nang 
 
 Sinukat namin ang 8 Spring service sa 2 release:
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | Natitipid ng podbag |
 |---|--:|--:|--:|
 | Disk para sa dalawang release | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ Pareho pa rin ang laki ng mga download. Mga layer ang ibinibigay ng mga registry
 
 Pinatakbo namin ang bawat tool sa iisang Linux VM: 4 na CPU, {{n:3.8}} GiB, arm64. Ang mga bersyon: podbag 0.1.0, Podman 5.7.0, Docker 29.1.3 at Kiri 0.2.1. Mga median ang mga numero. Mas mababa, mas mabuti.
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | Magsimula ng container | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | Memory para sa 100 container | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| Mga process kapag walang container | wala | wala | 1 ({{n:5.9}} MiB) | 1 ({{n:0.6}} MiB) | 4 ({{n:203}} MiB) |
+| Mga process kapag walang container | {{n:0}} | {{n:0}} | {{n:1}} ({{n:5.9}} MiB) | {{n:1}} ({{n:0.6}} MiB) | {{n:4}} ({{n:203}} MiB) |
 
 - Ang unang pagsisimula, kapag wala pang keeper, ay tumatagal ng {{n:12.8}}–{{n:16.0}} ms.
 - Malapit ang Kiri sa memory. Nangunguna ang podbag kapag walang container, dahil wala itong pinapatakbo noon.

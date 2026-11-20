@@ -40,6 +40,8 @@ from email.utils import format_datetime
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
+from comparisons import Metric, Reading, picker
+
 HERE = Path(__file__).resolve().parent
 CATEGORIES = ["announcements", "engineering", "benchmarks", "how-to"]
 LOCALES = {"en": "en_US", "ko": "ko_KR", "ja": "ja_JP", "zh-CN": "zh_CN", "fil": "fil_PH",
@@ -80,6 +82,7 @@ DELIM = re.compile(r"^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$")
 IMAGE_ONLY = re.compile(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$')
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
 LINK = re.compile(r'\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
+COMPARE = re.compile(r"^<!-- compare-(columns|rows): ([a-z ]+) -->$")
 NUMBER = re.compile(r"\{\{n:(\d+(?:\.\d+)?)\}\}")
 SEPARATORS = {"es": (".", ","), "vi": (".", ",")}
 # Lines of one paragraph join without a space in these languages.
@@ -144,10 +147,12 @@ class Markdown:
              (media, src) pairs for a <picture>.
     """
 
-    def __init__(self, lang="en", root="", base="", code_button="", picture=None):
+    def __init__(self, lang="en", root="", base="", code_button="", picture=None, table_label=""):
         self.lang, self.root, self.base = lang, root, base
         self.code_button, self.picture = code_button, picture
         self.ids = set()
+        self.table_label = table_label
+        self.comparison_count = 0
 
     def convert(self, text):
         return self.blocks(text.replace("\r\n", "\n").replace("\t", "    ").split("\n"))
@@ -157,7 +162,7 @@ class Markdown:
     def starts_block(self, lines, i):
         line = lines[i]
         return bool(FENCE.match(line) or HEADING.match(line) or RULE.match(line)
-                    or QUOTE.match(line) or LIST.match(line) or self.is_table(lines, i))
+                    or QUOTE.match(line) or LIST.match(line) or COMPARE.fullmatch(line) or self.is_table(lines, i))
 
     @staticmethod
     def is_table(lines, i):
@@ -195,6 +200,10 @@ class Markdown:
                 out.append(f"<blockquote>\n{self.blocks(quote)}\n</blockquote>")
             elif LIST.match(line):
                 i = self.list(lines, i, out)
+            elif m := COMPARE.fullmatch(line):
+                if i + 2 >= len(lines) or not self.is_table(lines, i + 1):
+                    raise ValueError(f"Expected a comparison table after {line}")
+                i = self.table(lines, i + 1, out, m)
             elif self.is_table(lines, i):
                 i = self.table(lines, i, out)
             else:
@@ -263,7 +272,7 @@ class Markdown:
         out.append(f"<{tag}{attrs}>\n{rendered}\n</{tag}>")
         return i
 
-    def table(self, lines, i, out):
+    def table(self, lines, i, out, comparison=None):
         head = split_row(lines[i])
         aligns = []
         for cell in split_row(lines[i + 1]):
@@ -290,10 +299,33 @@ class Markdown:
                 cell("td", row[0], 0)
             body.append("<tr>" + first + "".join(
                 cell("td", t, n) for n, t in enumerate(row) if n) + "</tr>")
-        out.append('<div class="table-wrap"><table>\n'
-                   f"<thead><tr>{thead}</tr></thead>\n<tbody>\n" + "\n".join(body)
-                   + "\n</tbody>\n</table></div>")
+        table = ('<div class="table-wrap"><table>\n'
+                 f"<thead><tr>{thead}</tr></thead>\n<tbody>\n" + "\n".join(body)
+                 + "\n</tbody>\n</table></div>")
+        if comparison and self.table_label:
+            axis, products = comparison.groups()
+            out.append(self.comparison(head, rows, axis, products.split()))
+            table = (f'<details class="comparison-table"><summary>{self.table_label}</summary>'
+                     f'{table}</details>')
+        out.append(table)
         return i
+
+    def comparison(self, head, rows, axis, products):
+        # Each authored measurement starts with its unformatted numeric value.
+        if axis == "rows":
+            head, *rows = zip(head, *rows, strict=True)
+        metrics = []
+        for row in rows:
+            readings = []
+            for product, label, cell in zip(products, head[1:len(products) + 1],
+                                            row[1:len(products) + 1], strict=True):
+                value = NUMBER.match(cell)
+                if not value:
+                    raise ValueError(f"Expected a numeric comparison value in {cell!r}")
+                readings.append(Reading(product, self.inline(label), float(value[1]), self.inline(cell)))
+            metrics.append(Metric(self.inline(row[0]), readings))
+        self.comparison_count += 1
+        return picker(f"article-metric-{self.comparison_count}", self.table_label, metrics, self.root)
 
     def paragraph(self, lines, tight):
         text = ("" if self.lang in NO_SPACES else " ").join(lines)
@@ -537,9 +569,9 @@ class Builder:
             return root + post.image[1:], image_size(path)
         return root + f"blog/{post.slug}/{post.image}", image_size(post.folder / post.image)
 
-    def body(self, post, root, button=""):
+    def body(self, post, root, button="", table_label=""):
         return markdown(post.body, lang=post.lang, root=root, base=f"/blog/{post.slug}/",
-                        code_button=button, picture=self.picture)
+                        code_button=button, picture=self.picture, table_label=table_label)
 
     # Pieces
 
@@ -788,7 +820,7 @@ class Builder:
         content = (f'<article class="post">{crumbs}<header class="post-head">'
                    f'<h1>{html.escape(post.title)}</h1>{self.meta_line(post, w, root, with_share=False)}'
                    f"{share}</header>"
-                   f'<div class="prose">{self.body(post, root, copy_button(w))}</div>'
+                   f'<div class="prose">{self.body(post, root, copy_button(w), w["data_table"])}</div>'
                    f'<footer class="post-foot">{about}{tags_html}{steps_html}</footer>'
                    f"{near_html}</article>")
         image, size = self.image_url(post, self.url)

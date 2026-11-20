@@ -24,11 +24,12 @@ Chúng tôi dùng một máy Mac Apple M5, cùng image Python 3.13.9 cho Linux a
 
 ![Thời gian chạy toàn bộ (giây). podbag · Trước (31,63 / 28,12 / 27,21) · podbag · Sau (9,81 / 10,31 / 9,55) · Docker Desktop (9,05 / 9,39 / 8,62)](timings-vi.png "Mỗi chấm là một lần đo. Cột bên phải ghi trung vị của ba lần đo.")
 
+<!-- compare-rows: podbag podbag docker -->
 | Động cơ | Thời gian (giây) |
 |---|---:|
-| podbag · Trước khi sửa (`7836256`) | 28,12 |
-| podbag · Sau khi sửa (`1743d75`) | 9,81 |
-| Docker Desktop 4.97.0 | 9,05 |
+| podbag · Trước khi sửa (`7836256`) | {{n:28.12}} |
+| podbag · Sau khi sửa (`1743d75`) | {{n:9.81}} |
+| Docker Desktop 4.97.0 | {{n:9.05}} |
 
 Chúng tôi cũng chạy mỗi phiên bản một lần với cấu hình ban đầu không đặt thời gian chờ. Bản trước khi sửa mất 30,43 giây, còn bản sau mất 30,56 giây. Với tác vụ này, dịch vụ cần đặt thời gian chờ để rút ngắn bước dừng.
 

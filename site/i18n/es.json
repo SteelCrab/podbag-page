@@ -13,6 +13,7 @@
   "hero_lead": "Un solo binario estático ejecuta tus imágenes Docker y OCI. Cuando no hay contenedores, no se ejecuta nada. Un archivo que comparten muchas imágenes se guarda una vez y se lee en memoria una vez.",
   "cta_install": "Instalar",
   "cta_download": "Descargar",
+  "data_table": "Tabla de mediciones",
   "fact_start": "para iniciar un contenedor",
   "fact_idle": "procesos sin contenedores",
   "fact_memory": "memoria de caché de archivos",

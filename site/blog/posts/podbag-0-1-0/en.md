@@ -47,6 +47,7 @@ podbag splits each layer into files, and keeps each file once. An image is a lis
 
 We measured 8 Spring services in 2 releases:
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | podbag saves |
 |---|--:|--:|--:|
 | Disk for both releases | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ Downloads stay the same size. Registries serve layers, and podbag downloads them
 
 We ran every tool on the same Linux VM: 4 CPUs, {{n:3.8}} GiB, arm64. The versions: podbag 0.1.0, Podman 5.7.0, Docker 29.1.3 and Kiri 0.2.1. The numbers are medians. Lower is better.
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | Start a container | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | Memory for 100 containers | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| Processes with no containers | none | none | 1 ({{n:5.9}} MiB) | 1 ({{n:0.6}} MiB) | 4 ({{n:203}} MiB) |
+| Processes with no containers | {{n:0}} | {{n:0}} | {{n:1}} ({{n:5.9}} MiB) | {{n:1}} ({{n:0.6}} MiB) | {{n:4}} ({{n:203}} MiB) |
 
 - The first start, when no keeper runs yet, takes {{n:12.8}}–{{n:16.0}} ms.
 - Kiri is close on memory. podbag is ahead when no container runs, because then nothing of it runs.

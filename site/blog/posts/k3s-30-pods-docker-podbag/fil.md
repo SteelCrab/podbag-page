@@ -24,6 +24,7 @@ Ubuntu 26.04.1 LTS · Linux 7.0.0-43-generic · ARM64 · 4 vCPU · 4 GiB · k3s 
 
 ## Mga resulta
 
+<!-- compare-columns: docker podbag -->
 | Sukatan | Docker Engine | Podbag |
 |---|---:|---:|
 | Handa ang lahat ng 30 pod | {{n:3.39}} s | {{n:2.48}} s |

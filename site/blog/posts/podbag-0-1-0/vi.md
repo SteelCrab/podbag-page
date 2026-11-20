@@ -47,6 +47,7 @@ podbag tách mỗi lớp thành các tệp, và lưu mỗi tệp một lần. M�
 
 Chúng tôi đo với 8 dịch vụ Spring ở 2 bản phát hành:
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | podbag tiết kiệm |
 |---|--:|--:|--:|
 | Đĩa cho cả hai bản phát hành | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ Lượng tải về vẫn như cũ. Registry gửi các lớp, và podbag tải 
 
 Chúng tôi chạy mọi công cụ trên cùng một VM Linux: 4 CPU, {{n:3.8}} GiB, arm64. Các phiên bản: podbag 0.1.0, Podman 5.7.0, Docker 29.1.3 và Kiri 0.2.1. Các con số là trung vị. Càng thấp càng tốt.
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | Khởi động một container | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | Bộ nhớ cho 100 container | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| Tiến trình khi không có container | không có | không có | 1 ({{n:5.9}} MiB) | 1 ({{n:0.6}} MiB) | 4 ({{n:203}} MiB) |
+| Tiến trình khi không có container | {{n:0}} | {{n:0}} | {{n:1}} ({{n:5.9}} MiB) | {{n:1}} ({{n:0.6}} MiB) | {{n:4}} ({{n:203}} MiB) |
 
 - Lần khởi động đầu tiên, khi chưa có keeper, mất {{n:12.8}}–{{n:16.0}} ms.
 - Về bộ nhớ, Kiri gần bằng podbag. podbag dẫn trước khi không có container, vì lúc đó không có gì của nó chạy.

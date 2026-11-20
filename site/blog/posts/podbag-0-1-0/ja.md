@@ -47,6 +47,7 @@ podbag はレイヤーをファイルに分け、各ファイルを1回だけ保
 
 Spring サービス8個・2リリースで測りました。
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | podbag の節約 |
 |---|--:|--:|--:|
 | 2リリース分のディスク | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ Spring サービス8個・2リリースで測りました。
 
 すべてのツールを、同じ Linux VM で動かしました。CPU 4個、{{n:3.8}} GiB、arm64 です。バージョンは podbag 0.1.0、Podman 5.7.0、Docker 29.1.3、Kiri 0.2.1 です。数字は中央値です。低いほど良い結果です。
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | コンテナの起動 | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | コンテナ100個のメモリ | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| コンテナがないときのプロセス | なし | なし | 1個（{{n:5.9}} MiB） | 1個（{{n:0.6}} MiB） | 4個（{{n:203}} MiB） |
+| コンテナがないときのプロセス | {{n:0}} | {{n:0}} | {{n:1}}個（{{n:5.9}} MiB） | {{n:1}}個（{{n:0.6}} MiB） | {{n:4}}個（{{n:203}} MiB） |
 
 - keeper がまだないときの最初の起動は、{{n:12.8}}–{{n:16.0}} ms かかります。
 - メモリは Kiri と近い値です。コンテナがないときは podbag が上です。そのとき podbag は何も動いていないからです。

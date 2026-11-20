@@ -13,6 +13,7 @@
   "hero_lead": "一个静态二进制文件就能运行 Docker 和 OCI 镜像。没有容器运行时，什么也不运行。许多镜像共用的文件只存一份，也只读入内存一次。",
   "cta_install": "安装",
   "cta_download": "下载",
+  "data_table": "测量数据表",
   "fact_start": "启动一个容器",
   "fact_idle": "没有容器时运行的进程",
   "fact_memory": "文件缓存占用的内存",

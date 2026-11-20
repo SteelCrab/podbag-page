@@ -24,6 +24,7 @@ Ubuntu 26.04.1 LTS · Linux 7.0.0-43-generic · ARM64 · 4 vCPU · 4 GiB · k3s 
 
 ## 측정 결과
 
+<!-- compare-columns: docker podbag -->
 | 지표 | Docker Engine | Podbag |
 |---|---:|---:|
 | 30개 모두 준비 | {{n:3.39}} s | {{n:2.48}} s |

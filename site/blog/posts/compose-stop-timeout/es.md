@@ -24,11 +24,12 @@ Usamos un Mac con Apple M5, la misma imagen Linux arm64 de Python 3.13.9 y el mi
 
 ![Tiempo total (segundos). podbag · Antes (31,63 / 28,12 / 27,21) · podbag · Con parche (9,81 / 10,31 / 9,55) · Docker Desktop (9,05 / 9,39 / 8,62)](timings-es.png "Cada punto representa una ejecución. La columna derecha muestra la mediana de las tres.")
 
+<!-- compare-rows: podbag podbag docker -->
 | Motor | Tiempo (segundos) |
 |---|---:|
-| podbag · Antes del parche (`7836256`) | 28,12 |
-| podbag · Con el parche (`1743d75`) | 9,81 |
-| Docker Desktop 4.97.0 | 9,05 |
+| podbag · Antes del parche (`7836256`) | {{n:28.12}} |
+| podbag · Con el parche (`1743d75`) | {{n:9.81}} |
+| Docker Desktop 4.97.0 | {{n:9.05}} |
 
 También ejecutamos una prueba por versión sin configurar el plazo de parada. La revisión anterior tardó 30,43 segundos y la del parche, 30,56. En esta tarea, la espera se reduce cuando el servicio especifica un plazo.
 
