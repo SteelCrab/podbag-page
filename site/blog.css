@@ -141,6 +141,16 @@ html:not(.can-share) [data-native] { display: none; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
 .prose .code { margin: 14px 0 20px; }
 .prose .code pre { font-size: 14.5px; }
+.prose .code-file { border: 1px solid var(--line); }
+.prose .code-filename {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 9px 9px 0 0;
+  background: var(--surface);
+  font: 600 13px/1.5 var(--mono);
+}
+.prose .code-file pre { padding-inline-end: 16px; }
+.prose .dockerfile-keyword { color: var(--podbag); font-weight: 600; }
 
 .post-foot { display: grid; gap: 22px; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line); }
 .author-box { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }

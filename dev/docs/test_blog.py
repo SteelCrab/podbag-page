@@ -359,6 +359,19 @@ class Built(unittest.TestCase):
                 self.assertEqual((int(width), int(height)), blog.image_size(path))
                 self.assertTrue(path.name.startswith(f"{index:02}-") and path.name.endswith(f"-{code}.png"))
 
+    def test_release_dockerfile_matches_download(self):
+        slug = "podbag-0-2-0"
+        source = self.out / "blog" / slug / "Dockerfile"
+        header = '<div class="code code-file"><div class="code-filename">Dockerfile</div>'
+        for code, _ in self.site.LANGS:
+            post = self.out / self.site.path_of(code) / "blog" / slug / "index.html"
+            page = post.read_text()
+            self.assertIn(header, page)
+            snippet, = re.findall(r'<code class="language-dockerfile">(.*?)</code>', page, re.S)
+            self.assertEqual(blog.strip(snippet) + "\n", source.read_text(), code)
+            link, = re.findall(r'<a href="([^"]+/Dockerfile)">', page)
+            self.assertTrue((post.parent / link).samefile(source), code)
+
     def test_numbers_in_spanish_post(self):
         page = (self.out / "es/blog/podbag-0-1-0/index.html").read_text()
         self.assertIn("2.970 MiB", page)

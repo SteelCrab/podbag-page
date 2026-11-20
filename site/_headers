@@ -48,3 +48,7 @@
 /blog/volume-api-lab/volume-api.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="volume-api.podbag"
+
+/blog/podbag-0-2-0/Dockerfile
+  Content-Type: text/plain; charset=utf-8
+  Content-Disposition: attachment; filename="Dockerfile"
