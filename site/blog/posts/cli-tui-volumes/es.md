@@ -32,13 +32,13 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Abre la práctica en Desktop
 
-Selecciona el módulo instalado en los tutoriales. El panel indica la tarea en curso. Abre la terminal con el botón de la práctica.
+Busca el módulo instalado en **Training**. Selecciona **Abrir la guía web** para volver a esta página. Pulsa Terminal para abrir el shell de práctica.
 
-![Progreso de la práctica · Pendiente](gui-ready-es.png)
+![Módulo de volúmenes y sus acciones en Training](gui-ready-es.png)
 
 ## Abrir la terminal
 
-Deja la terminal abierta y elige Volúmenes de práctica en la barra lateral. El paso actual muestra el comando que debes escribir.
+Deja abiertos la terminal y esta guía. Elige **Volúmenes de práctica** en la barra lateral de Desktop para ver los recursos que crees.
 
 ![Crear el volumen en la CLI · En curso](gui-shell-es.png)
 

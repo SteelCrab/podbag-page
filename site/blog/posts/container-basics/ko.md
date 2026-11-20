@@ -25,9 +25,13 @@ podbag lab install container-basics.podbag
 
 ## 실습 터미널 열기
 
-Training 카드에서 **터미널**을 누릅니다. `container-lab $` 프롬프트가 나올 때까지 기다립니다.
+이 글을 브라우저에 열어 둡니다. Desktop의 **Training**에서 **터미널**을 누릅니다. 실제 터미널 창에서 `container-lab $` 프롬프트가 나오면 실습할 수 있습니다. 터미널에서 직접 시작하려면 아래 명령을 입력합니다.
 
-![실습 터미널 열기가 완료되고 CLI 실행 단계가 진행 중인 Training 화면](training-ko.png)
+```sh
+podbag lab start container-basics
+```
+
+![웹 실습 안내, 터미널, 실습 컨테이너 버튼이 있는 Training 화면](training-ko.png)
 
 ## CLI에서 웹 서버 실행하기
 

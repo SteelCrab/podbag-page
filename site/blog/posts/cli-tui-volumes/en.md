@@ -32,13 +32,13 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Open the lab in Desktop
 
-Open the installed module under **Training**. **Lab progress** marks the current task as **In progress**. Select **Terminal** to open the practice shell.
+Open **Training** in Desktop. Select **Open web guide** to return to this page, then select **Terminal** to open the practice shell.
 
-![Lab progress · Pending](gui-ready-en.png)
+![Installed volume module and its actions in Training](gui-ready-en.png)
 
 ## Open the practice shell
 
-Leave the terminal open and select **Practice volumes** in the Desktop sidebar. The current step shows the command to type.
+Keep the terminal and this web guide open. Select **Practice volumes** in the Desktop sidebar to view the resources you create.
 
 ![Create a volume in the CLI · In progress](gui-shell-en.png)
 

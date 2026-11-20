@@ -32,13 +32,13 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Mở bài thực hành trong Desktop
 
-Chọn mô-đun đã cài ở mục hướng dẫn. Bảng tiến độ hiển thị tác vụ hiện tại. Nhấn Terminal để mở terminal thực hành.
+Tìm mô-đun đã cài trong **Training**. Chọn **Mở hướng dẫn trên web** để quay lại trang này. Nhấn Terminal để mở terminal thực hành.
 
-![Tiến độ thực hành · Đang chờ](gui-ready-vi.png)
+![Mô-đun volume cùng các nút thao tác trong Training](gui-ready-vi.png)
 
 ## Mở terminal
 
-Giữ terminal mở và chọn Volume thực hành ở thanh bên Desktop. Bước hiện tại hiển thị lệnh cần nhập.
+Giữ terminal và trang hướng dẫn mở. Chọn **Volume thực hành** ở thanh bên Desktop để xem các tài nguyên bạn tạo.
 
 ![Tạo volume trong CLI · Đang thực hiện](gui-shell-vi.png)
 

@@ -32,13 +32,13 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Buksan ang lab sa Desktop
 
-Sa Tutorials, buksan ang module. Makikita ang kasalukuyang gawain sa progreso. Pindutin ang Terminal para buksan ang practice shell.
+Hanapin ang module sa **Training**. Piliin ang **Buksan ang gabay sa web** para bumalik sa pahinang ito. Pindutin ang Terminal para buksan ang practice shell.
 
-![Progreso ng lab · Naghihintay](gui-ready-fil.png)
+![Volume module at mga button nito sa Training](gui-ready-fil.png)
 
 ## Buksan ang shell
 
-Panatilihing bukas ang shell. Piliin ang Mga practice volume sa sidebar ng Desktop para makita ang command.
+Panatilihing bukas ang terminal at ang gabay na ito. Piliin ang **Mga practice volume** sa sidebar ng Desktop para makita ang mga resource na ginawa mo.
 
 ![Gumawa sa CLI · Ginagawa](gui-shell-fil.png)
 

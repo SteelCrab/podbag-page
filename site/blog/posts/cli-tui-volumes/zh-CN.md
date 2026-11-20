@@ -32,13 +32,13 @@ podbag lab install cli-gui-volumes.podbag
 
 ## 在 Desktop 打开实验
 
-在教程中打开已安装的模块。进度面板会显示进行中的任务。点击终端按钮打开实验终端。
+在 Desktop 的 **Training** 中找到已安装的模块。点击**打开网页实验指南**可返回本页。点击终端按钮打开实验终端。
 
-![实验进度 · 待处理](gui-ready-zh-CN.png)
+![Training 中的卷实验模块和操作按钮](gui-ready-zh-CN.png)
 
 ## 打开实验终端
 
-保持终端打开，在 Desktop 侧栏选择实验卷。当前步骤会显示要输入的命令。
+保持终端和本页打开。在 Desktop 侧栏选择实验卷，查看创建的资源。
 
 ![在 CLI 创建卷 · 进行中](gui-shell-zh-CN.png)
 

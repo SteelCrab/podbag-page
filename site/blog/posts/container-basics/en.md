@@ -25,9 +25,13 @@ If you already installed this training module, install the new file over it to k
 
 ## Open the practice terminal
 
-On the Training card, select **Terminal**. Wait for the `container-lab $` prompt.
+Keep this page open in your browser. Select **Terminal** in Desktop under **Training**. The separate terminal window is ready when it shows `container-lab $`. To start directly from a terminal, run the command below.
 
-![Training shows the practice terminal step complete and the CLI run step in progress](training-en.png)
+```sh
+podbag lab start container-basics
+```
+
+![The Training card offers Open web guide, Terminal, and Practice containers](training-en.png)
 
 ## Run the web server in the CLI
 
