@@ -1,5 +1,7 @@
 # podbag-page
 
+<img src="site/favicon.png" alt="Podbag" width="64" align="right">
+
 The website of [podbag](https://github.com/SteelCrab/podbag): [podbag.dev](https://podbag.dev).
 
 ## Contents
