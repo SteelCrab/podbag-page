@@ -991,7 +991,7 @@ def cards():
                     date=format_date(post.day, lang)))
                 shots = Path(tmp) / f"{post.slug}-{lang}"
                 shots.mkdir()
-                subprocess.run(["node", str(HERE / "frames.mjs"), page.as_uri(), str(shots),
+                subprocess.run(["node", str(site.REPO / "dev/docs/frames.mjs"), page.as_uri(), str(shots),
                                 "1200", "630", "1", "1", "1"], check=True)
                 target = post.folder / f"card-{lang}.png"
                 shutil.copy(shots / "f00000.png", target)
