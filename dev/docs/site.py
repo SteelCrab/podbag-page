@@ -7,7 +7,11 @@ English has; the build stops if one is missing.
 The pictures, videos, install.sh and version come from the podbag repository: a clone next to
 this folder (../podbag), or the folder in PODBAG_REPO.
 
+The blog (dev/docs/blog.py, posts in site/blog/posts) is at /blog/ and /<lang>/blog/.
+
 usage: python3 dev/docs/site.py OUT
+       python3 dev/docs/check_links.py OUT     # no broken internal links
+       python3 -m unittest dev/docs/test_blog.py
        python3 -m http.server -d OUT 8000      # look at it
        python3 dev/docs/site.py --moved OUT    # pages that send the old address to podbag.dev
 """
@@ -20,6 +24,9 @@ import shutil
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import blog  # noqa: E402
+
 PAGE = Path(__file__).resolve().parents[2]
 SITE = PAGE / "site"
 # The podbag repository: its pictures, videos, install.sh, version and picture texts.
@@ -29,7 +36,7 @@ LANGS = [("en", "English"), ("ko", "한국어"), ("ja", "日本語"), ("zh-CN", 
          ("fil", "Filipino"), ("es", "Español"), ("vi", "Tiếng Việt")]
 # Thousands and decimal separators; the rest use "," and ".".
 SEPARATORS = {"es": (".", ","), "vi": (".", ",")}
-ASSETS = ["style.css", "main.js", "favicon.png", "apple-touch-icon.png", "_headers"]
+ASSETS = ["style.css", "blog.css", "main.js", "favicon.png", "apple-touch-icon.png", "_headers"]
 
 
 def version():
@@ -88,7 +95,7 @@ def render(template, values, lang):
             raise SystemExit(f"{lang}: no string for {{{{{key}}}}}")
         value = values[key]
         if kind == "attr":
-            return html.escape(re.sub(r"<[^>]+>", "", value), quote=True)
+            return html.escape(html.unescape(re.sub(r"<[^>]+>", "", value)), quote=True)
         return value
     page = re.sub(r"\{\{([a-z0-9_:.]+)(?:\|(attr))?\}\}", fill, template)
     if "{{" in page:
@@ -150,12 +157,14 @@ def main():
     english = json.loads((SITE / "i18n/en.json").read_text())
     alts = storage_text()
     ver = version()
+    words_of = {}
     for code, name in LANGS:
         words = json.loads((SITE / f"i18n/{code}.json").read_text())
         missing = sorted(set(english) - set(words))
         extra = sorted(set(words) - set(english))
         if missing or extra:
             raise SystemExit(f"{code}.json: missing {missing}, unknown {extra}")
+        words_of[code] = words
         root = "" if code == "en" else "../"
         lines = session(words, ver)
         group, decimal = SEPARATORS.get(code, (",", "."))
@@ -186,7 +195,8 @@ def main():
         (SITE / "404.html").read_text(),
         {"lang_links": " · ".join(f'<a href="/{path_of(c)}" hreflang="{c}" lang="{c}">{n}</a>'
                                   for c, n in LANGS)}, "en"))
-    print(f"built {len(LANGS)} languages into {out}")
+    posts = blog.build(out, sys.modules[__name__], words_of)
+    print(f"built {len(LANGS)} languages and {posts} blog posts into {out}")
 
 
 if __name__ == "__main__":

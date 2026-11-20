@@ -16,6 +16,7 @@
 <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="{{root}}favicon.png">
 <link rel="apple-touch-icon" href="{{root}}apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="{{blog_title|attr}}" href="blog/feed.xml">
 <link rel="stylesheet" href="{{root}}style.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="{{root}}main.js" defer></script>
@@ -30,6 +31,7 @@
       <a href="#layers" class="optional">{{nav_layers}}</a>
       <a href="#install">{{nav_install}}</a>
       <a href="#benchmarks" class="optional">{{nav_benchmarks}}</a>
+      <a href="blog/">{{nav_blog}}</a>
       <a href="https://github.com/SteelCrab/podbag" class="optional">GitHub</a>
       <button class="lang-button" type="button" popovertarget="langs" aria-label="{{lang_label|attr}}">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg>
@@ -274,7 +276,7 @@ docker compose up -d</code></pre><button type="button" data-copied="{{copied|att
 <footer>
   <div class="wrap">
     <p>{{footer_license}}</p>
-    <p><a href="https://github.com/SteelCrab/podbag">GitHub</a> · <a href="https://github.com/SteelCrab/podbag/releases">{{footer_releases}}</a> · <a href="https://crates.io/crates/podbag">crates.io</a> · <a href="https://github.com/SteelCrab/podbag/issues">{{footer_issues}}</a></p>
+    <p><a href="https://github.com/SteelCrab/podbag">GitHub</a> · <a href="https://github.com/SteelCrab/podbag/releases">{{footer_releases}}</a> · <a href="https://crates.io/crates/podbag">crates.io</a> · <a href="https://github.com/SteelCrab/podbag/issues">{{footer_issues}}</a> · <a href="blog/">{{nav_blog}}</a> · <a href="blog/feed.xml">RSS</a></p>
     <p class="langs">{{footer_langs}} {{lang_links}}</p>
   </div>
 </footer>

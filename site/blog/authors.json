@@ -1,0 +1,11 @@
+{
+  "team": {
+    "en": {"name": "The podbag team", "bio": "The people who build podbag. We write about releases, how podbag works, and how to use it. Talk to us on <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."},
+    "ko": {"name": "podbag 팀", "bio": "podbag을 만드는 사람들입니다. 릴리스, podbag의 동작 방식, 사용법을 씁니다. 의견은 <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>에 남겨 주세요."},
+    "ja": {"name": "podbag チーム", "bio": "podbag を作っている人たちです。リリース、podbag のしくみ、使い方について書きます。ご意見は <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a> へどうぞ。"},
+    "zh-CN": {"name": "podbag 团队", "bio": "开发 podbag 的人。我们写版本发布、podbag 的工作原理和使用方法。欢迎在 <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a> 上留言。"},
+    "fil": {"name": "Ang podbag team", "bio": "Ang mga gumagawa ng podbag. Nagsusulat kami tungkol sa mga release, kung paano gumagana ang podbag, at kung paano ito gamitin. Kausapin kami sa <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."},
+    "es": {"name": "El equipo de podbag", "bio": "Las personas que hacen podbag. Escribimos sobre versiones, cómo funciona podbag y cómo usarlo. Escríbenos en <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."},
+    "vi": {"name": "Nhóm podbag", "bio": "Những người làm ra podbag. Chúng tôi viết về các bản phát hành, cách podbag hoạt động và cách dùng nó. Trao đổi với chúng tôi trên <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."}
+  }
+}

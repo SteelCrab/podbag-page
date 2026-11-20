@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="{{lang}}" data-group="{{group}}" data-decimal="{{decimal}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page_title|attr}}</title>
+<meta name="description" content="{{page_description|attr}}">
+<link rel="canonical" href="{{canonical}}">
+{{alternates}}
+{{social}}
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="{{root}}favicon.png">
+<link rel="apple-touch-icon" href="{{root}}apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="{{blog_title|attr}}" href="{{feed}}">
+<link rel="stylesheet" href="{{root}}style.css">
+<link rel="stylesheet" href="{{root}}blog.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="{{root}}main.js" defer></script>
+{{jsonld}}
+</head>
+<body class="blog">
+<a class="skip" href="#main">{{skip}}</a>
+<header class="top">
+  <div class="wrap">
+    <nav aria-label="{{nav_label|attr}}">
+      <a class="brand" href="{{home}}"><img src="{{root}}images/logo-small.png" alt="" width="28" height="28">podbag</a>
+      <a href="{{home}}#install">{{nav_install}}</a>
+      <a href="{{home}}#benchmarks" class="optional">{{nav_benchmarks}}</a>
+      <a href="{{blog}}" aria-current="true">{{nav_blog}}</a>
+      <a href="https://github.com/SteelCrab/podbag" class="optional">GitHub</a>
+      <button class="lang-button" type="button" popovertarget="langs" aria-label="{{lang_label|attr}}">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg>
+        <span>{{lang_name}}</span>
+      </button>
+      <div id="langs" popover>{{lang_menu}}</div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{band}}
+  <div class="wrap blog-grid">
+{{content}}
+{{side}}
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>{{footer_license}}</p>
+    <p><a href="https://github.com/SteelCrab/podbag">GitHub</a> · <a href="https://github.com/SteelCrab/podbag/releases">{{footer_releases}}</a> · <a href="https://crates.io/crates/podbag">crates.io</a> · <a href="https://github.com/SteelCrab/podbag/issues">{{footer_issues}}</a> · <a href="{{blog}}">{{nav_blog}}</a> · <a href="{{feed}}">RSS</a></p>
+    <p class="langs">{{footer_langs}} {{lang_links}}</p>
+  </div>
+</footer>
+</body>
+</html>

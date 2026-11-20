@@ -6,19 +6,69 @@
   const GROUP = root.dataset.group || ",";
   const DECIMAL = root.dataset.decimal || ".";
 
+  // One live region tells screen readers what a copy or share button did.
+  const status = document.createElement("p");
+  status.className = "sr-only";
+  status.setAttribute("role", "status");
+  document.body.append(status);
+  let said = "";
+  const say = (message) => {
+    // A repeated message gets a no-break space, or some screen readers skip it.
+    const text = message === said ? message + " " : message;
+    said = text;
+    status.textContent = "";
+    requestAnimationFrame(() => { status.textContent = text; });
+  };
+  const timers = new WeakMap();
+  const flash = (button, message) => {
+    if (!timers.has(button)) button.dataset.label = button.innerHTML;
+    clearTimeout(timers.get(button));
+    const icon = button.querySelector("svg");
+    button.textContent = message;
+    if (icon) button.prepend(icon);
+    say(message);
+    timers.set(button, setTimeout(() => {
+      button.innerHTML = button.dataset.label;
+      timers.delete(button);
+    }, 1800));
+  };
+
   // Copy buttons. Comments after "#" are not copied.
   for (const box of document.querySelectorAll(".code")) {
     const button = box.querySelector("button");
-    const label = button.textContent;
+    if (!button) continue;
     button.addEventListener("click", async () => {
       const text = box.querySelector("code").innerText.replace(/[ \t]+#.*$/gm, "");
       try {
         await navigator.clipboard.writeText(text);
-        button.textContent = button.dataset.copied;
+        flash(button, button.dataset.copied);
       } catch {
-        button.textContent = button.dataset.fail;
+        flash(button, button.dataset.fail);
       }
-      setTimeout(() => { button.textContent = label; }, 1500);
+    });
+  }
+
+  // Share buttons: the system's share sheet where there is one, else copy the link.
+  // data-native: only the share sheet; data-copy: only the copy.
+  if (navigator.share) root.classList.add("can-share");
+  for (const button of document.querySelectorAll("[data-share]")) {
+    button.addEventListener("click", async () => {
+      const { url, title } = button.dataset;
+      if (navigator.share && !("copy" in button.dataset)) {
+        try {
+          await navigator.share({ title, url });
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") return;
+          if ("native" in button.dataset) return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        flash(button, button.dataset.done);
+      } catch {
+        flash(button, button.dataset.fail);
+      }
     });
   }
 
