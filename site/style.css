@@ -144,9 +144,9 @@ nav a[aria-current="true"] { color: var(--ink); font-weight: 600; }
 }
 .facts-grid { display: grid; grid-template-columns: repeat(var(--columns, 4), minmax(0, 1fr)); gap: 8px; }
 .facts label, .comparison-table summary {
-  border: 1px solid var(--muted); border-radius: 8px; background: var(--surface); cursor: pointer;
+  border: 1px solid var(--muted); background: var(--surface); cursor: pointer;
 }
-.facts label { padding: 8px 9px; overflow-wrap: anywhere; }
+.facts label { padding: 8px 9px; border-radius: 14px; overflow-wrap: anywhere; }
 @media (hover: hover) {
   .facts label:hover, .comparison-table summary:hover { border-color: var(--ink-2); background: var(--code-bg); }
 }
