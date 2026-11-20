@@ -144,6 +144,8 @@ def main():
     (out / "images").mkdir(parents=True)
     for name in ASSETS:
         shutil.copy(SITE / name, out / name)
+    # The logos of the tools the benchmarks compare with.
+    shutil.copytree(SITE / "logos", out / "logos")
     # `curl -fsSL https://podbag.dev/install.sh | sh` gets the same script as the repository.
     shutil.copy(REPO / "install.sh", out / "install.sh")
     for picture in sorted((REPO / "docs/images").iterdir()):

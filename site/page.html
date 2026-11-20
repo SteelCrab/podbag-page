@@ -27,12 +27,10 @@
   <div class="wrap">
     <nav aria-label="{{nav_label|attr}}">
       <a class="brand" href="./"><img src="{{root}}images/logo-small.png" alt="" width="28" height="28">podbag</a>
-      <a href="#how" class="optional">{{nav_how}}</a>
-      <a href="#layers" class="optional">{{nav_layers}}</a>
-      <a href="#install">{{nav_install}}</a>
-      <a href="#benchmarks" class="optional">{{nav_benchmarks}}</a>
-      <a href="blog/">{{nav_blog}}</a>
-      <a href="https://github.com/SteelCrab/podbag" class="optional">GitHub</a>
+      <a href="#install"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span class="label">{{nav_install}}</span></a>
+      <a href="#benchmarks"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16"/><path d="M8 16v-4"/><path d="M12 16V8"/><path d="M16 16v-6"/></svg><span class="label">{{nav_benchmarks}}</span></a>
+      <a href="blog/"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h8"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span class="label">{{nav_blog}}</span></a>
+      <a href="https://github.com/SteelCrab/podbag"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><span class="label">GitHub</span></a>
       <button class="lang-button" type="button" popovertarget="langs" aria-label="{{lang_label|attr}}">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg>
         <span>{{lang_name}}</span>
@@ -201,35 +199,35 @@ docker compose up -d</code></pre><button type="button" data-copied="{{copied|att
       <div class="charts">
         <figure class="chart reveal" data-bars>
           <figcaption><b>{{chart_start_t}}</b><span>{{chart_start_s}}</span></figcaption>
-          <div class="bar-row mine" style="--v:0.0556;--r:0"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.1" data-dec="1">{{n:4.1}}</span> ms</span></div>
-          <div class="bar-row mine" style="--v:0.0596;--r:1"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.4" data-dec="1">{{n:4.4}}</span> ms</span></div>
-          <div class="bar-row" style="--v:0.1233;--r:2"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="9.1" data-dec="1">{{n:9.1}}</span> ms</span></div>
-          <div class="bar-row" style="--v:0.6287;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="46.4" data-dec="1">{{n:46.4}}</span> ms</span></div>
-          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="73.8" data-dec="1">{{n:73.8}}</span> ms</span></div>
+          <div class="bar-row mine" style="--v:0.0556;--r:0"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.1" data-dec="1">{{n:4.1}}</span> ms</span></div>
+          <div class="bar-row mine" style="--v:0.0596;--r:1"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.4" data-dec="1">{{n:4.4}}</span> ms</span></div>
+          <div class="bar-row" style="--v:0.1233;--r:2"><span class="name"><img class="tool" src="{{root}}logos/kiri.svg" alt="" width="16" height="16">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="9.1" data-dec="1">{{n:9.1}}</span> ms</span></div>
+          <div class="bar-row" style="--v:0.6287;--r:3"><span class="name"><img class="tool" src="{{root}}logos/podman.svg" alt="" width="16" height="16">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="46.4" data-dec="1">{{n:46.4}}</span> ms</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name"><img class="tool" src="{{root}}logos/docker.svg" alt="" width="16" height="16">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="73.8" data-dec="1">{{n:73.8}}</span> ms</span></div>
         </figure>
         <figure class="chart reveal" data-bars style="--d:1">
           <figcaption><b>{{chart_mem_t}}</b><span>{{chart_mem_s}}</span></figcaption>
-          <div class="bar-row mine" style="--v:0.1868;--r:0"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="105">{{n:105}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.1940;--r:1"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="109">{{n:109}}</span> MiB</span></div>
-          <div class="bar-row mine" style="--v:0.2082;--r:2"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="117">{{n:117}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.3612;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="203">{{n:203}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="562">{{n:562}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.1868;--r:0"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="105">{{n:105}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.1940;--r:1"><span class="name"><img class="tool" src="{{root}}logos/kiri.svg" alt="" width="16" height="16">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="109">{{n:109}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.2082;--r:2"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="117">{{n:117}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.3612;--r:3"><span class="name"><img class="tool" src="{{root}}logos/podman.svg" alt="" width="16" height="16">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="203">{{n:203}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name"><img class="tool" src="{{root}}logos/docker.svg" alt="" width="16" height="16">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="562">{{n:562}}</span> MiB</span></div>
         </figure>
         <figure class="chart reveal" data-bars>
           <figcaption><b>{{chart_disk_t}}</b><span>{{chart_disk_s}}</span></figcaption>
-          <div class="bar-row mine" style="--v:0.3037;--r:0"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="902">{{n:902}}</span> MiB</span></div>
-          <div class="bar-row mine" style="--v:0.3178;--r:1"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="944">{{n:944}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.6003;--r:2"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="1783">{{n:1783}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.9966;--r:3"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2960">{{n:2960}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2970">{{n:2970}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3037;--r:0"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="902">{{n:902}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3178;--r:1"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="944">{{n:944}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.6003;--r:2"><span class="name"><img class="tool" src="{{root}}logos/podman.svg" alt="" width="16" height="16">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="1783">{{n:1783}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9966;--r:3"><span class="name"><img class="tool" src="{{root}}logos/kiri.svg" alt="" width="16" height="16">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2960">{{n:2960}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name"><img class="tool" src="{{root}}logos/docker.svg" alt="" width="16" height="16">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2970">{{n:2970}}</span> MiB</span></div>
         </figure>
         <figure class="chart reveal" data-bars style="--d:1">
           <figcaption><b>{{chart_cache_t}}</b><span>{{chart_cache_s}}</span></figcaption>
-          <div class="bar-row mine" style="--v:0.3299;--r:0"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="324">{{n:324}}</span> MiB</span></div>
-          <div class="bar-row mine" style="--v:0.3391;--r:1"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="333">{{n:333}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.9776;--r:2"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="960">{{n:960}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:0.9929;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="975">{{n:975}}</span> MiB</span></div>
-          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="982">{{n:982}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3299;--r:0"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="324">{{n:324}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3391;--r:1"><span class="name"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="333">{{n:333}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9776;--r:2"><span class="name"><img class="tool" src="{{root}}logos/kiri.svg" alt="" width="16" height="16">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="960">{{n:960}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9929;--r:3"><span class="name"><img class="tool" src="{{root}}logos/podman.svg" alt="" width="16" height="16">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="975">{{n:975}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name"><img class="tool" src="{{root}}logos/docker.svg" alt="" width="16" height="16">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="982">{{n:982}}</span> MiB</span></div>
         </figure>
       </div>
       <p class="note reveal">{{bench_note}}</p>
@@ -239,7 +237,7 @@ docker compose up -d</code></pre><button type="button" data-copied="{{copied|att
       <h2 class="reveal">{{compare_title}}</h2>
       <div class="table-wrap reveal">
         <table>
-          <tr><th></th><th>podbag</th><th>Docker</th><th>OrbStack</th><th>Colima</th><th>Kiri</th></tr>
+          <tr><th></th><th><span class="tool-head"><img class="tool" src="{{root}}images/logo-small.png" alt="" width="16" height="16">podbag</span></th><th><span class="tool-head"><img class="tool" src="{{root}}logos/docker.svg" alt="" width="16" height="16">Docker</span></th><th><span class="tool-head"><img class="tool" src="{{root}}logos/orbstack.png" alt="" width="16" height="16">OrbStack</span></th><th><span class="tool-head"><img class="tool on-light" src="{{root}}logos/colima.png" alt="" width="16" height="16">Colima</span></th><th><span class="tool-head"><img class="tool" src="{{root}}logos/kiri.svg" alt="" width="16" height="16">Kiri</span></th></tr>
           <tr><td>{{row_runs_on}}</td><td>{{cell_podbag_runs}}</td><td>{{cell_docker_runs}}</td><td>macOS</td><td>{{cell_colima_runs}}</td><td>{{cell_kiri_runs}}</td></tr>
           <tr><td>{{row_background}}</td><td>{{cell_podbag_bg}}</td><td>{{cell_docker_bg}}</td><td>{{cell_orb_bg}}</td><td>{{cell_colima_bg}}</td><td>{{cell_kiri_bg}}</td></tr>
           <tr><td>{{row_storage}}</td><td>{{cell_podbag_storage}}</td><td>{{cell_layers}}</td><td>{{cell_layers}}</td><td>{{cell_layers}}</td><td>{{cell_kiri_storage}}</td></tr>
@@ -249,6 +247,7 @@ docker compose up -d</code></pre><button type="button" data-copied="{{copied|att
         </table>
       </div>
       <p class="note reveal">{{compare_note}}</p>
+      <p class="note reveal">{{logos_note}}</p>
       <div class="diagram reveal">
         <picture><source media="(prefers-color-scheme: dark)" srcset="{{root}}images/architecture-dark.svg"><img src="{{root}}images/architecture-light.svg" alt="{{arch_alt|attr}}" loading="lazy"></picture>
       </div>
