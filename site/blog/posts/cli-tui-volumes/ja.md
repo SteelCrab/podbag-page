@@ -71,7 +71,7 @@ my-api の削除を選び、確認画面で名前を確認して削除します�
 
 削除すると一覧が空になります。同じ実習ターミナルに戻ります。
 
-![CLI で削除を確認 · 進行中](gui-empty-ja.png)
+![削除後に空になった実習ボリュームの一覧](gui-empty-ja.png)
 
 ## CLI で削除を確認
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![実習の進捗 · 完了](gui-complete-ja.png)
+![Training でボリューム実習が完了した状態](gui-complete-ja.png)
 
 ## モジュールを削除する
 

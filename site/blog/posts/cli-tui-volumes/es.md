@@ -71,7 +71,7 @@ Pulsa Eliminar en my-api. Comprueba el nombre y confirma.
 
 Tras eliminarlo, la lista queda vacía. Vuelve a la misma terminal de prácticas.
 
-![Verificarlo en la CLI · En curso](gui-empty-es.png)
+![Lista vacía de volúmenes de práctica tras la eliminación](gui-empty-es.png)
 
 ## Verificarlo en la CLI
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![Progreso de la práctica · Completado](gui-complete-es.png)
+![Training muestra el módulo de volúmenes completado](gui-complete-es.png)
 
 ## Desinstala el módulo
 

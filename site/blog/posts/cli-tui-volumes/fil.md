@@ -71,7 +71,7 @@ Piliin ang Remove sa my-api. Tiyakin ang pangalan at kumpirmahin.
 
 Pagkatapos alisin ang volume, magiging walang laman ang listahan. Bumalik sa parehong practice terminal.
 
-![Tiyakin sa CLI · Ginagawa](gui-empty-fil.png)
+![Walang laman ang listahan ng mga practice volume matapos ang pag-alis](gui-empty-fil.png)
 
 ## Tiyakin sa CLI
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![Progreso ng lab · Tapos na](gui-complete-fil.png)
+![Ipinapakita ng Training na tapos na ang volume module](gui-complete-fil.png)
 
 ## Alisin ang module
 

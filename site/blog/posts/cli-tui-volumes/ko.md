@@ -34,7 +34,7 @@ podbag lab install cli-gui-volumes.podbag
 
 Desktop의 **Training**에서 **웹 실습 안내**를 누르면 이 글이 다시 열립니다. Training에는 설치한 모듈의 상태와 현재 단계가 표시됩니다.
 
-![웹 실습 안내와 터미널 버튼이 표시된 Training 화면](gui-ready-ko.png)
+![Training에 설치된 볼륨 모듈과 웹 실습 안내 버튼](gui-ready-ko.png)
 
 ## 실습 터미널 열기
 
@@ -71,7 +71,7 @@ my-api의 삭제 버튼을 누르고 확인창에서 이름을 확인한 뒤 삭
 
 삭제하면 목록이 비워집니다. 같은 실습 터미널로 돌아갑니다.
 
-![CLI에서 삭제 확인하기 · 진행 중](gui-empty-ko.png)
+![볼륨 삭제 후 목록이 빈 실습 볼륨 화면](gui-empty-ko.png)
 
 ## CLI에서 삭제 확인하기
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![실습 진행 단계 · 완료](gui-complete-ko.png)
+![Training에 볼륨 실습이 완료로 표시된 화면](gui-complete-ko.png)
 
 ## 모듈 삭제하기
 

@@ -71,7 +71,7 @@ Chọn Xóa cho my-api. Kiểm tra tên rồi xác nhận.
 
 Sau khi xóa, danh sách sẽ trống. Hãy quay lại cùng terminal thực hành.
 
-![Kiểm tra trong CLI · Đang thực hiện](gui-empty-vi.png)
+![Danh sách volume thực hành trống sau khi xóa](gui-empty-vi.png)
 
 ## Kiểm tra trong CLI
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![Tiến độ thực hành · Hoàn thành](gui-complete-vi.png)
+![Training hiển thị mô-đun volume đã hoàn thành](gui-complete-vi.png)
 
 ## Gỡ mô-đun
 

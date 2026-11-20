@@ -71,7 +71,7 @@ podbag volume ls
 
 删除后列表为空。返回同一个实验终端。
 
-![在 CLI 验证删除 · 进行中](gui-empty-zh-CN.png)
+![删除后为空的实验卷列表](gui-empty-zh-CN.png)
 
 ## 在 CLI 验证删除
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![实验进度 · 已完成](gui-complete-zh-CN.png)
+![Training 显示卷实验已完成](gui-complete-zh-CN.png)
 
 ## 卸载模块
 

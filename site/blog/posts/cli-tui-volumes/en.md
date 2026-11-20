@@ -71,7 +71,7 @@ Select Remove for my-api. Check the name in the dialog and confirm.
 
 After deletion the list is empty. Return to the same practice shell.
 
-![Verify removal in the CLI · In progress](gui-empty-en.png)
+![Empty Practice volumes list after deletion](gui-empty-en.png)
 
 ## Verify removal in the CLI
 
@@ -93,7 +93,7 @@ exit
 
 ![Verified · exit](gui-finish.png)
 
-![Lab progress · Complete](gui-complete-en.png)
+![Training marks the volume module complete](gui-complete-en.png)
 
 ## Uninstall the module
 
