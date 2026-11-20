@@ -6,6 +6,7 @@ The website of [podbag](https://github.com/SteelCrab/podbag): [podbag.dev](https
 
 - [What is here](#what-is-here)
 - [Build it](#build-it)
+- [Write a blog post](#write-a-blog-post)
 - [Deploy it](#deploy-it)
 - [License](#license)
 
@@ -33,6 +34,25 @@ python3 -m http.server -d _site 8000                     # look at it
 
 - `PODBAG_REPO=/path/to/podbag` uses another clone.
 - Every language must have every English string. The build stops if one is missing.
+
+## Write a blog post
+
+- A post is one folder: `site/blog/posts/<slug>/`, with one Markdown file per language
+  (`en.md`, `ko.md`, …). A language without its file does not list the post, so write all
+  seven.
+- Each file starts with front matter: title, date, author (a key of
+  `site/blog/authors.json`), categories (announcements, engineering, benchmarks, how-to), tags,
+  summary, image, image_alt and draft. See the top of `dev/docs/blog.py`.
+- `{{n:2970}}` writes a number in the page's language (2,970 or 2.970).
+- `draft: true` keeps a post out of the build.
+- `python3 dev/docs/blog.py cards` draws the sharing pictures (`card-<lang>.png`).
+- Check before a push:
+
+```sh
+python3 dev/docs/site.py _site
+python3 -m unittest dev/docs/test_blog.py
+python3 dev/docs/check_links.py _site
+```
 
 ## Deploy it
 
