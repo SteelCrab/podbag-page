@@ -14,6 +14,12 @@ Gumawa ng volume sa CLI, siyasatin at burahin ito sa Desktop, at tingnan ang pro
 
 [I-download ang module](cli-gui-volumes.podbag)
 
+## Ano ang volume?
+
+Ang volume ay imbakan ng mga file na hiwalay sa container. Dito, sine-save ng `app-a` ang `note.txt` sa volume na `my-api`. Pagkatapos alisin ang `app-a`, magagamit ng bagong container na `app-b` ang file kapag ini-mount nito ang parehong volume. Kapag binura ang volume mismo, mabubura rin ang mga file nito.
+
+[![Ano ang volume?](volume-life.webp)](volume-life.mp4)
+
 ## I-install ang module
 
 Gumamit ng magkatugmang bersiyon ng Desktop at CLI. I-download ang file at i-install mula sa Tutorials o patakbuhin ang command sa folder ng download.

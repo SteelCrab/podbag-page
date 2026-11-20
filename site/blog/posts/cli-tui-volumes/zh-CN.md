@@ -14,6 +14,12 @@ draft: false
 
 [下载实验模块](cli-gui-volumes.podbag)
 
+## 什么是卷？
+
+卷是独立于容器的存储空间。`app-a` 将 `note.txt` 保存到 `my-api` 卷。删除 `app-a` 后，新容器 `app-b` 挂载同一个卷，仍然可以读取该文件。 如果删除卷本身，其中的文件也会被删除。
+
+[![什么是卷？](volume-life.webp)](volume-life.mp4)
+
 ## 安装模块
 
 使用支持本实验的 Desktop 和 CLI。下载文件后在教程页面选择并安装，也可以在下载目录中运行以下命令。

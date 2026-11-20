@@ -24,7 +24,7 @@ class Page(HTMLParser):
         attrs = dict(attrs)
         if "id" in attrs:
             self.ids.add(attrs["id"])
-        for name in ("href", "src"):
+        for name in ("href", "src", "poster"):
             if attrs.get(name):
                 self.links.append(attrs[name])
         if attrs.get("srcset"):

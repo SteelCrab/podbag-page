@@ -14,6 +14,12 @@ Crea un volumen en la CLI, inspecciónalo y elimínalo en Desktop siguiendo el p
 
 [Descargar el módulo](cli-gui-volumes.podbag)
 
+## ¿Qué es un volumen?
+
+Un volumen guarda archivos por separado del contenedor. Aquí, `app-a` guarda `note.txt` en el volumen `my-api`. Después de eliminar `app-a`, el nuevo contenedor `app-b` monta el mismo volumen y lee el archivo. Al eliminar el propio volumen también se borran sus archivos.
+
+[![¿Qué es un volumen?](volume-life.webp)](volume-life.mp4)
+
 ## Instala el módulo
 
 Usa versiones compatibles de Desktop y la CLI. Descarga el archivo e instálalo desde los tutoriales de Desktop o ejecuta este comando en la carpeta de descarga.

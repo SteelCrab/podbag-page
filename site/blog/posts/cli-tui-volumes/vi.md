@@ -14,6 +14,12 @@ Tạo volume trong CLI, xem chi tiết và xóa trong Desktop, rồi theo dõi t
 
 [Tải mô-đun](cli-gui-volumes.podbag)
 
+## Volume là gì?
+
+Volume là nơi lưu tệp độc lập với container. Trong ví dụ này, `app-a` lưu `note.txt` vào volume `my-api`. Sau khi xóa `app-a`, container mới `app-b` gắn cùng volume và đọc lại tệp. Nếu xóa chính volume đó, các tệp bên trong cũng sẽ bị xóa.
+
+[![Volume là gì?](volume-life.webp)](volume-life.mp4)
+
 ## Cài mô-đun
 
 Dùng bản Desktop và CLI hỗ trợ bài này. Tải tệp rồi cài từ mục hướng dẫn trên Desktop, hoặc chạy lệnh dưới đây trong thư mục tải xuống.

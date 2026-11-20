@@ -77,6 +77,7 @@ RULE = re.compile(r"^ {0,3}([-*_])(\s*\1){2,}\s*$")
 QUOTE = re.compile(r"^ {0,3}>")
 LIST = re.compile(r"^( *)([-*+]|\d{1,9}[.)])( +)(.*)$")
 DELIM = re.compile(r"^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$")
+VIDEO_POSTER = re.compile(r'^\[!\[([^\]]+)\]\(([^)\s]+)\)\]\(([^)\s]+\.mp4)\)$', re.I)
 IMAGE_ONLY = re.compile(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$')
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
 LINK = re.compile(r'\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
@@ -297,6 +298,11 @@ class Markdown:
 
     def paragraph(self, lines, tight):
         text = ("" if self.lang in NO_SPACES else " ").join(lines)
+        if m := VIDEO_POSTER.fullmatch(text):
+            label = html.escape(html.unescape(m[1]), quote=True)
+            video = self.url(m[3])
+            return (f'<figure><video controls playsinline preload="none" aria-label="{label}" '
+                    f'poster="{self.url(m[2])}" src="{video}"><a href="{video}">{label}</a></video></figure>')
         if m := IMAGE_ONLY.match(text):
             img = self.image(m.group(1), m.group(2))
             caption = f"<figcaption>{self.inline(m.group(3))}</figcaption>" if m.group(3) else ""

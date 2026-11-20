@@ -2,6 +2,7 @@
 
 usage: python3 -m unittest dev/docs/test_blog.py
 """
+import base64
 import importlib.util
 import json
 import re
@@ -313,6 +314,25 @@ class Built(unittest.TestCase):
             for slug, name in [("compose-stop-timeout", "@SteelCrab"), ("podbag-0-1-0", team)]:
                 url = self.site.URL + self.site.path_of(code) + f"blog/{slug}/"
                 self.assertEqual(creators[url], name)
+
+    def test_volume_animation_matches_the_offline_module(self):
+        assets = self.out / "blog/cli-tui-volumes"
+        raw = (assets / "cli-gui-volumes.podbag").read_bytes()
+        self.assertLessEqual(len(raw), 65536)
+        module = json.loads(raw)
+        for ext in ("mp4", "webp"):
+            self.assertEqual(base64.b64decode(module["animation"][ext], validate=True),
+                             (assets / f"volume-life.{ext}").read_bytes())
+        for code, _ in self.site.LANGS:
+            article = self.out / self.site.path_of(code) / "blog/cli-tui-volumes/index.html"
+            html = article.read_text()
+            self.assertIn(module["translations"][code]["intro"]["title"], html)
+            player, = re.findall(r"<video ([^>]+)>", html)
+            self.assertIn("controls", player)
+            self.assertNotIn("autoplay", player)
+            for key, ext in [("poster", "webp"), ("src", "mp4")]:
+                url, = re.findall(fr'{key}="([^"]+)"', player)
+                self.assertTrue((article.parent / url).samefile(assets / f"volume-life.{ext}"))
 
     def test_tutorial_download_and_steps(self):
         slug = "volume-api-lab"

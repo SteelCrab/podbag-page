@@ -14,6 +14,12 @@ Create a volume in the CLI, inspect and remove it in Podbag Desktop, and watch y
 
 [Download the lab module](cli-gui-volumes.podbag)
 
+## What is a volume?
+
+A volume stores files separately from a container. Here, `app-a` saves `note.txt` in the `my-api` volume. After `app-a` is removed, a new container, `app-b`, mounts the same volume and reads the file. Deleting the volume itself removes its files.
+
+[![What is a volume?](volume-life.webp)](volume-life.mp4)
+
 ## Install the module
 
 Use a matching build of Podbag Desktop and the CLI. Download the module and install it under **Tutorials → Choose file → Install module**, or run the command below from the download folder.
