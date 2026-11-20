@@ -1,5 +1,5 @@
 ---
-title: "Bài thực hành · Quản lý volume bằng CLI và GUI"
+title: "Podbag Training · Quản lý volume bằng CLI và GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
@@ -22,25 +22,25 @@ Volume là nơi lưu tệp độc lập với container. Trong ví dụ này, `a
 
 ## Cài mô-đun
 
-Dùng bản Desktop và CLI hỗ trợ bài này. Tải tệp rồi cài từ mục hướng dẫn trên Desktop, hoặc chạy lệnh dưới đây trong thư mục tải xuống.
+Dùng bản Desktop và CLI hỗ trợ bài này. Ở đầu mục **Training**, chọn **Cài mô-đun**, chọn tệp đã tải và xác nhận. Bạn cũng có thể chạy lệnh sau trong thư mục tải xuống.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
 ```
 
-![Cài mô-đun](gui-install.png)
+## Xem tiến độ trong Desktop
 
-## Mở bài thực hành trong Desktop
+Mở rộng **Training** ở thanh bên và chọn mô-đun volume đã cài. Mô-đun hiển thị các bước đã xong, đang thực hiện và chưa thực hiện. Chọn **Mở hướng dẫn trên web** để quay lại trang này.
 
-Chọn **Mở hướng dẫn trên web** trong **Training** để quay lại trang này. Training hiển thị trạng thái mô-đun và tác vụ hiện tại.
+## Bắt đầu phiên thực hành
 
-![Mô-đun volume cùng các nút thao tác trong Training](gui-ready-vi.png)
+Sao chép lệnh của bước hiện tại và chạy trong terminal của bạn. Giữ trang này mở và tiếp tục khi thấy `volume-lab $`.
 
-## Mở terminal
+```sh
+podbag lab start volume-basics
+```
 
-Mở **Volume thực hành** ở thanh bên Desktop, rồi chọn Terminal. Giữ trang này và terminal mở trong khi thực hành.
-
-![Volume thực hành khi terminal đang mở](gui-shell-vi.png)
+![Lệnh bắt đầu và các bước trong mô-đun volume](gui-ready-vi.png)
 
 ## Tạo volume trong CLI
 

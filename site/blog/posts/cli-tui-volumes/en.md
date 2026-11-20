@@ -1,5 +1,5 @@
 ---
-title: "Lab · Manage a volume with the CLI and GUI"
+title: "Podbag Training · Manage a volume with the CLI and GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
@@ -22,25 +22,25 @@ A volume stores files separately from a container. Here, `app-a` saves `note.txt
 
 ## Install the module
 
-Use a matching build of Podbag Desktop and the CLI. Download the module and install it under **Training → Choose file → Install module**, or run the command below from the download folder.
+Use a compatible build of Desktop and the CLI. Select **Install module** at the top of **Training**, choose the downloaded file, and confirm. You can also run this command from your download folder.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
 ```
 
-![Install the module](gui-install.png)
+## Follow your progress in Desktop
 
-## Open the lab in Desktop
+Expand **Training** in the sidebar and select the installed volume module. The module shows completed, current, and pending steps. Select **Open web guide** to return to this page.
 
-Select **Open web guide** in **Training** to return to this page. Training shows the installed module and the current task while you work.
+## Start the practice session
 
-![Installed volume module and its actions in Training](gui-ready-en.png)
+Copy the command from the current step and run it in your terminal. Keep this page open and continue when the terminal shows `volume-lab $`.
 
-## Open the practice shell
+```sh
+podbag lab start volume-basics
+```
 
-Open **Practice volumes** in the Desktop sidebar and select **Terminal**. Keep this page and the terminal open as you work.
-
-![Practice volumes with the terminal open](gui-shell-en.png)
+![The volume module shows the start command and the practice steps](gui-ready-en.png)
 
 ## Create a volume in the CLI
 

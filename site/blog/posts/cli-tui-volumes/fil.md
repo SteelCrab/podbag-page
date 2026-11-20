@@ -1,5 +1,5 @@
 ---
-title: "Lab · Pamahalaan ang volume gamit ang CLI at GUI"
+title: "Podbag Training · Pamahalaan ang volume gamit ang CLI at GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
@@ -22,25 +22,25 @@ Ang volume ay imbakan ng mga file na hiwalay sa container. Dito, sine-save ng `a
 
 ## I-install ang module
 
-Gumamit ng magkatugmang bersiyon ng Desktop at CLI. I-download ang file at i-install mula sa Tutorials o patakbuhin ang command sa folder ng download.
+Gumamit ng magkatugmang bersiyon ng Desktop at CLI. Sa itaas ng **Training**, piliin ang **I-install ang module**, piliin ang na-download na file, at kumpirmahin. Maaari mo ring patakbuhin ang command sa folder ng download.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
 ```
 
-![I-install ang module](gui-install.png)
+## Tingnan ang progreso sa Desktop
 
-## Buksan ang lab sa Desktop
+Palawakin ang **Training** sa sidebar at piliin ang volume module. Makikita mo ang mga tapos na gawain, kasalukuyang gawain, at mga susunod pa. Piliin ang **Buksan ang gabay sa web** para bumalik sa pahinang ito.
 
-Piliin ang **Buksan ang gabay sa web** sa **Training** para bumalik sa pahinang ito. Ipinapakita ng Training ang status ng module at ang kasalukuyang gawain.
+## Simulan ang practice session
 
-![Volume module at mga button nito sa Training](gui-ready-fil.png)
+Kopyahin ang command ng kasalukuyang hakbang at patakbuhin ito sa terminal mo. Panatilihing bukas ang pahinang ito at magpatuloy kapag lumabas ang `volume-lab $`.
 
-## Buksan ang shell
+```sh
+podbag lab start volume-basics
+```
 
-Buksan ang **Mga practice volume** sa sidebar ng Desktop at piliin ang Terminal. Panatilihing bukas ang pahinang ito at ang terminal.
-
-![Mga practice volume habang bukas ang terminal](gui-shell-fil.png)
+![Command sa pagsisimula at mga hakbang ng volume module](gui-ready-fil.png)
 
 ## Gumawa sa CLI
 

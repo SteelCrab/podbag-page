@@ -15,23 +15,25 @@ An image contains the files a program needs. A container runs the program from t
 
 ## Install the training module
 
-[Download container-basics.podbag](https://github.com/SteelCrab/podbag/releases/download/training/container-basics/v1.0.0/container-basics.podbag). Open a training-compatible build of Podbag Desktop. In **Training**, choose the file and select **Install module**. You can also install it from your download folder.
+[Download container-basics.podbag](https://github.com/SteelCrab/podbag/releases/download/training/container-basics/v1.0.0/container-basics.podbag). Open a training-compatible build of Podbag Desktop. In **Training**, select **Install module** at the top, choose the downloaded file, and confirm. You can also install it from your download folder.
 
 ```sh
 podbag lab install container-basics.podbag
 ```
 
+![Podbag shows the selected module and file before installation](install-en.png)
+
 If you already installed this training module, install the new file over it to keep your completion record. Run `podbag lab list` to see your installed modules.
 
-## Open the practice terminal
+## Start the practice session
 
-Keep this page open in your browser. In Desktop, select **Practice containers** in the sidebar, then select **Terminal**. The separate terminal window is ready when it shows `container-lab $`. To start directly from a terminal, run the command below.
+In the sidebar, expand **Training** and select **Run a container**. The module shows the current step and the steps that follow. Copy the command below and run it in your terminal. Continue when it shows `container-lab $`.
 
 ```sh
 podbag lab start container-basics
 ```
 
-![The Practice containers toolbar with the Terminal button](training-en.png)
+![The container module shows the start command and the practice steps](training-en.png)
 
 ## Run the web server in the CLI
 
@@ -51,7 +53,7 @@ Leave the practice terminal open. Select **Practice containers** in Desktop. Fin
 
 ![Practice containers shows hello-web running and the Stop action](running-en.png)
 
-The container row shows **Exited**. Open **Training** to see **Check the status in the CLI** as the current task.
+The container row shows **Exited**. Select the module under **Training** to see **Check the status in the CLI** and copy its command.
 
 ![The practice container row shows hello-web exited](stopped-en.png)
 
@@ -63,6 +65,8 @@ Return to the same practice terminal and list all containers. The `-a` option in
 podbag ps -a
 ```
 
+![Training highlights the CLI status check and shows its command](progress-en.png)
+
 Confirm that `hello-web` shows `Exited`. The practice terminal prints `Verified`.
 
 ![The CLI shows hello-web Exited and confirms verification](cli-check.png)
@@ -71,4 +75,4 @@ Confirm that `hello-web` shows `Exited`. The practice terminal prints `Verified`
 
 Type `exit`. Podbag removes the practice container, its downloaded image, and the temporary store. The module and its completion record remain available in Training.
 
-![The Training card shows the module complete after cleanup](complete-en.png)
+![All practice steps show Complete after cleanup](complete-en.png)

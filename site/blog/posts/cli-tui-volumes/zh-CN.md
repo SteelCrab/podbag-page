@@ -1,5 +1,5 @@
 ---
-title: "实验 · 用 CLI 和 GUI 管理卷"
+title: "Podbag Training · 用 CLI 和 GUI 管理卷"
 date: 2026-11-20
 author: team
 categories: [how-to]
@@ -22,25 +22,25 @@ draft: false
 
 ## 安装模块
 
-使用支持本实验的 Desktop 和 CLI。下载文件后在教程页面选择并安装，也可以在下载目录中运行以下命令。
+使用支持本实验的 Desktop 和 CLI。在 **Training** 顶部点击**安装模块**，选择下载的文件并确认。也可以在下载目录中运行以下命令。
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
 ```
 
-![安装模块](gui-install.png)
+## 在 Desktop 查看训练进度
 
-## 在 Desktop 打开实验
+展开侧栏中的 **Training**，选择已安装的卷模块。页面会显示已完成、正在进行和待开始的步骤。点击**打开网页实验指南**可返回本页。
 
-在 Desktop 的 **Training** 中点击**打开网页实验指南**可返回本页。Training 会显示模块状态及当前任务。
+## 开始实验
 
-![Training 中的卷实验模块和操作按钮](gui-ready-zh-CN.png)
+复制当前步骤中的命令，在当前终端中运行。保持本页打开，等终端显示 `volume-lab $` 后继续。
 
-## 打开实验终端
+```sh
+podbag lab start volume-basics
+```
 
-在 Desktop 侧栏打开实验卷，点击终端按钮。实验期间保持本页和终端打开。
-
-![打开实验终端后的实验卷页面](gui-shell-zh-CN.png)
+![卷模块的启动命令和实验步骤](gui-ready-zh-CN.png)
 
 ## 在 CLI 创建卷
 

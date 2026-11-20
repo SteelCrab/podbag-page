@@ -1,5 +1,5 @@
 ---
-title: "Práctica · Gestiona un volumen con la CLI y la GUI"
+title: "Podbag Training · Gestiona un volumen con la CLI y la GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
@@ -22,25 +22,25 @@ Un volumen guarda archivos por separado del contenedor. Aquí, `app-a` guarda `n
 
 ## Instala el módulo
 
-Usa versiones compatibles de Desktop y la CLI. Descarga el archivo e instálalo desde los tutoriales de Desktop o ejecuta este comando en la carpeta de descarga.
+Usa versiones compatibles de Desktop y la CLI. En **Training**, elige **Instalar módulo** en la parte superior, selecciona el archivo descargado y confirma. También puedes ejecutar este comando en la carpeta de descarga.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
 ```
 
-![Instala el módulo](gui-install.png)
+## Consulta el progreso en Desktop
 
-## Abre la práctica en Desktop
+Despliega **Training** en la barra lateral y selecciona el módulo de volúmenes. Puedes ver las tareas completadas, en curso y pendientes. Selecciona **Abrir la guía web** para volver a esta página.
 
-Selecciona **Abrir la guía web** en **Training** para volver a esta página. Training muestra el estado del módulo y la tarea actual.
+## Inicia la sesión de práctica
 
-![Módulo de volúmenes y sus acciones en Training](gui-ready-es.png)
+Copia el comando del paso actual y ejecútalo en tu terminal. Mantén abierta esta página y continúa cuando aparezca `volume-lab $`.
 
-## Abrir la terminal
+```sh
+podbag lab start volume-basics
+```
 
-Abre **Volúmenes de práctica** en la barra lateral de Desktop y selecciona Terminal. Mantén abierta esta página y la terminal.
-
-![Volúmenes de práctica con la terminal abierta](gui-shell-es.png)
+![Comando de inicio y pasos del módulo de volúmenes](gui-ready-es.png)
 
 ## Crear el volumen en la CLI
 
