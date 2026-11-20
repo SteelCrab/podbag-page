@@ -7,6 +7,7 @@ tags: [cli, containers, desktop, training]
 summary: "CLI에서 작은 웹 서버를 실행하고 Podbag Desktop에서 중지합니다. 다시 CLI에서 중지 상태를 확인합니다."
 image: running-ko.png
 image_alt: "Podbag Desktop에서 실행 중인 hello-web 컨테이너"
+outline: "실습 흐름"
 draft: false
 ---
 
@@ -22,11 +23,15 @@ podbag lab install container-basics.podbag
 
 이 실습을 이미 설치했다면 새 파일을 다시 설치해도 완료 기록이 유지됩니다. `podbag lab list`로 설치한 실습을 확인할 수 있습니다.
 
-![실습 터미널을 연 뒤 Training에 설치된 컨테이너 실습](training-ko.png)
+## 실습 터미널 열기
+
+Training 카드에서 **터미널**을 누릅니다. `container-lab $` 프롬프트가 나올 때까지 기다립니다.
+
+![실습 터미널 열기가 완료되고 CLI 실행 단계가 진행 중인 Training 화면](training-ko.png)
 
 ## CLI에서 웹 서버 실행하기
 
-Training 카드에서 **터미널**을 누릅니다. `container-lab $` 프롬프트가 나오면 다음 명령을 입력합니다. 처음 실행할 때 Podbag이 실습 이미지를 내려받습니다.
+같은 실습 터미널에서 다음 명령을 입력합니다. 처음 실행할 때 Podbag이 실습 이미지를 내려받습니다.
 
 ```sh
 podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080

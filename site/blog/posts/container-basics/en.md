@@ -7,6 +7,7 @@ tags: [cli, containers, desktop, training]
 summary: "Start a small web server in the CLI, stop it in Podbag Desktop, and check its status in the same terminal."
 image: running-en.png
 image_alt: "A running hello-web container in Podbag Desktop"
+outline: "Training flow"
 draft: false
 ---
 
@@ -22,11 +23,15 @@ podbag lab install container-basics.podbag
 
 If you already installed this training module, install the new file over it to keep your completion record. Run `podbag lab list` to see your installed modules.
 
-![The container module in Training with the practice terminal open](training-en.png)
+## Open the practice terminal
+
+On the Training card, select **Terminal**. Wait for the `container-lab $` prompt.
+
+![Training shows the practice terminal step complete and the CLI run step in progress](training-en.png)
 
 ## Run the web server in the CLI
 
-On the Training card, select **Terminal**. Wait for the `container-lab $` prompt, then run the command. Podbag downloads the practice image on the first run.
+Enter the command below in the practice terminal. Podbag downloads the practice image on the first run.
 
 ```sh
 podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080
