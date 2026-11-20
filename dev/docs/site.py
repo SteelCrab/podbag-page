@@ -36,7 +36,7 @@ LANGS = [("en", "English"), ("ko", "한국어"), ("ja", "日本語"), ("zh-CN", 
          ("fil", "Filipino"), ("es", "Español"), ("vi", "Tiếng Việt")]
 # Thousands and decimal separators; the rest use "," and ".".
 SEPARATORS = {"es": (".", ","), "vi": (".", ",")}
-ASSETS = ["style.css", "blog.css", "main.js", "favicon.png", "apple-touch-icon.png", "_headers"]
+ASSETS = ["style.css", "blog.css", "main.js", "theme.js", "favicon.png", "apple-touch-icon.png", "_headers"]
 
 
 def version():

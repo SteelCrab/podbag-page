@@ -5,6 +5,8 @@
   "nav_label": "Menú principal",
   "nav_install": "Instalar",
   "nav_benchmarks": "Rendimiento",
+  "theme_light": "Tema claro",
+  "theme_dark": "Tema oscuro",
   "lang_label": "Idioma",
   "hero_eyebrow": "Un motor de contenedores distinto",
   "hero_title": "Contenedores sin demonio, guardados archivo por archivo",

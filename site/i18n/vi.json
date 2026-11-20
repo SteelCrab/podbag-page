@@ -5,6 +5,8 @@
   "nav_label": "Menu chính",
   "nav_install": "Cài đặt",
   "nav_benchmarks": "Đo hiệu năng",
+  "theme_light": "Giao diện sáng",
+  "theme_dark": "Giao diện tối",
   "lang_label": "Ngôn ngữ",
   "hero_eyebrow": "Một công cụ container khác biệt",
   "hero_title": "Container không cần daemon, lưu theo từng tệp",
