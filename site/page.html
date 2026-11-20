@@ -58,9 +58,12 @@
         <h1>{{hero_title}}</h1>
         <p class="lead">{{hero_lead}}</p>
         <div class="cta">
-          <a class="button primary" href="#install">{{cta_install}}</a>
-          <a class="button" href="https://github.com/SteelCrab/podbag/releases/latest">{{cta_download}} v{{version}}</a>
-          <a class="button" href="https://github.com/SteelCrab/podbag">GitHub</a>
+          <a class="button" href="https://github.com/SteelCrab/podbag/releases/latest" aria-label="{{cta_download|attr}}" title="{{cta_download|attr}}">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
+          </a>
+          <a class="button" href="https://github.com/SteelCrab/podbag" aria-label="GitHub" title="GitHub">
+            <img src="{{root}}logos/github.svg" width="20" height="20" alt="">
+          </a>
         </div>
         <fieldset class="facts reveal">
           <legend class="sr-only">podbag / Docker Engine · {{nav_benchmarks}}</legend>
