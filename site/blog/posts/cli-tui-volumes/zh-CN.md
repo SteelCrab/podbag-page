@@ -100,7 +100,7 @@ exit
 在原终端运行此命令可删除模块及其完成记录。
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![卸载模块 · Module removed.](uninstall.png)

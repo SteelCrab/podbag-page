@@ -100,7 +100,7 @@ exit
 Patakbuhin ito sa orihinal na terminal para alisin ang module at ang tala ng pagkumpleto.
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![Alisin ang module · Module removed.](uninstall.png)

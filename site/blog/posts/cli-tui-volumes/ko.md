@@ -22,7 +22,7 @@ CLI에서 만든 볼륨을 Podbag Desktop에서 열고 삭제합니다. 실습 �
 
 ## 모듈 설치하기
 
-Podbag Desktop과 CLI가 모두 이 실습을 지원하는 버전인지 확인합니다. 아래 파일을 내려받아 **튜토리얼 → 파일 선택 → 모듈 설치**에서 설치합니다. 터미널에서는 다운로드한 폴더에서 다음 명령을 실행해도 됩니다.
+Podbag Desktop과 CLI가 모두 이 실습을 지원하는 버전인지 확인합니다. 아래 파일을 내려받아 **Training → 파일 선택 → 모듈 설치**에서 설치합니다. 터미널에서는 다운로드한 폴더에서 다음 명령을 실행해도 됩니다.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
@@ -32,7 +32,7 @@ podbag lab install cli-gui-volumes.podbag
 
 ## 실습 화면 열기
 
-Desktop의 **튜토리얼**에서 설치한 모듈을 엽니다. **실습 진행 단계**에서 현재 작업이 **진행 중**으로 표시됩니다. **터미널** 버튼을 누르면 전용 셸이 열립니다.
+Desktop의 **Training**에서 설치한 모듈을 엽니다. **실습 진행 단계**에서 현재 작업이 **진행 중**으로 표시됩니다. **터미널** 버튼을 누르면 전용 셸이 열립니다.
 
 ![실습 진행 단계 · 대기 중](gui-ready-ko.png)
 
@@ -100,7 +100,7 @@ exit
 원래 터미널에서 아래 명령을 실행하면 새 모듈과 완료 기록이 삭제됩니다. 다시 연습하려면 다운로드한 파일을 다시 설치합니다.
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![모듈 삭제하기 · Module removed.](uninstall.png)

@@ -100,7 +100,7 @@ exit
 Ejecuta el comando en la terminal original para eliminar el módulo y su registro de finalización.
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![Desinstala el módulo · Module removed.](uninstall.png)

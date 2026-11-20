@@ -100,7 +100,7 @@ exit
 Chạy lệnh này trong terminal ban đầu để xóa mô-đun và bản ghi hoàn thành.
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![Gỡ mô-đun · Module removed.](uninstall.png)

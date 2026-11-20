@@ -100,7 +100,7 @@ exit
 元のシェルで実行すると、モジュールと完了記録を削除できます。
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![モジュールを削除する · Module removed.](uninstall.png)

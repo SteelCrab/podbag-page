@@ -22,7 +22,7 @@ A volume stores files separately from a container. Here, `app-a` saves `note.txt
 
 ## Install the module
 
-Use a matching build of Podbag Desktop and the CLI. Download the module and install it under **Tutorials → Choose file → Install module**, or run the command below from the download folder.
+Use a matching build of Podbag Desktop and the CLI. Download the module and install it under **Training → Choose file → Install module**, or run the command below from the download folder.
 
 ```sh
 podbag lab install cli-gui-volumes.podbag
@@ -32,7 +32,7 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Open the lab in Desktop
 
-Open the installed module under **Tutorials**. **Lab progress** marks the current task as **In progress**. Select **Terminal** to open the practice shell.
+Open the installed module under **Training**. **Lab progress** marks the current task as **In progress**. Select **Terminal** to open the practice shell.
 
 ![Lab progress · Pending](gui-ready-en.png)
 
@@ -100,7 +100,7 @@ exit
 Run this command outside the practice shell to remove the module and its completion record. You can reinstall the downloaded file.
 
 ```sh
-podbag lab remove
+podbag lab remove volume-basics
 ```
 
 ![Uninstall the module · Module removed.](uninstall.png)
