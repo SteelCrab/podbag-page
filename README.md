@@ -43,6 +43,8 @@ python3 -m http.server -d _site 8000                     # look at it
 - Each file starts with front matter: title, date, author (a key of
   `site/blog/authors.json`), categories (announcements, engineering, benchmarks, how-to), tags,
   summary, image, image_alt and draft. See the top of `dev/docs/blog.py`.
+- For a personal byline, set the author's entry to `{"github": "username"}`.
+  The post links the handle to its GitHub profile.
 - `{{n:2970}}` writes a number in the page's language (2,970 or 2.970).
 - `draft: true` keeps a post out of the build.
 - `python3 dev/docs/blog.py cards` draws the sharing pictures (`card-<lang>.png`).
