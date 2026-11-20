@@ -13,6 +13,10 @@ draft: false
 
 이미지에는 프로그램 실행에 필요한 파일이 들어 있습니다. 컨테이너는 그 이미지의 프로그램을 실행합니다. 이 실습에서는 `hello-web`이라는 작은 웹 서버를 실행하고 Podbag Desktop에서 중지합니다.
 
+## 초보자 코스
+
+**첫 컨테이너 실행하기** → [브라우저에서 웹 서버 열기](../web-basics/) → [컨테이너를 바꿔도 파일 남기기](../volume-persistence/) → [웹 서비스 교체하고 정리하기](../web-service-lifecycle/)
+
 ## 실습 모듈 설치하기
 
 [container-basics.podbag 다운로드](https://github.com/SteelCrab/podbag/releases/download/training/container-basics/v1.0.0/container-basics.podbag). Training을 지원하는 Podbag Desktop을 엽니다. **Training** 화면 위의 **모듈 설치**를 누르고 다운로드한 파일을 선택한 뒤 확인합니다. 파일을 받은 폴더에서 다음 명령으로 설치할 수도 있습니다.
@@ -76,3 +80,5 @@ podbag ps -a
 `exit`를 입력합니다. Podbag이 실습 컨테이너와 내려받은 이미지, 임시 저장소를 정리합니다. 실습 모듈과 완료 기록은 Training에서 확인할 수 있습니다.
 
 ![실습 환경을 정리한 뒤 모든 단계가 완료로 표시된 화면](complete-ko.png)
+
+[다음 모듈 · 브라우저에서 웹 서버 열기](../web-basics/)

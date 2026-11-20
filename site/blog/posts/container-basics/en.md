@@ -13,6 +13,10 @@ draft: false
 
 An image contains the files a program needs. A container runs the program from that image. In this lab, you run a small web server called `hello-web` and stop it with Podbag Desktop.
 
+## Beginner course
+
+**Run your first container** → [Open a web server in the browser](../web-basics/) → [Keep files across containers](../volume-persistence/) → [Replace and clean up a web service](../web-service-lifecycle/)
+
 ## Install the training module
 
 [Download container-basics.podbag](https://github.com/SteelCrab/podbag/releases/download/training/container-basics/v1.0.0/container-basics.podbag). Open a training-compatible build of Podbag Desktop. In **Training**, select **Install module** at the top, choose the downloaded file, and confirm. You can also install it from your download folder.
@@ -76,3 +80,5 @@ Confirm that `hello-web` shows `Exited`. The practice terminal prints `Verified`
 Type `exit`. Podbag removes the practice container, its downloaded image, and the temporary store. The module and its completion record remain available in Training.
 
 ![All practice steps show Complete after cleanup](complete-en.png)
+
+[Next module · Open a web server in the browser](../web-basics/)

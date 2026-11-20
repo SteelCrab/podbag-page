@@ -1,0 +1,13 @@
+{
+  "format": "podbag-web-basics-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Open a web server in the browser",
+      "guide": "Start the session with podbag lab start web-basics."
+    },
+    "ko": {
+      "title": "Podbag Training · 브라우저에서 웹 서버 열기",
+      "guide": "podbag lab start web-basics 명령으로 실습을 시작합니다."
+    }
+  }
+}

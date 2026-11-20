@@ -1,0 +1,13 @@
+{
+  "format": "podbag-web-service-lifecycle-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Replace and clean up a web service",
+      "guide": "Start the session with podbag lab start web-service-lifecycle."
+    },
+    "ko": {
+      "title": "Podbag Training · 웹 서비스 교체하고 정리하기",
+      "guide": "podbag lab start web-service-lifecycle 명령으로 실습을 시작합니다."
+    }
+  }
+}

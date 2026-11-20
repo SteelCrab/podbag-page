@@ -1,0 +1,13 @@
+{
+  "format": "podbag-volume-persistence-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Keep files across containers",
+      "guide": "Start the session with podbag lab start volume-persistence."
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너를 바꿔도 파일 남기기",
+      "guide": "podbag lab start volume-persistence 명령으로 실습을 시작합니다."
+    }
+  }
+}
