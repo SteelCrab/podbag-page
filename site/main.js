@@ -38,7 +38,10 @@
     const button = box.querySelector("button");
     if (!button) continue;
     button.addEventListener("click", async () => {
-      const text = box.querySelector("code").innerText.replace(/[ \t]+#.*$/gm, "");
+      const code = box.querySelector("code");
+      const text = box.classList.contains("code-file")
+        ? code.textContent + "\n"
+        : code.innerText.replace(/[ \t]+#.*$/gm, "");
       try {
         await navigator.clipboard.writeText(text);
         flash(button, button.dataset.copied);

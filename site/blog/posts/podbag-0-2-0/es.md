@@ -16,7 +16,19 @@ Podbag 0.2.0 ya está disponible. Esta versión permite construir imágenes y pu
 
 Usa `podbag build` para construir una imagen a partir de un Dockerfile. Puedes descargar imágenes de un registro o subir las que hayas construido.
 
-![Dockerfile de Alpine de dos líneas y terminal que muestra Hello from Podbag](build-example.png "Construye y ejecuta una imagen desde un Dockerfile.")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+Guarda el archivo en una carpeta vacía y ejecuta allí estos comandos. [Descargar Dockerfile](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+El contenedor imprime `Hello from Podbag`.
 
 En Podbag Desktop, abre el cuadro de descarga de imágenes. Elige Docker Hub, GitHub Container Registry o la dirección de otro registro. Introduce el nombre y la etiqueta de la imagen. Para descargar una imagen privada, puedes usar una sesión de Docker con acceso al registro.
 

@@ -16,7 +16,19 @@ Podbag 0.2.0 已发布。你可以从 Dockerfile 构建镜像并将其推送到�
 
 使用 `podbag build` 从 Dockerfile 构建镜像。你可以从仓库拉取镜像，也可以推送自己构建的镜像。
 
-![两行 Alpine Dockerfile 及输出 Hello from Podbag 的终端](build-example.png "从 Dockerfile 构建并运行镜像。")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+将文件保存到一个空目录，然后在该目录中运行以下命令。 [下载 Dockerfile](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+容器会输出 `Hello from Podbag`。
 
 在 Podbag Desktop 中打开拉取镜像对话框，选择 Docker Hub、GitHub Container Registry，或输入自定义仓库地址。填入镜像名称和标签。拉取私有镜像时，可以使用已有权限的 Docker 登录凭据。
 
