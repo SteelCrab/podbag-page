@@ -350,11 +350,13 @@ class Built(unittest.TestCase):
             self.assertIn(code, module["translations"])
             link, = re.findall(r'<a href="([^"]+volume-api\.podbag)"', html)
             self.assertTrue((post.parent / link).samefile(assets / "volume-api.podbag"))
-            pictures = re.findall(r'<figure><img src="([^"]+)" alt="([^"]+)"', html)
+            pictures = re.findall(
+                r'<figure><img src="([^"]+)" alt="([^"]+)" width="(\d+)" height="(\d+)"', html)
             self.assertEqual(len(pictures), 9)
-            for index, (src, alt) in enumerate(pictures, 1):
+            for index, (src, alt, width, height) in enumerate(pictures, 1):
                 path = post.parent / src
                 self.assertTrue(path.is_file() and alt)
+                self.assertEqual((int(width), int(height)), blog.image_size(path))
                 self.assertTrue(path.name.startswith(f"{index:02}-") and path.name.endswith(f"-{code}.png"))
 
     def test_numbers_in_spanish_post(self):

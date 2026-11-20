@@ -16,21 +16,35 @@ Podbag 0.2.0 ya está disponible. Esta versión permite construir imágenes y pu
 
 Usa `podbag build` para construir una imagen a partir de un Dockerfile. Puedes descargar imágenes de un registro o subir las que hayas construido.
 
+![Dockerfile de Alpine de dos líneas y terminal que muestra Hello from Podbag](build-example.png "Construye y ejecuta una imagen desde un Dockerfile.")
+
 En Podbag Desktop, abre el cuadro de descarga de imágenes. Elige Docker Hub, GitHub Container Registry o la dirección de otro registro. Introduce el nombre y la etiqueta de la imagen. Para descargar una imagen privada, puedes usar una sesión de Docker con acceso al registro.
 
-![Selector de registros en el cuadro de descarga de imágenes de Podbag Desktop](/images/pull-registries-en.png)
+![Selector de registros con Docker Hub, GitHub y Amazon ECR](registry-en.png "Elige un registro en Podbag Desktop.")
 
 ## Copias entre motores y clústeres
 
 Usa `podbag migrate` o el menú de migración de Desktop para copiar imágenes de una sola plataforma, contenedores detenidos y volúmenes locales entre motores compatibles con Docker. Se conserva el origen.
 
+![Cuadro de migración del volumen pgdata desde Docker a Podbag](engine-copy-en.png "Copia el volumen pgdata de Docker a Podbag.")
+
 Desktop permite copiar pods independientes, servicios, despliegues y solicitudes de volumen persistente (PVC) de tipo sistema de archivos entre contextos de Kubernetes. Si la solicitud ya está vinculada a un volumen, Podbag copia los archivos y los verifica en el destino. Detén las cargas que escriben en el volumen de origen antes de copiarlo. [Requisitos de migración](https://github.com/SteelCrab/podbag/blob/v0.2.0/docs/usage.md#migrate-between-engines-or-kubernetes-clusters)
+
+![Confirmación de que se verificaron los archivos del volumen copiado de qa-a a qa-b](cluster-copy.png "Verifica un volumen copiado entre clústeres de Kubernetes.")
 
 ## Kubernetes, Swarm y Desktop
 
-En un nodo Linux, ejecuta `podbag cri serve` como entorno de ejecución de contenedores de Kubernetes. Podbag también ejecuta servicios y stacks de Docker Swarm en un solo nodo. Probamos Docker Engine y Podbag en el mismo nodo k3s. [Prueba de carga en k3s](/es/blog/k3s-30-pods-docker-podbag/)
+En un nodo Linux, ejecuta `podbag cri serve` como entorno de ejecución de contenedores de Kubernetes. Probamos Docker Engine y Podbag en el mismo nodo k3s. [Prueba de carga en k3s](/es/blog/k3s-30-pods-docker-podbag/)
+
+![El pod web en ejecución en worker-1 con un contenedor listo de uno](kubernetes-pods-en.png "Consulta el estado de los pods en Podbag Desktop.")
+
+Podbag también ejecuta servicios y stacks de Docker Swarm en un solo nodo.
+
+![Comandos de Docker CLI para iniciar Swarm, crear tres réplicas web y listar las tareas](swarm-example.png "Ejemplo con la CLI de Docker conectada a Podbag.")
 
 Usa `podbag tui` o Desktop para gestionar contenedores e imágenes y para cambiar el contexto de la CLI de Docker. En un Mac con Apple silicon, puedes configurar desde Desktop las CPU, la memoria y el tiempo de inactividad antes de apagar la máquina virtual Linux.
+
+![Ajustes de CPU, memoria y apagado por inactividad de la máquina virtual](vm-settings.png "Configura la máquina virtual Linux en macOS desde Desktop.")
 
 ## Instalación de 0.2.0
 

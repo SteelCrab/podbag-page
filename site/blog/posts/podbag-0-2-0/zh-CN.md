@@ -16,21 +16,35 @@ Podbag 0.2.0 已发布。你可以从 Dockerfile 构建镜像并将其推送到�
 
 使用 `podbag build` 从 Dockerfile 构建镜像。你可以从仓库拉取镜像，也可以推送自己构建的镜像。
 
+![两行 Alpine Dockerfile 及输出 Hello from Podbag 的终端](build-example.png "从 Dockerfile 构建并运行镜像。")
+
 在 Podbag Desktop 中打开拉取镜像对话框，选择 Docker Hub、GitHub Container Registry，或输入自定义仓库地址。填入镜像名称和标签。拉取私有镜像时，可以使用已有权限的 Docker 登录凭据。
 
-![Podbag Desktop 的镜像拉取对话框显示可选的镜像仓库](/images/pull-registries-en.png)
+![列出 Docker Hub、GitHub 和 Amazon ECR 的仓库选择界面](registry-en.png "在 Podbag Desktop 中选择镜像仓库。")
 
 ## 在引擎和集群之间复制
 
 使用 `podbag migrate` 或 Desktop 的迁移菜单，在兼容 Docker 的引擎之间复制单平台镜像、已停止的容器和本地卷。源数据会保留。
 
+![将 pgdata 卷从 Docker 复制到 Podbag 的确认窗口](engine-copy-en.png "把 pgdata 卷从 Docker 复制到 Podbag。")
+
 Desktop 可以在不同的 Kubernetes 上下文之间复制独立的 Pod、Service、Deployment 和文件系统类型的持久卷声明（PVC）。如果 PVC 已绑定卷，Podbag 会复制文件并在目标端进行验证。复制前请停止向源卷写入数据的工作负载。 [迁移要求](https://github.com/SteelCrab/podbag/blob/v0.2.0/docs/usage.md#migrate-between-engines-or-kubernetes-clusters)
+
+![窗口显示从 qa-a 复制到 qa-b 的卷文件已通过验证](cluster-copy.png "验证 Kubernetes 集群之间复制的卷。")
 
 ## Kubernetes、Swarm 和 Desktop
 
-在 Linux 节点上，可通过 `podbag cri serve` 将 Podbag 用作 Kubernetes 容器运行时。它还支持在单节点上运行 Docker Swarm 服务和堆栈。我们公布了在同一个 k3s 节点上比较 Docker Engine 和 Podbag 的测试结果。 [k3s 负载测试](/zh-CN/blog/k3s-30-pods-docker-podbag/)
+在 Linux 节点上，可通过 `podbag cri serve` 将 Podbag 用作 Kubernetes 容器运行时。我们公布了在同一个 k3s 节点上比较 Docker Engine 和 Podbag 的测试结果。[k3s 负载测试](/zh-CN/blog/k3s-30-pods-docker-podbag/)
+
+![web Pod 在 worker-1 上运行，就绪状态为 1/1](kubernetes-pods-en.png "在 Podbag Desktop 中查看 Pod 状态。")
+
+它还支持在单节点上运行 Docker Swarm 服务和堆栈。
+
+![通过 Docker CLI 初始化 Swarm、创建三个 Web 副本并列出任务的命令](swarm-example.png "Docker CLI 连接到 Podbag 时的命令示例。")
 
 通过 `podbag tui` 或 Desktop 管理容器和镜像，并切换 Docker CLI 的连接目标。在 Apple 芯片 Mac 上，可以在 Desktop 中设置 Linux 虚拟机的 CPU 核数、内存和空闲关机时间。
+
+![可调整 CPU、内存和空闲关机时间的虚拟机设置界面](vm-settings.png "在 Desktop 中调整 macOS 上的 Linux 虚拟机。")
 
 ## 安装 0.2.0
 

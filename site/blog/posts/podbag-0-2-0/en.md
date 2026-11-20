@@ -16,21 +16,35 @@ Podbag 0.2.0 is available. This release adds image builds and registry publishin
 
 Build an image from a Dockerfile with `podbag build`. Pull images from a registry or push the images you build.
 
+![A two-line Alpine Dockerfile and the terminal printing Hello from Podbag](build-example.png "Build and run an image with podbag.")
+
 In Podbag Desktop, open **Pull image** and choose Docker Hub, GitHub Container Registry, or a custom registry address. Enter the image name and tag. For private images, reuse a Docker login that has access to the registry.
 
-![Registry picker in the Podbag Desktop image pull dialog](/images/pull-registries-en.png)
+![The registry picker lists Docker Hub, GitHub and Amazon ECR](registry-en.png "Choose a registry in Podbag Desktop.")
 
 ## Copy between engines and clusters
 
 Use `podbag migrate` or the Migrate menu in Desktop to copy single-platform images, stopped containers, and local volumes between Docker-compatible engines. The source stays in place.
 
+![The migration dialog selects Docker as the source and Podbag as the destination for pgdata](engine-copy-en.png "Copy the pgdata volume from Docker to Podbag.")
+
 Desktop copies standalone Pods, Services, Deployments, and filesystem persistent volume claims (PVCs) between Kubernetes contexts. A bound filesystem PVC transfers its files and verifies them at the destination. Stop workloads that write to the source volume before copying. [Migration requirements](https://github.com/SteelCrab/podbag/blob/v0.2.0/docs/usage.md#migrate-between-engines-or-kubernetes-clusters)
+
+![The completion dialog verifies the files copied from qa-a to qa-b](cluster-copy.png "Verify a volume copy between Kubernetes clusters.")
 
 ## Kubernetes, Swarm, and Desktop
 
-On a Linux node, run `podbag cri serve` as the Kubernetes container runtime. Podbag also runs Docker Swarm services and stacks on one node. The published k3s test compares Docker Engine and Podbag on the same node. [k3s workload test](/blog/k3s-30-pods-docker-podbag/)
+On a Linux node, run `podbag cri serve` as the Kubernetes container runtime. The published k3s test compares Docker Engine and Podbag on the same node. [k3s workload test](/blog/k3s-30-pods-docker-podbag/)
+
+![The web pod is running on worker-1 with one container ready](kubernetes-pods-en.png "Check pod readiness in Podbag Desktop.")
+
+Podbag also runs Docker Swarm services and stacks on one node.
+
+![Docker CLI commands initialize Swarm, create three web replicas, and list the tasks](swarm-example.png "Example with the Docker CLI connected to Podbag.")
 
 Use `podbag tui` or Desktop to manage containers and images and to switch the Docker CLI context. On Apple silicon, Desktop configures the Linux VM's CPU count, memory, and idle shutdown time.
+
+![The Virtual machine settings show CPU, memory, and idle shutdown controls](vm-settings.png "Set the macOS Linux VM limits in Desktop.")
 
 ## Install 0.2.0
 
