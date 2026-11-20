@@ -32,15 +32,15 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Open the lab in Desktop
 
-Open **Training** in Desktop. Select **Open web guide** to return to this page, then select **Terminal** to open the practice shell.
+Select **Open web guide** in **Training** to return to this page. Training shows the installed module and the current task while you work.
 
 ![Installed volume module and its actions in Training](gui-ready-en.png)
 
 ## Open the practice shell
 
-Keep the terminal and this web guide open. Select **Practice volumes** in the Desktop sidebar to view the resources you create.
+Open **Practice volumes** in the Desktop sidebar and select **Terminal**. Keep this page and the terminal open as you work.
 
-![Create a volume in the CLI · In progress](gui-shell-en.png)
+![Practice volumes with the terminal open](gui-shell-en.png)
 
 ## Create a volume in the CLI
 
@@ -55,7 +55,7 @@ podbag volume ls
 
 ## Inspect it in the GUI
 
-When the volume appears, the CLI creation step changes to **Complete** and the GUI inspection step becomes **In progress**.
+After a volume appears, Training shows the GUI inspection task in progress.
 
 ![Practice volumes · my-api](gui-volumes-en.png)
 
@@ -69,7 +69,7 @@ Select Remove for my-api. Check the name in the dialog and confirm.
 
 ![Delete it in the GUI · my-api](gui-dialog-en.png)
 
-After deletion the list is empty and CLI verification is in progress. Return to the same practice shell.
+After deletion the list is empty. Return to the same practice shell.
 
 ![Verify removal in the CLI · In progress](gui-empty-en.png)
 
@@ -85,7 +85,7 @@ podbag volume ls
 
 ## End the session
 
-When the shell reports `Verified`, Desktop marks the exit step in progress. Type `exit` to stop the service, remove the temporary store, and see every step marked complete.
+When the shell reports `Verified`, type `exit` to clean up the temporary store. Training marks the module complete.
 
 ```sh
 exit

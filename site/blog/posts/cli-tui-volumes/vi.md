@@ -32,15 +32,15 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Mở bài thực hành trong Desktop
 
-Tìm mô-đun đã cài trong **Training**. Chọn **Mở hướng dẫn trên web** để quay lại trang này. Nhấn Terminal để mở terminal thực hành.
+Chọn **Mở hướng dẫn trên web** trong **Training** để quay lại trang này. Training hiển thị trạng thái mô-đun và tác vụ hiện tại.
 
 ![Mô-đun volume cùng các nút thao tác trong Training](gui-ready-vi.png)
 
 ## Mở terminal
 
-Giữ terminal và trang hướng dẫn mở. Chọn **Volume thực hành** ở thanh bên Desktop để xem các tài nguyên bạn tạo.
+Mở **Volume thực hành** ở thanh bên Desktop, rồi chọn Terminal. Giữ trang này và terminal mở trong khi thực hành.
 
-![Tạo volume trong CLI · Đang thực hiện](gui-shell-vi.png)
+![Volume thực hành khi terminal đang mở](gui-shell-vi.png)
 
 ## Tạo volume trong CLI
 
@@ -55,7 +55,7 @@ podbag volume ls
 
 ## Xem chi tiết trong GUI
 
-Khi my-api xuất hiện, bước tạo đã hoàn thành và bước xem chi tiết trong GUI chuyển sang trạng thái đang thực hiện.
+Khi volume xuất hiện, Training hiển thị tác vụ xem chi tiết trong GUI.
 
 ![Volume thực hành · my-api](gui-volumes-vi.png)
 
@@ -69,7 +69,7 @@ Chọn Xóa cho my-api. Kiểm tra tên rồi xác nhận.
 
 ![Xóa trong GUI · my-api](gui-dialog-vi.png)
 
-Danh sách trống sau khi xóa. Quay lại terminal thực hành để kiểm tra.
+Sau khi xóa, danh sách sẽ trống. Hãy quay lại cùng terminal thực hành.
 
 ![Kiểm tra trong CLI · Đang thực hiện](gui-empty-vi.png)
 
@@ -85,7 +85,7 @@ podbag volume ls
 
 ## Kết thúc phiên
 
-Khi thấy Verified, nhập exit. Dịch vụ dừng, vùng lưu trữ tạm được dọn và tất cả các bước đều hoàn thành.
+Khi thấy `Verified`, nhập `exit` để dọn kho tạm. Training hiển thị mô-đun đã hoàn thành.
 
 ```sh
 exit

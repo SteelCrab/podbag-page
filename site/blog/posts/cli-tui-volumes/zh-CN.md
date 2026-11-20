@@ -32,15 +32,15 @@ podbag lab install cli-gui-volumes.podbag
 
 ## 在 Desktop 打开实验
 
-在 Desktop 的 **Training** 中找到已安装的模块。点击**打开网页实验指南**可返回本页。点击终端按钮打开实验终端。
+在 Desktop 的 **Training** 中点击**打开网页实验指南**可返回本页。Training 会显示模块状态及当前任务。
 
 ![Training 中的卷实验模块和操作按钮](gui-ready-zh-CN.png)
 
 ## 打开实验终端
 
-保持终端和本页打开。在 Desktop 侧栏选择实验卷，查看创建的资源。
+在 Desktop 侧栏打开实验卷，点击终端按钮。实验期间保持本页和终端打开。
 
-![在 CLI 创建卷 · 进行中](gui-shell-zh-CN.png)
+![打开实验终端后的实验卷页面](gui-shell-zh-CN.png)
 
 ## 在 CLI 创建卷
 
@@ -55,7 +55,7 @@ podbag volume ls
 
 ## 在 GUI 查看详情
 
-my-api 出现在列表中后，创建步骤显示已完成，GUI 详情步骤显示进行中。
+卷出现后，Training 会显示接下来在 GUI 中查看详情。
 
 ![实验卷 · my-api](gui-volumes-zh-CN.png)
 
@@ -69,7 +69,7 @@ my-api 出现在列表中后，创建步骤显示已完成，GUI 详情步骤显
 
 ![在 GUI 删除卷 · my-api](gui-dialog-zh-CN.png)
 
-删除后列表为空。回到同一实验终端验证结果。
+删除后列表为空。返回同一个实验终端。
 
 ![在 CLI 验证删除 · 进行中](gui-empty-zh-CN.png)
 
@@ -85,7 +85,7 @@ podbag volume ls
 
 ## 结束实验
 
-看到 Verified 后输入 exit。服务停止，临时存储被清理，所有步骤都显示已完成。
+终端显示 `Verified` 后输入 `exit` 清理临时存储。Training 会显示实验完成。
 
 ```sh
 exit

@@ -25,13 +25,13 @@ If you already installed this training module, install the new file over it to k
 
 ## Open the practice terminal
 
-Keep this page open in your browser. Select **Terminal** in Desktop under **Training**. The separate terminal window is ready when it shows `container-lab $`. To start directly from a terminal, run the command below.
+Keep this page open in your browser. In Desktop, select **Practice containers** in the sidebar, then select **Terminal**. The separate terminal window is ready when it shows `container-lab $`. To start directly from a terminal, run the command below.
 
 ```sh
 podbag lab start container-basics
 ```
 
-![The Training card offers Open web guide, Terminal, and Practice containers](training-en.png)
+![The Practice containers toolbar with the Terminal button](training-en.png)
 
 ## Run the web server in the CLI
 
@@ -51,9 +51,9 @@ Leave the practice terminal open. Select **Practice containers** in Desktop. Fin
 
 ![Practice containers shows hello-web running and the Stop action](running-en.png)
 
-Desktop shows the container's exited status. The current task changes to **Check the status in the CLI**.
+The container row shows **Exited**. Open **Training** to see **Check the status in the CLI** as the current task.
 
-![Desktop shows hello-web exited and the CLI check in progress](stopped-en.png)
+![The practice container row shows hello-web exited](stopped-en.png)
 
 ## Check the result in the CLI
 
@@ -71,4 +71,4 @@ Confirm that `hello-web` shows `Exited`. The practice terminal prints `Verified`
 
 Type `exit`. Podbag removes the practice container, its downloaded image, and the temporary store. The module and its completion record remain available in Training.
 
-![Podbag Desktop shows the finished training after cleanup](complete-en.png)
+![The Training card shows the module complete after cleanup](complete-en.png)

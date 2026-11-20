@@ -32,15 +32,15 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Buksan ang lab sa Desktop
 
-Hanapin ang module sa **Training**. Piliin ang **Buksan ang gabay sa web** para bumalik sa pahinang ito. Pindutin ang Terminal para buksan ang practice shell.
+Piliin ang **Buksan ang gabay sa web** sa **Training** para bumalik sa pahinang ito. Ipinapakita ng Training ang status ng module at ang kasalukuyang gawain.
 
 ![Volume module at mga button nito sa Training](gui-ready-fil.png)
 
 ## Buksan ang shell
 
-Panatilihing bukas ang terminal at ang gabay na ito. Piliin ang **Mga practice volume** sa sidebar ng Desktop para makita ang mga resource na ginawa mo.
+Buksan ang **Mga practice volume** sa sidebar ng Desktop at piliin ang Terminal. Panatilihing bukas ang pahinang ito at ang terminal.
 
-![Gumawa sa CLI · Ginagawa](gui-shell-fil.png)
+![Mga practice volume habang bukas ang terminal](gui-shell-fil.png)
 
 ## Gumawa sa CLI
 
@@ -55,7 +55,7 @@ podbag volume ls
 
 ## Siyasatin sa GUI
 
-Kapag lumabas ang my-api, tapos na ang paggawa at magsisimula ang pagsisiyasat sa GUI.
+Kapag lumitaw ang volume, makikita sa Training na susunod ang pagtingin sa detalye sa GUI.
 
 ![Mga practice volume · my-api](gui-volumes-fil.png)
 
@@ -69,7 +69,7 @@ Piliin ang Remove sa my-api. Tiyakin ang pangalan at kumpirmahin.
 
 ![Burahin sa GUI · my-api](gui-dialog-fil.png)
 
-Kapag wala nang volume sa listahan, bumalik sa parehong shell para tiyakin ang resulta.
+Pagkatapos alisin ang volume, magiging walang laman ang listahan. Bumalik sa parehong practice terminal.
 
 ![Tiyakin sa CLI · Ginagawa](gui-empty-fil.png)
 
@@ -85,7 +85,7 @@ podbag volume ls
 
 ## Tapusin ang session
 
-Kapag lumabas ang Verified, i-type ang exit. Hihinto ang serbisyo, lilinisin ang pansamantalang storage, at mamarkahang tapos ang lahat ng gawain.
+Kapag lumabas ang `Verified`, i-type ang `exit` para linisin ang pansamantalang storage. Ipapakita ng Training na tapos na ang module.
 
 ```sh
 exit

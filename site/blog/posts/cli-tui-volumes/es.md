@@ -32,15 +32,15 @@ podbag lab install cli-gui-volumes.podbag
 
 ## Abre la práctica en Desktop
 
-Busca el módulo instalado en **Training**. Selecciona **Abrir la guía web** para volver a esta página. Pulsa Terminal para abrir el shell de práctica.
+Selecciona **Abrir la guía web** en **Training** para volver a esta página. Training muestra el estado del módulo y la tarea actual.
 
 ![Módulo de volúmenes y sus acciones en Training](gui-ready-es.png)
 
 ## Abrir la terminal
 
-Deja abiertos la terminal y esta guía. Elige **Volúmenes de práctica** en la barra lateral de Desktop para ver los recursos que crees.
+Abre **Volúmenes de práctica** en la barra lateral de Desktop y selecciona Terminal. Mantén abierta esta página y la terminal.
 
-![Crear el volumen en la CLI · En curso](gui-shell-es.png)
+![Volúmenes de práctica con la terminal abierta](gui-shell-es.png)
 
 ## Crear el volumen en la CLI
 
@@ -55,7 +55,7 @@ podbag volume ls
 
 ## Ver detalles en la GUI
 
-Al aparecer my-api, la creación queda completada y la inspección en la GUI pasa a estar en curso.
+Cuando aparezca el volumen, Training indica que toca inspeccionarlo en la GUI.
 
 ![Volúmenes de práctica · my-api](gui-volumes-es.png)
 
@@ -69,7 +69,7 @@ Pulsa Eliminar en my-api. Comprueba el nombre y confirma.
 
 ![Eliminarlo en la GUI · my-api](gui-dialog-es.png)
 
-Tras eliminar el volumen, la lista queda vacía. Vuelve a la misma terminal para comprobarlo.
+Tras eliminarlo, la lista queda vacía. Vuelve a la misma terminal de prácticas.
 
 ![Verificarlo en la CLI · En curso](gui-empty-es.png)
 
@@ -85,7 +85,7 @@ podbag volume ls
 
 ## Terminar la sesión
 
-Cuando aparezca Verified, escribe exit. El servicio se detiene, el almacén temporal se borra y todos los pasos quedan completados.
+Cuando aparezca `Verified`, escribe `exit` para limpiar el almacenamiento temporal. Training marca el módulo como completado.
 
 ```sh
 exit

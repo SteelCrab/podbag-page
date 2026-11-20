@@ -25,13 +25,13 @@ podbag lab install container-basics.podbag
 
 ## 실습 터미널 열기
 
-이 글을 브라우저에 열어 둡니다. Desktop의 **Training**에서 **터미널**을 누릅니다. 실제 터미널 창에서 `container-lab $` 프롬프트가 나오면 실습할 수 있습니다. 터미널에서 직접 시작하려면 아래 명령을 입력합니다.
+이 글을 브라우저에 열어 둡니다. Desktop 왼쪽 메뉴의 **실습 컨테이너**를 열고 **터미널**을 누릅니다. 실제 터미널 창에서 `container-lab $` 프롬프트가 나오면 실습할 수 있습니다. 터미널에서 직접 시작하려면 아래 명령을 입력합니다.
 
 ```sh
 podbag lab start container-basics
 ```
 
-![웹 실습 안내, 터미널, 실습 컨테이너 버튼이 있는 Training 화면](training-ko.png)
+![실습 컨테이너 화면에 있는 터미널 버튼](training-ko.png)
 
 ## CLI에서 웹 서버 실행하기
 
@@ -51,9 +51,9 @@ podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 h
 
 ![실습 컨테이너의 hello-web이 실행 중이고 중지 버튼을 누를 수 있는 화면](running-ko.png)
 
-Desktop에 중지 상태가 나타납니다. **CLI에서 상태 확인하기**가 진행 중으로 바뀝니다.
+컨테이너 행에 중지 상태가 표시됩니다. **Training**을 열면 현재 단계인 **CLI에서 상태 확인하기**를 볼 수 있습니다.
 
-![hello-web이 중지되고 CLI 상태 확인이 진행 중인 화면](stopped-ko.png)
+![실습 컨테이너 목록에 hello-web이 중지 상태로 표시된 화면](stopped-ko.png)
 
 ## CLI에서 결과 확인하기
 
@@ -71,4 +71,4 @@ podbag ps -a
 
 `exit`를 입력합니다. Podbag이 실습 컨테이너와 내려받은 이미지, 임시 저장소를 정리합니다. 실습 모듈과 완료 기록은 Training에서 확인할 수 있습니다.
 
-![임시 저장소가 정리되고 실습이 완료된 Podbag Desktop 화면](complete-ko.png)
+![임시 저장소가 정리된 뒤 Training에 완료 상태가 표시된 화면](complete-ko.png)
