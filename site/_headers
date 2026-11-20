@@ -49,6 +49,26 @@
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="volume-api.podbag"
 
+/blog/cli-tui-volumes/cli-tui-volumes.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="cli-tui-volumes.podbag"
+
+/blog/cli-tui-volumes/cli-gui-volumes.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="cli-gui-volumes.podbag"
+
 /blog/podbag-0-2-0/Dockerfile
   Content-Type: text/plain; charset=utf-8
   Content-Disposition: attachment; filename="Dockerfile"
+
+/blog/web-basics/web-basics.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="web-basics.podbag"
+
+/blog/volume-persistence/volume-persistence.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="volume-persistence.podbag"
+
+/blog/web-service-lifecycle/web-service-lifecycle.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="web-service-lifecycle.podbag"

@@ -1,5 +1,5 @@
 ---
-title: "실습 · 볼륨에 쓴 JSON을 HTTP로 읽기"
+title: "Podbag 트레이닝 · 볼륨에 쓴 JSON을 HTTP로 읽기"
 date: 2026-11-20
 author: team
 categories: [how-to]

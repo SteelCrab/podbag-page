@@ -16,12 +16,14 @@ A post starts with front matter:
     summary: One or two sentences for the lists, the feed and search engines.
     image: card-en.png
     image_alt: What the picture shows.
+    outline: Step-by-step training
     draft: false
     ---
 
 - author: a key of site/blog/authors.json.
 - categories: announcements, engineering, benchmarks, how-to.
 - image: a file next to the post, or /images/…; card-<lang>.png comes from `cards` below.
+- outline: optional title for a list of links to the post's level-two headings.
 - draft: true leaves the post out of the build.
 
 usage: python3 dev/docs/blog.py cards     # draw each post's sharing card (Chrome, Node.js 22)
@@ -80,6 +82,7 @@ RULE = re.compile(r"^ {0,3}([-*_])(\s*\1){2,}\s*$")
 QUOTE = re.compile(r"^ {0,3}>")
 LIST = re.compile(r"^( *)([-*+]|\d{1,9}[.)])( +)(.*)$")
 DELIM = re.compile(r"^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$")
+VIDEO_POSTER = re.compile(r'^\[!\[([^\]]+)\]\(([^)\s]+)\)\]\(([^)\s]+\.mp4)\)$', re.I)
 IMAGE_ONLY = re.compile(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$')
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
 LINK = re.compile(r'\[([^\]]+)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)')
@@ -175,15 +178,23 @@ class Markdown:
              (media, src) pairs for a <picture>.
     """
 
-    def __init__(self, lang="en", root="", base="", code_button="", picture=None, table_label=""):
+    def __init__(self, lang="en", root="", base="", code_button="", picture=None, table_label="", *, outline=""):
         self.lang, self.root, self.base = lang, root, base
         self.code_button, self.picture = code_button, picture
         self.ids = set()
+        self.outline = outline
+        self.steps = []
         self.table_label = table_label
         self.comparison_count = 0
 
     def convert(self, text):
-        return self.blocks(text.replace("\r\n", "\n").replace("\t", "    ").split("\n"))
+        content = self.blocks(text.replace("\r\n", "\n").replace("\t", "    ").split("\n"))
+        if not self.steps:
+            return content
+        entries = "".join(f'<li><a href="#{ident}">{label}</a></li>' for ident, label in self.steps)
+        title = html.escape(self.outline)
+        return (f'<nav class="post-outline" aria-label="{title}"><p>{title}</p>'
+                f'<ol role="list">{entries}</ol></nav>\n{content}')
 
     # Blocks
 
@@ -245,15 +256,16 @@ class Markdown:
 
     def heading(self, level, text):
         level = max(level, 2)  # the page's title is the only <h1>
-        if m := re.match(r"^(.*?)\s*\{#([\w-]+)\}$", text):
-            text, ident = m.group(1), m.group(2)
-        else:
-            ident = slug(self.inline(text))
+        explicit = re.match(r"^(.*?)\s*\{#([\w-]+)\}$", text)
+        label = self.inline(explicit[1] if explicit else text)
+        ident = explicit[2] if explicit else slug(label)
         base, n = ident, 2
         while ident in self.ids:
             ident, n = f"{base}-{n}", n + 1
         self.ids.add(ident)
-        return f'<h{level} id="{ident}">{self.inline(text)}</h{level}>'
+        if self.outline and level == 2:
+            self.steps.append((ident, html.escape(strip(label))))
+        return f'<h{level} id="{ident}">{label}</h{level}>'
 
     def list(self, lines, i, out):
         first = LIST.match(lines[i])
@@ -352,6 +364,11 @@ class Markdown:
 
     def paragraph(self, lines, tight):
         text = ("" if self.lang in NO_SPACES else " ").join(lines)
+        if m := VIDEO_POSTER.fullmatch(text):
+            label = html.escape(html.unescape(m[1]), quote=True)
+            video = self.url(m[3])
+            return (f'<figure><video controls playsinline preload="none" aria-label="{label}" '
+                    f'poster="{self.url(m[2])}" src="{video}"><a href="{video}">{label}</a></video></figure>')
         if m := IMAGE_ONLY.match(text):
             img = self.image(m.group(1), m.group(2))
             caption = f"<figcaption>{self.inline(m.group(3))}</figcaption>" if m.group(3) else ""
@@ -435,6 +452,7 @@ class Post:
     image_alt: str
     body: str
     folder: Path = field(repr=False, default=None)
+    outline: str = ""
 
 
 def parse_value(value):
@@ -491,14 +509,16 @@ def load(path, langs, authors):
         raise SystemExit(f"{where}: no author {meta['author']!r} in authors.json")
     tags = meta.get("tags", [])
     known = {"title", "date", "author", "categories", "tags", "summary", "image", "image_alt",
-             "draft"}
+             "draft", "outline"}
     if unknown := set(meta) - known:
         raise SystemExit(f"{where}: unknown keys {sorted(unknown)}")
+    if "outline" in meta and not isinstance(meta["outline"], str):
+        raise SystemExit(f"{where}: outline must be a title")
     if meta.get("image") and not meta.get("image_alt"):
         raise SystemExit(f"{where}: an image needs image_alt")
     return Post(path.parent.name, lang, meta["title"], day, meta["author"], categories,
                 tags if isinstance(tags, list) else [tags], meta["summary"],
-                meta.get("image", ""), meta.get("image_alt", ""), body, path.parent)
+                meta.get("image", ""), meta.get("image_alt", ""), body, path.parent, meta.get("outline", ""))
 
 
 def load_all(folder, langs, authors):
@@ -600,10 +620,10 @@ class Builder:
             return root + post.image[1:], image_size(path)
         return root + f"blog/{post.slug}/{post.image}", image_size(post.folder / post.image)
 
-    def body(self, post, root, button="", table_label=""):
+    def body(self, post, root, button="", table_label="", *, outline=""):
         return markdown(post.body, lang=post.lang, root=root, base=f"/blog/{post.slug}/",
                         code_button=button, picture=lambda src: self.picture(src, post.folder),
-                        table_label=table_label)
+                        table_label=table_label, outline=outline)
 
     # Pieces
 
@@ -853,7 +873,7 @@ class Builder:
         content = (f'<article class="post">{crumbs}<header class="post-head">'
                    f'<h1>{html.escape(post.title)}</h1>{self.meta_line(post, w, root, with_share=False)}'
                    f"{share}</header>"
-                   f'<div class="prose">{self.body(post, root, copy_button(w), w["data_table"])}</div>'
+                   f'<div class="prose">{self.body(post, root, copy_button(w), w["data_table"], outline=post.outline)}</div>'
                    f'<footer class="post-foot">{about}{tags_html}{steps_html}</footer>'
                    f"{near_html}</article>")
         image, size = self.image_url(post, self.url)
