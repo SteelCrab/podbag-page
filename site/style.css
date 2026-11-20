@@ -10,7 +10,6 @@
   --muted: #898781;
   --line: light-dark(#e1e0d9, #2c2c2a);
   --accent: light-dark(#2a78d6, #3987e5);
-  --accent-ink: #ffffff;
   --code-bg: light-dark(#f2f1ed, #242422);
   --glow: light-dark(rgb(42 120 214 / 0.16), rgb(57 135 229 / 0.2));
   --dot: light-dark(rgb(11 11 11 / 0.07), rgb(240 239 236 / 0.07));
@@ -138,7 +137,6 @@ nav a[aria-current="true"] { color: var(--ink); font-weight: 600; }
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .button:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgb(0 0 0 / 0.12); }
-.button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .cta .button { display: inline-grid; place-items: center; width: 48px; height: 44px; padding: 0; }
 .facts {
   position: relative; min-width: 0; padding: 0; border: 0; margin: 30px 0 0;

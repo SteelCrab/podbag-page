@@ -11,7 +11,6 @@
   "hero_eyebrow": "一种不一样的容器引擎",
   "hero_title": "没有守护进程、按文件存储的容器",
   "hero_lead": "一个静态二进制文件就能运行 Docker 和 OCI 镜像。没有容器运行时，什么也不运行。许多镜像共用的文件只存一份，也只读入内存一次。",
-  "cta_install": "安装",
   "cta_download": "下载",
   "data_table": "测量数据表",
   "fact_start": "启动一个容器",
