@@ -314,6 +314,25 @@ class Built(unittest.TestCase):
                 url = self.site.URL + self.site.path_of(code) + f"blog/{slug}/"
                 self.assertEqual(creators[url], name)
 
+    def test_tutorial_download_and_steps(self):
+        slug = "volume-api-lab"
+        assets = self.out / "blog" / slug
+        module = json.loads((assets / "volume-api.podbag").read_text())
+        self.assertEqual(module["format"], "podbag-volume-api-lab-v1")
+        self.assertIsInstance(json.loads(module["starter"]), dict)
+        for code, _ in self.site.LANGS:
+            post = self.out / self.site.path_of(code) / "blog" / slug / "index.html"
+            html = post.read_text()
+            self.assertIn(code, module["translations"])
+            link, = re.findall(r'<a href="([^"]+volume-api\.podbag)"', html)
+            self.assertTrue((post.parent / link).samefile(assets / "volume-api.podbag"))
+            pictures = re.findall(r'<figure><img src="([^"]+)" alt="([^"]+)"', html)
+            self.assertEqual(len(pictures), 9)
+            for index, (src, alt) in enumerate(pictures, 1):
+                path = post.parent / src
+                self.assertTrue(path.is_file() and alt)
+                self.assertTrue(path.name.startswith(f"{index:02}-") and path.name.endswith(f"-{code}.png"))
+
     def test_numbers_in_spanish_post(self):
         page = (self.out / "es/blog/podbag-0-1-0/index.html").read_text()
         self.assertIn("2.970 MiB", page)

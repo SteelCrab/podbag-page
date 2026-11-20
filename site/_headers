@@ -44,3 +44,7 @@
 /vi/blog/feed.xml
   Content-Type: application/rss+xml; charset=utf-8
   Cache-Control: public, max-age=600
+
+/blog/volume-api-lab/volume-api.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="volume-api.podbag"
