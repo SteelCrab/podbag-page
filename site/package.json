@@ -1,0 +1,9 @@
+{
+  "name": "podbag-site",
+  "private": true,
+  "type": "module",
+  "description": "Deploys the podbag.dev website to Cloudflare. The pages are built by dev/docs/site.py.",
+  "devDependencies": {
+    "cf": "1.0.0-rc.2"
+  }
+}

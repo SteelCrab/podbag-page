@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="{{lang}}" data-group="{{group}}" data-decimal="{{decimal}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title|attr}}</title>
+<meta name="description" content="{{meta_description|attr}}">
+<link rel="canonical" href="{{canonical}}">
+{{alternates}}
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:title" content="podbag">
+<meta property="og:description" content="{{meta_description|attr}}">
+<meta property="og:image" content="{{site}}images/logo.png">
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="{{root}}favicon.png">
+<link rel="apple-touch-icon" href="{{root}}apple-touch-icon.png">
+<link rel="stylesheet" href="{{root}}style.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="{{root}}main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">{{skip}}</a>
+<header class="top">
+  <div class="wrap">
+    <nav aria-label="{{nav_label|attr}}">
+      <a class="brand" href="./"><img src="{{root}}images/logo-small.png" alt="" width="28" height="28">podbag</a>
+      <a href="#how" class="optional">{{nav_how}}</a>
+      <a href="#layers" class="optional">{{nav_layers}}</a>
+      <a href="#install">{{nav_install}}</a>
+      <a href="#benchmarks" class="optional">{{nav_benchmarks}}</a>
+      <a href="https://github.com/SteelCrab/podbag" class="optional">GitHub</a>
+      <button class="lang-button" type="button" popovertarget="langs" aria-label="{{lang_label|attr}}">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg>
+        <span>{{lang_name}}</span>
+      </button>
+      <div id="langs" popover>{{lang_menu}}</div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <img class="logo float" src="{{root}}images/logo.png" alt="" width="88" height="88">
+        <p class="eyebrow">{{hero_eyebrow}}</p>
+        <h1>{{hero_title}}</h1>
+        <p class="lead">{{hero_lead}}</p>
+        <div class="cta">
+          <a class="button primary" href="#install">{{cta_install}}</a>
+          <a class="button" href="https://github.com/SteelCrab/podbag/releases/latest">{{cta_download}} v{{version}}</a>
+          <a class="button" href="https://github.com/SteelCrab/podbag">GitHub</a>
+        </div>
+        <ul class="facts reveal">
+          <li><b><span data-to="4.1" data-dec="1">{{n:4.1}}</span> ms</b><span>{{fact_start}}</span></li>
+          <li><b><span data-to="0">0</span></b><span>{{fact_idle}}</span></li>
+          <li><b>−<span data-to="67">67</span>%</b><span>{{fact_memory}}</span></li>
+          <li><b>−<span data-to="70">70</span>%</b><span>{{fact_disk}}</span></li>
+        </ul>
+      </div>
+      <div class="term" aria-hidden="true">
+        <div class="term-bar"><i></i><i></i><i></i><span>bash</span></div>
+        <pre class="term-body"><code class="full">{{session_html}}</code><code class="live"></code></pre>
+      </div>
+      <p class="sr-only">{{term_sr}}</p>
+      <script type="application/json" id="session">{{session_json}}</script>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="block" id="features">
+      <h2 class="reveal">{{features_title}}</h2>
+      <p class="sub reveal">{{features_sub}}</p>
+      <div class="grid">
+        <div class="card reveal" style="--d:0"><b>{{f1_t}}</b><span>{{f1_d}}</span></div>
+        <div class="card reveal" style="--d:1"><b>{{f2_t}}</b><span>{{f2_d}}</span></div>
+        <div class="card reveal" style="--d:2"><b>{{f3_t}}</b><span>{{f3_d}}</span></div>
+        <div class="card reveal" style="--d:3"><b>{{f4_t}}</b><span>{{f4_d}}</span></div>
+        <div class="card reveal" style="--d:4"><b>{{f5_t}}</b><span>{{f5_d}}</span></div>
+        <div class="card reveal" style="--d:5"><b>{{f6_t}}</b><span>{{f6_d}}</span></div>
+        <div class="card reveal" style="--d:6"><b>{{f7_t}}</b><span>{{f7_d}}</span></div>
+        <div class="card reveal" style="--d:7"><b>{{f8_t}}</b><span>{{f8_d}}</span></div>
+      </div>
+    </section>
+
+    <section class="block" id="how">
+      <h2 class="reveal">{{how_title}}</h2>
+      <p class="sub reveal">{{how_sub}}</p>
+      <div class="procs reveal" data-loop role="img" aria-label="{{how_aria|attr}}">
+        <div class="two">
+          <div class="panel">
+            <h3>Docker Engine</h3>
+            <p class="tag">{{docker_tag}}</p>
+            <div class="plist">
+              <div class="proc always"><span class="dot"></span>dockerd<em>{{always}}</em></div>
+              <div class="proc always"><span class="dot"></span>containerd<em>{{always}}</em></div>
+              <div class="proc run r1"><span class="dot"></span>containerd-shim<em>web</em></div>
+              <div class="proc run r2"><span class="dot"></span>containerd-shim<em>api</em></div>
+              <div class="proc run r3"><span class="dot"></span>containerd-shim<em>db</em></div>
+            </div>
+            <div class="ctrs"><span class="ctr run r1">web</span><span class="ctr run r2">api</span><span class="ctr run r3">db</span></div>
+            <p class="rest">{{rest}} <b>203 MiB</b></p>
+          </div>
+          <div class="panel">
+            <h3>podbag</h3>
+            <p class="tag">{{podbag_tag}}</p>
+            <div class="plist">
+              <div class="proc keeper"><span class="dot"></span>keeper<em>{{keeper_note}}</em></div>
+              <div class="idle">{{idle}}</div>
+            </div>
+            <div class="ctrs"><span class="ctr run r1">web</span><span class="ctr run r2">api</span><span class="ctr run r3">db</span></div>
+            <p class="rest">{{rest}} <b>{{rest_podbag}}</b></p>
+          </div>
+        </div>
+        <div class="caps" aria-hidden="true">
+          <div class="cap cap1">{{cap1}}</div>
+          <div class="cap cap2">{{cap2}}</div>
+          <div class="cap cap3">{{cap3}}</div>
+          <div class="cap cap4">{{cap4}}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="layers">
+      <h2 class="reveal">{{layers_title}}</h2>
+      <p class="sub reveal">{{layers_sub}}</p>
+      <div class="storage reveal">
+        <picture>
+          <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="{{root}}images/{{storage}}-tall-dark.svg" width="420" height="810">
+          <source media="(max-width: 600px)" srcset="{{root}}images/{{storage}}-tall-light.svg" width="420" height="810">
+          <source media="(prefers-color-scheme: dark)" srcset="{{root}}images/{{storage}}-dark.svg" width="800" height="490">
+          <img src="{{root}}images/{{storage}}-light.svg" alt="{{storage_alt|attr}}" width="800" height="490" loading="lazy">
+        </picture>
+      </div>
+      <ul class="points reveal">
+        <li>{{layers_b1}}</li>
+        <li>{{layers_b2}}</li>
+        <li>{{layers_b3}}</li>
+      </ul>
+      <div class="memory two">
+        <div class="reveal">
+          <h3>{{memory_title}}</h3>
+          <p class="note">{{memory_text}}</p>
+        </div>
+        <figure class="chart reveal" data-bars style="--d:1">
+          <figcaption><b>{{chart_cache_t}}</b><span>{{chart_cache_s}}</span></figcaption>
+          <div class="bar-row" style="--v:1;--r:0"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="982">{{n:982}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3299;--r:1"><span class="name">podbag</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="324">{{n:324}}</span> MiB</span></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" id="install">
+      <h2 class="reveal">{{install_title}}</h2>
+      <h3 class="reveal">{{install_script_h}}</h3>
+      <div class="code reveal"><pre><code>curl -fsSL https://podbag.dev/install.sh | sh</code></pre><button type="button" data-copied="{{copied|attr}}" data-fail="{{copy_fail|attr}}">{{copy}}</button></div>
+      <ul class="points reveal">
+        <li>{{install_b1}}</li>
+        <li>{{install_b2}}</li>
+        <li>{{install_b3}}</li>
+      </ul>
+      <h3 class="reveal">{{download_h}}</h3>
+      <p class="reveal">{{download_p}}</p>
+      <div class="table-wrap reveal">
+        <table>
+          <tr><th>{{th_system}}</th><th>{{th_file}}</th></tr>
+          <tr><td>{{sys_linux_x86}}</td><td><code>podbag-x86_64-linux</code></td></tr>
+          <tr><td>{{sys_linux_arm}}</td><td><code>podbag-aarch64-linux</code></td></tr>
+          <tr><td>{{sys_mac}}</td><td><code>podbag-aarch64-macos</code></td></tr>
+          <tr><td>{{sys_win_x86}}</td><td><code>podbag-x86_64-windows.exe</code></td></tr>
+          <tr><td>{{sys_win_arm}}</td><td><code>podbag-aarch64-windows.exe</code></td></tr>
+        </table>
+      </div>
+      <p class="note reveal">{{windows_note}}</p>
+      <h3 class="reveal">{{cargo_h}}</h3>
+      <div class="code reveal"><pre><code>cargo install podbag</code></pre><button type="button" data-copied="{{copied|attr}}" data-fail="{{copy_fail|attr}}">{{copy}}</button></div>
+      <h3 class="reveal">{{source_h}}</h3>
+      <p class="reveal">{{source_p}}</p>
+      <h3 class="reveal">{{use_h}}</h3>
+      <div class="code reveal"><pre><code>podbag run --rm alpine echo hello                 # {{use_c1}}
+podbag run -d --name web -p 8080:80 nginx:alpine  # {{use_c2}}
+podbag ps                                         # {{use_c3}}
+podbag logs -f web                                # {{use_c4}}
+podbag exec -it web sh                            # {{use_c5}}
+podbag stop web &amp;&amp; podbag rm web                  # {{use_c6}}</code></pre><button type="button" data-copied="{{copied|attr}}" data-fail="{{copy_fail|attr}}">{{copy}}</button></div>
+      <h3 class="reveal">{{docker_h}}</h3>
+      <div class="code reveal"><pre><code>podbag system service &amp;      # {{docker_c1}}
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podbag/docker.sock
+docker compose up -d</code></pre><button type="button" data-copied="{{copied|attr}}" data-fail="{{copy_fail|attr}}">{{copy}}</button></div>
+    </section>
+
+    <section class="block" id="benchmarks">
+      <h2 class="reveal">{{bench_title}}</h2>
+      <p class="sub reveal">{{bench_sub}}</p>
+      <div class="intro reveal"><img src="{{root}}images/perf.svg" alt="{{perf_alt|attr}}" width="800" height="450" loading="lazy"></div>
+      <p class="note reveal">{{perf_video}}: <a href="{{root}}media/perf.mp4">perf.mp4</a></p>
+      <div class="charts">
+        <figure class="chart reveal" data-bars>
+          <figcaption><b>{{chart_start_t}}</b><span>{{chart_start_s}}</span></figcaption>
+          <div class="bar-row mine" style="--v:0.0556;--r:0"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.1" data-dec="1">{{n:4.1}}</span> ms</span></div>
+          <div class="bar-row mine" style="--v:0.0596;--r:1"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="4.4" data-dec="1">{{n:4.4}}</span> ms</span></div>
+          <div class="bar-row" style="--v:0.1233;--r:2"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="9.1" data-dec="1">{{n:9.1}}</span> ms</span></div>
+          <div class="bar-row" style="--v:0.6287;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="46.4" data-dec="1">{{n:46.4}}</span> ms</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="73.8" data-dec="1">{{n:73.8}}</span> ms</span></div>
+        </figure>
+        <figure class="chart reveal" data-bars style="--d:1">
+          <figcaption><b>{{chart_mem_t}}</b><span>{{chart_mem_s}}</span></figcaption>
+          <div class="bar-row mine" style="--v:0.1868;--r:0"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="105">{{n:105}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.1940;--r:1"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="109">{{n:109}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.2082;--r:2"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="117">{{n:117}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.3612;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="203">{{n:203}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="562">{{n:562}}</span> MiB</span></div>
+        </figure>
+        <figure class="chart reveal" data-bars>
+          <figcaption><b>{{chart_disk_t}}</b><span>{{chart_disk_s}}</span></figcaption>
+          <div class="bar-row mine" style="--v:0.3037;--r:0"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="902">{{n:902}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3178;--r:1"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="944">{{n:944}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.6003;--r:2"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="1783">{{n:1783}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9966;--r:3"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2960">{{n:2960}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="2970">{{n:2970}}</span> MiB</span></div>
+        </figure>
+        <figure class="chart reveal" data-bars style="--d:1">
+          <figcaption><b>{{chart_cache_t}}</b><span>{{chart_cache_s}}</span></figcaption>
+          <div class="bar-row mine" style="--v:0.3299;--r:0"><span class="name">podbag (rootless)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="324">{{n:324}}</span> MiB</span></div>
+          <div class="bar-row mine" style="--v:0.3391;--r:1"><span class="name">podbag (root)</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="333">{{n:333}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9776;--r:2"><span class="name">Kiri</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="960">{{n:960}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:0.9929;--r:3"><span class="name">Podman</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="975">{{n:975}}</span> MiB</span></div>
+          <div class="bar-row" style="--v:1;--r:4"><span class="name">Docker</span><span class="track"><span class="fill"></span></span><span class="num"><span data-to="982">{{n:982}}</span> MiB</span></div>
+        </figure>
+      </div>
+      <p class="note reveal">{{bench_note}}</p>
+    </section>
+
+    <section class="block" id="compare">
+      <h2 class="reveal">{{compare_title}}</h2>
+      <div class="table-wrap reveal">
+        <table>
+          <tr><th></th><th>podbag</th><th>Docker</th><th>OrbStack</th><th>Colima</th><th>Kiri</th></tr>
+          <tr><td>{{row_runs_on}}</td><td>{{cell_podbag_runs}}</td><td>{{cell_docker_runs}}</td><td>macOS</td><td>{{cell_colima_runs}}</td><td>{{cell_kiri_runs}}</td></tr>
+          <tr><td>{{row_background}}</td><td>{{cell_podbag_bg}}</td><td>{{cell_docker_bg}}</td><td>{{cell_orb_bg}}</td><td>{{cell_colima_bg}}</td><td>{{cell_kiri_bg}}</td></tr>
+          <tr><td>{{row_storage}}</td><td>{{cell_podbag_storage}}</td><td>{{cell_layers}}</td><td>{{cell_layers}}</td><td>{{cell_layers}}</td><td>{{cell_kiri_storage}}</td></tr>
+          <tr><td>{{row_start}}</td><td>{{n:14.4}} ms</td><td>{{n:97.4}} ms</td><td>{{n:90.4}} ms</td><td>{{n:73.6}} ms</td><td>{{n:11.8}} ms</td></tr>
+          <tr><td>{{row_memory}}</td><td>{{n:1.7}} MiB</td><td>{{n:950}} MiB</td><td>{{n:795}} MiB</td><td>{{n:1.54}} GiB</td><td>{{n:12}} MiB</td></tr>
+          <tr><td>{{row_license}}</td><td>Apache-2.0</td><td>{{cell_docker_license}}</td><td>{{cell_proprietary}}</td><td>MIT</td><td>Apache-2.0</td></tr>
+        </table>
+      </div>
+      <p class="note reveal">{{compare_note}}</p>
+      <div class="diagram reveal">
+        <picture><source media="(prefers-color-scheme: dark)" srcset="{{root}}images/architecture-dark.svg"><img src="{{root}}images/architecture-light.svg" alt="{{arch_alt|attr}}" loading="lazy"></picture>
+      </div>
+    </section>
+
+    <section class="block" id="intro">
+      <h2 class="reveal">{{intro_title}}</h2>
+      <div class="intro reveal"><img src="{{root}}images/intro.svg" alt="{{intro_alt|attr}}" width="800" height="450" loading="lazy"></div>
+      <p class="note reveal">{{intro_video}}: <a href="{{root}}media/intro.mp4">intro.mp4</a></p>
+    </section>
+
+    <section class="block" id="docs">
+      <h2 class="reveal">{{docs_title}}</h2>
+      <ul class="points reveal">
+        <li>{{doc_usage}}</li>
+        <li>{{doc_arch}}</li>
+        <li>{{doc_build}}</li>
+        <li>{{doc_contrib}}</li>
+      </ul>
+      <p class="note reveal">{{docs_note}}</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>{{footer_license}}</p>
+    <p><a href="https://github.com/SteelCrab/podbag">GitHub</a> · <a href="https://github.com/SteelCrab/podbag/releases">{{footer_releases}}</a> · <a href="https://crates.io/crates/podbag">crates.io</a> · <a href="https://github.com/SteelCrab/podbag/issues">{{footer_issues}}</a></p>
+    <p class="langs">{{footer_langs}} {{lang_links}}</p>
+  </div>
+</footer>
+</body>
+</html>
