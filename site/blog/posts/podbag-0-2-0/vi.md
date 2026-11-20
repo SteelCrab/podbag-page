@@ -16,21 +16,35 @@ Podbag 0.2.0 đã ra mắt. Bạn có thể tạo ảnh container và đẩy ả
 
 Dùng `podbag build` để tạo ảnh từ Dockerfile. Bạn có thể tải ảnh từ registry hoặc đẩy ảnh đã tạo lên đó.
 
+![Dockerfile Alpine gồm hai dòng và cửa sổ dòng lệnh in Hello from Podbag](build-example.png "Tạo và chạy ảnh từ Dockerfile.")
+
 Trong Podbag Desktop, mở hộp thoại tải ảnh. Chọn Docker Hub, GitHub Container Registry hoặc nhập địa chỉ registry riêng. Nhập tên và thẻ của ảnh. Với ảnh riêng tư, bạn có thể dùng thông tin đăng nhập Docker hiện có nếu tài khoản có quyền truy cập.
 
-![Danh sách registry trong hộp thoại tải ảnh của Podbag Desktop](/images/pull-registries-en.png)
+![Danh sách registry có Docker Hub, GitHub và Amazon ECR](registry-en.png "Chọn registry trong Podbag Desktop.")
 
 ## Sao chép giữa các engine và cụm
 
 Dùng `podbag migrate` hoặc mục di chuyển trong Desktop để sao chép ảnh cho một nền tảng, container đã dừng và ổ đĩa cục bộ giữa các engine tương thích với Docker. Dữ liệu nguồn được giữ lại.
 
+![Hộp thoại chọn Docker làm nguồn và Podbag làm đích khi sao chép ổ đĩa pgdata](engine-copy-en.png "Sao chép ổ đĩa pgdata từ Docker sang Podbag.")
+
 Desktop có thể sao chép Pod độc lập, Service, Deployment và yêu cầu ổ đĩa lưu trữ bền vững (PVC) kiểu hệ thống tệp giữa các ngữ cảnh Kubernetes. Nếu PVC đã gắn với một ổ đĩa, Podbag sao chép các tệp và xác minh chúng ở đích. Hãy dừng tác vụ đang ghi vào ổ đĩa nguồn trước khi sao chép. [Yêu cầu khi di chuyển](https://github.com/SteelCrab/podbag/blob/v0.2.0/docs/usage.md#migrate-between-engines-or-kubernetes-clusters)
+
+![Hộp thoại xác nhận đã kiểm tra các tệp trên ổ đĩa sao chép từ qa-a sang qa-b](cluster-copy.png "Xác minh ổ đĩa đã sao chép giữa hai cụm Kubernetes.")
 
 ## Kubernetes, Swarm và Desktop
 
-Trên nút Linux, chạy `podbag cri serve` để dùng Podbag làm môi trường chạy container cho Kubernetes. Podbag cũng chạy dịch vụ và stack Docker Swarm trên một nút. Chúng tôi đã đo Docker Engine và Podbag trên cùng một nút k3s. [Thử nghiệm tải trên k3s](/vi/blog/k3s-30-pods-docker-podbag/)
+Trên nút Linux, chạy `podbag cri serve` để dùng Podbag làm môi trường chạy container cho Kubernetes. Chúng tôi đã đo Docker Engine và Podbag trên cùng một nút k3s. [Thử nghiệm tải trên k3s](/vi/blog/k3s-30-pods-docker-podbag/)
+
+![Pod web đang chạy trên worker-1 với 1 trên 1 container sẵn sàng](kubernetes-pods-en.png "Kiểm tra trạng thái pod trong Podbag Desktop.")
+
+Podbag cũng chạy dịch vụ và stack Docker Swarm trên một nút.
+
+![Các lệnh Docker CLI khởi tạo Swarm, tạo ba bản sao web và liệt kê tác vụ](swarm-example.png "Ví dụ khi Docker CLI kết nối với Podbag.")
 
 Dùng `podbag tui` hoặc Desktop để quản lý container và ảnh hoặc chuyển ngữ cảnh của Docker CLI. Trên máy Mac dùng Apple silicon, Desktop cho phép đặt số CPU, bộ nhớ và thời gian tự tắt của máy ảo Linux khi không có hoạt động.
+
+![Mục cài đặt CPU, bộ nhớ và thời gian tự tắt khi máy ảo không hoạt động](vm-settings.png "Đặt cấu hình máy ảo Linux trên macOS trong Desktop.")
 
 ## Cài đặt 0.2.0
 
