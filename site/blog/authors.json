@@ -1,6 +1,7 @@
 {
-  "steelcrab": {"github": "SteelCrab"},
+  "steelcrab": {"github": "SteelCrab", "avatar": "logos/steelcrab.png"},
   "team": {
+    "maintainer": "steelcrab",
     "en": {"name": "The podbag team", "bio": "The people who build podbag. We write about releases, how podbag works, and how to use it. Talk to us on <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."},
     "ko": {"name": "podbag 팀", "bio": "podbag을 만드는 사람들입니다. 릴리스, podbag의 동작 방식, 사용법을 씁니다. 의견은 <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>에 남겨 주세요."},
     "ja": {"name": "podbag チーム", "bio": "podbag を作っている人たちです。リリース、podbag のしくみ、使い方について書きます。ご意見は <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a> へどうぞ。"},
