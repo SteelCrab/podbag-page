@@ -16,7 +16,19 @@ Podbag 0.2.0을 공개했습니다. 이번 버전에서는 컨테이너 이미�
 
 `podbag build`로 Dockerfile에서 이미지를 빌드합니다. 레지스트리에서 이미지를 받거나, 빌드한 이미지를 레지스트리에 올릴 수 있습니다.
 
-![두 줄짜리 Alpine Dockerfile과 Hello from Podbag을 출력한 터미널](build-example.png "Dockerfile에서 이미지를 빌드하고 실행합니다.")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+빈 폴더에 파일을 저장한 뒤 그 폴더에서 다음 명령을 실행합니다. [Dockerfile 다운로드](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+컨테이너가 `Hello from Podbag`을 출력합니다.
 
 Podbag Desktop에서 **이미지 받기**를 열고 Docker Hub, GitHub Container Registry 또는 사용자 지정 주소를 선택합니다. 이미지 이름과 태그를 입력합니다. 비공개 이미지는 접근 권한이 있는 기존 Docker 로그인으로 받을 수 있습니다.
 

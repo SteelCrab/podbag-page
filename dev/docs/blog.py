@@ -229,6 +229,10 @@ class Markdown:
     def code(self, body, info):
         cls = f' class="language-{html.escape(info)}"' if info else ""
         text = code_text("\n".join(body))
+        if info == "dockerfile":
+            text = re.sub(r"^([A-Z]+)(?= )", r'<span class="dockerfile-keyword">\1</span>', text, flags=re.M)
+            return (f'<div class="code code-file"><div class="code-filename">Dockerfile</div>'
+                    f'<pre><code{cls}>{text}</code></pre>{self.code_button}</div>')
         return f'<div class="code"><pre><code{cls}>{text}</code></pre>{self.code_button}</div>'
 
     def heading(self, level, text):

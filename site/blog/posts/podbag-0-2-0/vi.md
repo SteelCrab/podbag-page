@@ -16,7 +16,19 @@ Podbag 0.2.0 đã ra mắt. Bạn có thể tạo ảnh container và đẩy ả
 
 Dùng `podbag build` để tạo ảnh từ Dockerfile. Bạn có thể tải ảnh từ registry hoặc đẩy ảnh đã tạo lên đó.
 
-![Dockerfile Alpine gồm hai dòng và cửa sổ dòng lệnh in Hello from Podbag](build-example.png "Tạo và chạy ảnh từ Dockerfile.")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+Lưu tệp vào một thư mục trống rồi chạy các lệnh sau trong thư mục đó. [Tải xuống Dockerfile](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+Container in ra `Hello from Podbag`.
 
 Trong Podbag Desktop, mở hộp thoại tải ảnh. Chọn Docker Hub, GitHub Container Registry hoặc nhập địa chỉ registry riêng. Nhập tên và thẻ của ảnh. Với ảnh riêng tư, bạn có thể dùng thông tin đăng nhập Docker hiện có nếu tài khoản có quyền truy cập.
 

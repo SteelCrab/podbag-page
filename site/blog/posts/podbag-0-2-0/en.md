@@ -16,7 +16,19 @@ Podbag 0.2.0 is available. This release adds image builds and registry publishin
 
 Build an image from a Dockerfile with `podbag build`. Pull images from a registry or push the images you build.
 
-![A two-line Alpine Dockerfile and the terminal printing Hello from Podbag](build-example.png "Build and run an image with podbag.")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+Save the file in an empty folder and run these commands there. [Download Dockerfile](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+The container prints `Hello from Podbag`.
 
 In Podbag Desktop, open **Pull image** and choose Docker Hub, GitHub Container Registry, or a custom registry address. Enter the image name and tag. For private images, reuse a Docker login that has access to the registry.
 

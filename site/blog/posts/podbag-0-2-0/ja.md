@@ -16,7 +16,19 @@ Podbag 0.2.0 を公開しました。イメージをビルドしてレジスト�
 
 `podbag build` は Dockerfile からイメージをビルドします。レジストリからイメージを取得したり、ビルドしたイメージをプッシュしたりできます。
 
-![2 行の Alpine Dockerfile と Hello from Podbag を出力したターミナル](build-example.png "Dockerfile からイメージをビルドして実行します。")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+空のフォルダーに保存し、そのフォルダーで次のコマンドを実行します。 [Dockerfile をダウンロード](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+コンテナは `Hello from Podbag` を出力します。
 
 Podbag Desktop でイメージ取得画面を開き、Docker Hub、GitHub Container Registry、または任意のレジストリを選びます。イメージ名とタグを入力します。非公開イメージには、アクセス権のある既存の Docker ログインを使えます。
 

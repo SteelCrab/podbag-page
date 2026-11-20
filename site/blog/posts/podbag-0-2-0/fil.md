@@ -16,7 +16,19 @@ Available na ang Podbag 0.2.0. Maaari ka nang mag-build ng image at i-push ito s
 
 Gamitin ang `podbag build` para mag-build ng image mula sa Dockerfile. Maaari kang mag-pull mula sa isang registry o mag-push ng mga image na na-build mo.
 
-![Dalawang linya ng Alpine Dockerfile at terminal na nag-print ng Hello from Podbag](build-example.png "Mag-build at magpatakbo ng image mula sa Dockerfile.")
+```dockerfile
+FROM mirror.gcr.io/library/alpine:3.22
+CMD ["echo", "Hello from Podbag"]
+```
+
+I-save ang file sa isang bakanteng folder at patakbuhin doon ang mga utos na ito. [I-download ang Dockerfile](Dockerfile)
+
+```sh
+podbag build -t hello .
+podbag run --rm hello
+```
+
+Ilalabas ng container ang `Hello from Podbag`.
 
 Sa Podbag Desktop, buksan ang **Pull image**. Piliin ang Docker Hub, GitHub Container Registry, o ilagay ang address ng sarili mong registry. Ilagay ang pangalan at tag ng image. Para sa pribadong image, puwede mong gamitin ang Docker login na may access sa registry.
 
