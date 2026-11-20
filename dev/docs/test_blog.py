@@ -286,17 +286,29 @@ class Built(unittest.TestCase):
         self.assertEqual(data["inLanguage"], "ko")
 
     def test_github_author_and_team_byline(self):
-        link = '<a class="github-author" rel="author" href="https://github.com/SteelCrab">@SteelCrab</a>'
+        authors = json.loads((self.site.SITE / "blog/authors.json").read_text())
         for code, _ in self.site.LANGS:
             base = self.out / self.site.path_of(code) / "blog"
-            post = (base / "compose-stop-timeout/index.html").read_text()
-            self.assertEqual(post.count(link), 2, code)
-            self.assertIn(link, (base / "index.html").read_text(), code)
-            self.assertNotIn(link, (base / "podbag-0-1-0/index.html").read_text(), code)
+            team = authors["team"][code]["name"]
+            for path, count in [("index.html", 2), ("compose-stop-timeout/index.html", 2),
+                                ("podbag-0-1-0/index.html", 2)]:
+                page = (base / path).read_text()
+                links = re.findall(r'<a class="github-byline"[^>]* href="https://github.com/SteelCrab">'
+                                   r'(.*?)</a>', page)
+                self.assertEqual(len(links), count, (code, path))
+                for contents in links:
+                    self.assertIn('logos/steelcrab.png"', contents)
+                    self.assertIn('logos/github.svg"', contents)
+                    self.assertIn("<span>@SteelCrab</span>", contents)
+                if "compose-stop-timeout" not in path:
+                    self.assertIn(team, page)
+
             creator = "{http://purl.org/dc/elements/1.1/}creator"
             items = ElementTree.parse(base / "feed.xml").findall(".//item")
-            item = next(i for i in items if "compose-stop-timeout" in i.findtext("link"))
-            self.assertEqual(item.findtext(creator), "@SteelCrab")
+            creators = {i.findtext("link"): i.findtext(creator) for i in items}
+            for slug, name in [("compose-stop-timeout", "@SteelCrab"), ("podbag-0-1-0", team)]:
+                url = self.site.URL + self.site.path_of(code) + f"blog/{slug}/"
+                self.assertEqual(creators[url], name)
 
     def test_numbers_in_spanish_post(self):
         page = (self.out / "es/blog/podbag-0-1-0/index.html").read_text()

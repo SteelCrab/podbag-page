@@ -550,11 +550,27 @@ class Builder:
         local = record[post.lang]
         return local["name"], None, local["bio"]
 
+    def byline(self, post, root):
+        author = self.authors[post.author]
+        maintainer = author.get("maintainer")
+        account = self.authors[maintainer] if maintainer else author
+        if not (handle := account.get("github")):
+            return html.escape(author[post.lang]["name"])
+        prefix = html.escape(author[post.lang]["name"]) + " · " if maintainer else ""
+        photo = ""
+        if avatar := account.get("avatar"):
+            photo = (f'<img class="author-avatar" src="{root}{html.escape(avatar, quote=True)}" '
+                     'width="28" height="28" alt="">')
+        mark = f'<img src="{root}logos/github.svg" width="20" height="20" alt="">'
+        label = html.escape(handle)
+        rel = "" if maintainer else ' rel="author"'
+        return (f'{prefix}<a class="github-byline"{rel} href="https://github.com/{label}">'
+                f'{photo}{mark}<span>@{label}</span></a>')
+
     def meta_line(self, post, w, root, with_share=True):
         cats = ", ".join(f'<a href="{root}{self.category_path(post.lang, c)}">{w[cat_key(c)]}</a>'
                          for c in post.categories)
-        name, profile, _ = self.author_info(post)
-        author = author_link(name, profile)
+        author = self.byline(post, root)
         when = (f'<time datetime="{post.day.isoformat()}">'
                 f"{format_date(post.day, post.lang)}</time>")
         parts = [w["blog_by"].replace("{author}", author),
@@ -749,7 +765,7 @@ class Builder:
             f'<img src="{root}images/logo-small.png" alt="" width="56" height="56">')
         about = (f'<section class="author-box" aria-labelledby="author-h">'
                  f'{portrait}<div><h2 id="author-h">{w["blog_about_author"]}</h2>'
-                 f'<p><b>{author_link(name, profile)}</b></p>'
+                 f'<p><b>{self.byline(post, root)}</b></p>'
                  + (f"<p>{bio}</p>" if bio else "") + "</div></section>")
         steps = []
         if older:
@@ -880,13 +896,6 @@ ICON_LINK = ('<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke
              'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
              '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/>'
              '<path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>')
-
-
-def author_link(name, profile):
-    label = html.escape(name)
-    if profile:
-        return f'<a class="github-author" rel="author" href="{html.escape(profile, quote=True)}">{label}</a>'
-    return label
 
 
 def cat_key(category):
