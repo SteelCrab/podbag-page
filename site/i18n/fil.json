@@ -5,6 +5,8 @@
   "nav_label": "Pangunahing menu",
   "nav_install": "I-install",
   "nav_benchmarks": "Mga benchmark",
+  "theme_light": "Maliwanag na tema",
+  "theme_dark": "Madilim na tema",
   "lang_label": "Wika",
   "hero_eyebrow": "Ibang klase ng container engine",
   "hero_title": "Mga container na walang daemon, iniimbak nang file-by-file",

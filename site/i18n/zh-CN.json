@@ -5,6 +5,8 @@
   "nav_label": "主菜单",
   "nav_install": "安装",
   "nav_benchmarks": "基准测试",
+  "theme_light": "浅色主题",
+  "theme_dark": "深色主题",
   "lang_label": "语言",
   "hero_eyebrow": "一种不一样的容器引擎",
   "hero_title": "没有守护进程、按文件存储的容器",

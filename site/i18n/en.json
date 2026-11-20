@@ -5,6 +5,8 @@
   "nav_label": "Main",
   "nav_install": "Install",
   "nav_benchmarks": "Benchmarks",
+  "theme_light": "Light theme",
+  "theme_dark": "Dark theme",
   "lang_label": "Language",
   "hero_eyebrow": "A different kind of container engine",
   "hero_title": "Containers with no daemon, stored file by file",

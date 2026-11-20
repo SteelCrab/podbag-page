@@ -17,6 +17,7 @@
 <link rel="icon" type="image/png" href="{{root}}favicon.png">
 <link rel="apple-touch-icon" href="{{root}}apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="{{blog_title|attr}}" href="blog/feed.xml">
+<script src="{{root}}theme.js"></script>
 <link rel="stylesheet" href="{{root}}style.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="{{root}}main.js" defer></script>
@@ -31,6 +32,14 @@
       <a href="#benchmarks"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16h16"/><path d="M8 16v-4"/><path d="M12 16V8"/><path d="M16 16v-6"/></svg><span class="label">{{nav_benchmarks}}</span></a>
       <a href="blog/"><svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h8"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span class="label">{{nav_blog}}</span></a>
       <a href="https://github.com/SteelCrab/podbag"><img class="icon" src="{{root}}logos/github.svg" width="20" height="20" alt=""><span class="label">GitHub</span></a>
+      <div class="theme-picker" hidden>
+        <button type="button" data-theme="light" aria-label="{{theme_light|attr}}" title="{{theme_light|attr}}">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+        <button type="button" data-theme="dark" aria-label="{{theme_dark|attr}}" title="{{theme_dark|attr}}">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/></svg>
+        </button>
+      </div>
       <button class="lang-button" type="button" popovertarget="langs" aria-label="{{lang_label|attr}}">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"/></svg>
         <span>{{lang_name}}</span>

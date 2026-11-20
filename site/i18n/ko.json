@@ -5,6 +5,8 @@
   "nav_label": "주 메뉴",
   "nav_install": "설치",
   "nav_benchmarks": "벤치마크",
+  "theme_light": "밝은 테마",
+  "theme_dark": "어두운 테마",
   "lang_label": "언어",
   "hero_eyebrow": "다른 방식의 컨테이너 엔진",
   "hero_title": "데몬 없이, 파일 단위로 저장하는 컨테이너",
