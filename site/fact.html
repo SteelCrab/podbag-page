@@ -1,0 +1,13 @@
+<input class="sr-only" type="radio" name="hero-metric" id="metric-{{key}}" aria-controls="result-{{key}}" {{checked}}>
+<label for="metric-{{key}}"><b>{{prefix}}<span data-to="{{target}}" data-dec="{{decimals}}">{{headline}}</span>{{suffix}}</b><span>{{label}}</span></label>
+<figure id="result-{{key}}" class="fact-result" style="--podbag-width: {{width}}%">
+  <figcaption><span>{{context}}</span><a href="#{{section}}">{{source_label}} <span aria-hidden="true">↓</span></a></figcaption>
+  <div class="fact-series">
+    <span class="fact-brand"><img src="{{root}}images/logo-small.png" width="22" height="22" alt=""><span>podbag<small>{{mode}}</small></span></span>
+    <span class="fact-track" aria-hidden="true"><span class="fact-bar podbag-bar"></span></span>
+    <strong>{{podbag}}</strong>
+    <span class="fact-brand"><img src="{{root}}logos/docker.svg" width="22" height="22" alt="">Docker</span>
+    <span class="fact-track" aria-hidden="true"><span class="fact-bar docker-bar"></span></span>
+    <strong>{{docker}}</strong>
+  </div>
+</figure>

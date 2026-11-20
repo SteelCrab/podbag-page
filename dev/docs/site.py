@@ -63,6 +63,33 @@ def path_of(code):
     return "" if code == "en" else f"{code}/"
 
 
+def hero_facts(template, words, lang, root):
+    metrics = [
+        ("start", "chart_start_s", 4.1, 73.8, "ms", "rootless"),
+        ("idle", "fact_idle", 0, 2, "", ""),
+        ("memory", "chart_cache_t", 324, 982, "MiB", "rootless"),
+        ("disk", "chart_disk_t", 902, 2970, "MiB", "root"),
+    ]
+    panels = []
+    for key, context, podbag, docker, unit, mode in metrics:
+        suffix = f" {unit}" if unit else ""
+        value = number(str(podbag), lang) + suffix
+        ratio = podbag / docker
+        reduction = key in ("memory", "disk")
+        target = str(round(100 * (1 - ratio)) if reduction else podbag)
+        panels.append(render(template, {
+            "key": key, "label": words[f"fact_{key}"], "headline": number(target, lang),
+            "target": target, "decimals": str(len(target.partition(".")[2])),
+            "prefix": "−" if reduction else "", "suffix": "%" if reduction else suffix,
+            "checked": "checked" if key == "start" else "", "context": words[context],
+            "root": root, "mode": mode, "section": "how" if key == "idle" else "benchmarks",
+            "source_label": words["how_title" if key == "idle" else "nav_benchmarks"],
+            "podbag": value, "docker": number(str(docker), lang) + suffix,
+            "width": f"{100 * ratio:.3f}",
+        }, lang))
+    return "\n".join(panels)
+
+
 def session(words, ver):
     return [
         ["c", "curl -fsSL https://podbag.dev/install.sh | sh"],
@@ -156,6 +183,7 @@ def main():
         shutil.copy(video, out / "media" / video.name)
 
     template = (SITE / "page.html").read_text()
+    fact_template = (SITE / "fact.html").read_text()
     english = json.loads((SITE / "i18n/en.json").read_text())
     alts = storage_text()
     ver = version()
@@ -185,6 +213,7 @@ def main():
                 f'<a href="{root}{path_of(c)}" hreflang="{c}" lang="{c}">{n}</a>' for c, n in LANGS),
             "storage": "storage" if code == "en" else f"storage-{code}",
             "storage_alt": alts[code],
+            "hero_facts": hero_facts(fact_template, words, code, root),
             "session_html": session_html(lines),
             "session_json": json.dumps(lines, ensure_ascii=False).replace("</", "<\\/"),
         })

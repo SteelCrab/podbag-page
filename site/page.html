@@ -62,12 +62,10 @@
           <a class="button" href="https://github.com/SteelCrab/podbag/releases/latest">{{cta_download}} v{{version}}</a>
           <a class="button" href="https://github.com/SteelCrab/podbag">GitHub</a>
         </div>
-        <ul class="facts reveal">
-          <li><b><span data-to="4.1" data-dec="1">{{n:4.1}}</span> ms</b><span>{{fact_start}}</span></li>
-          <li><b><span data-to="0">0</span></b><span>{{fact_idle}}</span></li>
-          <li><b>−<span data-to="67">67</span>%</b><span>{{fact_memory}}</span></li>
-          <li><b>−<span data-to="70">70</span>%</b><span>{{fact_disk}}</span></li>
-        </ul>
+        <fieldset class="facts reveal">
+          <legend class="sr-only">podbag / Docker Engine · {{nav_benchmarks}}</legend>
+          <div class="facts-grid">{{hero_facts}}</div>
+        </fieldset>
       </div>
       <div class="term" aria-hidden="true">
         <div class="term-bar"><i></i><i></i><i></i><span>bash</span></div>
