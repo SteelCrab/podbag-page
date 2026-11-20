@@ -1,88 +1,93 @@
 ---
-title: "Bài thực hành · Tạo volume bằng CLI và xóa bằng TUI"
+title: "Bài thực hành · Quản lý volume bằng CLI và GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "Tạo volume Podbag, xem thông tin rồi xóa bằng giao diện terminal."
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "Tạo volume trong CLI, xem chi tiết và xóa trong Desktop, rồi theo dõi tiến độ."
+image: gui-volumes-vi.png
+image_alt: "Volume thực hành · my-api"
 draft: false
 ---
 
-Dùng bản Podbag hỗ trợ `podbag lab --help`. Tải tệp rồi mở terminal tại thư mục chứa tệp. Bài thực hành dùng vùng lưu trữ tạm riêng.
+Tạo volume trong CLI, xem chi tiết và xóa trong Desktop, rồi theo dõi tiến độ.
 
-[Tải mô-đun](cli-tui-volumes.podbag)
+[Tải mô-đun](cli-gui-volumes.podbag)
 
 ## Cài mô-đun
 
-Cài tệp đã tải. Bạn cũng có thể chọn tệp trong mục hướng dẫn của Desktop.
+Dùng bản Desktop và CLI hỗ trợ bài này. Tải tệp rồi cài từ mục hướng dẫn trên Desktop, hoặc chạy lệnh dưới đây trong thư mục tải xuống.
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![Cài mô-đun · podbag lab install](install.png)
+![Cài mô-đun](gui-install.png)
 
-## Mở terminal thực hành
+## Mở bài thực hành trong Desktop
 
-Bắt đầu phiên. Khi thấy `volume-lab $`, hãy nhập các lệnh tiếp theo tại đó.
+Chọn mô-đun đã cài ở mục hướng dẫn. Bảng tiến độ hiển thị tác vụ hiện tại. Nhấn Terminal để mở terminal thực hành.
 
-```sh
-podbag lab start --lang vi
-```
+![Tiến độ thực hành · Đang chờ](gui-ready-vi.png)
 
-![Mở terminal thực hành · volume-lab](shell-vi.png)
+## Mở terminal
 
-## Tạo volume
+Giữ terminal mở và chọn Volume thực hành ở thanh bên Desktop. Bước hiện tại hiển thị lệnh cần nhập.
 
-Tạo `my-api`, liệt kê volume và tìm tên trong cột `VOLUME NAME`.
+![Tạo volume trong CLI · Đang thực hiện](gui-shell-vi.png)
+
+## Tạo volume trong CLI
+
+Nhập lệnh này tại dấu nhắc volume-lab.
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![Tạo volume · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## Tìm volume trong TUI
+## Xem chi tiết trong GUI
 
-Chạy TUI trong cùng terminal. Nhấn `Tab` đến **Volumes** rồi chọn `my-api`.
+Khi my-api xuất hiện, bước tạo đã hoàn thành và bước xem chi tiết trong GUI chuyển sang trạng thái đang thực hiện.
 
-```sh
-podbag tui
-```
+![Volume thực hành · my-api](gui-volumes-vi.png)
 
-![Tìm volume trong TUI · Volumes](volumes.png)
+Trong Volume thực hành, chọn my-api để xem tên và đường dẫn lưu trữ.
 
-## Xem thông tin volume
+![my-api · Mountpoint](gui-inspect-vi.png)
 
-Nhấn `Enter` để mở **Inspect**. Kiểm tra `Name` và `Mountpoint`, rồi nhấn `Esc` để quay lại.
+## Xóa trong GUI
 
-![Xem thông tin volume · Mountpoint](inspect.png)
+Chọn Xóa cho my-api. Kiểm tra tên rồi xác nhận.
 
-## Xóa volume đã chọn
+![Xóa trong GUI · my-api](gui-dialog-vi.png)
 
-Nhấn `d` tại dòng `my-api`. Kiểm tra tên trong hộp thoại và nhấn `y` để xác nhận.
+Danh sách trống sau khi xóa. Quay lại terminal thực hành để kiểm tra.
 
-![Xóa volume đã chọn · my-api](remove.png)
+![Kiểm tra trong CLI · Đang thực hiện](gui-empty-vi.png)
 
-## Kiểm tra danh sách trống
+## Kiểm tra trong CLI
 
-Khi thấy **No volumes on this engine.**, nhấn `q` để quay lại terminal.
-
-![Kiểm tra danh sách trống · No volumes on this engine.](empty.png)
-
-## Kết thúc phiên
-
-Liệt kê volume lần nữa. Khi thấy `Verified`, nhập `exit` để dừng dịch vụ và dọn các tệp tạm.
+Liệt kê lại các volume trong terminal thực hành.
 
 ```sh
 podbag volume ls
+```
+
+![Kết thúc phiên · Đang thực hiện](gui-verified-vi.png)
+
+## Kết thúc phiên
+
+Khi thấy Verified, nhập exit. Dịch vụ dừng, vùng lưu trữ tạm được dọn và tất cả các bước đều hoàn thành.
+
+```sh
 exit
 ```
 
-![Kết thúc phiên · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![Tiến độ thực hành · Hoàn thành](gui-complete-vi.png)
 
 ## Gỡ mô-đun
 

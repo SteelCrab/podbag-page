@@ -1,88 +1,93 @@
 ---
-title: "Lab · Create a volume in the CLI and remove it in the TUI"
+title: "Lab · Manage a volume with the CLI and GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "Create a real Podbag volume, inspect it in the terminal interface, then remove it."
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "Create a volume in the CLI, inspect and remove it in Podbag Desktop, and watch your progress update."
+image: gui-volumes-en.png
+image_alt: "Practice volumes · my-api"
 draft: false
 ---
 
-Use a Podbag build that supports `podbag lab --help`. Download the file below and open a terminal in its folder. The lab gets its own temporary store.
+Create a volume in the CLI, inspect and remove it in Podbag Desktop, and watch your progress update.
 
-[Download the lab module](cli-tui-volumes.podbag)
+[Download the lab module](cli-gui-volumes.podbag)
 
 ## Install the module
 
-Install the downloaded file. In Podbag Desktop you can also use **Tutorials → Choose file → Install module**.
+Use a matching build of Podbag Desktop and the CLI. Download the module and install it under **Tutorials → Choose file → Install module**, or run the command below from the download folder.
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![Install the module · podbag lab install](install.png)
+![Install the module](gui-install.png)
 
-## Open a practice shell
+## Open the lab in Desktop
 
-Start the session. Wait for the `volume-lab $` prompt and type the remaining commands there.
+Open the installed module under **Tutorials**. **Lab progress** marks the current task as **In progress**. Select **Terminal** to open the practice shell.
 
-```sh
-podbag lab start --lang en
-```
+![Lab progress · Pending](gui-ready-en.png)
 
-![Open a practice shell · volume-lab](shell-en.png)
+## Open the practice shell
 
-## Create a volume
+Leave the terminal open and select **Practice volumes** in the Desktop sidebar. The current step shows the command to type.
 
-Create `my-api` and list the volumes. Look for `my-api` under `VOLUME NAME`.
+![Create a volume in the CLI · In progress](gui-shell-en.png)
+
+## Create a volume in the CLI
+
+Type this command at the volume-lab prompt.
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![Create a volume · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## Find it in the TUI
+## Inspect it in the GUI
 
-Start the TUI in the same shell. Use `Tab` to reach **Volumes** and select `my-api`. The engine address at the top belongs to this session.
+When the volume appears, the CLI creation step changes to **Complete** and the GUI inspection step becomes **In progress**.
 
-```sh
-podbag tui
-```
+![Practice volumes · my-api](gui-volumes-en.png)
 
-![Find it in the TUI · Volumes](volumes.png)
+In Practice volumes, select my-api to inspect its name and storage path.
 
-## Inspect the volume
+![my-api · Mountpoint](gui-inspect-en.png)
 
-Press `Enter` to open **Inspect**. Check `Name` and `Mountpoint` to see the name and temporary storage path. Press `Esc` to return.
+## Delete it in the GUI
 
-![Inspect the volume · Mountpoint](inspect.png)
+Select Remove for my-api. Check the name in the dialog and confirm.
 
-## Remove the selected volume
+![Delete it in the GUI · my-api](gui-dialog-en.png)
 
-Press `d` on `my-api`. Check the name in the confirmation dialog and press `y`.
+After deletion the list is empty and CLI verification is in progress. Return to the same practice shell.
 
-![Remove the selected volume · my-api](remove.png)
+![Verify removal in the CLI · In progress](gui-empty-en.png)
 
-## Check the empty list
+## Verify removal in the CLI
 
-The TUI shows **No volumes on this engine.** Press `q` to return to the practice shell.
-
-![Check the empty list · No volumes on this engine.](empty.png)
-
-## Finish the session
-
-List the volumes again. After the `Verified` message, type `exit`. The service and temporary files are removed. You can also type `exit` to leave early.
+List the volumes again in the practice shell.
 
 ```sh
 podbag volume ls
+```
+
+![End the session · In progress](gui-verified-en.png)
+
+## End the session
+
+When the shell reports `Verified`, Desktop marks the exit step in progress. Type `exit` to stop the service, remove the temporary store, and see every step marked complete.
+
+```sh
 exit
 ```
 
-![Finish the session · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![Lab progress · Complete](gui-complete-en.png)
 
 ## Uninstall the module
 

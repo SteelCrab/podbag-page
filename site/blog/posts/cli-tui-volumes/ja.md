@@ -1,88 +1,93 @@
 ---
-title: "実習 · CLI で作ったボリュームを TUI で削除する"
+title: "実習 · CLI と GUI でボリュームを管理する"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "実際の CLI と TUI を使ってボリュームを作成、確認、削除します。"
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "CLI で作成したボリュームを Desktop で確認し、削除します。実習画面には現在の作業が表示されます。"
+image: gui-volumes-ja.png
+image_alt: "実習ボリューム · my-api"
 draft: false
 ---
 
-`podbag lab --help` が使える Podbag を用意します。ファイルをダウンロードし、そのフォルダーでターミナルを開きます。実習は専用の一時ストアを使います。
+CLI で作成したボリュームを Desktop で確認し、削除します。実習画面には現在の作業が表示されます。
 
-[実習モジュールをダウンロード](cli-tui-volumes.podbag)
+[実習モジュールをダウンロード](cli-gui-volumes.podbag)
 
 ## モジュールをインストールする
 
-ダウンロードしたファイルをインストールします。Desktop のチュートリアル画面からも選択できます。
+対応する Desktop と CLI を使います。下のファイルをチュートリアル画面で選んでインストールするか、ダウンロード先で次のコマンドを実行します。
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![モジュールをインストールする · podbag lab install](install.png)
+![モジュールをインストールする](gui-install.png)
+
+## Desktop で実習を開く
+
+チュートリアルからインストール済みの実習を開き、進行中の作業を確認します。ターミナルボタンで専用シェルを開きます。
+
+![実習の進捗 · 待機中](gui-ready-ja.png)
 
 ## 実習シェルを開く
 
-起動したら `volume-lab $` を確認し、このシェルで作業します。
+シェルを開いたまま、Desktop のサイドバーで実習ボリュームを選びます。現在の作業にコマンドが表示されます。
 
-```sh
-podbag lab start --lang ja
-```
+![CLI でボリュームを作成 · 進行中](gui-shell-ja.png)
 
-![実習シェルを開く · volume-lab](shell-ja.png)
+## CLI でボリュームを作成
 
-## ボリュームを作成する
-
-`my-api` を作成し、一覧の `VOLUME NAME` に表示されることを確認します。
+volume-lab のプロンプトで次のコマンドを入力します。
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![ボリュームを作成する · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## TUI で探す
+## GUI で詳細を確認
 
-同じシェルで TUI を起動します。`Tab` で **Volumes** を開き、`my-api` を選択します。
+my-api が表示されると作成が完了し、GUI での詳細確認が進行中になります。
 
-```sh
-podbag tui
-```
+![実習ボリューム · my-api](gui-volumes-ja.png)
 
-![TUI で探す · Volumes](volumes.png)
+実習ボリュームで my-api を選び、名前と保存先を確認します。
 
-## 詳細を確認する
+![my-api · Mountpoint](gui-inspect-ja.png)
 
-`Enter` で **Inspect** を開きます。`Name` と `Mountpoint` を確認し、`Esc` で戻ります。
+## GUI で削除
 
-![詳細を確認する · Mountpoint](inspect.png)
+my-api の削除を選び、確認画面で名前を確認して削除します。
 
-## ボリュームを削除する
+![GUI で削除 · my-api](gui-dialog-ja.png)
 
-`my-api` で `d` を押し、確認画面の名前を見てから `y` を押します。
+削除後に一覧が空になります。実習シェルに戻って削除を確認します。
 
-![ボリュームを削除する · my-api](remove.png)
+![CLI で削除を確認 · 進行中](gui-empty-ja.png)
 
-## 空の一覧を確認する
+## CLI で削除を確認
 
-**No volumes on this engine.** を確認し、`q` でシェルに戻ります。
-
-![空の一覧を確認する · No volumes on this engine.](empty.png)
-
-## 実習を終了する
-
-一覧を再表示します。`Verified` が出たら `exit` を入力します。サービスと一時ファイルが削除されます。
+実習シェルで一覧を再表示します。
 
 ```sh
 podbag volume ls
+```
+
+![実習を終了 · 進行中](gui-verified-ja.png)
+
+## 実習を終了
+
+Verified が表示されたら exit を入力します。一時ストアが片付き、全項目が完了になります。
+
+```sh
 exit
 ```
 
-![実習を終了する · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![実習の進捗 · 完了](gui-complete-ja.png)
 
 ## モジュールを削除する
 

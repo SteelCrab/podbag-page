@@ -1,88 +1,93 @@
 ---
-title: "实验 · 在 CLI 创建卷并在 TUI 删除"
+title: "实验 · 用 CLI 和 GUI 管理卷"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "用真正的 Podbag CLI 创建卷，再用终端界面检查和删除它。"
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "在 CLI 创建卷，在 Desktop 查看详情并删除。进度面板会标出当前任务。"
+image: gui-volumes-zh-CN.png
+image_alt: "实验卷 · my-api"
 draft: false
 ---
 
-确认 Podbag 支持 `podbag lab --help`。下载文件，在其所在目录打开终端。实验使用独立的临时存储区。
+在 CLI 创建卷，在 Desktop 查看详情并删除。进度面板会标出当前任务。
 
-[下载实验模块](cli-tui-volumes.podbag)
+[下载实验模块](cli-gui-volumes.podbag)
 
 ## 安装模块
 
-安装下载的文件，也可以在 Desktop 的教程页面中选择文件并安装。
+使用支持本实验的 Desktop 和 CLI。下载文件后在教程页面选择并安装，也可以在下载目录中运行以下命令。
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![安装模块 · podbag lab install](install.png)
+![安装模块](gui-install.png)
+
+## 在 Desktop 打开实验
+
+在教程中打开已安装的模块。进度面板会显示进行中的任务。点击终端按钮打开实验终端。
+
+![实验进度 · 待处理](gui-ready-zh-CN.png)
 
 ## 打开实验终端
 
-启动实验。看到 `volume-lab $` 后，在这个终端输入后续命令。
+保持终端打开，在 Desktop 侧栏选择实验卷。当前步骤会显示要输入的命令。
 
-```sh
-podbag lab start --lang zh-CN
-```
+![在 CLI 创建卷 · 进行中](gui-shell-zh-CN.png)
 
-![打开实验终端 · volume-lab](shell-zh-CN.png)
+## 在 CLI 创建卷
 
-## 创建卷
-
-创建 `my-api`，列出卷，检查 `VOLUME NAME` 下的名称。
+在 volume-lab 提示符下输入此命令。
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![创建卷 · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## 在 TUI 中找到卷
+## 在 GUI 查看详情
 
-在同一终端启动 TUI。用 `Tab` 切换到 **Volumes** 并选择 `my-api`。
+my-api 出现在列表中后，创建步骤显示已完成，GUI 详情步骤显示进行中。
 
-```sh
-podbag tui
-```
+![实验卷 · my-api](gui-volumes-zh-CN.png)
 
-![在 TUI 中找到卷 · Volumes](volumes.png)
+在实验卷页面选择 my-api，查看名称和存储路径。
 
-## 查看详情
+![my-api · Mountpoint](gui-inspect-zh-CN.png)
 
-按 `Enter` 打开 **Inspect**，检查 `Name` 和 `Mountpoint`。按 `Esc` 返回。
+## 在 GUI 删除卷
 
-![查看详情 · Mountpoint](inspect.png)
+选择删除 my-api，在对话框核对名称并确认。
 
-## 删除所选卷
+![在 GUI 删除卷 · my-api](gui-dialog-zh-CN.png)
 
-选中 `my-api` 后按 `d`，核对确认框中的名称，再按 `y`。
+删除后列表为空。回到同一实验终端验证结果。
 
-![删除所选卷 · my-api](remove.png)
+![在 CLI 验证删除 · 进行中](gui-empty-zh-CN.png)
 
-## 检查空列表
+## 在 CLI 验证删除
 
-看到 **No volumes on this engine.** 后按 `q` 返回实验终端。
-
-![检查空列表 · No volumes on this engine.](empty.png)
-
-## 结束实验
-
-再次查询卷。看到 `Verified` 后输入 `exit`，系统会停止服务并清理临时文件。
+在实验终端再次列出卷。
 
 ```sh
 podbag volume ls
+```
+
+![结束实验 · 进行中](gui-verified-zh-CN.png)
+
+## 结束实验
+
+看到 Verified 后输入 exit。服务停止，临时存储被清理，所有步骤都显示已完成。
+
+```sh
 exit
 ```
 
-![结束实验 · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![实验进度 · 已完成](gui-complete-zh-CN.png)
 
 ## 卸载模块
 

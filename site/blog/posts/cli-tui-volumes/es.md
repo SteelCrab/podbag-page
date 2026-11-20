@@ -1,88 +1,93 @@
 ---
-title: "Práctica · Crea un volumen con la CLI y elimínalo con la TUI"
+title: "Práctica · Gestiona un volumen con la CLI y la GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "Crea un volumen de Podbag y comprueba el resultado en dos interfaces reales."
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "Crea un volumen en la CLI, inspecciónalo y elimínalo en Desktop siguiendo el progreso."
+image: gui-volumes-es.png
+image_alt: "Volúmenes de práctica · my-api"
 draft: false
 ---
 
-Usa una versión que admita `podbag lab --help`. Descarga el archivo y abre una terminal en su carpeta. La práctica usa un almacén temporal propio.
+Crea un volumen en la CLI, inspecciónalo y elimínalo en Desktop siguiendo el progreso.
 
-[Descargar el módulo](cli-tui-volumes.podbag)
+[Descargar el módulo](cli-gui-volumes.podbag)
 
 ## Instala el módulo
 
-Instala el archivo descargado. También puedes elegirlo desde los tutoriales de Desktop.
+Usa versiones compatibles de Desktop y la CLI. Descarga el archivo e instálalo desde los tutoriales de Desktop o ejecuta este comando en la carpeta de descarga.
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![Instala el módulo · podbag lab install](install.png)
+![Instala el módulo](gui-install.png)
 
-## Abre la terminal de prácticas
+## Abre la práctica en Desktop
 
-Inicia la sesión y espera a que aparezca `volume-lab $`. Escribe los comandos en esa terminal.
+Selecciona el módulo instalado en los tutoriales. El panel indica la tarea en curso. Abre la terminal con el botón de la práctica.
 
-```sh
-podbag lab start --lang es
-```
+![Progreso de la práctica · Pendiente](gui-ready-es.png)
 
-![Abre la terminal de prácticas · volume-lab](shell-es.png)
+## Abrir la terminal
 
-## Crea un volumen
+Deja la terminal abierta y elige Volúmenes de práctica en la barra lateral. El paso actual muestra el comando que debes escribir.
 
-Crea `my-api` y busca su nombre en la columna `VOLUME NAME`.
+![Crear el volumen en la CLI · En curso](gui-shell-es.png)
+
+## Crear el volumen en la CLI
+
+Escribe este comando en el prompt volume-lab.
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![Crea un volumen · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## Busca el volumen en la TUI
+## Ver detalles en la GUI
 
-Inicia la TUI en la misma terminal. Usa `Tab` para abrir **Volumes** y selecciona `my-api`.
+Al aparecer my-api, la creación queda completada y la inspección en la GUI pasa a estar en curso.
 
-```sh
-podbag tui
-```
+![Volúmenes de práctica · my-api](gui-volumes-es.png)
 
-![Busca el volumen en la TUI · Volumes](volumes.png)
+En Volúmenes de práctica, selecciona my-api para ver su nombre y ruta.
 
-## Inspecciona el volumen
+![my-api · Mountpoint](gui-inspect-es.png)
 
-Pulsa `Enter` para abrir **Inspect**. Comprueba `Name` y `Mountpoint`. Vuelve con `Esc`.
+## Eliminarlo en la GUI
 
-![Inspecciona el volumen · Mountpoint](inspect.png)
+Pulsa Eliminar en my-api. Comprueba el nombre y confirma.
 
-## Elimina el volumen
+![Eliminarlo en la GUI · my-api](gui-dialog-es.png)
 
-Pulsa `d` sobre `my-api`. Comprueba el nombre en el diálogo y confirma con `y`.
+Tras eliminar el volumen, la lista queda vacía. Vuelve a la misma terminal para comprobarlo.
 
-![Elimina el volumen · my-api](remove.png)
+![Verificarlo en la CLI · En curso](gui-empty-es.png)
 
-## Comprueba la lista vacía
+## Verificarlo en la CLI
 
-Aparece **No volumes on this engine.** Pulsa `q` para volver a la terminal.
-
-![Comprueba la lista vacía · No volumes on this engine.](empty.png)
-
-## Termina la sesión
-
-Consulta la lista otra vez. Cuando aparezca `Verified`, escribe `exit` para detener el servicio y borrar sus archivos temporales.
+Vuelve a listar los volúmenes en la terminal de prácticas.
 
 ```sh
 podbag volume ls
+```
+
+![Terminar la sesión · En curso](gui-verified-es.png)
+
+## Terminar la sesión
+
+Cuando aparezca Verified, escribe exit. El servicio se detiene, el almacén temporal se borra y todos los pasos quedan completados.
+
+```sh
 exit
 ```
 
-![Termina la sesión · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![Progreso de la práctica · Completado](gui-complete-es.png)
 
 ## Desinstala el módulo
 

@@ -1,88 +1,93 @@
 ---
-title: "Lab · Gumawa ng volume sa CLI at burahin ito sa TUI"
+title: "Lab · Pamahalaan ang volume gamit ang CLI at GUI"
 date: 2026-11-20
 author: team
 categories: [how-to]
-tags: [cli, tui, tutorials, volumes]
-summary: "Gumamit ng tunay na CLI at TUI para gumawa, suriin at magbura ng volume."
-image: volumes.png
-image_alt: "my-api · Volumes"
+tags: [cli, desktop, tutorials, volumes]
+summary: "Gumawa ng volume sa CLI, siyasatin at burahin ito sa Desktop, at tingnan ang progreso."
+image: gui-volumes-fil.png
+image_alt: "Mga practice volume · my-api"
 draft: false
 ---
 
-Gumamit ng bersiyon na may `podbag lab --help`. I-download ang file at buksan ang terminal sa folder nito. May sariling pansamantalang storage ang lab.
+Gumawa ng volume sa CLI, siyasatin at burahin ito sa Desktop, at tingnan ang progreso.
 
-[I-download ang module](cli-tui-volumes.podbag)
+[I-download ang module](cli-gui-volumes.podbag)
 
 ## I-install ang module
 
-I-install ang na-download na file. Maaari rin itong piliin sa Tutorials ng Desktop.
+Gumamit ng magkatugmang bersiyon ng Desktop at CLI. I-download ang file at i-install mula sa Tutorials o patakbuhin ang command sa folder ng download.
 
 ```sh
-podbag lab install cli-tui-volumes.podbag
+podbag lab install cli-gui-volumes.podbag
 ```
 
-![I-install ang module · podbag lab install](install.png)
+![I-install ang module](gui-install.png)
 
-## Buksan ang practice shell
+## Buksan ang lab sa Desktop
 
-Simulan ang lab. Hintayin ang `volume-lab $` at dito ilagay ang mga susunod na command.
+Sa Tutorials, buksan ang module. Makikita ang kasalukuyang gawain sa progreso. Pindutin ang Terminal para buksan ang practice shell.
 
-```sh
-podbag lab start --lang fil
-```
+![Progreso ng lab · Naghihintay](gui-ready-fil.png)
 
-![Buksan ang practice shell · volume-lab](shell-fil.png)
+## Buksan ang shell
 
-## Gumawa ng volume
+Panatilihing bukas ang shell. Piliin ang Mga practice volume sa sidebar ng Desktop para makita ang command.
 
-Gawin ang `my-api` at hanapin ito sa ilalim ng `VOLUME NAME`.
+![Gumawa sa CLI · Ginagawa](gui-shell-fil.png)
+
+## Gumawa sa CLI
+
+I-type ito sa prompt na volume-lab.
 
 ```sh
 podbag volume create my-api
 podbag volume ls
 ```
 
-![Gumawa ng volume · my-api](create.png)
+![podbag volume ls · my-api](gui-create.png)
 
-## Hanapin ang volume sa TUI
+## Siyasatin sa GUI
 
-Buksan ang TUI sa parehong shell. Gamitin ang `Tab` para pumunta sa **Volumes** at piliin ang `my-api`.
+Kapag lumabas ang my-api, tapos na ang paggawa at magsisimula ang pagsisiyasat sa GUI.
 
-```sh
-podbag tui
-```
+![Mga practice volume · my-api](gui-volumes-fil.png)
 
-![Hanapin ang volume sa TUI · Volumes](volumes.png)
+Sa Mga practice volume, piliin ang my-api at tingnan ang pangalan at lokasyon.
 
-## Suriin ang volume
+![my-api · Mountpoint](gui-inspect-fil.png)
 
-Pindutin ang `Enter` para buksan ang **Inspect**. Tingnan ang `Name` at `Mountpoint`. Bumalik gamit ang `Esc`.
+## Burahin sa GUI
 
-![Suriin ang volume · Mountpoint](inspect.png)
+Piliin ang Remove sa my-api. Tiyakin ang pangalan at kumpirmahin.
 
-## Burahin ang napiling volume
+![Burahin sa GUI · my-api](gui-dialog-fil.png)
 
-Pindutin ang `d` sa `my-api`. Tingnan ang pangalan sa dialog at kumpirmahin gamit ang `y`.
+Kapag wala nang volume sa listahan, bumalik sa parehong shell para tiyakin ang resulta.
 
-![Burahin ang napiling volume · my-api](remove.png)
+![Tiyakin sa CLI · Ginagawa](gui-empty-fil.png)
 
-## Tingnan ang walang lamang listahan
+## Tiyakin sa CLI
 
-Kapag lumabas ang **No volumes on this engine.**, pindutin ang `q` para bumalik sa shell.
-
-![Tingnan ang walang lamang listahan · No volumes on this engine.](empty.png)
-
-## Tapusin ang lab
-
-Ilista muli ang mga volume. Kapag nakita ang `Verified`, i-type ang `exit` para ihinto ang serbisyo at burahin ang mga pansamantalang file.
+Ilista muli ang mga volume sa practice shell.
 
 ```sh
 podbag volume ls
+```
+
+![Tapusin ang session · Ginagawa](gui-verified-fil.png)
+
+## Tapusin ang session
+
+Kapag lumabas ang Verified, i-type ang exit. Hihinto ang serbisyo, lilinisin ang pansamantalang storage, at mamarkahang tapos ang lahat ng gawain.
+
+```sh
 exit
 ```
 
-![Tapusin ang lab · Verified](finish.png)
+![Verified · exit](gui-finish.png)
+
+![Progreso ng lab · Tapos na](gui-complete-fil.png)
 
 ## Alisin ang module
 

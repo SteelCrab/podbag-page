@@ -1,0 +1,33 @@
+{
+  "format": "podbag-cli-gui-volumes-v1",
+  "translations": {
+    "ko": {
+      "title": "실습 · CLI와 GUI로 볼륨 관리하기",
+      "guide": "volume-lab 프롬프트에 다음 명령을 입력합니다. podbag volume create my-api\n실습 볼륨 화면에서 my-api 이름을 눌러 이름과 저장 경로를 확인합니다.\nmy-api의 삭제 버튼을 누르고 확인창에서 이름을 확인한 뒤 삭제합니다.\n실습 터미널에서 목록을 다시 조회합니다. podbag volume ls\n실습 터미널을 종료하면 임시 저장소가 정리됩니다. exit"
+    },
+    "en": {
+      "title": "Lab · Manage a volume with the CLI and GUI",
+      "guide": "Type this command at the volume-lab prompt. podbag volume create my-api\nIn Practice volumes, select my-api to inspect its name and storage path.\nSelect Remove for my-api. Check the name in the dialog and confirm.\nList the volumes again in the practice shell. podbag volume ls\nExit the practice shell to clean up its temporary store. exit"
+    },
+    "ja": {
+      "title": "実習 · CLI と GUI でボリュームを管理する",
+      "guide": "volume-lab のプロンプトで次のコマンドを入力します。 podbag volume create my-api\n実習ボリュームで my-api を選び、名前と保存先を確認します。\nmy-api の削除を選び、確認画面で名前を確認して削除します。\n実習シェルで一覧を再表示します。 podbag volume ls\nシェルを終了して一時ストアを片付けます。 exit"
+    },
+    "zh-CN": {
+      "title": "实验 · 用 CLI 和 GUI 管理卷",
+      "guide": "在 volume-lab 提示符下输入此命令。 podbag volume create my-api\n在实验卷页面选择 my-api，查看名称和存储路径。\n选择删除 my-api，在对话框核对名称并确认。\n在实验终端再次列出卷。 podbag volume ls\n退出实验终端以清理临时存储区。 exit"
+    },
+    "es": {
+      "title": "Práctica · Gestiona un volumen con la CLI y la GUI",
+      "guide": "Escribe este comando en el prompt volume-lab. podbag volume create my-api\nEn Volúmenes de práctica, selecciona my-api para ver su nombre y ruta.\nPulsa Eliminar en my-api. Comprueba el nombre y confirma.\nVuelve a listar los volúmenes en la terminal de prácticas. podbag volume ls\nSal de la terminal para limpiar el almacén temporal. exit"
+    },
+    "fil": {
+      "title": "Lab · Pamahalaan ang volume gamit ang CLI at GUI",
+      "guide": "I-type ito sa prompt na volume-lab. podbag volume create my-api\nSa Mga practice volume, piliin ang my-api at tingnan ang pangalan at lokasyon.\nPiliin ang Remove sa my-api. Tiyakin ang pangalan at kumpirmahin.\nIlista muli ang mga volume sa practice shell. podbag volume ls\nLumabas sa shell para linisin ang pansamantalang storage. exit"
+    },
+    "vi": {
+      "title": "Bài thực hành · Quản lý volume bằng CLI và GUI",
+      "guide": "Nhập lệnh này tại dấu nhắc volume-lab. podbag volume create my-api\nTrong Volume thực hành, chọn my-api để xem tên và đường dẫn lưu trữ.\nChọn Xóa cho my-api. Kiểm tra tên rồi xác nhận.\nLiệt kê lại các volume trong terminal thực hành. podbag volume ls\nThoát terminal để dọn vùng lưu trữ tạm. exit"
+    }
+  }
+}
