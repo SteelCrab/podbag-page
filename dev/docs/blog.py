@@ -27,6 +27,7 @@ A post starts with front matter:
 usage: python3 dev/docs/blog.py cards     # draw each post's sharing card (Chrome, Node.js 22)
 """
 import html
+from hashlib import sha256
 import json
 import re
 import shutil
@@ -550,6 +551,10 @@ class Builder:
         self.authors = json.loads((self.folder / "authors.json").read_text())
         self.posts = load_all(self.folder / "posts", self.langs, self.authors)
         self.layout = (self.folder / "layout.html").read_text()
+        self.asset_urls = {
+            key: f"{name}?v={sha256((site.SITE / name).read_bytes()).hexdigest()[:12]}"
+            for key, name in (("blog_css", "blog.css"), ("main_js", "main.js"))
+        }
 
     # Paths are from the site root, with no leading "/": "ko/blog/podbag-0-1-0/".
     def blog_path(self, lang):
@@ -738,6 +743,7 @@ class Builder:
         group, decimal = SEPARATORS.get(lang, (",", "."))
         menu, line = self.lang_links(values.pop("targets"), lang, root)
         full = dict(w)
+        full.update(self.asset_urls)
         full.update({
             "lang": lang, "lang_name": self.names[lang], "root": root, "group": group,
             "decimal": decimal, "home": root + self.site.path_of(lang),
