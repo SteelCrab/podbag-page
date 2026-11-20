@@ -11,7 +11,6 @@
   "hero_eyebrow": "Một công cụ container khác biệt",
   "hero_title": "Container không cần daemon, lưu theo từng tệp",
   "hero_lead": "Một tệp nhị phân tĩnh chạy các image Docker và OCI của bạn. Khi không có container nào chạy, không có gì chạy cả. Một tệp mà nhiều image dùng chung chỉ được lưu một lần và đọc vào bộ nhớ một lần.",
-  "cta_install": "Cài đặt",
   "cta_download": "Tải về",
   "data_table": "Bảng số liệu",
   "fact_start": "để khởi động một container",

@@ -11,7 +11,6 @@
   "hero_eyebrow": "Ibang klase ng container engine",
   "hero_title": "Mga container na walang daemon, iniimbak nang file-by-file",
   "hero_lead": "Isang static binary ang nagpapatakbo ng iyong mga Docker at OCI image. Kapag walang container na tumatakbo, walang tumatakbo. Ang file na ginagamit ng maraming image ay iniimbak nang isang beses at binabasa sa memory nang isang beses.",
-  "cta_install": "I-install",
   "cta_download": "I-download",
   "data_table": "Talahanayan ng mga sukat",
   "fact_start": "para magsimula ang isang container",
