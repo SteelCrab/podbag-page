@@ -27,6 +27,7 @@ A post starts with front matter:
 usage: python3 dev/docs/blog.py cards     # draw each post's sharing card (Chrome, Node.js 22)
 """
 import html
+from hashlib import sha256
 import json
 import re
 import shutil
@@ -100,6 +101,33 @@ def code_text(text):
     return html.escape(text, quote=False).replace("{", "&#123;")
 
 
+CODE_LABELS = {
+    "en": ("Terminal", "Code"),
+    "ko": ("터미널", "코드"),
+    "ja": ("ターミナル", "コード"),
+    "zh-CN": ("终端", "代码"),
+    "fil": ("Terminal", "Code"),
+    "es": ("Terminal", "Código"),
+    "vi": ("Dòng lệnh", "Mã"),
+}
+
+
+def code_block(body, info, lang, button):
+    """Render a blog code block with a label and an optional copy button."""
+    terminal, plain = CODE_LABELS.get(lang, CODE_LABELS["en"])
+    info = info.lower()
+    labels = {"sh": terminal, "bash": terminal, "shell": terminal,
+              "dockerfile": "Dockerfile", "yaml": "YAML", "json": "JSON"}
+    label = html.escape(labels.get(info, info or plain))
+    cls = f' class="language-{html.escape(info)}"' if info else ""
+    text = code_text(body)
+    if info == "dockerfile":
+        text = re.sub(r"^([A-Z]+)(?= )", r'<span class="dockerfile-keyword">\1</span>', text, flags=re.M)
+    return (f'<div class="code blog-code"><div class="blog-code-header">'
+            f'<span class="blog-code-label">{label}</span>{button}</div>'
+            f'<pre><code{cls}>{text}</code></pre></div>')
+
+
 def slug(text):
     text = html.unescape(re.sub(r"<[^>]+>", "", text)).lower()
     text = re.sub(r"[^\w\- ]", "", text).strip()
@@ -142,7 +170,7 @@ class Markdown:
     root: the page's way to the site root ("../../" or "https://podbag.dev/"); links that
           start with "/" are written from there.
     base: where relative links point, from the site root ("/blog/<slug>/").
-    code_button: HTML put after each code block (the copy button).
+    code_button: HTML for the optional copy button in the code header.
     picture: picture(src) -> (sources, (width, height) or None); sources are
              (media, src) pairs for a <picture>.
     """
@@ -184,7 +212,7 @@ class Markdown:
                     body.append(lines[i])
                     i += 1
                 i += 1
-                out.append(self.code(body, info))
+                out.append(code_block("\n".join(body), info, self.lang, self.code_button))
             elif m := HEADING.match(line):
                 out.append(self.heading(len(m.group(1)), m.group(2)))
                 i += 1
@@ -214,15 +242,6 @@ class Markdown:
                     i += 1
                 out.append(self.paragraph(para, tight))
         return "\n".join(out)
-
-    def code(self, body, info):
-        cls = f' class="language-{html.escape(info)}"' if info else ""
-        text = code_text("\n".join(body))
-        if info == "dockerfile":
-            text = re.sub(r"^([A-Z]+)(?= )", r'<span class="dockerfile-keyword">\1</span>', text, flags=re.M)
-            return (f'<div class="code code-file"><div class="code-filename">Dockerfile</div>'
-                    f'<pre><code{cls}>{text}</code></pre>{self.code_button}</div>')
-        return f'<div class="code"><pre><code{cls}>{text}</code></pre>{self.code_button}</div>'
 
     def heading(self, level, text):
         level = max(level, 2)  # the page's title is the only <h1>
@@ -532,6 +551,10 @@ class Builder:
         self.authors = json.loads((self.folder / "authors.json").read_text())
         self.posts = load_all(self.folder / "posts", self.langs, self.authors)
         self.layout = (self.folder / "layout.html").read_text()
+        self.asset_urls = {
+            key: f"{name}?v={sha256((site.SITE / name).read_bytes()).hexdigest()[:12]}"
+            for key, name in (("blog_css", "blog.css"), ("main_js", "main.js"))
+        }
 
     # Paths are from the site root, with no leading "/": "ko/blog/podbag-0-1-0/".
     def blog_path(self, lang):
@@ -674,14 +697,14 @@ class Builder:
             f'<li><a href="{root}{self.category_path(lang, c)}">{w[cat_key(c)]}</a>'
             f'<span class="count">{sum(c in p.categories for p in self.posts[lang])}</span></li>'
             for c in CATEGORIES)
-        button = copy_button(w)
+        install = code_block("curl -fsSL https://podbag.dev/install.sh | sh",
+                             "sh", lang, copy_button(w))
         return (f'<aside class="side" aria-label="{attr(w["blog_side"])}">'
                 f'<section class="side-box"><h2>{w["blog_resources"]}</h2><ul>{items}</ul></section>'
                 f'<section class="side-box"><h2>{w["blog_categories"]}</h2>'
                 f'<ul class="cat-list">{counts}</ul></section>'
                 f'<section class="side-box"><h2>{w["blog_get"]}</h2>'
-                f'<div class="code"><pre><code>curl -fsSL https://podbag.dev/install.sh | sh</code>'
-                f"</pre>{button}</div>"
+                f"{install}"
                 f'<p class="note">{w["blog_get_note"]}</p></section></aside>')
 
     def lang_links(self, targets, lang, root):
@@ -720,6 +743,7 @@ class Builder:
         group, decimal = SEPARATORS.get(lang, (",", "."))
         menu, line = self.lang_links(values.pop("targets"), lang, root)
         full = dict(w)
+        full.update(self.asset_urls)
         full.update({
             "lang": lang, "lang_name": self.names[lang], "root": root, "group": group,
             "decimal": decimal, "home": root + self.site.path_of(lang),

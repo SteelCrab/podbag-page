@@ -39,7 +39,7 @@
     if (!button) continue;
     button.addEventListener("click", async () => {
       const code = box.querySelector("code");
-      const text = box.classList.contains("code-file")
+      const text = code.classList.contains("language-dockerfile")
         ? code.textContent + "\n"
         : code.innerText.replace(/[ \t]+#.*$/gm, "");
       try {

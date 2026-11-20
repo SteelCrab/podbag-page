@@ -61,8 +61,18 @@ class Blocks(unittest.TestCase):
 
     def test_fenced_code_is_escaped_and_gets_the_button(self):
         out = md("```sh\necho '<b>' && x={{a}}\n```", code_button="<button>Copy</button>")
-        self.assertEqual(out, '<div class="code"><pre><code class="language-sh">echo \'&lt;b&gt;\' '
-                              '&amp;&amp; x=&#123;&#123;a}}</code></pre><button>Copy</button></div>')
+        self.assertEqual(out, '<div class="code blog-code"><div class="blog-code-header">'
+                              '<span class="blog-code-label">Terminal</span><button>Copy</button></div>'
+                              '<pre><code class="language-sh">echo \'&lt;b&gt;\' &amp;&amp; '
+                              'x=&#123;&#123;a}}</code></pre></div>')
+
+    def test_code_labels_match_the_language_and_format(self):
+        for fence, label in (("sh", "터미널"), ("yaml", "YAML"),
+                             ("dockerfile", "Dockerfile"), ("", "코드")):
+            out = md(f"```{fence}\nexample\n```", lang="ko")
+            self.assertIn(f'<span class="blog-code-label">{label}</span>', out)
+            self.assertNotIn("<button", out)
+
 
     def test_fenced_code_keeps_markdown_as_text(self):
         out = md("~~~\n# not a heading\n- not a list\n~~~")
@@ -362,7 +372,8 @@ class Built(unittest.TestCase):
     def test_release_dockerfile_matches_download(self):
         slug = "podbag-0-2-0"
         source = self.out / "blog" / slug / "Dockerfile"
-        header = '<div class="code code-file"><div class="code-filename">Dockerfile</div>'
+        header = ('<div class="code blog-code"><div class="blog-code-header">'
+                  '<span class="blog-code-label">Dockerfile</span>')
         for code, _ in self.site.LANGS:
             post = self.out / self.site.path_of(code) / "blog" / slug / "index.html"
             page = post.read_text()
