@@ -1,0 +1,95 @@
+Reproduce the two-tier HTTP benchmark
+
+Environment
+  Dedicated, rootful Lima VM on Apple silicon. Ubuntu 26.04.1 LTS
+  (aarch64), kernel 7.0.0-43-generic, 4 vCPU, 4 GiB configured memory.
+  Local disk, a single k3s server/agent, default flannel VXLAN, CoreDNS.
+  The HTTP client runs on the node. TLS, WAN transit, a database and an AWS
+  load balancer are outside the traffic path. Caches stay warm within a block.
+  The host is shared. Four observations per runtime are descriptive.
+
+Versions and identities
+  k3s v1.37.2+k3s1, upstream k3s-arm64 asset, SHA-256
+  a779ccf1e5e2e33a62f5a29c2f1c0bbf99431e100579d4c10f0aa0742a6aa84b
+  https://github.com/k3s-io/k3s/releases/tag/v1.37.2%2Bk3s1
+  Docker Engine 29.1.3, Ubuntu build 29.1.3-0ubuntu4.1.
+  Podbag release-profile arm64 build of c0ff5ebdbd8762760652fbe0a869655a105557a9
+  SHA-256 b2c5242d66ec1b1504fcabd7dd6dc02b8f872427e75fece25f366ab4d8a286eb
+  https://github.com/SteelCrab/podbag/tree/c0ff5ebdbd8762760652fbe0a869655a105557a9
+  NGINX 1.28.3-alpine, linux/arm64 manifest:
+  docker.io/library/nginx@sha256:1be286f7dd7d6e6be04f46e8df36d0084b05aa3d7fd3c6ebda3e1eff4e5b665d
+
+Files
+  workload.json contains two ConfigMaps, two ClusterIP Services, two Deployments.
+  start-node.sh starts one runtime and a fresh k3s cluster per block.
+  measure.py creates the workload at zero replicas, warms it once, then measures
+  two runs. It owns the namespace shop-bench in this disposable VM.
+  results.jsonl includes all four warm-ups and all eight timed observations.
+
+Node preparation
+  Use a disposable Linux arm64 VM with systemd, cgroup v2, Docker, crictl,
+  Python 3, curl and erofs-utils. Put k3s and podbag in /usr/local/bin.
+  Use the cgroupfs driver for Docker and kubelet. Configure the Docker daemon
+  with {"exec-opts":["native.cgroupdriver=cgroupfs"]}. Disable automatic startup
+  of docker.service, docker.socket and containerd.service. start-node.sh starts
+  Docker only in Docker blocks. Reserve the VM for the benchmark.
+  Save workload.json, start-node.sh and measure.py in one directory. Reboot the same VM before
+  each block. The cluster state is new; the image stores can be reused.
+
+Run the following inside the VM. Use sudo -i and enter the file directory first.
+Use (runtime,block) in this order: (docker,1) (podbag,2) (podbag,3) (docker,4).
+Set rt and block for the current block:
+
+  rt=docker
+  block=1
+  bash start-node.sh "$rt" "$block"
+
+  image=docker.io/library/nginx@sha256:1be286f7dd7d6e6be04f46e8df36d0084b05aa3d7fd3c6ebda3e1eff4e5b665d
+  sock=/run/pb30/cri.sock
+  if [ "$rt" = docker ]; then
+    docker pull "$image"
+    sock=$(find /run/k3s -type s -name '*cri*dock*.sock' | head -1)
+  fi
+  cri() { crictl --config /dev/null -r "unix://$sock" -i "unix://$sock" "$@"; }
+  cri inspecti "$image" >/dev/null || cri pull "$image"
+  cri inspecti "$image"    # verify the full reference in status.repoDigests
+  k3s kubectl -n kube-system wait --for=condition=complete job/helm-install-gateway-api-crd --timeout=240s
+  k3s kubectl get node bench -o jsonpath='{.status.nodeInfo.containerRuntimeVersion}'
+  python3 measure.py "$rt" "$block" | tee "block-$block.jsonl"
+  k3s kubectl -n kube-system scale deploy/coredns --replicas=0
+  k3s kubectl -n kube-system wait --for=delete pod -l k8s-app=kube-dns --timeout=40s
+  sync
+
+Metrics
+  ready_s: wall time from just before patching API then web replica counts until
+  both Deployments report 24+6 Ready, polled at 100 ms intervals. Each trial
+  starts after all pods from the previous trial disappear. System pods are extra.
+  The client then checks the two EndpointSlices and waits two seconds.
+  burst: 12 clients x 100 requests, no pacing, fresh TCP connection each time.
+  steady: after two more seconds, 12 clients x 600 requests spaced 50 ms apart
+  per client (target 240 requests/s for 30 s). The caller uses the web ClusterIP.
+  success: HTTP 200 and a response beginning with the API pod name prefix.
+  backends: count of distinct API pod names in valid responses.
+  p95_ms: nearest-rank 95th percentile within a run. successful_rps: number
+  of validated responses divided by the wall time of the load phase.
+  Article table: unweighted medians of the four timed results for each metric.
+  The phases are separate and each warm-up (run=0) is excluded. The validated
+  response row adds both phases across all four timed trials per runtime.
+
+Image reference check from the preliminary run
+  The multi-architecture index digest for the same NGINX image was
+  sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236.
+  With IfNotPresent and that reference, the Podbag CRI listed the arm64
+  manifest among repoDigests; inspecti by index reference returned "no such
+  image" and kubelet reported "pull QPS exceeded" for retrying pods. The main
+  experiment pins the arm64 manifest and uses Never on every application pod.
+
+  On the Podbag pilot node the following two lookups distinguished the two
+  references to the arm64 content. Run these after pulling the index:
+    cri inspecti docker.io/library/nginx@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+    cri inspecti docker.io/library/nginx@sha256:1be286f7dd7d6e6be04f46e8df36d0084b05aa3d7fd3c6ebda3e1eff4e5b665d
+
+  In a separate rehearsal, the CoreDNS pod from a previously booted cluster
+  entered CrashLoopBackOff; web proxies could not resolve the API Service.
+  That rehearsal is excluded. The recorded blocks each start a fresh cluster
+  and wait for CoreDNS before deploying the application.
