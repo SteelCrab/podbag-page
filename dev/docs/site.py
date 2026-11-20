@@ -242,7 +242,7 @@ def main():
         group, decimal = SEPARATORS.get(code, (",", "."))
         values = dict(words)
         values.update({
-            "lang": code, "lang_name": name, "root": root, "site": URL, "version": ver,
+            "lang": code, "lang_name": name, "root": root, "site": URL,
             "group": group, "decimal": decimal,
             "canonical": URL + path_of(code),
             "alternates": "\n".join(
