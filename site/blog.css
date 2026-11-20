@@ -128,7 +128,7 @@ html:not(.can-share) [data-native] { display: none; }
 .prose a { text-underline-offset: 2px; }
 .prose :not(pre) > code { padding: 0.1em 0.3em; }
 .prose figure { margin: 26px 0; }
-.prose figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
+.prose figure > img, .prose figure > picture > img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
 .prose figcaption { margin-top: 8px; font-size: 14px; color: var(--ink-2); }
 .prose .table-wrap { margin: 18px 0 22px; }
 .prose table { font-size: 15px; }
@@ -166,3 +166,8 @@ html:not(.can-share) [data-native] { display: none; }
   .band { color: var(--ink); background: none; }
   .blog-grid { display: block; }
 }
+
+.prose .fact-result { margin: 6px 0 0; }
+.prose .comparison-card { margin: 18px 0 8px; }
+.comparison-table { margin: 8px 0 22px; color: var(--ink-2); font-size: 14px; }
+.comparison-table summary { width: fit-content; padding: 4px 12px; border-radius: 999px; }

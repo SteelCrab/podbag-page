@@ -47,6 +47,7 @@ podbag 把每个层拆成文件，每个文件只存一份。镜像是指向这�
 
 我们用 8 个 Spring 服务、2 个版本做了测量：
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | podbag 节省 |
 |---|--:|--:|--:|
 | 两个版本的磁盘 | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ podbag 把每个层拆成文件，每个文件只存一份。镜像是指向这�
 
 所有工具都在同一台 Linux 虚拟机上运行：4 个 CPU、{{n:3.8}} GiB、arm64。版本为 podbag 0.1.0、Podman 5.7.0、Docker 29.1.3 和 Kiri 0.2.1。数字是中位数。越低越好。
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | 启动一个容器 | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | 100 个容器的内存 | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| 没有容器时的进程 | 无 | 无 | 1 个（{{n:5.9}} MiB） | 1 个（{{n:0.6}} MiB） | 4 个（{{n:203}} MiB） |
+| 没有容器时的进程 | {{n:0}} | {{n:0}} | {{n:1}} 个（{{n:5.9}} MiB） | {{n:1}} 个（{{n:0.6}} MiB） | {{n:4}} 个（{{n:203}} MiB） |
 
 - 还没有 keeper 时，第一次启动需要 {{n:12.8}}–{{n:16.0}} ms。
 - 内存方面，Kiri 和 podbag 接近。没有容器时 podbag 领先，因为那时 podbag 什么也不运行。

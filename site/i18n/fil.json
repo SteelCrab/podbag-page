@@ -13,6 +13,7 @@
   "hero_lead": "Isang static binary ang nagpapatakbo ng iyong mga Docker at OCI image. Kapag walang container na tumatakbo, walang tumatakbo. Ang file na ginagamit ng maraming image ay iniimbak nang isang beses at binabasa sa memory nang isang beses.",
   "cta_install": "I-install",
   "cta_download": "I-download",
+  "data_table": "Talahanayan ng mga sukat",
   "fact_start": "para magsimula ang isang container",
   "fact_idle": "proseso kapag walang container",
   "fact_memory": "memory para sa file cache",

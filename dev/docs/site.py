@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import blog  # noqa: E402
+from comparisons import Metric, Reading, picker, series  # noqa: E402
 
 PAGE = Path(__file__).resolve().parents[2]
 SITE = PAGE / "site"
@@ -61,6 +62,74 @@ def number(literal, lang):
 
 def path_of(code):
     return "" if code == "en" else f"{code}/"
+
+
+# Values in the Linux benchmarks. Keep root and rootless results separate.
+LINUX = {
+    "start": ("ms", {"podbag-rootless": 4.1, "podbag-root": 4.4, "kiri": 9.1, "podman": 46.4, "docker": 73.8}),
+    "mem": ("MiB", {"podbag-root": 105, "kiri": 109, "podbag-rootless": 117, "podman": 203, "docker": 562}),
+    "disk": ("MiB", {"podbag-root": 902, "podbag-rootless": 944, "podman": 1783, "kiri": 2960, "docker": 2970}),
+    "cache": ("MiB", {"podbag-rootless": 324, "podbag-root": 333, "kiri": 960, "podman": 975, "docker": 982}),
+    "idle": ("", {"podbag-rootless": 0, "podbag-root": 0, "kiri": 1, "podman": 1, "docker": 4}),
+}
+
+
+def reading(engine, value, unit, lang):
+    product, _, mode = engine.partition("-")
+    name = {"podbag": "podbag", "orbstack": "OrbStack"}.get(product, product.title())
+    if engine == "docker-desktop":
+        name = "Docker Desktop"
+    elif mode:
+        name += f"<small>{mode}</small>"
+    magnitude = value * 1024 if unit == "GiB" else value
+    return Reading(product, name, magnitude, (number(str(value), lang) + " " + unit).rstrip())
+
+
+def homepage_comparisons(template, words, lang, root):
+    linux = {}
+    for key, (unit, values) in LINUX.items():
+        title = words["fact_idle" if key == "idle" else f"chart_{key}_t"]
+        caption = "" if key == "idle" else words[f"chart_{key}_s"]
+        linux[key] = Metric(title, [reading(k, v, unit, lang) for k, v in values.items()], caption)
+
+    panels = []
+    for key, metric, engine in (("start", "start", "podbag-rootless"), ("idle", "idle", "podbag-rootless"),
+                                ("memory", "cache", "podbag-rootless"), ("disk", "disk", "podbag-root")):
+        unit, values = LINUX[metric]
+        value, baseline = values[engine], values["docker"]
+        reduction = key in ("memory", "disk")
+        target = str(round(100 * (1 - value / baseline)) if reduction else value)
+        rows = [reading("podbag" if key == "idle" else engine, value, unit, lang),
+                reading("docker", baseline, unit, lang)]
+        panels.append(render(template, {
+            "key": key, "label": words[f"fact_{key}"], "headline": number(target, lang),
+            "target": target, "decimals": str(len(target.partition(".")[2])),
+            "prefix": "−" if reduction else "", "suffix": "%" if reduction else (" " + unit).rstrip(),
+            "checked": "checked" if key == "start" else "",
+            "context": linux[metric].caption if key == "start" else linux[metric].name,
+            "nav_benchmarks": words["nav_benchmarks"], "series": series(rows, root),
+        }, lang))
+
+    storage = []
+    for key, label, engine in (("cache", "fact_memory", "podbag-rootless"), ("disk", "fact_disk", "podbag-root")):
+        unit, values = LINUX[key]
+        rows = [reading(k, values[k], unit, lang) for k in (engine, "docker")]
+        storage.append(Metric(words[label], rows, f'{linux[key].name} · {linux[key].caption}'))
+
+    mac = []
+    engines = ("podbag", "docker-desktop", "orbstack", "colima", "kiri")
+    for label, samples in [
+        ("row_start", [(14.4, "ms"), (97.4, "ms"), (90.4, "ms"), (73.6, "ms"), (11.8, "ms")]),
+        ("row_memory", [(1.7, "MiB"), (950, "MiB"), (795, "MiB"), (1.54, "GiB"), (12, "MiB")]),
+    ]:
+        rows = [reading(engine, value, unit, lang) for engine, (value, unit) in zip(engines, samples, strict=True)]
+        mac.append(Metric(words[label], rows))
+    return {
+        "hero_facts": "\n".join(panels),
+        "linux_charts": picker("linux", words["bench_title"], list(linux.values()), root),
+        "mac_charts": picker("mac", words["compare_title"], mac, root),
+        "storage_charts": picker("storage", words["layers_title"], storage, root),
+    }
 
 
 def session(words, ver):
@@ -156,6 +225,7 @@ def main():
         shutil.copy(video, out / "media" / video.name)
 
     template = (SITE / "page.html").read_text()
+    fact_template = (SITE / "fact.html").read_text()
     english = json.loads((SITE / "i18n/en.json").read_text())
     alts = storage_text()
     ver = version()
@@ -185,6 +255,7 @@ def main():
                 f'<a href="{root}{path_of(c)}" hreflang="{c}" lang="{c}">{n}</a>' for c, n in LANGS),
             "storage": "storage" if code == "en" else f"storage-{code}",
             "storage_alt": alts[code],
+            **homepage_comparisons(fact_template, words, code, root),
             "session_html": session_html(lines),
             "session_json": json.dumps(lines, ensure_ascii=False).replace("</", "<\\/"),
         })

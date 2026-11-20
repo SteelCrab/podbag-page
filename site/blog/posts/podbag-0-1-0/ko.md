@@ -47,6 +47,7 @@ podbag은 레이어를 파일로 나누고, 파일마다 한 번만 저장합니
 
 Spring 서비스 8개, 릴리스 2개로 측정했습니다.
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | podbag 절감 |
 |---|--:|--:|--:|
 | 두 릴리스의 디스크 | {{n:902}} MiB | {{n:2970}} MiB | 70% |
@@ -60,11 +61,12 @@ Spring 서비스 8개, 릴리스 2개로 측정했습니다.
 
 모든 도구를 같은 Linux VM에서 실행했습니다. CPU 4개, {{n:3.8}} GiB, arm64입니다. 버전은 podbag 0.1.0, Podman 5.7.0, Docker 29.1.3, Kiri 0.2.1입니다. 숫자는 중앙값입니다. 낮을수록 좋습니다.
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | 컨테이너 시작 | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | 컨테이너 100개의 메모리 | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| 컨테이너가 없을 때의 프로세스 | 없음 | 없음 | 1개 ({{n:5.9}} MiB) | 1개 ({{n:0.6}} MiB) | 4개 ({{n:203}} MiB) |
+| 컨테이너가 없을 때의 프로세스 | {{n:0}} | {{n:0}} | {{n:1}}개 ({{n:5.9}} MiB) | {{n:1}}개 ({{n:0.6}} MiB) | {{n:4}}개 ({{n:203}} MiB) |
 
 - keeper가 아직 없을 때의 첫 시작은 {{n:12.8}}–{{n:16.0}} ms 걸립니다.
 - 메모리는 Kiri와 비슷합니다. 컨테이너가 없을 때는 podbag이 앞섭니다. 그때는 podbag의 어떤 것도 실행되지 않기 때문입니다.
