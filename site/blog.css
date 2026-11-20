@@ -170,4 +170,4 @@ html:not(.can-share) [data-native] { display: none; }
 .prose .fact-result { margin: 6px 0 0; }
 .prose .comparison-card { margin: 18px 0 8px; }
 .comparison-table { margin: 8px 0 22px; color: var(--ink-2); font-size: 14px; }
-.comparison-table summary { cursor: pointer; width: fit-content; }
+.comparison-table summary { width: fit-content; padding: 4px 10px; }
