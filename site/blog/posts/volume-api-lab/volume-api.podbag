@@ -1,0 +1,62 @@
+{
+  "format": "podbag-volume-api-lab-v1",
+  "starter": "{\n  \"message\": \"Hello, Podbag!\"\n}",
+  "translations": {
+    "en": {
+      "title": "Lab · Serve your own JSON",
+      "goal": "Build a JSON endpoint on a practice volume. Your local server will return the file you write.",
+      "create": "Name your volume, for example my-api. Podbag creates it in a separate temporary store on this device.",
+      "write": "Replace the example greeting with your own message. Save the JSON object in your volume.",
+      "serve": "The file below is on disk. Start the server to serve this file at a loopback address.",
+      "request": "Send GET / to the displayed address. Compare the response with your saved JSON."
+    },
+    "ko": {
+      "title": "실습 · 내 JSON을 반환하는 서버 만들기",
+      "goal": "실습 볼륨에 JSON 파일을 작성합니다. 로컬 서버를 실행하고 내가 쓴 내용을 HTTP 응답으로 확인합니다.",
+      "create": "볼륨 이름을 입력합니다. 예를 들어 my-api를 사용할 수 있습니다. Podbag이 이 기기의 독립된 임시 저장소에 볼륨을 만듭니다.",
+      "write": "예제의 인사말을 원하는 문장으로 바꿉니다. JSON 객체를 볼륨에 저장합니다.",
+      "serve": "아래는 볼륨에 저장된 파일입니다. 서버를 시작하면 이 파일을 내 컴퓨터의 주소에서 읽을 수 있습니다.",
+      "request": "표시된 주소에 GET / 요청을 보냅니다. 응답 내용과 저장한 JSON을 비교합니다."
+    },
+    "ja": {
+      "title": "実習 · 自分の JSON を返すサーバーを作る",
+      "goal": "ボリュームに JSON を書き、ローカルサーバーから HTTP で読み出します。",
+      "create": "ボリュームの名前を入力します。例は my-api です。Podbag が独立した一時ストアに作成します。",
+      "write": "例の挨拶を好きな文に変え、JSON オブジェクトをボリュームに保存します。",
+      "serve": "下の内容は保存されたファイルです。サーバーを起動すると、この端末から読み出せます。",
+      "request": "表示されたアドレスに GET / を送り、応答と保存した JSON を比べます。"
+    },
+    "zh-CN": {
+      "title": "实验 · 搭建返回自定义 JSON 的服务器",
+      "goal": "在练习卷上编写 JSON 文件，通过本地服务器读取 HTTP 响应。",
+      "create": "输入卷名，例如 my-api。Podbag 会在设备上独立的临时存储区中创建该卷。",
+      "write": "将示例问候语改成自己的文字，然后把 JSON 对象保存到卷中。",
+      "serve": "下方是已保存的文件。启动本地服务器即可在本机地址读取它。",
+      "request": "向显示的地址发送 GET / 请求，将响应与保存的 JSON 进行比较。"
+    },
+    "es": {
+      "title": "Práctica · Sirve tu propio JSON",
+      "goal": "Escribe un archivo JSON en un volumen y léelo desde un servidor HTTP local.",
+      "create": "Elige un nombre, por ejemplo my-api. Podbag creará el volumen en un almacén temporal independiente.",
+      "write": "Cambia el saludo de ejemplo por un mensaje propio y guarda el objeto JSON en el volumen.",
+      "serve": "El archivo que ves está guardado en el volumen. Inicia el servidor para leerlo desde tu equipo.",
+      "request": "Envía GET / a la dirección indicada. Compara la respuesta con el JSON guardado."
+    },
+    "fil": {
+      "title": "Lab · Ibalik ang sarili mong JSON",
+      "goal": "Sumulat ng JSON file sa isang volume at basahin ito mula sa lokal na HTTP server.",
+      "create": "Pangalanan ang volume, halimbawa my-api. Gagawa ang Podbag ng hiwalay na pansamantalang storage sa device.",
+      "write": "Palitan ang halimbawang pagbati ng sarili mong mensahe. I-save ang JSON object sa volume.",
+      "serve": "Nasa volume na ang file sa ibaba. Simulan ang server para mabasa ito sa lokal na address.",
+      "request": "Magpadala ng GET / sa nakasaad na address. Ihambing ang tugon sa na-save na JSON."
+    },
+    "vi": {
+      "title": "Bài thực hành · Tạo máy chủ trả về JSON của bạn",
+      "goal": "Viết tệp JSON vào volume và đọc tệp qua máy chủ HTTP cục bộ.",
+      "create": "Đặt tên volume, ví dụ my-api. Podbag tạo volume trong vùng lưu trữ tạm riêng trên thiết bị.",
+      "write": "Thay lời chào mẫu bằng nội dung của bạn rồi lưu đối tượng JSON vào volume.",
+      "serve": "Tệp bên dưới đã được lưu. Khởi động máy chủ để đọc tệp tại địa chỉ cục bộ.",
+      "request": "Gửi GET / đến địa chỉ đã hiển thị. So sánh phản hồi với JSON đã lưu."
+    }
+  }
+}
