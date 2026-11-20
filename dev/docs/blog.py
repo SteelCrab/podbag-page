@@ -559,13 +559,17 @@ class Builder:
     def category_path(self, lang, category):
         return self.blog_path(lang) + f"category/{category}/"
 
-    def picture(self, src):
-        """Dark and narrow versions of a picture in /images/, when they exist."""
+    def picture(self, src, post_folder):
+        """Image dimensions and any dark or narrow variants of shared images."""
         if not src.startswith("/images/"):
-            path = None
-        else:
-            path = self.pictures / src[len("/images/"):]
-        if path is None or not path.exists():
+            if not post_folder or re.match(r"^([a-z][a-z0-9+.-]*:|#|/)", src):
+                return [], None
+            path = (post_folder / src).resolve()
+            if path.is_relative_to(post_folder.resolve()) and path.is_file():
+                return [], image_size(path)
+            return [], None
+        path = self.pictures / src[len("/images/"):]
+        if not path.is_file():
             return [], None
         sources = []
         if src.endswith("-light.svg"):
@@ -591,7 +595,8 @@ class Builder:
 
     def body(self, post, root, button="", table_label="", *, outline=""):
         return markdown(post.body, lang=post.lang, root=root, base=f"/blog/{post.slug}/",
-                        code_button=button, picture=self.picture, table_label=table_label, outline=outline)
+                        code_button=button, picture=lambda src: self.picture(src, post.folder),
+                        table_label=table_label, outline=outline)
 
     # Pieces
 
