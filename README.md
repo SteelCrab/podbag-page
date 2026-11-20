@@ -49,6 +49,11 @@ python3 -m http.server -d _site 8000                     # look at it
   An optional `avatar` names a local image, such as `logos/steelcrab.png`.
   A team can set `maintainer` to the key of a personal author to show the profile beside its name.
 - `{{n:2970}}` writes a number in the page's language (2,970 or 2.970).
+- To show a measurement table as a chart, put `<!-- compare-columns: podbag docker -->`
+  immediately above it. List the products in the same order as the columns after the
+  metric name. Use `compare-rows` when the first column names the products. Start each
+  plotted cell with a numeric placeholder and use the same unit within each metric.
+  Readers can expand the original table. RSS includes the table directly.
 - `draft: true` keeps a post out of the build.
 - `python3 dev/docs/blog.py cards` draws the sharing pictures (`card-<lang>.png`).
 - Check before a push:

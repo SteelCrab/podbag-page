@@ -47,6 +47,7 @@ podbag divide cada capa en archivos y guarda cada archivo una sola vez. Una imag
 
 Medimos 8 servicios Spring en 2 versiones:
 
+<!-- compare-columns: podbag docker -->
 | | podbag | Docker | Ahorro de podbag |
 |---|--:|--:|--:|
 | Disco para las dos versiones | {{n:902}} MiB | {{n:2970}} MiB | 70 % |
@@ -60,11 +61,12 @@ Las descargas no cambian. Los registros sirven capas, y podbag las descarga ente
 
 Ejecutamos todas las herramientas en la misma VM Linux: 4 CPU, {{n:3.8}} GiB, arm64. Las versiones: podbag 0.1.0, Podman 5.7.0, Docker 29.1.3 y Kiri 0.2.1. Los números son medianas. Menos es mejor.
 
+<!-- compare-columns: podbag podbag kiri podman docker -->
 | | podbag (rootless) | podbag (root) | Kiri | Podman | Docker |
 |---|--:|--:|--:|--:|--:|
 | Iniciar un contenedor | {{n:4.1}} ms | {{n:4.4}} ms | {{n:9.1}} ms | {{n:46.4}} ms | {{n:73.8}} ms |
 | Memoria para 100 contenedores | {{n:117}} MiB | {{n:105}} MiB | {{n:109}} MiB | {{n:203}} MiB | {{n:562}} MiB |
-| Procesos sin contenedores | ninguno | ninguno | 1 ({{n:5.9}} MiB) | 1 ({{n:0.6}} MiB) | 4 ({{n:203}} MiB) |
+| Procesos sin contenedores | {{n:0}} | {{n:0}} | {{n:1}} ({{n:5.9}} MiB) | {{n:1}} ({{n:0.6}} MiB) | {{n:4}} ({{n:203}} MiB) |
 
 - El primer arranque, cuando todavía no hay keeper, tarda {{n:12.8}}–{{n:16.0}} ms.
 - Kiri está cerca en memoria. podbag va por delante cuando no hay contenedores, porque entonces no se ejecuta nada suyo.

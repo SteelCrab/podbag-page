@@ -87,6 +87,30 @@ class Blocks(unittest.TestCase):
         self.assertIn("<td>Linux</td>", out)
         self.assertNotIn('scope="row"', out)
 
+    def test_comparisons_use_raw_values_and_keep_the_localized_table_for_feeds(self):
+        columns = ("<!-- compare-columns: podbag docker -->\n"
+                   "| | podbag | Docker | Savings |\n|---|---:|---:|---:|\n"
+                   "| Disk | {{n:902}} MiB | {{n:2970}} MiB | 70% |\n"
+                   "| Cache | {{n:324}} MiB | {{n:982}} MiB | 67% |")
+        article = md(columns, lang="es", root="../../", table_label="Tabla")
+        self.assertIn('name="article-metric-1"', article)
+        self.assertIn('width:30.3704%', article)
+        self.assertIn('<strong>2.970 MiB</strong>', article)
+        self.assertIn('<summary>Tabla</summary>', article)
+        self.assertIn("70%", article)
+        feed = md(columns, lang="es")
+        self.assertIn("<table>", feed)
+        self.assertNotIn("compare-columns", feed)
+        self.assertNotIn("fieldset", feed)
+
+    def test_comparison_with_products_in_rows(self):
+        article = md("<!-- compare-rows: podbag docker -->\n"
+                     "| Engine | Seconds |\n|---|---:|\n"
+                     "| podbag | {{n:0}} |\n| Docker | {{n:9.05}} |", table_label="Data")
+        self.assertIn("comparison-card", article)
+        self.assertIn("width:0.0000%", article)
+        self.assertIn("<strong>9.05</strong>", article)
+
     def test_image_alone_is_a_figure_with_caption(self):
         out = md('![A chart](/images/perf.svg "The *numbers*")', root="../../")
         self.assertEqual(out, '<figure><img src="../../images/perf.svg" alt="A chart" loading="lazy">'

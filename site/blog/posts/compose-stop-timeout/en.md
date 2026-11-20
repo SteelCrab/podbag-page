@@ -24,11 +24,12 @@ We used one Apple M5 Mac, the same Linux arm64 Python 3.13.9 image and the same 
 
 ![Full job time (seconds). podbag · Before (31.63 / 28.12 / 27.21) · podbag · Patched (9.81 / 10.31 / 9.55) · Docker Desktop (9.05 / 9.39 / 8.62)](timings-en.png "Each circle is one timed run. The right column shows the median.")
 
+<!-- compare-rows: podbag podbag docker -->
 | Engine | Time (seconds) |
 |---|---:|
-| podbag · Parent revision (`7836256`) | 28.12 |
-| podbag · Patched revision (`1743d75`) | 9.81 |
-| Docker Desktop 4.97.0 | 9.05 |
+| podbag · Parent revision (`7836256`) | {{n:28.12}} |
+| podbag · Patched revision (`1743d75`) | {{n:9.81}} |
+| Docker Desktop 4.97.0 | {{n:9.05}} |
 
 We also ran the original Compose setup with no grace period. The parent took 30.43 seconds and the patched build took 30.56 seconds in one trial each. The shorter wait depends on the service choosing a grace period.
 

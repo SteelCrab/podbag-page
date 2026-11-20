@@ -13,6 +13,7 @@
   "hero_lead": "One static binary runs your Docker and OCI images. When no container runs, nothing runs. A file that many images share is stored once and read into memory once.",
   "cta_install": "Install",
   "cta_download": "Download",
+  "data_table": "Data table",
   "fact_start": "to start a container",
   "fact_idle": "processes when no container runs",
   "fact_memory": "memory for file cache",
