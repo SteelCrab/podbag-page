@@ -1,4 +1,5 @@
 {
+  "steelcrab": {"github": "SteelCrab"},
   "team": {
     "en": {"name": "The podbag team", "bio": "The people who build podbag. We write about releases, how podbag works, and how to use it. Talk to us on <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>."},
     "ko": {"name": "podbag 팀", "bio": "podbag을 만드는 사람들입니다. 릴리스, podbag의 동작 방식, 사용법을 씁니다. 의견은 <a href=\"https://github.com/SteelCrab/podbag/issues\">GitHub</a>에 남겨 주세요."},

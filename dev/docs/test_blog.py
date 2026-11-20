@@ -285,6 +285,19 @@ class Built(unittest.TestCase):
         self.assertEqual(data["@type"], "BlogPosting")
         self.assertEqual(data["inLanguage"], "ko")
 
+    def test_github_author_and_team_byline(self):
+        link = '<a class="github-author" rel="author" href="https://github.com/SteelCrab">@SteelCrab</a>'
+        for code, _ in self.site.LANGS:
+            base = self.out / self.site.path_of(code) / "blog"
+            post = (base / "compose-stop-timeout/index.html").read_text()
+            self.assertEqual(post.count(link), 2, code)
+            self.assertIn(link, (base / "index.html").read_text(), code)
+            self.assertNotIn(link, (base / "podbag-0-1-0/index.html").read_text(), code)
+            creator = "{http://purl.org/dc/elements/1.1/}creator"
+            items = ElementTree.parse(base / "feed.xml").findall(".//item")
+            item = next(i for i in items if "compose-stop-timeout" in i.findtext("link"))
+            self.assertEqual(item.findtext(creator), "@SteelCrab")
+
     def test_numbers_in_spanish_post(self):
         page = (self.out / "es/blog/podbag-0-1-0/index.html").read_text()
         self.assertIn("2.970 MiB", page)

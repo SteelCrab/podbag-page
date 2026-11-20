@@ -543,10 +543,18 @@ class Builder:
 
     # Pieces
 
+    def author_info(self, post):
+        record = self.authors[post.author]
+        if handle := record.get("github"):
+            return f"@{handle}", f"https://github.com/{handle}", ""
+        local = record[post.lang]
+        return local["name"], None, local["bio"]
+
     def meta_line(self, post, w, root, with_share=True):
         cats = ", ".join(f'<a href="{root}{self.category_path(post.lang, c)}">{w[cat_key(c)]}</a>'
                          for c in post.categories)
-        author = html.escape(self.authors[post.author][post.lang]["name"])
+        name, profile, _ = self.author_info(post)
+        author = author_link(name, profile)
         when = (f'<time datetime="{post.day.isoformat()}">'
                 f"{format_date(post.day, post.lang)}</time>")
         parts = [w["blog_by"].replace("{author}", author),
@@ -717,7 +725,7 @@ class Builder:
         translations = {c: self.post_path(post, c) for c in self.langs
                         if any(p.slug == post.slug for p in self.posts[c])}
         targets = {c: translations.get(c, self.blog_path(c)) for c in self.langs}
-        author = self.authors[post.author][lang]
+        name, profile, bio = self.author_info(post)
         first = post.categories[0]
         crumbs = (f'<nav class="crumbs" aria-label="{attr(w["blog_breadcrumb"])}"><ol>'
                   f'<li><a href="{root}{self.site.path_of(lang)}">podbag</a></li>'
@@ -737,10 +745,12 @@ class Builder:
         tags = "".join(f"<li>{html.escape(t)}</li>" for t in post.tags)
         tags_html = (f'<section class="tags" aria-labelledby="tags-h"><h2 id="tags-h">'
                      f'{w["blog_tags"]}</h2><ul>{tags}</ul></section>') if tags else ""
+        portrait = "" if profile else (
+            f'<img src="{root}images/logo-small.png" alt="" width="56" height="56">')
         about = (f'<section class="author-box" aria-labelledby="author-h">'
-                 f'<img src="{root}images/logo-small.png" alt="" width="56" height="56">'
-                 f'<div><h2 id="author-h">{w["blog_about_author"]}</h2>'
-                 f'<p><b>{html.escape(author["name"])}</b></p><p>{author["bio"]}</p></div></section>')
+                 f'{portrait}<div><h2 id="author-h">{w["blog_about_author"]}</h2>'
+                 f'<p><b>{author_link(name, profile)}</b></p>'
+                 + (f"<p>{bio}</p>" if bio else "") + "</div></section>")
         steps = []
         if older:
             steps.append(f'<a class="prev" rel="prev" href="{root}{self.post_path(older)}">'
@@ -780,7 +790,8 @@ class Builder:
             "datePublished": post.day.isoformat(), "dateModified": post.day.isoformat(),
             "url": url, "mainEntityOfPage": {"@type": "WebPage", "@id": url},
             "image": image, "articleSection": names, "keywords": post.tags,
-            "author": {"@type": "Organization", "name": author["name"], "url": self.url},
+            "author": {"@type": "Person" if profile else "Organization", "name": name,
+                       "url": profile or self.url},
             "publisher": publisher(self.url),
         })
         self.page(lang, path, {
@@ -806,7 +817,7 @@ class Builder:
             items.append(
                 f"<item>\n<title>{xml_escape(post.title)}</title>\n<link>{url}</link>\n"
                 f'<guid isPermaLink="true">{url}</guid>\n<pubDate>{rfc822(post.day)}</pubDate>\n'
-                f"<dc:creator>{xml_escape(self.authors[post.author][lang]['name'])}</dc:creator>\n"
+                f"<dc:creator>{xml_escape(self.author_info(post)[0])}</dc:creator>\n"
                 f"{cats}\n<description>{xml_escape(strip(inline(post.summary, lang)))}</description>\n"
                 f"<content:encoded><![CDATA[{content}]]></content:encoded>\n</item>")
         feed = (
@@ -869,6 +880,13 @@ ICON_LINK = ('<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke
              'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
              '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/>'
              '<path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>')
+
+
+def author_link(name, profile):
+    label = html.escape(name)
+    if profile:
+        return f'<a class="github-author" rel="author" href="{html.escape(profile, quote=True)}">{label}</a>'
+    return label
 
 
 def cat_key(category):
