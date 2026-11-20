@@ -287,11 +287,15 @@ class Built(unittest.TestCase):
 
     def test_github_author_and_team_byline(self):
         authors = json.loads((self.site.SITE / "blog/authors.json").read_text())
-        for code, _ in self.site.LANGS:
+        langs = [code for code, _ in self.site.LANGS]
+        posts = blog.load_all(self.site.SITE / "blog/posts", langs, authors)
+        for code in langs:
             base = self.out / self.site.path_of(code) / "blog"
             team = authors["team"][code]["name"]
-            for path, count in [("index.html", 2), ("compose-stop-timeout/index.html", 2),
-                                ("podbag-0-1-0/index.html", 2)]:
+            credited = [p for p in posts[code] if p.author in ("team", "steelcrab")]
+            pages = [("index.html", len(credited), any(p.author == "team" for p in credited))]
+            pages.extend((f"{p.slug}/index.html", 2, p.author == "team") for p in credited)
+            for path, count, show_team in pages:
                 page = (base / path).read_text()
                 links = re.findall(r'<a class="github-byline"[^>]* href="https://github.com/SteelCrab">'
                                    r'(.*?)</a>', page)
@@ -300,7 +304,7 @@ class Built(unittest.TestCase):
                     self.assertIn('logos/steelcrab.png"', contents)
                     self.assertIn('logos/github.svg"', contents)
                     self.assertIn("<span>@SteelCrab</span>", contents)
-                if "compose-stop-timeout" not in path:
+                if show_team:
                     self.assertIn(team, page)
 
             creator = "{http://purl.org/dc/elements/1.1/}creator"

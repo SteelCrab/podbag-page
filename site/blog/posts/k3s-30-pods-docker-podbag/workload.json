@@ -1,0 +1,226 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "ConfigMap",
+      "metadata": {
+        "name": "api",
+        "namespace": "shop-bench"
+      },
+      "data": {
+        "nginx.conf": "worker_processes 1;\nerror_log /dev/stderr warn;\npid /tmp/nginx.pid;\nevents { worker_connections 256; }\nhttp {\n  access_log off;\n  server {\n    listen 8080;\n    location = /ready { return 200 \"ready\"; }\n    location = /api { default_type text/plain; return 200 \"$hostname\\n\"; }\n  }\n}\n"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "api",
+        "namespace": "shop-bench"
+      },
+      "spec": {
+        "selector": {
+          "app": "api"
+        },
+        "type": "ClusterIP",
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "api",
+        "namespace": "shop-bench"
+      },
+      "spec": {
+        "replicas": 24,
+        "selector": {
+          "matchLabels": {
+            "app": "api"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "api"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "terminationGracePeriodSeconds": 5,
+            "containers": [
+              {
+                "name": "api",
+                "image": "docker.io/library/nginx@sha256:1be286f7dd7d6e6be04f46e8df36d0084b05aa3d7fd3c6ebda3e1eff4e5b665d",
+                "imagePullPolicy": "Never",
+                "command": [
+                  "nginx",
+                  "-c",
+                  "/etc/bench/nginx.conf",
+                  "-g",
+                  "daemon off;"
+                ],
+                "ports": [
+                  {
+                    "containerPort": 8080
+                  }
+                ],
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/ready",
+                    "port": 8080
+                  },
+                  "periodSeconds": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "requests": {
+                    "cpu": "20m",
+                    "memory": "16Mi"
+                  },
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "48Mi"
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "config",
+                    "mountPath": "/etc/bench",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "volumes": [
+              {
+                "name": "config",
+                "configMap": {
+                  "name": "api"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ConfigMap",
+      "metadata": {
+        "name": "web",
+        "namespace": "shop-bench"
+      },
+      "data": {
+        "nginx.conf": "worker_processes 1;\nerror_log /dev/stderr warn;\npid /tmp/nginx.pid;\nevents { worker_connections 256; }\nhttp {\n  access_log off;\n  server {\n    listen 8080;\n    location = /ready { return 200 \"ready\"; }\n    location = /api { proxy_pass http://api:8080; }\n  }\n}\n"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "web",
+        "namespace": "shop-bench"
+      },
+      "spec": {
+        "selector": {
+          "app": "web"
+        },
+        "type": "ClusterIP",
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "web",
+        "namespace": "shop-bench"
+      },
+      "spec": {
+        "replicas": 6,
+        "selector": {
+          "matchLabels": {
+            "app": "web"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "web"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "terminationGracePeriodSeconds": 5,
+            "containers": [
+              {
+                "name": "web",
+                "image": "docker.io/library/nginx@sha256:1be286f7dd7d6e6be04f46e8df36d0084b05aa3d7fd3c6ebda3e1eff4e5b665d",
+                "imagePullPolicy": "Never",
+                "command": [
+                  "nginx",
+                  "-c",
+                  "/etc/bench/nginx.conf",
+                  "-g",
+                  "daemon off;"
+                ],
+                "ports": [
+                  {
+                    "containerPort": 8080
+                  }
+                ],
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/ready",
+                    "port": 8080
+                  },
+                  "periodSeconds": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "requests": {
+                    "cpu": "20m",
+                    "memory": "16Mi"
+                  },
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "48Mi"
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "config",
+                    "mountPath": "/etc/bench",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "volumes": [
+              {
+                "name": "config",
+                "configMap": {
+                  "name": "web"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
