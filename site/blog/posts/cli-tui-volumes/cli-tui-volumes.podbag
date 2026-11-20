@@ -1,0 +1,33 @@
+{
+  "format": "podbag-cli-tui-volumes-v1",
+  "translations": {
+    "en": {
+      "title": "Lab · Manage a volume with the CLI and TUI",
+      "guide": "At the volume-lab prompt, type podbag volume create my-api, then podbag volume ls.\nRun podbag tui. Use Tab to open Volumes. Select my-api and press Enter to inspect it. Press Esc, then d and y to delete the volume. Press q to return to the shell.\nRun podbag volume ls to verify removal. Type exit to clean up and leave."
+    },
+    "ko": {
+      "title": "실습 · CLI와 TUI로 볼륨 관리하기",
+      "guide": "volume-lab 프롬프트에서 podbag volume create my-api를 입력합니다. podbag volume ls로 만든 볼륨을 확인합니다.\npodbag tui를 실행합니다. Tab으로 Volumes를 열고 my-api를 선택합니다. Enter로 상세 정보를 확인합니다. Esc로 돌아가 d를 누르고 y로 삭제를 확인합니다. q로 터미널에 돌아갑니다.\npodbag volume ls로 삭제 결과를 확인합니다. exit를 입력하면 실습 환경을 정리합니다."
+    },
+    "ja": {
+      "title": "実習 · CLI と TUI でボリュームを管理する",
+      "guide": "volume-lab のプロンプトで podbag volume create my-api を実行し、podbag volume ls で確認します。\npodbag tui を起動します。Tab で Volumes に移動し、my-api を選んで Enter で詳細を開きます。Esc で戻り、d と y で削除します。q でシェルに戻ります。\npodbag volume ls で削除を確認し、exit で実習環境を片付けます。"
+    },
+    "zh-CN": {
+      "title": "实验 · 使用 CLI 和 TUI 管理卷",
+      "guide": "在 volume-lab 提示符下运行 podbag volume create my-api，然后运行 podbag volume ls 查看卷。\n运行 podbag tui。用 Tab 切换到 Volumes，选择 my-api，按 Enter 查看详情。按 Esc 返回，按 d 后再按 y 确认删除。按 q 回到终端。\n运行 podbag volume ls 验证删除结果，输入 exit 清理实验环境。"
+    },
+    "es": {
+      "title": "Práctica · Gestiona un volumen con la CLI y la TUI",
+      "guide": "En volume-lab, ejecuta podbag volume create my-api y luego podbag volume ls.\nEjecuta podbag tui. Usa Tab para abrir Volumes. Selecciona my-api y pulsa Enter para inspeccionarlo. Vuelve con Esc y pulsa d e y para eliminarlo. Pulsa q para volver a la terminal.\nEjecuta podbag volume ls para comprobar el resultado. Escribe exit para limpiar el entorno."
+    },
+    "vi": {
+      "title": "Bài thực hành · Quản lý volume bằng CLI và TUI",
+      "guide": "Tại dấu nhắc volume-lab, chạy podbag volume create my-api rồi chạy podbag volume ls.\nChạy podbag tui. Dùng Tab để mở Volumes. Chọn my-api và nhấn Enter để xem chi tiết. Nhấn Esc để quay lại, rồi nhấn d và y để xóa. Nhấn q để trở về terminal.\nChạy podbag volume ls để kiểm tra kết quả. Nhập exit để dọn môi trường thực hành."
+    },
+    "fil": {
+      "title": "Lab · Pamahalaan ang volume gamit ang CLI at TUI",
+      "guide": "Sa prompt na volume-lab, patakbuhin ang podbag volume create my-api at pagkatapos ang podbag volume ls.\nPatakbuhin ang podbag tui. Gamitin ang Tab para buksan ang Volumes. Piliin ang my-api at pindutin ang Enter para siyasatin ito. Bumalik gamit ang Esc, at pindutin ang d at y para burahin ito. Pindutin ang q para bumalik sa terminal.\nPatakbuhin ang podbag volume ls para tingnan ang resulta. I-type ang exit para linisin ang lab."
+    }
+  }
+}

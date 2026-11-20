@@ -48,3 +48,7 @@
 /blog/volume-api-lab/volume-api.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="volume-api.podbag"
+
+/blog/cli-tui-volumes/cli-tui-volumes.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="cli-tui-volumes.podbag"
