@@ -1,5 +1,5 @@
 ---
-title: "Podbag Training · 첫 컨테이너 실행하기"
+title: "Podbag 트레이닝 · 첫 컨테이너 실행하기"
 date: 2026-11-21
 author: team
 categories: [how-to]

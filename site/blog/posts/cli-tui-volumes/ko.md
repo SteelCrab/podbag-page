@@ -1,5 +1,5 @@
 ---
-title: "실습 · CLI와 GUI로 볼륨 관리하기"
+title: "Podbag 트레이닝 · CLI와 GUI로 볼륨 관리하기"
 date: 2026-11-20
 author: team
 categories: [how-to]
