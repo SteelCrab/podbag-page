@@ -72,3 +72,7 @@
 /blog/web-service-lifecycle/web-service-lifecycle.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="web-service-lifecycle.podbag"
+
+/blog/web-service-recovery/web-service-recovery.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="web-service-recovery.podbag"

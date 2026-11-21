@@ -186,3 +186,5 @@ exit
 ![Finish the practice session](finish-en.png)
 
 ![Training shows all steps complete](complete-en.png)
+
+[Next Training module · Recover a web server with logs](../web-service-recovery/)
