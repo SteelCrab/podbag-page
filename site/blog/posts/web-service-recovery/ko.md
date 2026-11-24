@@ -1,6 +1,6 @@
 ---
 title: "Podbag 트레이닝 · 로그로 웹 서버 장애 해결하기"
-date: 2026-11-21
+date: 2026-11-25
 author: team
 categories: [how-to]
 tags: [cli, containers, desktop, logs, training]
@@ -17,7 +17,7 @@ draft: false
 
 ## 모듈 설치 및 실습 시작
 
-`web-service-recovery`를 지원하는 Podbag Desktop과 CLI가 필요합니다. 이 모듈은 v0.3.0 이후에 추가됐습니다.
+`web-service-recovery`를 지원하는 Podbag Desktop과 CLI가 필요합니다. 이 모듈은 v0.3.2 이후에 추가됐습니다.
 
 [web-service-recovery.podbag 다운로드](web-service-recovery.podbag). Desktop에서 **Training → 모듈 설치**를 누릅니다. 내려받은 파일을 선택한 뒤 확인합니다. 다운로드 폴더에서 다음 명령으로 설치할 수도 있습니다.
 

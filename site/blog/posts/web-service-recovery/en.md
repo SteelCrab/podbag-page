@@ -1,6 +1,6 @@
 ---
 title: "Podbag Training · Recover a web server with logs"
-date: 2026-11-21
+date: 2026-11-25
 author: team
 categories: [how-to]
 tags: [cli, containers, desktop, logs, training]
@@ -17,7 +17,7 @@ A web server can exit as soon as its startup script checks a required setting. I
 
 ## Install and start the module
 
-This module requires a build of Podbag Desktop and the CLI that supports `web-service-recovery`. It was added after v0.3.0.
+This module requires a build of Podbag Desktop and the CLI that supports `web-service-recovery`. It was added after v0.3.2.
 
 [Download web-service-recovery.podbag](web-service-recovery.podbag). In Desktop, open **Training → Install module**, choose the file, and confirm. You can also install it from the download folder.
 
