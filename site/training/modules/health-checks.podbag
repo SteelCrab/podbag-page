@@ -1,0 +1,136 @@
+{
+  "format": "podbag-course-v2",
+  "id": "health-checks",
+  "port": 18100,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Check that a web server is healthy",
+      "guide": "Start the session with podbag lab start health-checks.",
+      "url": "https://podbag.dev/blog/health-checks/"
+    },
+    "ko": {
+      "title": "Podbag Training · 웹 서버 상태 검사하기",
+      "guide": "podbag lab start health-checks 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/health-checks/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runWeb",
+      "names": {
+        "en": "Run a web server with a health check",
+        "ko": "상태 검사를 넣어 웹 서버 실행하기",
+        "ja": "ヘルスチェック付きでウェブサーバーを起動する",
+        "zh-CN": "运行带健康检查的 Web 服务器",
+        "fil": "Patakbuhin ang web server na may health check",
+        "es": "Ejecuta un servidor web con una comprobación de salud",
+        "vi": "Chạy máy chủ web có kiểm tra sức khỏe"
+      },
+      "command": "podbag run -d --name web -p 127.0.0.1:{port}:8080 --health-cmd 'wget -q -O /dev/null http://127.0.0.1:8080/' --health-interval 2s --health-timeout 1s --health-retries 3 docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && printf \"%s\\n\" \"Hello from web\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-healthy",
+        "name": "web"
+      }
+    },
+    {
+      "key": "ps",
+      "names": {
+        "en": "See the health in ps",
+        "ko": "ps에서 상태 보기",
+        "ja": "ps でヘルスを見る",
+        "zh-CN": "在 ps 中查看健康状态",
+        "fil": "Tingnan ang health sa ps",
+        "es": "Mira la salud en ps",
+        "vi": "Xem sức khỏe trong ps"
+      },
+      "command": "podbag ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "(healthy)"
+      }
+    },
+    {
+      "key": "inspect",
+      "names": {
+        "en": "Read the check results with inspect",
+        "ko": "inspect로 검사 결과 읽기",
+        "ja": "inspect でチェック結果を読む",
+        "zh-CN": "用 inspect 读取检查结果",
+        "fil": "Basahin ang mga resulta gamit ang inspect",
+        "es": "Lee los resultados con inspect",
+        "vi": "Đọc kết quả kiểm tra bằng inspect"
+      },
+      "command": "podbag inspect web",
+      "check": {
+        "kind": "output-contains",
+        "text": "\"status\": \"healthy\""
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "web",
+        "page": "Hello from web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm -f web",
+      "check": {
+        "kind": "container-absent",
+        "name": "web"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

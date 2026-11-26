@@ -15,6 +15,8 @@ draft: false
 
 **예상 시간** 10~15분. [웹 서비스 교체하고 정리하기](/ko/blog/web-service-lifecycle/)를 마친 뒤 진행합니다.
 
+![첫 번째 lab-web은 SITE_TITLE이 없어 종료되고 로그가 이유를 알려 줍니다. 설정을 받은 두 번째 lab-web이 127.0.0.1:18082로 페이지를 보여 줍니다](architecture-ko-light.svg)
+
 ## 모듈 설치 및 실습 시작
 
 `web-service-recovery`를 지원하는 Podbag Desktop과 CLI가 필요합니다. 이 모듈은 v0.3.2 이후에 추가됐습니다.

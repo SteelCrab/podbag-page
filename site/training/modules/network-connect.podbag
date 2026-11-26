@@ -1,0 +1,240 @@
+{
+  "format": "podbag-course-v2",
+  "id": "network-connect",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Connect a container to a second network",
+      "guide": "Start the session with podbag lab start network-connect.",
+      "url": "https://podbag.dev/blog/network-connect/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너를 두 번째 네트워크에 연결하기",
+      "guide": "podbag lab start network-connect 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/network-connect/"
+    }
+  },
+  "steps": [
+    {
+      "key": "createFront",
+      "names": {
+        "en": "Create the front-net network",
+        "ko": "front-net 네트워크 만들기",
+        "ja": "front-net ネットワークを作成する",
+        "zh-CN": "创建 front-net 网络",
+        "fil": "Gumawa ng network na front-net",
+        "es": "Crea la red front-net",
+        "vi": "Tạo mạng front-net"
+      },
+      "command": "podbag network create front-net",
+      "check": {
+        "kind": "network-exists",
+        "name": "front-net"
+      }
+    },
+    {
+      "key": "createBack",
+      "names": {
+        "en": "Create the back-net network",
+        "ko": "back-net 네트워크 만들기",
+        "ja": "back-net ネットワークを作成する",
+        "zh-CN": "创建 back-net 网络",
+        "fil": "Gumawa ng network na back-net",
+        "es": "Crea la red back-net",
+        "vi": "Tạo mạng back-net"
+      },
+      "command": "podbag network create back-net",
+      "check": {
+        "kind": "network-exists",
+        "name": "back-net"
+      }
+    },
+    {
+      "key": "runApi",
+      "names": {
+        "en": "Run api with a network alias",
+        "ko": "네트워크 별칭을 붙여 api 실행하기",
+        "ja": "ネットワークエイリアス付きで api を起動する",
+        "zh-CN": "使用网络别名运行 api",
+        "fil": "Patakbuhin ang api na may network alias",
+        "es": "Ejecuta api con un alias de red",
+        "vi": "Chạy api với bí danh mạng"
+      },
+      "command": "podbag run -d --name api --network front-net --network-alias backend docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && echo \"Hello from api\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-running",
+        "name": "api"
+      }
+    },
+    {
+      "key": "callAlias",
+      "names": {
+        "en": "Call api by its alias",
+        "ko": "별칭으로 api 호출하기",
+        "ja": "エイリアスで api を呼び出す",
+        "zh-CN": "通过别名调用 api",
+        "fil": "Tawagin ang api gamit ang alias",
+        "es": "Llama a api por su alias",
+        "vi": "Gọi api bằng bí danh"
+      },
+      "command": "podbag run --rm --network front-net docker.io/library/busybox:1.37.0 wget -qO- http://backend:8080/",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from api"
+      }
+    },
+    {
+      "key": "stopApi",
+      "names": {
+        "en": "Stop api before you change its networks",
+        "ko": "네트워크를 바꾸기 전에 api 중지하기",
+        "ja": "ネットワークを変える前に api を停止する",
+        "zh-CN": "更改网络前停止 api",
+        "fil": "Ihinto ang api bago palitan ang network nito",
+        "es": "Detén api antes de cambiar sus redes",
+        "vi": "Dừng api trước khi đổi mạng"
+      },
+      "command": "podbag stop api",
+      "check": {
+        "kind": "container-stopped",
+        "name": "api"
+      }
+    },
+    {
+      "key": "connect",
+      "names": {
+        "en": "Connect api to back-net",
+        "ko": "api를 back-net에 연결하기",
+        "ja": "api を back-net に接続する",
+        "zh-CN": "将 api 连接到 back-net",
+        "fil": "Ikonekta ang api sa back-net",
+        "es": "Conecta api a back-net",
+        "vi": "Kết nối api vào back-net"
+      },
+      "command": "podbag network connect --alias store back-net api",
+      "check": {
+        "kind": "container-in-network",
+        "name": "api",
+        "network": "back-net"
+      }
+    },
+    {
+      "key": "startApi",
+      "names": {
+        "en": "Start api again",
+        "ko": "api 다시 시작하기",
+        "ja": "api を再び起動する",
+        "zh-CN": "再次启动 api",
+        "fil": "Simulan muli ang api",
+        "es": "Inicia api de nuevo",
+        "vi": "Khởi động lại api"
+      },
+      "command": "podbag start api",
+      "check": {
+        "kind": "container-running",
+        "name": "api"
+      }
+    },
+    {
+      "key": "callStore",
+      "names": {
+        "en": "Call api from back-net",
+        "ko": "back-net에서 api 호출하기",
+        "ja": "back-net から api を呼び出す",
+        "zh-CN": "从 back-net 调用 api",
+        "fil": "Tawagin ang api mula sa back-net",
+        "es": "Llama a api desde back-net",
+        "vi": "Gọi api từ back-net"
+      },
+      "command": "podbag run --rm --network back-net docker.io/library/busybox:1.37.0 wget -qO- http://store:8080/",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from api"
+      }
+    },
+    {
+      "key": "stopAgain",
+      "names": {
+        "en": "Stop api again",
+        "ko": "api 다시 중지하기",
+        "ja": "api を再び停止する",
+        "zh-CN": "再次停止 api",
+        "fil": "Ihinto muli ang api",
+        "es": "Detén api otra vez",
+        "vi": "Dừng api lần nữa"
+      },
+      "command": "podbag stop api",
+      "check": {
+        "kind": "container-stopped",
+        "name": "api"
+      }
+    },
+    {
+      "key": "disconnect",
+      "names": {
+        "en": "Disconnect api from back-net",
+        "ko": "api를 back-net에서 분리하기",
+        "ja": "api を back-net から切断する",
+        "zh-CN": "将 api 从 back-net 断开",
+        "fil": "Idiskonekta ang api sa back-net",
+        "es": "Desconecta api de back-net",
+        "vi": "Ngắt api khỏi back-net"
+      },
+      "command": "podbag network disconnect back-net api",
+      "check": {
+        "kind": "container-not-in-network",
+        "name": "api",
+        "network": "back-net"
+      }
+    },
+    {
+      "key": "removeApi",
+      "names": {
+        "en": "Remove the api container",
+        "ko": "api 컨테이너 삭제하기",
+        "ja": "api コンテナを削除する",
+        "zh-CN": "删除 api 容器",
+        "fil": "Burahin ang api container",
+        "es": "Elimina el contenedor api",
+        "vi": "Xóa container api"
+      },
+      "command": "podbag rm api",
+      "check": {
+        "kind": "container-absent",
+        "name": "api"
+      }
+    },
+    {
+      "key": "removeNetworks",
+      "names": {
+        "en": "Delete both networks",
+        "ko": "네트워크 두 개 삭제하기",
+        "ja": "2 つのネットワークを削除する",
+        "zh-CN": "删除两个网络",
+        "fil": "Burahin ang dalawang network",
+        "es": "Elimina las dos redes",
+        "vi": "Xóa cả hai mạng"
+      },
+      "command": "podbag network rm front-net back-net",
+      "check": {
+        "kind": "network-absent",
+        "name": "back-net"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "format": "podbag-course-v2",
+  "id": "docker-cli",
+  "port": 18106,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Use the Docker CLI with Podbag",
+      "guide": "Start the session with podbag lab start docker-cli.",
+      "url": "https://podbag.dev/blog/docker-cli/"
+    },
+    "ko": {
+      "title": "Podbag Training · Podbag에서 Docker CLI 사용하기",
+      "guide": "podbag lab start docker-cli 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/docker-cli/"
+    }
+  },
+  "steps": [
+    {
+      "key": "version",
+      "names": {
+        "en": "Ask the engine for its version",
+        "ko": "엔진 버전 확인하기",
+        "ja": "エンジンのバージョンを確認する",
+        "zh-CN": "查看引擎版本",
+        "fil": "Alamin ang bersyon ng engine",
+        "es": "Consulta la versión del motor",
+        "vi": "Xem phiên bản engine"
+      },
+      "command": "docker version",
+      "check": {
+        "kind": "output-contains",
+        "text": "Server: podbag"
+      }
+    },
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull an image with docker",
+        "ko": "docker로 이미지 받기",
+        "ja": "docker でイメージを取得する",
+        "zh-CN": "用 docker 拉取镜像",
+        "fil": "Mag-pull ng image gamit ang docker",
+        "es": "Descarga una imagen con docker",
+        "vi": "Tải image bằng docker"
+      },
+      "command": "docker pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "run",
+      "names": {
+        "en": "Run a web server with docker",
+        "ko": "docker로 웹 서버 실행하기",
+        "ja": "docker でウェブサーバーを起動する",
+        "zh-CN": "用 docker 运行 Web 服务器",
+        "fil": "Patakbuhin ang web server gamit ang docker",
+        "es": "Ejecuta un servidor web con docker",
+        "vi": "Chạy máy chủ web bằng docker"
+      },
+      "command": "docker run -d --name web -p 127.0.0.1:{port}:8080 docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && echo \"Hello from the Docker CLI\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from the Docker CLI"
+      }
+    },
+    {
+      "key": "dockerPs",
+      "names": {
+        "en": "List containers with docker",
+        "ko": "docker로 컨테이너 목록 보기",
+        "ja": "docker でコンテナー一覧を表示する",
+        "zh-CN": "用 docker 列出容器",
+        "fil": "Ilista ang mga container gamit ang docker",
+        "es": "Lista los contenedores con docker",
+        "vi": "Liệt kê container bằng docker"
+      },
+      "command": "docker ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "web"
+      }
+    },
+    {
+      "key": "podbagPs",
+      "names": {
+        "en": "List the same containers with podbag",
+        "ko": "podbag으로 같은 컨테이너 보기",
+        "ja": "podbag で同じコンテナーを表示する",
+        "zh-CN": "用 podbag 查看同样的容器",
+        "fil": "Ilista ang parehong mga container gamit ang podbag",
+        "es": "Lista los mismos contenedores con podbag",
+        "vi": "Liệt kê cùng các container bằng podbag"
+      },
+      "command": "podbag ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "web"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "web",
+        "page": "Hello from the Docker CLI"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container with docker",
+        "ko": "docker로 컨테이너 중지하기",
+        "ja": "docker でコンテナーを停止する",
+        "zh-CN": "用 docker 停止容器",
+        "fil": "Ihinto ang container gamit ang docker",
+        "es": "Detén el contenedor con docker",
+        "vi": "Dừng container bằng docker"
+      },
+      "command": "docker stop web",
+      "check": {
+        "kind": "container-stopped",
+        "name": "web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container with docker",
+        "ko": "docker로 컨테이너 삭제하기",
+        "ja": "docker でコンテナーを削除する",
+        "zh-CN": "用 docker 删除容器",
+        "fil": "Burahin ang container gamit ang docker",
+        "es": "Elimina el contenedor con docker",
+        "vi": "Xóa container bằng docker"
+      },
+      "command": "docker rm web",
+      "check": {
+        "kind": "container-absent",
+        "name": "web"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -15,6 +15,8 @@ A web server listens on a port inside its container. Publishing a port gives you
 
 **Time** 10 minutes
 
+![The browser opens 127.0.0.1:18080, which leads to port 8080 of the web server lab-web in the practice session](architecture-en-light.svg)
+
 ## Beginner course
 
 [Run your first container](../container-basics/) → **Open a web server in the browser** → [Keep files across containers](../volume-persistence/) → [Replace and clean up a web service](../web-service-lifecycle/)

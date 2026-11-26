@@ -1,0 +1,189 @@
+{
+  "format": "podbag-course-v2",
+  "id": "restart-policies",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Restart containers that stop",
+      "guide": "Start the session with podbag lab start restart-policies.",
+      "url": "https://podbag.dev/blog/restart-policies/"
+    },
+    "ko": {
+      "title": "Podbag Training · 멈춘 컨테이너 다시 시작하기",
+      "guide": "podbag lab start restart-policies 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/restart-policies/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runJob",
+      "names": {
+        "en": "Run a failing job with on-failure",
+        "ko": "on-failure로 실패하는 작업 실행하기",
+        "ja": "on-failure で失敗するジョブを起動する",
+        "zh-CN": "用 on-failure 运行会失败的任务",
+        "fil": "Patakbuhin ang pumapalyang job gamit ang on-failure",
+        "es": "Ejecuta una tarea que falla con on-failure",
+        "vi": "Chạy tác vụ bị lỗi với on-failure"
+      },
+      "command": "podbag run -d --name job --restart on-failure:3 docker.io/library/busybox:1.37.0 sh -c 'echo try; exit 1'",
+      "check": {
+        "kind": "container-restarted",
+        "name": "job",
+        "count": 3
+      }
+    },
+    {
+      "key": "inspectJob",
+      "names": {
+        "en": "Count the restarts with inspect",
+        "ko": "inspect로 재시작 횟수 보기",
+        "ja": "inspect で再起動の回数を見る",
+        "zh-CN": "用 inspect 查看重启次数",
+        "fil": "Bilangin ang mga restart gamit ang inspect",
+        "es": "Cuenta los reinicios con inspect",
+        "vi": "Đếm số lần khởi động lại bằng inspect"
+      },
+      "command": "podbag inspect job",
+      "check": {
+        "kind": "output-contains",
+        "text": "\"restart_count\": 3"
+      }
+    },
+    {
+      "key": "logsJob",
+      "names": {
+        "en": "See every try in the logs",
+        "ko": "로그에서 모든 시도 보기",
+        "ja": "ログですべての試行を見る",
+        "zh-CN": "在日志中查看每次尝试",
+        "fil": "Tingnan ang bawat subok sa logs",
+        "es": "Mira cada intento en los registros",
+        "vi": "Xem mọi lần thử trong nhật ký"
+      },
+      "command": "podbag logs job",
+      "check": {
+        "kind": "output-has-line",
+        "text": "try"
+      }
+    },
+    {
+      "key": "removeJob",
+      "names": {
+        "en": "Remove the job in the CLI",
+        "ko": "CLI에서 작업 삭제하기",
+        "ja": "CLI でジョブを削除する",
+        "zh-CN": "在 CLI 中删除任务",
+        "fil": "Burahin ang job sa CLI",
+        "es": "Elimina la tarea en la CLI",
+        "vi": "Xóa tác vụ trong CLI"
+      },
+      "command": "podbag rm job",
+      "check": {
+        "kind": "container-absent",
+        "name": "job"
+      }
+    },
+    {
+      "key": "runAlways",
+      "names": {
+        "en": "Run a container with always",
+        "ko": "always로 컨테이너 실행하기",
+        "ja": "always でコンテナを起動する",
+        "zh-CN": "用 always 运行容器",
+        "fil": "Patakbuhin ang container gamit ang always",
+        "es": "Ejecuta un contenedor con always",
+        "vi": "Chạy container với always"
+      },
+      "command": "podbag run -d --name app --restart always docker.io/library/busybox:1.37.0 sh -c 'echo start; sleep 2'",
+      "check": {
+        "kind": "container-restarted",
+        "name": "app",
+        "count": 1
+      }
+    },
+    {
+      "key": "stopApp",
+      "names": {
+        "en": "Stop the container in the CLI",
+        "ko": "CLI에서 컨테이너 중지하기",
+        "ja": "CLI でコンテナを停止する",
+        "zh-CN": "在 CLI 中停止容器",
+        "fil": "Ihinto ang container sa CLI",
+        "es": "Detén el contenedor en la CLI",
+        "vi": "Dừng container trong CLI"
+      },
+      "command": "podbag stop app",
+      "check": {
+        "kind": "container-stopped",
+        "name": "app"
+      }
+    },
+    {
+      "key": "psStopped",
+      "names": {
+        "en": "See that it stays stopped",
+        "ko": "중지된 상태 확인하기",
+        "ja": "停止したままか確認する",
+        "zh-CN": "确认它保持停止",
+        "fil": "Tingnan na nananatili itong nakahinto",
+        "es": "Comprueba que sigue detenido",
+        "vi": "Xem container vẫn dừng"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "output-contains",
+        "text": "Exited"
+      }
+    },
+    {
+      "key": "startApp",
+      "names": {
+        "en": "Start the container again",
+        "ko": "컨테이너 다시 시작하기",
+        "ja": "コンテナをもう一度起動する",
+        "zh-CN": "再次启动容器",
+        "fil": "Simulan muli ang container",
+        "es": "Inicia el contenedor otra vez",
+        "vi": "Khởi động lại container"
+      },
+      "command": "podbag start app",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "removeApp",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm -f app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

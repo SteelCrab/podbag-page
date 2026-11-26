@@ -15,6 +15,8 @@ draft: false
 
 **예상 시간** 15분
 
+![site-v1이 site-data 볼륨에 페이지를 쓰고, 같은 페이지를 127.0.0.1:18081로 보여 주는 site-v2로 교체됩니다](architecture-ko-light.svg)
+
 ## 초보자 코스
 
 [첫 컨테이너 실행하기](../container-basics/) → [브라우저에서 웹 서버 열기](../web-basics/) → [컨테이너를 바꿔도 파일 남기기](../volume-persistence/) → **웹 서비스 교체하고 정리하기**

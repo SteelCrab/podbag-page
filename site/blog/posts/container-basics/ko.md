@@ -13,6 +13,8 @@ draft: false
 
 이미지에는 프로그램 실행에 필요한 파일이 들어 있습니다. 컨테이너는 그 이미지의 프로그램을 실행합니다. 이 실습에서는 `hello-web`이라는 작은 웹 서버를 실행하고 Podbag Desktop에서 중지합니다.
 
+![터미널이 실습 환경에서 busybox 이미지로 hello-web 컨테이너를 실행하고, Podbag Desktop이 이 컨테이너를 중지합니다](architecture-ko-light.svg)
+
 ## 초보자 코스
 
 **첫 컨테이너 실행하기** → [브라우저에서 웹 서버 열기](../web-basics/) → [컨테이너를 바꿔도 파일 남기기](../volume-persistence/) → [웹 서비스 교체하고 정리하기](../web-service-lifecycle/)

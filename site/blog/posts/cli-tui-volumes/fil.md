@@ -14,6 +14,8 @@ Gumawa ng volume sa CLI, siyasatin at burahin ito sa Desktop, at tingnan ang pro
 
 [I-download ang module](cli-gui-volumes.podbag)
 
+![Gumagawa at naglilista ang terminal ng volume na my-api sa practice session; tinitingnan at binubura ito ng Podbag Desktop o ng TUI](architecture-fil-light.svg)
+
 ## Ano ang volume?
 
 Ang volume ay imbakan ng mga file na hiwalay sa container. Dito, sine-save ng `app-a` ang `note.txt` sa volume na `my-api`. Pagkatapos alisin ang `app-a`, magagamit ng bagong container na `app-b` ang file kapag ini-mount nito ang parehong volume. Kapag binura ang volume mismo, mabubura rin ang mga file nito.

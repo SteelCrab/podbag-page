@@ -15,6 +15,8 @@ A web server can exit as soon as its startup script checks a required setting. I
 
 **Time** 10–15 minutes. This module follows [Replace and clean up a web service](../web-service-lifecycle/).
 
+![The first lab-web exits because SITE_TITLE is missing and its log says so; the second lab-web gets the setting and serves 127.0.0.1:18082](architecture-en-light.svg)
+
 ## Install and start the module
 
 This module requires a build of Podbag Desktop and the CLI that supports `web-service-recovery`. It was added after v0.3.2.

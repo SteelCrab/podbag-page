@@ -15,6 +15,8 @@ Replace a running web service while keeping its content. Use the same volume and
 
 **Time** 15 minutes
 
+![site-v1 writes the page into the volume site-data and is replaced by site-v2, which serves the same page on 127.0.0.1:18081](architecture-en-light.svg)
+
 ## Beginner course
 
 [Run your first container](../container-basics/) → [Open a web server in the browser](../web-basics/) → [Keep files across containers](../volume-persistence/) → **Replace and clean up a web service**

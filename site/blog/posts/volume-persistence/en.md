@@ -15,6 +15,8 @@ A volume stores files that can survive container removal. Watch the animation an
 
 **Time** 15 minutes
 
+![app-a writes note.txt into the volume training-data and app-b reads it; the volume stays after both containers are removed](architecture-en-light.svg)
+
 ## Beginner course
 
 [Run your first container](../container-basics/) → [Open a web server in the browser](../web-basics/) → **Keep files across containers** → [Replace and clean up a web service](../web-service-lifecycle/)

@@ -1,0 +1,156 @@
+{
+  "format": "podbag-course-v2",
+  "id": "docker-compose",
+  "port": 18107,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Run two services with Docker Compose",
+      "guide": "Start the session with podbag lab start docker-compose.",
+      "url": "https://podbag.dev/blog/docker-compose/"
+    },
+    "ko": {
+      "title": "Podbag Training · Docker Compose로 서비스 두 개 실행하기",
+      "guide": "podbag lab start docker-compose 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/docker-compose/"
+    }
+  },
+  "files": {
+    "compose.yaml": "name: lab\nservices:\n  api:\n    image: docker.io/library/busybox:1.37.0\n    container_name: api\n    command: [\"sh\", \"-c\", \"mkdir -p /www && echo 'Hello from api' > /www/index.html && exec httpd -f -p 8080 -h /www\"]\n  web:\n    image: docker.io/library/busybox:1.37.0\n    container_name: web\n    depends_on: [api]\n    ports:\n      - \"127.0.0.1:{port}:8080\"\n    command: [\"sh\", \"-c\", \"mkdir -p /www && until wget -qO /www/index.html http://api:8080/; do sleep 1; done && exec httpd -f -p 8080 -h /www\"]\n"
+  },
+  "steps": [
+    {
+      "key": "services",
+      "names": {
+        "en": "List the services in compose.yaml",
+        "ko": "compose.yaml의 서비스 보기",
+        "ja": "compose.yaml のサービスを表示する",
+        "zh-CN": "列出 compose.yaml 中的服务",
+        "fil": "Ilista ang mga service sa compose.yaml",
+        "es": "Lista los servicios de compose.yaml",
+        "vi": "Liệt kê các service trong compose.yaml"
+      },
+      "command": "docker compose config --services",
+      "check": {
+        "kind": "output-has-line",
+        "text": "web"
+      }
+    },
+    {
+      "key": "up",
+      "names": {
+        "en": "Start the services with Compose",
+        "ko": "Compose로 서비스 시작하기",
+        "ja": "Compose でサービスを起動する",
+        "zh-CN": "用 Compose 启动服务",
+        "fil": "Simulan ang mga service gamit ang Compose",
+        "es": "Inicia los servicios con Compose",
+        "vi": "Khởi động các service bằng Compose"
+      },
+      "command": "docker compose up -d",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from api"
+      }
+    },
+    {
+      "key": "composePs",
+      "names": {
+        "en": "List the services that run",
+        "ko": "실행 중인 서비스 보기",
+        "ja": "実行中のサービスを表示する",
+        "zh-CN": "查看正在运行的服务",
+        "fil": "Ilista ang mga service na tumatakbo",
+        "es": "Lista los servicios en ejecución",
+        "vi": "Liệt kê các service đang chạy"
+      },
+      "command": "docker compose ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "127.0.0.1:{port}->8080/tcp"
+      }
+    },
+    {
+      "key": "callApi",
+      "names": {
+        "en": "Call api by name from web",
+        "ko": "web에서 이름으로 api 호출하기",
+        "ja": "web から名前で api を呼び出す",
+        "zh-CN": "从 web 按名称调用 api",
+        "fil": "Tawagin ang api gamit ang pangalan mula sa web",
+        "es": "Llama a api por su nombre desde web",
+        "vi": "Gọi api bằng tên từ web"
+      },
+      "command": "docker compose exec web wget -qO- http://api:8080/",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from api"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "web",
+        "page": "Hello from api"
+      }
+    },
+    {
+      "key": "down",
+      "names": {
+        "en": "Stop and remove the services",
+        "ko": "서비스 중지하고 삭제하기",
+        "ja": "サービスを停止して削除する",
+        "zh-CN": "停止并删除服务",
+        "fil": "Ihinto at burahin ang mga service",
+        "es": "Detén y elimina los servicios",
+        "vi": "Dừng và xóa các service"
+      },
+      "command": "docker compose down",
+      "check": {
+        "kind": "containers-empty"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

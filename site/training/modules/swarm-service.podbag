@@ -1,0 +1,169 @@
+{
+  "format": "podbag-course-v2",
+  "id": "swarm-service",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Run a service in Swarm mode",
+      "guide": "Start the session with podbag lab start swarm-service.",
+      "url": "https://podbag.dev/blog/swarm-service/"
+    },
+    "ko": {
+      "title": "Podbag Training · Swarm 모드로 서비스 실행하기",
+      "guide": "podbag lab start swarm-service 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/swarm-service/"
+    }
+  },
+  "steps": [
+    {
+      "key": "init",
+      "names": {
+        "en": "Start a swarm",
+        "ko": "swarm 시작하기",
+        "ja": "swarm を開始する",
+        "zh-CN": "启动 swarm",
+        "fil": "Simulan ang swarm",
+        "es": "Inicia un swarm",
+        "vi": "Khởi tạo swarm"
+      },
+      "command": "docker swarm init",
+      "check": {
+        "kind": "output-contains",
+        "text": "Swarm initialized"
+      }
+    },
+    {
+      "key": "create",
+      "names": {
+        "en": "Create a service with two replicas",
+        "ko": "복제본 두 개로 서비스 만들기",
+        "ja": "レプリカ 2 つのサービスを作成する",
+        "zh-CN": "创建有两个副本的服务",
+        "fil": "Gumawa ng service na may dalawang replica",
+        "es": "Crea un servicio con dos réplicas",
+        "vi": "Tạo service có hai bản sao"
+      },
+      "command": "docker service create --name web --replicas 2 docker.io/library/busybox:1.37.0 httpd -f -p 8080",
+      "check": {
+        "kind": "output-contains",
+        "text": "converged"
+      }
+    },
+    {
+      "key": "serviceLs",
+      "names": {
+        "en": "List the services",
+        "ko": "서비스 목록 보기",
+        "ja": "サービス一覧を表示する",
+        "zh-CN": "列出服务",
+        "fil": "Ilista ang mga service",
+        "es": "Lista los servicios",
+        "vi": "Liệt kê các service"
+      },
+      "command": "docker service ls",
+      "check": {
+        "kind": "output-contains",
+        "text": "2/2"
+      }
+    },
+    {
+      "key": "servicePs",
+      "names": {
+        "en": "List the tasks of the service",
+        "ko": "서비스의 작업 보기",
+        "ja": "サービスのタスクを表示する",
+        "zh-CN": "查看服务的任务",
+        "fil": "Ilista ang mga task ng service",
+        "es": "Lista las tareas del servicio",
+        "vi": "Liệt kê các tác vụ của service"
+      },
+      "command": "docker service ps web",
+      "check": {
+        "kind": "output-contains",
+        "text": "Running"
+      }
+    },
+    {
+      "key": "scale",
+      "names": {
+        "en": "Scale the service to three replicas",
+        "ko": "서비스를 복제본 세 개로 늘리기",
+        "ja": "サービスをレプリカ 3 つに増やす",
+        "zh-CN": "把服务扩展到三个副本",
+        "fil": "Palakihin ang service sa tatlong replica",
+        "es": "Escala el servicio a tres réplicas",
+        "vi": "Tăng service lên ba bản sao"
+      },
+      "command": "docker service scale web=3",
+      "check": {
+        "kind": "output-contains",
+        "text": "web scaled to 3"
+      }
+    },
+    {
+      "key": "podbagPs",
+      "names": {
+        "en": "See the tasks as podbag containers",
+        "ko": "작업을 podbag 컨테이너로 보기",
+        "ja": "タスクを podbag コンテナーとして表示する",
+        "zh-CN": "以 podbag 容器查看任务",
+        "fil": "Tingnan ang mga task bilang podbag container",
+        "es": "Mira las tareas como contenedores de podbag",
+        "vi": "Xem các tác vụ như container podbag"
+      },
+      "command": "podbag ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "web.3."
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the service",
+        "ko": "서비스 삭제하기",
+        "ja": "サービスを削除する",
+        "zh-CN": "删除服务",
+        "fil": "Burahin ang service",
+        "es": "Elimina el servicio",
+        "vi": "Xóa service"
+      },
+      "command": "docker service rm web",
+      "check": {
+        "kind": "containers-empty"
+      }
+    },
+    {
+      "key": "leave",
+      "names": {
+        "en": "Leave the swarm",
+        "ko": "swarm에서 나가기",
+        "ja": "swarm から離脱する",
+        "zh-CN": "退出 swarm",
+        "fil": "Umalis sa swarm",
+        "es": "Sal del swarm",
+        "vi": "Rời khỏi swarm"
+      },
+      "command": "docker swarm leave --force",
+      "check": {
+        "kind": "output-contains",
+        "text": "left the swarm"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

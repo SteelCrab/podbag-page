@@ -1,0 +1,136 @@
+{
+  "format": "podbag-course-v2",
+  "id": "system-checks",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Check the system and the images",
+      "guide": "Start the session with podbag lab start system-checks.",
+      "url": "https://podbag.dev/blog/system-checks/"
+    },
+    "ko": {
+      "title": "Podbag Training · 시스템과 이미지 점검하기",
+      "guide": "podbag lab start system-checks 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/system-checks/"
+    }
+  },
+  "steps": [
+    {
+      "key": "check",
+      "names": {
+        "en": "Check the system with check",
+        "ko": "check로 시스템 점검하기",
+        "ja": "check でシステムを確認する",
+        "zh-CN": "用 check 检查系统",
+        "fil": "Suriin ang system gamit ang check",
+        "es": "Revisa el sistema con check",
+        "vi": "Kiểm tra hệ thống bằng check"
+      },
+      "command": "podbag check",
+      "check": {
+        "kind": "output-contains",
+        "text": "cgroup v2"
+      }
+    },
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull an image",
+        "ko": "이미지 받기",
+        "ja": "イメージを取得する",
+        "zh-CN": "拉取镜像",
+        "fil": "I-pull ang image",
+        "es": "Descarga una imagen",
+        "vi": "Kéo image về"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "checkImage",
+      "names": {
+        "en": "Check the programs in the image",
+        "ko": "이미지의 프로그램 점검하기",
+        "ja": "イメージ内のプログラムを確認する",
+        "zh-CN": "检查镜像中的程序",
+        "fil": "Suriin ang mga program sa image",
+        "es": "Revisa los programas de la imagen",
+        "vi": "Kiểm tra chương trình trong image"
+      },
+      "command": "podbag check-image docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "output-contains",
+        "text": "no problems found"
+      }
+    },
+    {
+      "key": "df",
+      "names": {
+        "en": "See the disk use with system df",
+        "ko": "system df로 디스크 사용량 보기",
+        "ja": "system df でディスク使用量を見る",
+        "zh-CN": "用 system df 查看磁盘用量",
+        "fil": "Tingnan ang gamit ng disk gamit ang system df",
+        "es": "Mira el uso de disco con system df",
+        "vi": "Xem dung lượng đĩa bằng system df"
+      },
+      "command": "podbag system df",
+      "check": {
+        "kind": "output-contains",
+        "text": "Objects"
+      }
+    },
+    {
+      "key": "verify",
+      "names": {
+        "en": "Verify the stored files",
+        "ko": "저장된 파일 검증하기",
+        "ja": "保存されたファイルを検証する",
+        "zh-CN": "校验已存储的文件",
+        "fil": "I-verify ang mga naka-store na file",
+        "es": "Verifica los archivos guardados",
+        "vi": "Xác minh các tệp đã lưu"
+      },
+      "command": "podbag system verify",
+      "check": {
+        "kind": "output-contains",
+        "text": "0 damaged"
+      }
+    },
+    {
+      "key": "removeImage",
+      "names": {
+        "en": "Remove the image in the CLI",
+        "ko": "CLI에서 이미지 삭제하기",
+        "ja": "CLI でイメージを削除する",
+        "zh-CN": "在 CLI 中删除镜像",
+        "fil": "Burahin ang image sa CLI",
+        "es": "Elimina la imagen en la CLI",
+        "vi": "Xóa image trong CLI"
+      },
+      "command": "podbag rmi docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-absent",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

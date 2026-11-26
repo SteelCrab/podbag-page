@@ -1,0 +1,174 @@
+{
+  "format": "podbag-course-v2",
+  "id": "image-build",
+  "port": 18095,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Build an image from a Dockerfile",
+      "guide": "Start the session with podbag lab start image-build.",
+      "url": "https://podbag.dev/blog/image-build/"
+    },
+    "ko": {
+      "title": "Podbag Training · Dockerfile로 이미지 빌드하기",
+      "guide": "podbag lab start image-build 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/image-build/"
+    }
+  },
+  "files": {
+    "my-site/Dockerfile": "FROM docker.io/library/busybox:1.37.0\nCOPY index.html /www/index.html\nEXPOSE 8080\nCMD [\"httpd\", \"-f\", \"-p\", \"8080\", \"-h\", \"/www\"]\n",
+    "my-site/index.html": "Hello from my-site\n"
+  },
+  "steps": [
+    {
+      "key": "build",
+      "names": {
+        "en": "Build the image from the Dockerfile",
+        "ko": "Dockerfile로 이미지 빌드하기",
+        "ja": "Dockerfile からイメージをビルドする",
+        "zh-CN": "用 Dockerfile 构建镜像",
+        "fil": "I-build ang image mula sa Dockerfile",
+        "es": "Construye la imagen desde el Dockerfile",
+        "vi": "Build image từ Dockerfile"
+      },
+      "command": "podbag build -t my-site:1 my-site",
+      "check": {
+        "kind": "image-exists",
+        "name": "my-site:1"
+      }
+    },
+    {
+      "key": "rebuild",
+      "names": {
+        "en": "Build again with the cache",
+        "ko": "캐시로 다시 빌드하기",
+        "ja": "キャッシュを使って再ビルドする",
+        "zh-CN": "使用缓存再次构建",
+        "fil": "I-build ulit gamit ang cache",
+        "es": "Vuelve a construir con la caché",
+        "vi": "Build lại bằng bộ nhớ đệm"
+      },
+      "command": "podbag build -t my-site:1 my-site",
+      "check": {
+        "kind": "output-contains",
+        "text": "Using cache"
+      }
+    },
+    {
+      "key": "run",
+      "names": {
+        "en": "Run the new image with a port",
+        "ko": "새 이미지를 포트와 함께 실행하기",
+        "ja": "新しいイメージをポート付きで実行する",
+        "zh-CN": "带端口运行新镜像",
+        "fil": "Patakbuhin ang bagong image na may port",
+        "es": "Ejecuta la imagen nueva con un puerto",
+        "vi": "Chạy image mới với một cổng"
+      },
+      "command": "podbag run -d --name web -p 127.0.0.1:{port}:8080 my-site:1",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from my-site"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "web",
+        "page": "Hello from my-site"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container in Desktop",
+        "ko": "Desktop에서 컨테이너 중지하기",
+        "ja": "Desktop でコンテナを停止する",
+        "zh-CN": "在 Desktop 中停止容器",
+        "fil": "Ihinto ang container sa Desktop",
+        "es": "Detén el contenedor en Desktop",
+        "vi": "Dừng container trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-stop",
+        "name": "web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm web",
+      "check": {
+        "kind": "container-absent",
+        "name": "web"
+      }
+    },
+    {
+      "key": "removeImage",
+      "names": {
+        "en": "Remove the image in the CLI",
+        "ko": "CLI에서 이미지 삭제하기",
+        "ja": "CLI でイメージを削除する",
+        "zh-CN": "在 CLI 中删除镜像",
+        "fil": "Burahin ang image sa CLI",
+        "es": "Elimina la imagen en la CLI",
+        "vi": "Xóa image trong CLI"
+      },
+      "command": "podbag rmi my-site:1",
+      "check": {
+        "kind": "image-absent",
+        "name": "my-site:1"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

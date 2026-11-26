@@ -1,0 +1,174 @@
+{
+  "format": "podbag-course-v2",
+  "id": "pause-and-rename",
+  "port": 18090,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Pause and rename a container",
+      "guide": "Start the session with podbag lab start pause-and-rename.",
+      "url": "https://podbag.dev/blog/pause-and-rename/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너 일시 정지하고 이름 바꾸기",
+      "guide": "podbag lab start pause-and-rename 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/pause-and-rename/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runWeb",
+      "names": {
+        "en": "Run a web server",
+        "ko": "웹 서버 실행하기",
+        "ja": "ウェブサーバーを起動する",
+        "zh-CN": "运行 Web 服务器",
+        "fil": "Patakbuhin ang web server",
+        "es": "Ejecuta un servidor web",
+        "vi": "Chạy máy chủ web"
+      },
+      "command": "podbag run -d --name web -p 127.0.0.1:{port}:8080 docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && echo \"Hello from web\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from web"
+      }
+    },
+    {
+      "key": "pause",
+      "names": {
+        "en": "Pause the container",
+        "ko": "컨테이너 일시 정지하기",
+        "ja": "コンテナを一時停止する",
+        "zh-CN": "暂停容器",
+        "fil": "I-pause ang container",
+        "es": "Pausa el contenedor",
+        "vi": "Tạm dừng container"
+      },
+      "command": "podbag pause web",
+      "check": {
+        "kind": "container-paused",
+        "name": "web"
+      }
+    },
+    {
+      "key": "listPaused",
+      "names": {
+        "en": "See Paused in the list",
+        "ko": "목록에서 Paused 확인하기",
+        "ja": "一覧で Paused を確認する",
+        "zh-CN": "在列表中查看 Paused",
+        "fil": "Tingnan ang Paused sa listahan",
+        "es": "Mira Paused en la lista",
+        "vi": "Xem Paused trong danh sách"
+      },
+      "command": "podbag ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "(Paused)"
+      }
+    },
+    {
+      "key": "unpause",
+      "names": {
+        "en": "Unpause the container",
+        "ko": "일시 정지 풀기",
+        "ja": "一時停止を解除する",
+        "zh-CN": "恢复容器",
+        "fil": "Ituloy ang container",
+        "es": "Reanuda el contenedor",
+        "vi": "Tiếp tục container"
+      },
+      "command": "podbag unpause web",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from web"
+      }
+    },
+    {
+      "key": "rename",
+      "names": {
+        "en": "Rename the container",
+        "ko": "컨테이너 이름 바꾸기",
+        "ja": "コンテナの名前を変更する",
+        "zh-CN": "重命名容器",
+        "fil": "Palitan ang pangalan ng container",
+        "es": "Cambia el nombre del contenedor",
+        "vi": "Đổi tên container"
+      },
+      "command": "podbag rename web site",
+      "check": {
+        "kind": "container-published",
+        "name": "site",
+        "page": "Hello from web"
+      }
+    },
+    {
+      "key": "oldName",
+      "names": {
+        "en": "Check that the old name is gone",
+        "ko": "이전 이름이 없는지 확인하기",
+        "ja": "古い名前が消えたことを確認する",
+        "zh-CN": "确认旧名称已消失",
+        "fil": "Tiyaking wala na ang lumang pangalan",
+        "es": "Comprueba que el nombre antiguo ya no está",
+        "vi": "Kiểm tra tên cũ đã mất"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "container-absent",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "site",
+        "page": "Hello from web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm -f site",
+      "check": {
+        "kind": "container-absent",
+        "name": "site"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

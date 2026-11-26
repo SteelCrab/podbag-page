@@ -15,6 +15,8 @@ draft: false
 
 **예상 시간** 15분
 
+![app-a가 training-data 볼륨에 note.txt를 쓰고 app-b가 읽습니다. 두 컨테이너를 지워도 볼륨은 남습니다](architecture-ko-light.svg)
+
 ## 초보자 코스
 
 [첫 컨테이너 실행하기](../container-basics/) → [브라우저에서 웹 서버 열기](../web-basics/) → **컨테이너를 바꿔도 파일 남기기** → [웹 서비스 교체하고 정리하기](../web-service-lifecycle/)
