@@ -1,0 +1,86 @@
+Reproduce the own UI layer and GPUI full-port benchmark
+
+Environment
+  Apple M5, 24 GB memory, macOS 27.2.1, built-in display (ProMotion).
+  Rust 1.96.0. The Mac was in normal use with an unlocked screen, so single
+  runs vary; the post reports medians of five warm runs. Windows open and
+  close during the runs. Run one benchmark at a time.
+
+Source (prototypes.tar.gz)
+  own-ui      Our UI layer: winit 0.30.13, wgpu 30.0.2, glyphon 0.12.0,
+              arboard 3.7.0, zeno 0.3.3. Event loop, GPU drawing, text with
+              CJK fallback fonts, hit testing, text field with IME, widgets.
+  own-full    The full port on own-ui.
+  own-app     The single-screen prototype on own-ui.
+  gpui-full   The full port on gpui 0.2.2 (runtime_shaders), with its own
+              widgets in src/widgets. src/widgets/input.rs is adapted from
+              GPUI's examples/input.rs (Apache-2.0).
+  gpui-app    The single-screen GPUI prototype from the last post, with the
+              row width fix (rows now follow the column widths).
+  tauri-app   Tauri 2.12.7. --mode full or --mode virtual.
+  shared      bench-api: the mocked engine both full ports read, a Rust port
+              of Podbag Desktop's desktop/preview/mock.js at v0.3.2, plus the
+              seven language files of Podbag Desktop.
+  SCOPE.md    The feature scope both full ports follow.
+  All apps use Podbag Desktop's release profile: opt-level "s", lto, one
+  codegen unit, panic abort, strip. Cargo.lock files pin every crate.
+
+Build
+  tar -xzf prototypes.tar.gz && cd rust-ui-bench
+  for d in own-app own-full gpui-app gpui-full tauri-app; do
+    (cd $d && cargo build --release)
+  done
+  gpui-app has an optional `engine` feature that reads a real Podbag engine.
+  It needs a Podbag checkout at ../podbag and is not used here.
+
+Run
+  BENCH_NO_FOCUS=1 python3 bench/run.py --rows 1000,10000 --runs 5 \
+    --variants gpui,own,gpui-full,own-full,tauri-full,tauri-virtual --build-stats
+  python3 bench/summary.py bench/results.json
+  python3 bench/chart_full.py bench/results.json runs-en.svg en
+  --build-stats runs `cargo clean` and a clean release build in each app.
+
+What run.py does per run
+  Spawn the app and wait for its READY line, then RENDER. Wait 3 s, read
+  phys_footprint with `footprint`, and measure CPU time over 10 s with `ps`.
+  Send "filter web-0004" on stdin and wait for FILTER (2 rows must remain).
+  For gpui-full and own-full only: send "nav <view>" for images, volumes,
+  networks, kubernetes, settings and containers, read each VIEW line, then
+  read phys_footprint again. Send "quit". One cold run per case comes first
+  and is left out of the medians.
+
+When each app reports
+  GPUI apps: in the next-frame callback, which runs at the next display
+  refresh after the frame with the change was presented.
+  Tauri: two requestAnimationFrame calls after the DOM change.
+  Own UI layer: when the redraw requested right after present() starts. winit
+  delivers that redraw at once, without waiting for the display refresh.
+  So FILTER and VIEW from the own layer are up to one frame (8-17 ms here)
+  earlier than they would be with the other two methods.
+
+Which processes count
+  summary.py counts the app process and com.apple.WebKit.* services only.
+  Other processes that started during a run (for example another virtual
+  machine) are listed apart and not counted.
+
+Line counts
+  wc -l over .rs and .wgsl files, with comments, blank lines and test hooks.
+  own-ui 3,652; own-full 3,873; gpui-full 8,951 (widgets 2,260, views 3,822,
+  window shell 2,869); shared/bench-api 2,685 (not counted for either port).
+
+Cross-target checks (cargo check --release, no linking)
+  Windows: --target x86_64-pc-windows-gnu from macOS with mingw-w64.
+    own-full passes. gpui-full fails: gpui's build script compiles HLSL with
+    fxc.exe, which runs only on a Windows host. Without --release it passes.
+  Linux: a Linux VM on the same Mac.
+    own-full passes. gpui-full fails in xattr 0.2.3 (through gpui's HTTP and
+    tar dependencies): it uses libc::ENOATTR, which the locked libc 0.2.191
+    does not have. A [patch] that maps it to ENODATA makes the check pass.
+  Neither full port was run on Linux or Windows.
+
+Data notes
+  results.json has every run of the session, including the single-screen
+  prototypes (gpui, own) and Tauri with the full DOM. In this session the
+  view step also ran for tauri-full by mistake; those "no VIEW line" errors
+  and the runs redone because of them were removed. Startup, memory, CPU and
+  filter for tauri-full were measured before that step.
