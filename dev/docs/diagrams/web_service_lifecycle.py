@@ -7,6 +7,11 @@ HEIGHT = 330
 ALT = {
     'en': 'site-v1 writes the page into the volume site-data and is replaced by site-v2, which serves the same page on 127.0.0.1:18081',
     'ko': 'site-v1이 site-data 볼륨에 페이지를 쓰고, 같은 페이지를 127.0.0.1:18081로 보여 주는 site-v2로 교체됩니다',
+    'ja': 'site-v1 がボリューム site-data にページを書きます。site-v1 は site-v2 に入れ替わり、site-v2 が同じページを 127.0.0.1:18081 で配信します',
+    'zh-CN': 'site-v1 将页面写入卷 site-data，随后被 site-v2 替换；site-v2 在 127.0.0.1:18081 上提供同一个页面',
+    'fil': 'Isinusulat ng site-v1 ang page sa volume na site-data at pinapalitan ito ng site-v2, na naghahain ng parehong page sa 127.0.0.1:18081',
+    'es': 'site-v1 escribe la página en el volumen site-data y site-v2 lo sustituye y sirve la misma página en 127.0.0.1:18081',
+    'vi': 'site-v1 ghi trang web vào volume site-data rồi được thay bằng site-v2; site-v2 phục vụ cùng trang đó tại 127.0.0.1:18081',
 }
 
 

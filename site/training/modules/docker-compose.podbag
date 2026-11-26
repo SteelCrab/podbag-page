@@ -12,6 +12,31 @@
       "title": "Podbag Training · Docker Compose로 서비스 두 개 실행하기",
       "guide": "podbag lab start docker-compose 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/docker-compose/"
+    },
+    "ja": {
+      "title": "Podbag Training · Docker Compose で 2 つのサービスを実行する",
+      "guide": "podbag lab start docker-compose で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/docker-compose/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 用 Docker Compose 运行两个服务",
+      "guide": "用 podbag lab start docker-compose 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/docker-compose/"
+    },
+    "fil": {
+      "title": "Podbag Training · Magpatakbo ng dalawang service gamit ang Docker Compose",
+      "guide": "Simulan ang session gamit ang podbag lab start docker-compose.",
+      "url": "https://podbag.dev/fil/blog/docker-compose/"
+    },
+    "es": {
+      "title": "Podbag Training · Ejecuta dos servicios con Docker Compose",
+      "guide": "Inicia la sesión con podbag lab start docker-compose.",
+      "url": "https://podbag.dev/es/blog/docker-compose/"
+    },
+    "vi": {
+      "title": "Podbag Training · Chạy hai dịch vụ bằng Docker Compose",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start docker-compose.",
+      "url": "https://podbag.dev/vi/blog/docker-compose/"
     }
   },
   "files": {

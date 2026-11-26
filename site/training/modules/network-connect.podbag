@@ -11,6 +11,31 @@
       "title": "Podbag Training · 컨테이너를 두 번째 네트워크에 연결하기",
       "guide": "podbag lab start network-connect 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/network-connect/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナを 2 つ目のネットワークにつなぐ",
+      "guide": "podbag lab start network-connect で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/network-connect/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 将容器连接到第二个网络",
+      "guide": "用 podbag lab start network-connect 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/network-connect/"
+    },
+    "fil": {
+      "title": "Podbag Training · Ikonekta ang container sa pangalawang network",
+      "guide": "Simulan ang session gamit ang podbag lab start network-connect.",
+      "url": "https://podbag.dev/fil/blog/network-connect/"
+    },
+    "es": {
+      "title": "Podbag Training · Conecta un contenedor a una segunda red",
+      "guide": "Inicia la sesión con podbag lab start network-connect.",
+      "url": "https://podbag.dev/es/blog/network-connect/"
+    },
+    "vi": {
+      "title": "Podbag Training · Kết nối container với mạng thứ hai",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start network-connect.",
+      "url": "https://podbag.dev/vi/blog/network-connect/"
     }
   },
   "steps": [

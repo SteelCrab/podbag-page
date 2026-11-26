@@ -7,6 +7,11 @@ HEIGHT = 300
 ALT = {
     'en': 'The browser opens 127.0.0.1:18080, which leads to port 8080 of the web server lab-web in the practice session',
     'ko': '브라우저가 127.0.0.1:18080을 열면 실습 환경에 있는 웹 서버 lab-web의 8080 포트로 연결됩니다',
+    'ja': 'ブラウザーが 127.0.0.1:18080 を開くと、実習環境の Web サーバー lab-web のポート 8080 につながります',
+    'zh-CN': '浏览器打开 127.0.0.1:18080，请求会转到练习环境中 Web 服务器 lab-web 的 8080 端口',
+    'fil': 'Binubuksan ng browser ang 127.0.0.1:18080, na papunta sa port 8080 ng web server na lab-web sa practice session',
+    'es': 'El navegador abre 127.0.0.1:18080, que lleva al puerto 8080 del servidor web lab-web en la sesión de práctica',
+    'vi': 'Trình duyệt mở 127.0.0.1:18080, địa chỉ này dẫn tới cổng 8080 của máy chủ web lab-web trong phiên thực hành',
 }
 
 

@@ -12,6 +12,31 @@
       "title": "Podbag Training · Podbag에서 Docker CLI 사용하기",
       "guide": "podbag lab start docker-cli 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/docker-cli/"
+    },
+    "ja": {
+      "title": "Podbag Training · Podbag で Docker CLI を使う",
+      "guide": "podbag lab start docker-cli で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/docker-cli/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 在 Podbag 中使用 Docker CLI",
+      "guide": "用 podbag lab start docker-cli 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/docker-cli/"
+    },
+    "fil": {
+      "title": "Podbag Training · Gamitin ang Docker CLI kasama ang Podbag",
+      "guide": "Simulan ang session gamit ang podbag lab start docker-cli.",
+      "url": "https://podbag.dev/fil/blog/docker-cli/"
+    },
+    "es": {
+      "title": "Podbag Training · Usa la CLI de Docker con Podbag",
+      "guide": "Inicia la sesión con podbag lab start docker-cli.",
+      "url": "https://podbag.dev/es/blog/docker-cli/"
+    },
+    "vi": {
+      "title": "Podbag Training · Dùng Docker CLI với Podbag",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start docker-cli.",
+      "url": "https://podbag.dev/vi/blog/docker-cli/"
     }
   },
   "steps": [

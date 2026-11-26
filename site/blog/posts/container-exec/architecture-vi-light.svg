@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-label="Terminal chạy container app với biến GREETING=hello, rồi chạy các lệnh bên trong nó bằng podbag exec" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'Noto Sans CJK KR', sans-serif">
+<title>Terminal chạy container app với biến GREETING=hello, rồi chạy các lệnh bên trong nó bằng podbag exec</title>
+<defs><marker id="head-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="tail-arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="tail-accent" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="head-podbag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="tail-podbag" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="head-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker><marker id="tail-bad" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="960" height="330" rx="12" fill="#fcfcfb"/>
+<rect x="20" y="20" width="250" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7"/>
+<text x="38" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">Máy tính của bạn</text>
+<rect x="300" y="20" width="640" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7" stroke-dasharray="6 5"/>
+<text x="318" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">Phiên thực hành</text>
+<text x="318" y="67" font-size="11.5" fill="#52514e" text-anchor="start">tạm thời: bị xóa khi bạn gõ exit</text>
+<rect x="40" y="96" width="210" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="121.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">Terminal</text>
+<text x="54" y="139.0" font-size="11.5" fill="#52514e" text-anchor="start">podbag run -d · rm</text>
+<rect x="40" y="220" width="210" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="245.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">Terminal</text>
+<text x="54" y="263.0" font-size="11.5" fill="#52514e" text-anchor="start">podbag exec app …</text>
+<rect x="340" y="80" width="580" height="212" rx="10" fill="#ffffff" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="356" y="104" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">app</text>
+<text x="392" y="104" font-size="11.5" fill="#52514e" text-anchor="start">busybox · sleep 3600</text>
+<rect x="360" y="120" width="170" height="60" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="374" y="147.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">env</text>
+<text x="374" y="165.0" font-size="11.5" fill="#52514e" text-anchor="start">GREETING=hello</text>
+<rect x="550" y="120" width="170" height="60" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="564" y="147.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">/etc</text>
+<text x="564" y="165.0" font-size="11.5" fill="#52514e" text-anchor="start">hosts, hostname …</text>
+<rect x="740" y="120" width="160" height="60" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="754" y="147.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">/tmp</text>
+<text x="754" y="165.0" font-size="11.5" fill="#52514e" text-anchor="start">note.txt</text>
+<rect x="360" y="220" width="540" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="374" y="245.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">printenv · ls · sh -c · cat</text>
+<text x="374" y="263.0" font-size="11.5" fill="#52514e" text-anchor="start">tiến trình mới trong cùng container</text>
+<line x1="250" y1="124" x2="338" y2="124" stroke="#898781" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<text x="272.0" y="116.0" font-size="11.5" fill="#52514e" text-anchor="start">chạy</text>
+<line x1="250" y1="248" x2="356" y2="248" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<text x="281.0" y="240.0" font-size="11.5" fill="#52514e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">exec</text>
+<line x1="445" y1="220" x2="445" y2="182" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<text x="453.0" y="205.0" font-size="11.5" fill="#52514e" text-anchor="start">đọc</text>
+<line x1="635" y1="220" x2="635" y2="182" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<text x="643.0" y="205.0" font-size="11.5" fill="#52514e" text-anchor="start">liệt kê</text>
+<line x1="820" y1="220" x2="820" y2="182" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<text x="828.0" y="205.0" font-size="11.5" fill="#52514e" text-anchor="start">ghi, đọc</text>
+</svg>

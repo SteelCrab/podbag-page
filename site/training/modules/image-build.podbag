@@ -12,6 +12,31 @@
       "title": "Podbag Training · Dockerfile로 이미지 빌드하기",
       "guide": "podbag lab start image-build 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/image-build/"
+    },
+    "ja": {
+      "title": "Podbag Training · Dockerfile からイメージをビルドする",
+      "guide": "podbag lab start image-build で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/image-build/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 用 Dockerfile 构建镜像",
+      "guide": "用 podbag lab start image-build 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/image-build/"
+    },
+    "fil": {
+      "title": "Podbag Training · Mag-build ng image mula sa Dockerfile",
+      "guide": "Simulan ang session gamit ang podbag lab start image-build.",
+      "url": "https://podbag.dev/fil/blog/image-build/"
+    },
+    "es": {
+      "title": "Podbag Training · Crea una imagen a partir de un Dockerfile",
+      "guide": "Inicia la sesión con podbag lab start image-build.",
+      "url": "https://podbag.dev/es/blog/image-build/"
+    },
+    "vi": {
+      "title": "Podbag Training · Build image từ Dockerfile",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start image-build.",
+      "url": "https://podbag.dev/vi/blog/image-build/"
     }
   },
   "files": {

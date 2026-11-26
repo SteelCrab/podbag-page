@@ -7,13 +7,49 @@ HEIGHT = 330
 ALT = {
     'en': 'The terminal runs the container app with the variable GREETING=hello and then runs commands inside it with podbag exec',
     'ko': '터미널이 GREETING=hello 변수를 넣어 app 컨테이너를 실행하고, podbag exec로 그 안에서 명령을 실행합니다',
+    'ja': 'ターミナルが変数 GREETING=hello を付けてコンテナ app を実行し、podbag exec でその中のコマンドを実行します',
+    'zh-CN': '终端运行带有变量 GREETING=hello 的容器 app，然后用 podbag exec 在其中运行命令',
+    'fil': 'Pinapatakbo ng terminal ang container na app na may variable na GREETING=hello, at saka nagpapatakbo ng mga command sa loob nito gamit ang podbag exec',
+    'es': 'La terminal ejecuta el contenedor app con la variable GREETING=hello y luego ejecuta comandos dentro de él con podbag exec',
+    'vi': 'Terminal chạy container app với biến GREETING=hello, rồi chạy các lệnh bên trong nó bằng podbag exec',
 }
 
 WORDS = {
-    "en": {"exec_note": "a new process in the same container", "lists": "lists",
-           "writes_reads": "writes, reads"},
-    "ko": {"exec_note": "같은 컨테이너의 새 프로세스", "lists": "목록",
-           "writes_reads": "쓰기, 읽기"},
+    'en': {
+        'exec_note': 'a new process in the same container',
+        'lists': 'lists',
+        'writes_reads': 'writes, reads',
+    },
+    'ko': {
+        'exec_note': '같은 컨테이너의 새 프로세스',
+        'lists': '목록',
+        'writes_reads': '쓰기, 읽기',
+    },
+    'ja': {
+        'exec_note': '同じコンテナの新しいプロセス',
+        'lists': '一覧',
+        'writes_reads': '書き込み、読み取り',
+    },
+    'zh-CN': {
+        'exec_note': '同一容器中的新进程',
+        'lists': '列出',
+        'writes_reads': '写入、读取',
+    },
+    'fil': {
+        'exec_note': 'bagong proseso sa parehong container',
+        'lists': 'naglilista',
+        'writes_reads': 'nagsusulat, nagbabasa',
+    },
+    'es': {
+        'exec_note': 'un proceso nuevo en el mismo contenedor',
+        'lists': 'lista',
+        'writes_reads': 'escribe, lee',
+    },
+    'vi': {
+        'exec_note': 'tiến trình mới trong cùng container',
+        'lists': 'liệt kê',
+        'writes_reads': 'ghi, đọc',
+    },
 }
 
 

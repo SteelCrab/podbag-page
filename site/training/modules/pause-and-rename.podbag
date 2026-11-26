@@ -12,6 +12,31 @@
       "title": "Podbag Training · 컨테이너 일시 정지하고 이름 바꾸기",
       "guide": "podbag lab start pause-and-rename 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/pause-and-rename/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナを一時停止して名前を変更する",
+      "guide": "podbag lab start pause-and-rename で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/pause-and-rename/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 暂停并重命名容器",
+      "guide": "用 podbag lab start pause-and-rename 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/pause-and-rename/"
+    },
+    "fil": {
+      "title": "Podbag Training · I-pause at palitan ang pangalan ng container",
+      "guide": "Simulan ang session gamit ang podbag lab start pause-and-rename.",
+      "url": "https://podbag.dev/fil/blog/pause-and-rename/"
+    },
+    "es": {
+      "title": "Podbag Training · Pausa un contenedor y cambia su nombre",
+      "guide": "Inicia la sesión con podbag lab start pause-and-rename.",
+      "url": "https://podbag.dev/es/blog/pause-and-rename/"
+    },
+    "vi": {
+      "title": "Podbag Training · Tạm dừng và đổi tên container",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start pause-and-rename.",
+      "url": "https://podbag.dev/vi/blog/pause-and-rename/"
     }
   },
   "steps": [

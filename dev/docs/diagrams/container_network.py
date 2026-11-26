@@ -7,6 +7,11 @@ HEIGHT = 350
 ALT = {
     'en': 'On the network lab-net, a one-time container and the web server reach api by name; only web publishes a port, 127.0.0.1:18083',
     'ko': 'lab-net 네트워크에서 일회용 컨테이너와 web 서버가 이름으로 api에 접속합니다. 포트는 web만 127.0.0.1:18083으로 공개합니다',
+    'ja': 'ネットワーク lab-net 上で、1 回だけ動くコンテナと Web サーバーが名前で api に接続します。ポートを公開するのは web だけで、アドレスは 127.0.0.1:18083 です',
+    'zh-CN': '在网络 lab-net 中，一次性容器和 Web 服务器通过名称访问 api；只有 web 发布端口 127.0.0.1:18083',
+    'fil': 'Sa network na lab-net, naaabot ng isang beses na container at ng web server ang api gamit ang pangalan; web lang ang nagpa-publish ng port, 127.0.0.1:18083',
+    'es': 'En la red lab-net, un contenedor de un solo uso y el servidor web llegan a api por su nombre; solo web publica un puerto, 127.0.0.1:18083',
+    'vi': 'Trong mạng lab-net, một container dùng một lần và máy chủ web gọi api bằng tên; chỉ web công bố cổng 127.0.0.1:18083',
 }
 
 

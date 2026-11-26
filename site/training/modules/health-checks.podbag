@@ -12,6 +12,31 @@
       "title": "Podbag Training · 웹 서버 상태 검사하기",
       "guide": "podbag lab start health-checks 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/health-checks/"
+    },
+    "ja": {
+      "title": "Podbag Training · Web サーバーが正常か確認する",
+      "guide": "podbag lab start health-checks で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/health-checks/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 检查 Web 服务器是否健康",
+      "guide": "用 podbag lab start health-checks 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/health-checks/"
+    },
+    "fil": {
+      "title": "Podbag Training · Suriin kung healthy ang web server",
+      "guide": "Simulan ang session gamit ang podbag lab start health-checks.",
+      "url": "https://podbag.dev/fil/blog/health-checks/"
+    },
+    "es": {
+      "title": "Podbag Training · Comprueba que un servidor web está en buen estado",
+      "guide": "Inicia la sesión con podbag lab start health-checks.",
+      "url": "https://podbag.dev/es/blog/health-checks/"
+    },
+    "vi": {
+      "title": "Podbag Training · Kiểm tra máy chủ web có hoạt động tốt không",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start health-checks.",
+      "url": "https://podbag.dev/vi/blog/health-checks/"
     }
   },
   "steps": [

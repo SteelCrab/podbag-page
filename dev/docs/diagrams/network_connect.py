@@ -7,11 +7,42 @@ HEIGHT = 400
 ALT = {
     'en': 'The server api is on front-net with the alias backend and on back-net with the alias store; one-time containers on each network call it by those names',
     'ko': 'api 서버는 front-net에서 backend라는 별칭을, back-net에서 store라는 별칭을 가집니다. 각 네트워크의 일회용 컨테이너가 이 이름으로 api를 호출합니다',
+    'ja': 'サーバー api は front-net ではエイリアス backend、back-net ではエイリアス store を持ちます。各ネットワークの 1 回だけ動くコンテナが、その名前で api を呼び出します',
+    'zh-CN': '服务器 api 在 front-net 中使用别名 backend，在 back-net 中使用别名 store；每个网络中的一次性容器通过这些名称调用它',
+    'fil': 'Nasa front-net ang server na api na may alias na backend, at nasa back-net na may alias na store; tinatawag ito ng mga isang beses na container sa bawat network gamit ang mga pangalang iyon',
+    'es': 'El servidor api está en front-net con el alias backend y en back-net con el alias store; los contenedores de un solo uso de cada red lo llaman por esos nombres',
+    'vi': 'Máy chủ api ở trong front-net với bí danh backend và trong back-net với bí danh store; các container dùng một lần trong mỗi mạng gọi nó bằng các tên đó',
 }
 
 WORDS = {
-    "en": {"first": "first network", "connected": "connected while stopped"},
-    "ko": {"first": "첫 번째 네트워크", "connected": "중지된 상태에서 연결"},
+    'en': {
+        'first': 'first network',
+        'connected': 'connected while stopped',
+    },
+    'ko': {
+        'first': '첫 번째 네트워크',
+        'connected': '중지된 상태에서 연결',
+    },
+    'ja': {
+        'first': '最初のネットワーク',
+        'connected': '停止中に接続',
+    },
+    'zh-CN': {
+        'first': '第一个网络',
+        'connected': '停止时连接',
+    },
+    'fil': {
+        'first': 'unang network',
+        'connected': 'ikinonekta habang nakahinto',
+    },
+    'es': {
+        'first': 'primera red',
+        'connected': 'conectada con api detenido',
+    },
+    'vi': {
+        'first': 'mạng đầu tiên',
+        'connected': 'kết nối khi đã dừng',
+    },
 }
 
 

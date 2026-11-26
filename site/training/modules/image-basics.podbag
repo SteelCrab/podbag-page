@@ -11,6 +11,31 @@
       "title": "Podbag Training · 이미지 내려받고 이름 붙이고 삭제하기",
       "guide": "podbag lab start image-basics 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/image-basics/"
+    },
+    "ja": {
+      "title": "Podbag Training · イメージを取得し、タグを付けて削除する",
+      "guide": "podbag lab start image-basics で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/image-basics/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 拉取、标记和删除镜像",
+      "guide": "用 podbag lab start image-basics 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/image-basics/"
+    },
+    "fil": {
+      "title": "Podbag Training · Kunin, i-tag at alisin ang image",
+      "guide": "Simulan ang session gamit ang podbag lab start image-basics.",
+      "url": "https://podbag.dev/fil/blog/image-basics/"
+    },
+    "es": {
+      "title": "Podbag Training · Descarga, etiqueta y elimina una imagen",
+      "guide": "Inicia la sesión con podbag lab start image-basics.",
+      "url": "https://podbag.dev/es/blog/image-basics/"
+    },
+    "vi": {
+      "title": "Podbag Training · Kéo, gắn tag và xóa image",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start image-basics.",
+      "url": "https://podbag.dev/vi/blog/image-basics/"
     }
   },
   "steps": [

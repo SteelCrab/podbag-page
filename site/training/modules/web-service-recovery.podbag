@@ -12,6 +12,31 @@
       "title": "Podbag Training · 로그로 웹 서버 장애 해결하기",
       "guide": "podbag lab start web-service-recovery 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/web-service-recovery/"
+    },
+    "ja": {
+      "title": "Podbag Training · ログを使って Web サーバーを復旧する",
+      "guide": "podbag lab start web-service-recovery で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/web-service-recovery/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 用日志恢复 Web 服务器",
+      "guide": "用 podbag lab start web-service-recovery 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/web-service-recovery/"
+    },
+    "fil": {
+      "title": "Podbag Training · Ayusin ang web server gamit ang mga log",
+      "guide": "Simulan ang session gamit ang podbag lab start web-service-recovery.",
+      "url": "https://podbag.dev/fil/blog/web-service-recovery/"
+    },
+    "es": {
+      "title": "Podbag Training · Recupera un servidor web con los registros",
+      "guide": "Inicia la sesión con podbag lab start web-service-recovery.",
+      "url": "https://podbag.dev/es/blog/web-service-recovery/"
+    },
+    "vi": {
+      "title": "Podbag Training · Khôi phục máy chủ web bằng nhật ký",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start web-service-recovery.",
+      "url": "https://podbag.dev/vi/blog/web-service-recovery/"
     }
   },
   "steps": [

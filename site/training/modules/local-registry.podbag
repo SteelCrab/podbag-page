@@ -12,6 +12,31 @@
       "title": "Podbag Training · 로컬 레지스트리에 push하고 pull하기",
       "guide": "podbag lab start local-registry 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/local-registry/"
+    },
+    "ja": {
+      "title": "Podbag Training · ローカルレジストリで push と pull を行う",
+      "guide": "podbag lab start local-registry で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/local-registry/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 用本地镜像仓库推送和拉取",
+      "guide": "用 podbag lab start local-registry 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/local-registry/"
+    },
+    "fil": {
+      "title": "Podbag Training · Mag-push at mag-pull gamit ang lokal na registry",
+      "guide": "Simulan ang session gamit ang podbag lab start local-registry.",
+      "url": "https://podbag.dev/fil/blog/local-registry/"
+    },
+    "es": {
+      "title": "Podbag Training · Sube y descarga una imagen con un registro local",
+      "guide": "Inicia la sesión con podbag lab start local-registry.",
+      "url": "https://podbag.dev/es/blog/local-registry/"
+    },
+    "vi": {
+      "title": "Podbag Training · Đẩy và kéo image với registry cục bộ",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start local-registry.",
+      "url": "https://podbag.dev/vi/blog/local-registry/"
     }
   },
   "steps": [

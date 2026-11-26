@@ -7,6 +7,11 @@ HEIGHT = 320
 ALT = {
     'en': 'app-a writes note.txt into the volume training-data and app-b reads it; the volume stays after both containers are removed',
     'ko': 'app-a가 training-data 볼륨에 note.txt를 쓰고 app-b가 읽습니다. 두 컨테이너를 지워도 볼륨은 남습니다',
+    'ja': 'app-a がボリューム training-data に note.txt を書き、app-b がそれを読みます。両方のコンテナを削除してもボリュームは残ります',
+    'zh-CN': 'app-a 将 note.txt 写入卷 training-data，app-b 读取该文件；删除两个容器后，卷仍然保留',
+    'fil': 'Isinusulat ng app-a ang note.txt sa volume na training-data at binabasa ito ng app-b; nananatili ang volume pagkatapos maalis ang dalawang container',
+    'es': 'app-a escribe note.txt en el volumen training-data y app-b lo lee; el volumen sigue ahí después de eliminar los dos contenedores',
+    'vi': 'app-a ghi note.txt vào volume training-data và app-b đọc tệp đó; volume vẫn còn sau khi cả hai container bị xóa',
 }
 
 

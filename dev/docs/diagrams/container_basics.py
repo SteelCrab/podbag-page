@@ -7,6 +7,11 @@ HEIGHT = 300
 ALT = {
     'en': 'The terminal runs the container hello-web from the busybox image in the practice session; Podbag Desktop stops it',
     'ko': '터미널이 실습 환경에서 busybox 이미지로 hello-web 컨테이너를 실행하고, Podbag Desktop이 이 컨테이너를 중지합니다',
+    'ja': 'ターミナルが実習環境で busybox イメージから hello-web コンテナを実行し、Podbag Desktop がそれを停止します',
+    'zh-CN': '终端在练习环境中用 busybox 镜像运行容器 hello-web，Podbag Desktop 停止该容器',
+    'fil': 'Pinapatakbo ng terminal ang container na hello-web mula sa image na busybox sa practice session; inihihinto ito ng Podbag Desktop',
+    'es': 'La terminal ejecuta el contenedor hello-web desde la imagen busybox en la sesión de práctica; Podbag Desktop lo detiene',
+    'vi': 'Terminal chạy container hello-web từ image busybox trong phiên thực hành; Podbag Desktop dừng container này',
 }
 
 

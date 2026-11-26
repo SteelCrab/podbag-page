@@ -11,6 +11,31 @@
       "title": "Podbag Training · 컨테이너의 생성부터 삭제까지 따라가기",
       "guide": "podbag lab start container-lifecycle 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/container-lifecycle/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナの作成から削除までをたどる",
+      "guide": "podbag lab start container-lifecycle で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/container-lifecycle/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 跟踪容器从创建到删除的全过程",
+      "guide": "用 podbag lab start container-lifecycle 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/container-lifecycle/"
+    },
+    "fil": {
+      "title": "Podbag Training · Sundan ang container mula sa paggawa hanggang sa pag-alis",
+      "guide": "Simulan ang session gamit ang podbag lab start container-lifecycle.",
+      "url": "https://podbag.dev/fil/blog/container-lifecycle/"
+    },
+    "es": {
+      "title": "Podbag Training · Sigue un contenedor desde su creación hasta su eliminación",
+      "guide": "Inicia la sesión con podbag lab start container-lifecycle.",
+      "url": "https://podbag.dev/es/blog/container-lifecycle/"
+    },
+    "vi": {
+      "title": "Podbag Training · Theo dõi container từ lúc tạo đến lúc xóa",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start container-lifecycle.",
+      "url": "https://podbag.dev/vi/blog/container-lifecycle/"
     }
   },
   "steps": [

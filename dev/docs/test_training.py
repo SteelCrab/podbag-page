@@ -351,6 +351,26 @@ class Built(unittest.TestCase):
             for name in IDS:
                 self.assertRegex(item(html, name), r"\d", (code, name))
 
+    def test_every_module_speaks_every_language(self):
+        """Each module's guide is written, and its title given, in all seven languages; each
+        translation's guide link is that language's page."""
+        posts = HERE.parents[1] / "site/blog/posts"
+        langs = [code for code, _ in self.site.LANGS]
+        for name in IDS:
+            module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+            words = module["translations"]
+            with self.subTest(name):
+                self.assertEqual(sorted(words), sorted(langs))
+                if module["format"] in training.COURSES:
+                    slug = words["en"]["url"].rstrip("/").rsplit("/", 1)[1]
+                    for code in langs:
+                        self.assertEqual(words[code]["url"],
+                                         f"https://podbag.dev/{self.site.path_of(code)}blog/{slug}/")
+                else:
+                    slug = training.LEGACY_GUIDES[name]
+                for code in langs:
+                    self.assertTrue((posts / slug / f"{code}.md").is_file(), (slug, code))
+
     def test_every_guide_opens_with_its_architecture(self):
         """The first picture of a Training guide, before its first section, shows what the
         module builds, in both themes."""
@@ -407,10 +427,10 @@ class Built(unittest.TestCase):
         ko = (self.out / "ko/training/index.html").read_text()
         ja = (self.out / "ja/training/index.html").read_text()
         self.assertIn('href="../../ko/blog/container-basics/"', ko)
-        self.assertIn('href="../../blog/container-basics/"', ja)
+        self.assertIn('href="../../ja/blog/container-basics/"', ja)
         self.assertIn('href="../../ja/blog/cli-tui-volumes/"', ja)
         self.assertIn('href="../../ko/blog/web-basics/"', ko)
-        self.assertIn('href="../../blog/web-basics/"', ja)
+        self.assertIn('href="../../ja/blog/web-basics/"', ja)
 
     def test_pages_name_each_other(self):
         for code, _ in self.site.LANGS:
