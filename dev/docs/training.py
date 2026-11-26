@@ -12,7 +12,13 @@ stops on a bad file. Then it writes:
 - /training/modules/<id>.podbag: the files, byte for byte.
 - /training/catalog.json: {"format": "podbag-training-catalog-v1", "modules": [{"id", "file",
   "sha256"}, …]}. The apps read it to find new and changed modules.
-- /training/ and /<lang>/training/: a page that lists the modules.
+- /training/ and /<lang>/training/: a page that lists the modules (the "GUI" tab).
+- /training/tui/ and /<lang>/training/tui/: how to use `podbag tui` (the "TUI" tab): the
+  main keys and the TUI guides (blog posts) from tui.json, as cards. The TUI has no
+  practice module.
+
+tui.json: {"guides": ["<post slug>", …], "minutes": {"<slug>": 5},
+"keys": [{"keys": ["a", "F2"], "words": {"<lang>": "…"}}, …]}, with words in every language.
 
 The rules for a module file:
 
@@ -59,7 +65,6 @@ LEGACY = {
 LEGACY_GUIDES = {
     "container-basics": "container-basics",
     "volume-basics": "cli-tui-volumes",
-    "tui-volumes": "cli-tui-volumes",
 }
 # The apps refuse a larger module file.
 LIMIT = 65536
@@ -331,6 +336,36 @@ def load(folder):
     return modules
 
 
+def load_tui(source, langs):
+    """SOURCE (site/training/tui.json) when it is a good list of TUI guides and keys."""
+    where = "site/training/tui.json"
+    guides = source.get("guides") if isinstance(source, dict) else None
+    if not isinstance(guides, list) or not guides:
+        raise SystemExit(f'{where}: write {{"guides": ["<post slug>", …]}}')
+    times = source.get("minutes")
+    times = times if isinstance(times, dict) else {}
+    for n, slug in enumerate(guides):
+        if not isinstance(slug, str) or not ID.fullmatch(slug):
+            raise SystemExit(f"{where}: bad guide {slug!r}")
+        if slug in guides[:n]:
+            raise SystemExit(f"{where}: {slug} is listed twice")
+        minutes = times.get(slug)
+        if not (type(minutes) is int and 1 <= minutes <= 240):
+            raise SystemExit(f"{where}: minutes of {slug} must be a number from 1 to 240")
+    keys = source.get("keys")
+    if not isinstance(keys, list) or not keys:
+        raise SystemExit(f'{where}: write {{"keys": [{{"keys": ["q"], "words": {{…}}}}]}}')
+    for n, row in enumerate(keys, 1):
+        names = row.get("keys") if isinstance(row, dict) else None
+        if not isinstance(names, list) or not names or not all(plain(k) for k in names):
+            raise SystemExit(f"{where}: key row {n} needs keys")
+        words = row.get("words")
+        for lang in langs:
+            if not isinstance(words, dict) or not plain(words.get(lang)):
+                raise SystemExit(f"{where}: key row {n} has no {lang} words")
+    return source
+
+
 def catalog(modules):
     """The served catalog.json text."""
     entries = [{"id": name, "file": f"modules/{name}.podbag", "sha256": sha256(raw).hexdigest()}
@@ -345,14 +380,38 @@ def short_title(title):
 
 
 class Hub:
-    """Writes /training/ and /<lang>/training/ with the blog's layout."""
+    """Writes /training/ (GUI practice) and /training/tui/ (the TUI guide) in each language,
+    with the blog's layout."""
 
-    def __init__(self, out, site, words, modules):
-        self.out, self.site, self.words, self.modules = out, site, words, modules
+    def __init__(self, out, site, words, modules, tui):
+        self.out, self.site, self.words, self.modules, self.tui = out, site, words, modules, tui
         self.pages = blog.Builder(out, site, words)
 
     def path(self, lang):
         return self.site.path_of(lang) + "training/"
+
+    def tui_path(self, lang):
+        return self.path(lang) + "tui/"
+
+    def time(self, minutes, w):
+        if len(minutes) == 1:
+            return w["training_time"].replace("{n}", str(minutes[0]))
+        return (w["training_time_range"].replace("{min}", str(minutes[0]))
+                .replace("{max}", str(minutes[1])))
+
+    def card(self, kind, name, title, post, href, facts, root, extra=""):
+        """A card like the blog's lists: POST's picture, then TITLE and the post's summary."""
+        src, size = self.pages.image_url(post, root)
+        dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
+        sep = '<span class="sep" aria-hidden="true">|</span>'
+        return (f'<li class="post-card {kind} reveal" id="{name}">'
+                f'<a class="thumb" href="{href}" tabindex="-1" aria-hidden="true">'
+                f'<img src="{src}" alt=""{dims} loading="lazy"></a>'
+                f'<div class="post-text"><h3 class="post-title"><a href="{href}">'
+                f'{html.escape(title)}</a></h3>'
+                f'<p class="meta">{sep.join(f"<span>{f}</span>" for f in facts)}</p>'
+                f'<p class="summary">{blog.inline(post.summary, post.lang)}</p>'
+                f"{extra}</div></li>")
 
     def guide(self, name, module, lang, root):
         """The guide's address from the page."""
@@ -369,26 +428,11 @@ class Hub:
     def item(self, name, module, minutes, lang, root, w):
         words = module["translations"].get(lang) or {}
         title = short_title(words.get("title") or module["translations"]["en"]["title"])
-        if len(minutes) == 1:
-            time = w["training_time"].replace("{n}", str(minutes[0]))
-        else:
-            time = (w["training_time_range"].replace("{min}", str(minutes[0]))
-                    .replace("{max}", str(minutes[1])))
-        facts = [time, f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>']
-        sep = '<span class="sep" aria-hidden="true">|</span>'
+        facts = [self.time(minutes, w),
+                 f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>']
         start = blog.code_block(f"podbag lab start {name}", "sh", lang, blog.copy_button(w))
-        href = self.guide(name, module, lang, root)
-        post = self.post(name, module, lang)
-        # A card like the blog's lists: the guide's picture, then the title and summary.
-        src, size = self.pages.image_url(post, root)
-        dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
-        return (f'<li class="post-card module reveal" id="{name}">'
-                f'<a class="thumb" href="{href}" tabindex="-1" aria-hidden="true">'
-                f'<img src="{src}" alt=""{dims} loading="lazy"></a>'
-                f'<div class="post-text"><h3 class="post-title"><a href="{href}">{html.escape(title)}</a></h3>'
-                f'<p class="meta">{sep.join(f"<span>{f}</span>" for f in facts)}</p>'
-                f'<p class="summary">{blog.inline(post.summary, post.lang)}</p>'
-                f"{start}</div></li>")
+        return self.card("module", name, title, self.post(name, module, lang),
+                         self.guide(name, module, lang, root), facts, root, start)
 
     def post(self, name, module, lang):
         """The module's guide post in LANG, or in English when it has none."""
@@ -396,11 +440,15 @@ class Hub:
             slug = module["translations"]["en"]["url"].rstrip("/").rsplit("/", 1)[1]
         else:
             slug = LEGACY_GUIDES[name]
+        return self.find(slug, lang, f"{name}: no guide post {slug}")
+
+    def find(self, slug, lang, missing):
+        """The blog post SLUG in LANG, or in English when it has none."""
         for code in (lang, "en"):
             for post in self.pages.posts[code]:
                 if post.slug == slug:
                     return post
-        raise ValueError(f"{name}: no guide post {slug}")
+        raise SystemExit(missing)
 
     def side(self, lang, w, root):
         install = blog.code_block("curl -fsSL https://podbag.dev/install.sh | sh",
@@ -414,24 +462,24 @@ class Hub:
                 f'<li><a href="https://github.com/SteelCrab/podbag/releases">{w["footer_releases"]}</a></li>'
                 f"</ul></section></aside>")
 
-    def page(self, lang):
-        w = self.words[lang]
-        path = self.path(lang)
-        root = "../" * path.count("/")
-        items = "".join(self.item(name, module, minutes, lang, root, w)
-                        for name, _, module, minutes in self.modules)
-        listing = blog.code_block("podbag lab list", "sh", lang, blog.copy_button(w))
-        content = (f'<div class="training">'
-                   f'<p>{w["training_refresh"]}</p><p>{w["training_cli"]}</p>{listing}'
-                   f'<h2 class="list-title">{w["training_modules"]}</h2>'
-                   f'<ul class="modules" role="list">{items}</ul>'
-                   f'<h2 class="list-title">{w["training_outside_title"]}</h2>'
-                   f'<p>{w["training_outside"]}</p></div>')
-        band = (f'<div class="band training-band"><div class="wrap">'
+    def band(self, lang, w, root, current, lead):
+        """The title, LEAD and the two tabs: GUI practice and the TUI guide (CURRENT: 0 or 1)."""
+        tabs = [(root + self.path(lang), w["training_tab_gui"]),
+                (root + self.tui_path(lang), w["training_tab_tui"])]
+        nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if n == current else ""}>{label}</a>'
+                      for n, (h, label) in enumerate(tabs))
+        return (f'<div class="band training-band"><div class="wrap">'
                 f'<h1 class="band-title">{w["training_title"]}</h1>'
-                f'<p class="band-sub">{w["training_lead"]}</p></div></div>')
-        paths = {c: self.path(c) for c in self.pages.langs}
-        title, description = blog.strip(w["training_title"]), blog.strip(w["training_description"])
+                f'<p class="band-sub">{lead}</p>'
+                f'<nav class="band-nav" aria-label="{blog.attr(w["training_tabs"])}">{nav}</nav>'
+                f"</div></div>")
+
+    def write(self, lang, path_of, title, description, band, content):
+        w = self.words[lang]
+        path = path_of(lang)
+        root = "../" * path.count("/")
+        paths = {c: path_of(c) for c in self.pages.langs}
+        title, description = blog.strip(title), blog.strip(description)
         url = self.site.URL + path
         image = self.site.URL + "images/logo.png"
         self.pages.page(lang, path, {
@@ -443,6 +491,44 @@ class Hub:
             "band": band, "content": content, "side": self.side(lang, w, root),
         })
 
+    def page(self, lang):
+        w = self.words[lang]
+        root = "../" * self.path(lang).count("/")
+        items = "".join(self.item(name, module, minutes, lang, root, w)
+                        for name, _, module, minutes in self.modules)
+        listing = blog.code_block("podbag lab list", "sh", lang, blog.copy_button(w))
+        content = (f'<div class="training">'
+                   f'<p>{w["training_refresh"]}</p><p>{w["training_cli"]}</p>{listing}'
+                   f'<h2 class="list-title">{w["training_modules"]}</h2>'
+                   f'<ul class="modules" role="list">{items}</ul>'
+                   f'<h2 class="list-title">{w["training_outside_title"]}</h2>'
+                   f'<p>{w["training_outside"]}</p></div>')
+        self.write(lang, self.path, w["training_title"], w["training_description"],
+                   self.band(lang, w, root, 0, w["training_lead"]), content)
+
+    def tui_page(self, lang):
+        w = self.words[lang]
+        root = "../" * self.tui_path(lang).count("/")
+        items = []
+        for slug in self.tui["guides"]:
+            post = self.find(slug, lang, f"site/training/tui.json: no blog post {slug}")
+            items.append(self.card("guide", slug, short_title(post.title), post,
+                                   root + self.pages.post_path(post),
+                                   [self.time([self.tui["minutes"][slug]], w)], root))
+        rows = "".join(
+            "<tr><td>" + " ".join(f"<kbd>{html.escape(k)}</kbd>" for k in row["keys"])
+            + f'</td><td>{html.escape(row["words"][lang])}</td></tr>' for row in self.tui["keys"])
+        start = blog.code_block("podbag tui", "sh", lang, blog.copy_button(w))
+        content = (f'<div class="training">'
+                   f'<p>{w["tui_intro"]}</p>{start}'
+                   f'<h2 class="list-title">{w["tui_keys"]}</h2>'
+                   f'<table class="keys"><thead><tr><th scope="col">{w["tui_key"]}</th>'
+                   f'<th scope="col">{w["tui_action"]}</th></tr></thead><tbody>{rows}</tbody></table>'
+                   f'<h2 class="list-title">{w["tui_guides"]}</h2>'
+                   f'<ul class="modules" role="list">{"".join(items)}</ul></div>')
+        self.write(lang, self.tui_path, w["tui_title"], w["tui_description"],
+                   self.band(lang, w, root, 1, w["tui_lead"]), content)
+
 
 def build(out, site, words):
     """Check the modules and write the catalog and the pages into OUT; return the module count."""
@@ -452,7 +538,13 @@ def build(out, site, words):
     for name, raw, *_ in modules:
         (target / f"{name}.podbag").write_bytes(raw)
     (out / "training" / "catalog.json").write_text(catalog(modules))
-    hub = Hub(out, site, words, modules)
+    try:
+        source = json.loads((site.SITE / "training" / "tui.json").read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        raise SystemExit(f"site/training/tui.json: {error}")
+    tui = load_tui(source, [code for code, _ in site.LANGS])
+    hub = Hub(out, site, words, modules, tui)
     for code, _ in site.LANGS:
         hub.page(code)
+        hub.tui_page(code)
     return len(modules)

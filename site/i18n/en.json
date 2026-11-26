@@ -184,5 +184,16 @@
   "training_guide": "Read the guide",
   "training_download": "Download the file",
   "training_side": "About Training",
-  "training_guides": "Guides on the blog"
+  "training_guides": "Guides on the blog",
+  "training_tabs": "Training sections",
+  "training_tab_gui": "GUI practice",
+  "training_tab_tui": "How to use the TUI",
+  "tui_title": "How to use the Podbag TUI",
+  "tui_description": "How to use podbag tui, the terminal dashboard: the main keys and short guides for containers, images, volumes, networks, engines and settings.",
+  "tui_lead": "podbag tui shows your containers, images, volumes and networks in the terminal. Pick a topic and read how to use it.",
+  "tui_intro": "Run this command in a terminal. The TUI works with podbag and with other Docker API engines, such as Docker and Podman.",
+  "tui_keys": "Main keys",
+  "tui_key": "Key",
+  "tui_action": "What it does",
+  "tui_guides": "Guides"
 }

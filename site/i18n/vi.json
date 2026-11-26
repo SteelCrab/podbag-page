@@ -184,5 +184,16 @@
   "training_guide": "Đọc hướng dẫn",
   "training_download": "Tải tệp",
   "training_side": "Về Thực hành",
-  "training_guides": "Hướng dẫn trên blog"
+  "training_guides": "Hướng dẫn trên blog",
+  "training_tabs": "Các mục Thực hành",
+  "training_tab_gui": "Thực hành GUI",
+  "training_tab_tui": "Cách dùng TUI",
+  "tui_title": "Cách dùng Podbag TUI",
+  "tui_description": "Cách dùng podbag tui, bảng điều khiển trong terminal: các phím chính và hướng dẫn ngắn về container, image, volume, network, engine và cài đặt.",
+  "tui_lead": "podbag tui hiển thị container, image, volume và network trong terminal. Chọn một chủ đề và đọc cách dùng.",
+  "tui_intro": "Chạy lệnh này trong terminal. TUI dùng được với podbag và các engine Docker API khác, như Docker và Podman.",
+  "tui_keys": "Các phím chính",
+  "tui_key": "Phím",
+  "tui_action": "Tác dụng",
+  "tui_guides": "Hướng dẫn"
 }
