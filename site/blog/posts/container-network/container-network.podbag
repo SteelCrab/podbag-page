@@ -1,0 +1,13 @@
+{
+  "format": "podbag-container-network-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Connect two containers by name",
+      "guide": "Start the session with podbag lab start container-network."
+    },
+    "ko": {
+      "title": "Podbag Training · 이름으로 컨테이너 두 개 연결하기",
+      "guide": "podbag lab start container-network 명령으로 실습을 시작합니다."
+    }
+  }
+}

@@ -89,3 +89,5 @@ exit
 임시 실습 환경이 정리되면 Training에서 **수업 완료**를 확인합니다.
 
 ![복구 트레이닝이 완료된 화면](complete-ko.png)
+
+[다음 트레이닝 · 이름으로 컨테이너 두 개 연결하기](/ko/blog/container-network/)

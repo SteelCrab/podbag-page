@@ -76,3 +76,7 @@
 /blog/web-service-recovery/web-service-recovery.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="web-service-recovery.podbag"
+
+/blog/container-network/container-network.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="container-network.podbag"

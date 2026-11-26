@@ -89,3 +89,5 @@ exit
 The temporary practice resources are removed. Training shows the module as complete.
 
 ![Training records the completed recovery lab](complete-en.png)
+
+[Next Training module · Connect two containers by name](../container-network/)
