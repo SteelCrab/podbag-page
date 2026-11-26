@@ -60,12 +60,11 @@ The GPUI binary carries its own renderer. Tauri relies on the WebView that macOS
 ## What it means for Podbag Desktop
 
 - GPUI started faster, drew faster and used less memory. Tauri used less CPU at rest.
-- Moving would mean rewriting about 10,000 lines of interface code, the seven-language string files and the browser-based UI tests.
+- Moving would mean rewriting about {{n:4600}} lines of interface code (JavaScript, HTML and CSS), the string files in seven languages ({{n:422}} lines each) and about {{n:1000}} lines of browser-based UI tests.
 - GPUI 0.2.2 has platform code for macOS, Linux and Windows. We tested macOS only.
-- We found no screen reader support in gpui 0.2.2. Podbag Desktop gets accessibility from WebKit today.
 - The GPUI API is still pre-1.0, and its documentation is mostly the Zed source and examples.
 
-The cheapest gain is inside the current app. A virtual list cut the 10,000-row startup from {{n:626}} ms to {{n:295}} ms and memory from {{n:266.9}} MiB to {{n:83.9}} MiB. We will keep watching GPUI, especially for accessibility and a stable API.
+The cheapest gain is inside the current app. A virtual list cut the 10,000-row startup from {{n:626}} ms to {{n:295}} ms and memory from {{n:266.9}} MiB to {{n:83.9}} MiB. We will keep watching GPUI, especially for a stable API.
 
 ## Limits
 

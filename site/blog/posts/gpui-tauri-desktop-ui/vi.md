@@ -60,12 +60,11 @@ Tệp thực thi GPUI mang theo bộ vẽ riêng. Tauri dùng WebView có sẵn 
 ## Ý nghĩa với Podbag Desktop
 
 - GPUI khởi động nhanh hơn, vẽ nhanh hơn và dùng ít bộ nhớ hơn. Khi rảnh, Tauri dùng ít CPU hơn.
-- Chuyển sang GPUI nghĩa là viết lại khoảng 10.000 dòng mã giao diện, các tệp chuỗi bảy ngôn ngữ và các bài kiểm thử giao diện chạy trên trình duyệt.
+- Chuyển sang GPUI nghĩa là viết lại khoảng {{n:4600}} dòng mã giao diện (JavaScript, HTML và CSS), các tệp chuỗi bảy ngôn ngữ (mỗi tệp {{n:422}} dòng) và khoảng {{n:1000}} dòng kiểm thử giao diện chạy trên trình duyệt.
 - gpui 0.2.2 có mã nền tảng cho macOS, Linux và Windows. Chúng tôi chỉ thử trên macOS.
-- Chúng tôi không tìm thấy hỗ trợ trình đọc màn hình trong gpui 0.2.2. Hiện Podbag Desktop có trợ năng nhờ WebKit.
 - API của GPUI vẫn ở trước bản 1.0, và tài liệu chủ yếu là mã nguồn và ví dụ của Zed.
 
-Cải thiện rẻ nhất nằm ngay trong ứng dụng hiện tại. Danh sách ảo giảm thời gian khởi động với 10.000 hàng từ {{n:626}} ms xuống {{n:295}} ms, và bộ nhớ từ {{n:266.9}} MiB xuống {{n:83.9}} MiB. Chúng tôi sẽ tiếp tục theo dõi GPUI, nhất là về trợ năng và một API ổn định.
+Cải thiện rẻ nhất nằm ngay trong ứng dụng hiện tại. Danh sách ảo giảm thời gian khởi động với 10.000 hàng từ {{n:626}} ms xuống {{n:295}} ms, và bộ nhớ từ {{n:266.9}} MiB xuống {{n:83.9}} MiB. Chúng tôi sẽ tiếp tục theo dõi GPUI, nhất là sự ổn định của API.
 
 ## Giới hạn
 
