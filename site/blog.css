@@ -200,6 +200,25 @@ html:not(.can-share) [data-native] { display: none; }
 .related { margin-top: 36px; }
 .related time { flex: none; color: var(--muted); font-size: 14px; }
 
+/* The training page: the modules in order */
+.training-band .wrap { padding-bottom: 30px; }
+.training { min-width: 0; }
+.training > p { margin: 0 0 10px; color: var(--ink-2); max-width: 70ch; }
+.training > .code { max-width: 70ch; }
+.modules { list-style: none; margin: 0; padding: 0; }
+.module {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 18px;
+  padding: 24px 0; border-bottom: 1px solid var(--line);
+}
+.module-number {
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--band); color: var(--band-ink); font-weight: 800; font-variant-numeric: tabular-nums;
+}
+.module .post-title { margin-top: 6px; }
+.module .meta a { white-space: nowrap; }
+.module .code { margin-bottom: 0; }
+.module .code pre { padding-inline-end: 16px; }
+
 @media print {
   .band-nav, .side, .share-bar, .share-wrap, .post-nav { display: none; }
   .band { color: var(--ink); background: none; }

@@ -1,0 +1,13 @@
+{
+  "format": "podbag-web-service-recovery-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Recover a web server with logs",
+      "guide": "Start the session with podbag lab start web-service-recovery."
+    },
+    "ko": {
+      "title": "Podbag Training · 로그로 웹 서버 장애 해결하기",
+      "guide": "podbag lab start web-service-recovery 명령으로 실습을 시작합니다."
+    }
+  }
+}

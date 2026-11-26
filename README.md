@@ -9,6 +9,7 @@ The website of [podbag](https://github.com/SteelCrab/podbag): [podbag.dev](https
 - [What is here](#what-is-here)
 - [Build it](#build-it)
 - [Write a blog post](#write-a-blog-post)
+- [Add a Training module](#add-a-training-module)
 - [Deploy it](#deploy-it)
 - [License](#license)
 
@@ -18,6 +19,7 @@ The website of [podbag](https://github.com/SteelCrab/podbag): [podbag.dev](https
   (en, ko, ja, zh-CN, fil, es, vi).
 - `site/style.css`, `site/main.js`, `site/404.html`, `site/_headers`: the rest of the site.
 - `dev/docs/site.py`: builds every language into one folder.
+- `site/training/`: the Training modules and their list. See [Add a Training module](#add-a-training-module).
 - `site/cloudflare.config.ts`: the Cloudflare Worker that serves the folder.
 
 The build also takes these from the podbag repository:
@@ -60,9 +62,28 @@ python3 -m http.server -d _site 8000                     # look at it
 
 ```sh
 python3 dev/docs/site.py _site
-python3 -m unittest dev/docs/test_blog.py
+python3 -m unittest dev/docs/test_blog.py dev/docs/test_training.py
 python3 dev/docs/check_links.py _site
 ```
+
+## Add a Training module
+
+Podbag Desktop and the CLI read the module list at `https://podbag.dev/training/catalog.json`.
+A new module needs no app release.
+
+- Put the file in `site/training/modules/<id>.podbag`. The `id` in the file must be the file
+  name.
+- The file is JSON in the `podbag-course-v1` format, at most 65,536 bytes. The rules are at the
+  top of `dev/docs/training.py`.
+- Add the id to `site/training/catalog.json`. The list order is the order in the apps and
+  on `/training/`.
+- Write the guide as a blog post (see above). Point `translations.<lang>.url` in the module
+  to it.
+- Run the checks above. The build stops on a bad module file and says why.
+- After a deploy, Desktop shows the module after **Refresh** in **Training** or a restart.
+  `podbag lab list` shows it in the CLI.
+- To change a module, change its file. The apps see the new file by its SHA-256 and keep
+  the completion record.
 
 ## Deploy it
 

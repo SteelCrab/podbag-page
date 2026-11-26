@@ -169,5 +169,17 @@
   "blog_tags": "标签",
   "blog_related": "相关文章",
   "blog_older": "上一篇",
-  "blog_newer": "下一篇"
+  "blog_newer": "下一篇",
+  "nav_training": "实训",
+  "training_title": "Podbag Training",
+  "training_description": "podbag 的实训模块。用一条命令在 Podbag Desktop 和 CLI 中开始。",
+  "training_lead": "在 Podbag Desktop 和 CLI 中完成的简短实训。选择模块，阅读指南，然后开始。",
+  "training_refresh": "新模块来自本页面。在 Podbag Desktop 的 <b>Training</b> 中选择<b>刷新</b>，或重新启动应用后即可看到。",
+  "training_cli": "在 CLI 中，用这条命令列出模块：",
+  "training_modules": "模块",
+  "training_steps": "{n} 个步骤",
+  "training_guide": "阅读指南",
+  "training_download": "下载文件",
+  "training_side": "关于实训",
+  "training_guides": "博客中的指南"
 }

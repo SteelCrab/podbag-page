@@ -1,0 +1,61 @@
+{
+  "format": "podbag-container-basics-v1",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Run a container",
+      "intro": {
+        "title": "Image and container",
+        "text": "An image contains the files a program needs. A container runs the program from that image. Start a small web server in the CLI and stop it from Podbag Desktop."
+      },
+      "guide": "Run the web server at the container-lab prompt.\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nIn Desktop, open Practice containers and stop hello-web.\n  podbag ps -a\nCheck that hello-web is Exited, then leave the session.\n  exit"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너 실행하기",
+      "intro": {
+        "title": "이미지와 컨테이너",
+        "text": "이미지에는 프로그램 실행에 필요한 파일이 들어 있습니다. 컨테이너는 그 이미지의 프로그램을 실행합니다. CLI로 작은 웹 서버를 시작하고 Podbag Desktop에서 중지해 봅니다."
+      },
+      "guide": "container-lab 프롬프트에서 웹 서버를 실행합니다.\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nDesktop에서 실습 컨테이너를 열고 hello-web을 중지합니다.\n  podbag ps -a\nhello-web의 상태가 Exited인지 확인하고 실습을 종료합니다.\n  exit"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナを実行する",
+      "intro": {
+        "title": "イメージとコンテナ",
+        "text": "イメージにはプログラムを実行するためのファイルが含まれます。コンテナはイメージからプログラムを実行します。CLI で小さなウェブサーバーを起動し、Podbag Desktop で停止します。"
+      },
+      "guide": "container-lab でウェブサーバーを起動します。\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nDesktop の実習コンテナで hello-web を停止します。\n  podbag ps -a\nhello-web が Exited になったことを確認して、実習を終了します。\n  exit"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 运行容器",
+      "intro": {
+        "title": "镜像和容器",
+        "text": "镜像包含程序运行所需的文件。容器从镜像运行程序。先用 CLI 启动一个小型 Web 服务器，再在 Podbag Desktop 中停止它。"
+      },
+      "guide": "在 container-lab 提示符下运行服务器。\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\n在 Desktop 的实验容器中停止 hello-web。\n  podbag ps -a\n确认 hello-web 为 Exited，然后结束实验。\n  exit"
+    },
+    "es": {
+      "title": "Podbag Training · Ejecuta un contenedor",
+      "intro": {
+        "title": "Imagen y contenedor",
+        "text": "Una imagen contiene los archivos del programa. Un contenedor ejecuta el programa de esa imagen. Inicia un servidor web en la CLI y detenlo en Podbag Desktop."
+      },
+      "guide": "Inicia el servidor en el prompt container-lab.\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nAbre Contenedores de práctica en Desktop y detén hello-web.\n  podbag ps -a\nComprueba que hello-web muestre Exited y termina la sesión.\n  exit"
+    },
+    "fil": {
+      "title": "Podbag Training · Magpatakbo ng container",
+      "intro": {
+        "title": "Image at container",
+        "text": "Nasa image ang mga file na kailangan ng programa. Pinapatakbo ng container ang programa mula sa image. Magsimula ng maliit na web server sa CLI at ihinto ito sa Podbag Desktop."
+      },
+      "guide": "Patakbuhin ang web server sa prompt na container-lab.\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nBuksan ang Mga practice container sa Desktop at ihinto ang hello-web.\n  podbag ps -a\nTiyaking Exited ang hello-web, pagkatapos ay tapusin ang session.\n  exit"
+    },
+    "vi": {
+      "title": "Podbag Training · Chạy một container",
+      "intro": {
+        "title": "Image và container",
+        "text": "Image chứa các tệp cần để chạy chương trình. Container chạy chương trình từ image đó. Khởi động máy chủ web trong CLI và dừng nó trong Podbag Desktop."
+      },
+      "guide": "Chạy máy chủ web tại dấu nhắc container-lab.\n  podbag run -d --name hello-web --network none docker.io/library/busybox:1.37.0 httpd -f -p 8080\nMở Container thực hành trong Desktop và dừng hello-web.\n  podbag ps -a\nKiểm tra hello-web ở trạng thái Exited rồi kết thúc phiên.\n  exit"
+    }
+  }
+}

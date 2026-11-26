@@ -72,3 +72,19 @@
 /blog/web-service-lifecycle/web-service-lifecycle.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="web-service-lifecycle.podbag"
+
+/blog/web-service-recovery/web-service-recovery.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="web-service-recovery.podbag"
+
+/blog/container-network/container-network.podbag
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment; filename="container-network.podbag"
+
+/training/catalog.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=300
+
+/training/modules/*
+  Content-Type: application/json
+  Content-Disposition: attachment

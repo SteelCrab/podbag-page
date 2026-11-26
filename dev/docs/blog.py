@@ -768,6 +768,8 @@ class Builder:
             "lang": lang, "lang_name": self.names[lang], "root": root, "group": group,
             "decimal": decimal, "home": root + self.site.path_of(lang),
             "blog": root + self.blog_path(lang), "feed": root + self.blog_path(lang) + "feed.xml",
+            "training": root + self.site.path_of(lang) + "training/",
+            "blog_current": ' aria-current="true"', "training_current": "",
             "canonical": self.url + path, "lang_menu": menu, "lang_links": line,
             "jsonld": "", "social": "",
         })

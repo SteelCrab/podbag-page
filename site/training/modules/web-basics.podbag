@@ -1,0 +1,118 @@
+{
+  "format": "podbag-course-v1",
+  "id": "web-basics",
+  "port": 18080,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Open a web server in the browser",
+      "guide": "Start the session with podbag lab start web-basics.",
+      "url": "https://podbag.dev/blog/web-basics/"
+    },
+    "ko": {
+      "title": "Podbag Training · 브라우저에서 웹 서버 열기",
+      "guide": "podbag lab start web-basics 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/web-basics/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runWeb",
+      "names": {
+        "en": "Run the web server",
+        "ko": "웹 서버 실행하기",
+        "ja": "ウェブサーバーを起動する",
+        "zh-CN": "运行 Web 服务器",
+        "fil": "Patakbuhin ang web server",
+        "es": "Ejecuta el servidor web",
+        "vi": "Chạy máy chủ web"
+      },
+      "command": "podbag run -d --name lab-web -p 127.0.0.1:{port}:8080 docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && printf \"%s\\n\" \"Podbag Training\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-published",
+        "name": "lab-web"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "lab-web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "lab-web",
+        "page": "Podbag Training"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container in Desktop",
+        "ko": "Desktop에서 컨테이너 중지하기",
+        "ja": "Desktop でコンテナを停止する",
+        "zh-CN": "在 Desktop 中停止容器",
+        "fil": "Ihinto ang container sa Desktop",
+        "es": "Detén el contenedor en Desktop",
+        "vi": "Dừng container trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-stop",
+        "name": "lab-web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm lab-web",
+      "check": {
+        "kind": "container-absent",
+        "name": "lab-web"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

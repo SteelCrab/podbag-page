@@ -169,5 +169,17 @@
   "blog_tags": "태그",
   "blog_related": "관련 글",
   "blog_older": "이전 글",
-  "blog_newer": "다음 글"
+  "blog_newer": "다음 글",
+  "nav_training": "트레이닝",
+  "training_title": "Podbag Training",
+  "training_description": "podbag 실습 모듈입니다. 명령 하나로 Podbag Desktop과 CLI에서 시작합니다.",
+  "training_lead": "Podbag Desktop과 CLI로 하는 짧은 실습입니다. 모듈을 고르고 가이드를 읽은 뒤 시작합니다.",
+  "training_refresh": "새 모듈은 이 페이지에서 받습니다. Podbag Desktop의 <b>Training</b>에서 <b>새로 고침</b>을 누르거나 앱을 다시 시작하면 표시됩니다.",
+  "training_cli": "CLI에서는 이 명령으로 모듈 목록을 봅니다.",
+  "training_modules": "모듈",
+  "training_steps": "{n}단계",
+  "training_guide": "가이드 읽기",
+  "training_download": "파일 받기",
+  "training_side": "트레이닝 안내",
+  "training_guides": "블로그의 가이드"
 }

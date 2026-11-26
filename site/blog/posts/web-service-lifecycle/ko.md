@@ -186,3 +186,5 @@ exit
 ![실습 종료하기](finish-ko.png)
 
 ![모든 단계가 완료된 Training 화면](complete-ko.png)
+
+[다음 트레이닝 · 로그로 웹 서버 장애 해결하기](/ko/blog/web-service-recovery/)

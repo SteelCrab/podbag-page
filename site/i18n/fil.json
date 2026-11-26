@@ -169,5 +169,17 @@
   "blog_tags": "Mga tag",
   "blog_related": "Mga kaugnay na post",
   "blog_older": "Mas lumang post",
-  "blog_newer": "Mas bagong post"
+  "blog_newer": "Mas bagong post",
+  "nav_training": "Pagsasanay",
+  "training_title": "Podbag Training",
+  "training_description": "Mga hands-on na module para sa podbag. Simulan ang bawat isa sa Podbag Desktop at sa CLI gamit ang isang command.",
+  "training_lead": "Maiikling hands-on na module para sa Podbag Desktop at sa CLI. Pumili ng module, basahin ang gabay at simulan ito.",
+  "training_refresh": "Dito galing ang mga bagong module. Makikita ang mga ito sa Podbag Desktop kapag pinili mo ang <b>I-refresh</b> sa <b>Training</b> o kapag sinimulan mong muli ang app.",
+  "training_cli": "Sa CLI, ipinapakita ng command na ito ang mga module:",
+  "training_modules": "Mga module",
+  "training_steps": "{n} hakbang",
+  "training_guide": "Basahin ang gabay",
+  "training_download": "I-download ang file",
+  "training_side": "Tungkol sa Pagsasanay",
+  "training_guides": "Mga gabay sa blog"
 }
