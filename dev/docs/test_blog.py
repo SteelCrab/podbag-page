@@ -359,9 +359,12 @@ class Built(unittest.TestCase):
             creator = "{http://purl.org/dc/elements/1.1/}creator"
             items = ElementTree.parse(base / "feed.xml").findall(".//item")
             creators = {i.findtext("link"): i.findtext(creator) for i in items}
-            for slug, name in [("compose-stop-timeout", "@SteelCrab"), ("podbag-0-1-0", team)]:
-                url = self.site.URL + self.site.path_of(code) + f"blog/{slug}/"
-                self.assertEqual(creators[url], name)
+            # The feed has the newest posts only: check the author of every item in it.
+            by_url = {self.site.URL + self.site.path_of(code) + f"blog/{p.slug}/": p
+                      for p in posts[code]}
+            self.assertTrue(creators, code)
+            for url, name in creators.items():
+                self.assertEqual(name, team if by_url[url].author == "team" else "@SteelCrab", url)
 
     def test_volume_animation_matches_the_offline_module(self):
         assets = self.out / "blog/cli-tui-volumes"
