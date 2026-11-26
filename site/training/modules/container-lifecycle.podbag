@@ -1,0 +1,188 @@
+{
+  "format": "podbag-course-v2",
+  "id": "container-lifecycle",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Follow a container from create to remove",
+      "guide": "Start the session with podbag lab start container-lifecycle.",
+      "url": "https://podbag.dev/blog/container-lifecycle/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너의 생성부터 삭제까지 따라가기",
+      "guide": "podbag lab start container-lifecycle 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/container-lifecycle/"
+    }
+  },
+  "steps": [
+    {
+      "key": "create",
+      "names": {
+        "en": "Create a container without starting it",
+        "ko": "시작하지 않고 컨테이너 만들기",
+        "ja": "起動せずにコンテナを作成する",
+        "zh-CN": "创建容器但不启动",
+        "fil": "Gumawa ng container nang hindi ito pinapatakbo",
+        "es": "Crea un contenedor sin iniciarlo",
+        "vi": "Tạo container mà không khởi động"
+      },
+      "command": "podbag create --name app docker.io/library/busybox:1.37.0 sh -c 'trap \"exit 0\" TERM; while sleep 1; do :; done'",
+      "check": {
+        "kind": "container-created",
+        "name": "app"
+      }
+    },
+    {
+      "key": "listCreated",
+      "names": {
+        "en": "List all containers",
+        "ko": "모든 컨테이너 목록 보기",
+        "ja": "すべてのコンテナを一覧表示する",
+        "zh-CN": "列出所有容器",
+        "fil": "Ilista ang lahat ng container",
+        "es": "Lista todos los contenedores",
+        "vi": "Liệt kê tất cả container"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "output-contains",
+        "text": "Created"
+      }
+    },
+    {
+      "key": "start",
+      "names": {
+        "en": "Start the container",
+        "ko": "컨테이너 시작하기",
+        "ja": "コンテナを起動する",
+        "zh-CN": "启动容器",
+        "fil": "Simulan ang container",
+        "es": "Inicia el contenedor",
+        "vi": "Khởi động container"
+      },
+      "command": "podbag start app",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container",
+        "ko": "컨테이너 중지하기",
+        "ja": "コンテナを停止する",
+        "zh-CN": "停止容器",
+        "fil": "Ihinto ang container",
+        "es": "Detén el contenedor",
+        "vi": "Dừng container"
+      },
+      "command": "podbag stop app",
+      "check": {
+        "kind": "container-stopped",
+        "name": "app"
+      }
+    },
+    {
+      "key": "listStopped",
+      "names": {
+        "en": "See the exit code 0",
+        "ko": "종료 코드 0 확인하기",
+        "ja": "終了コード 0 を確認する",
+        "zh-CN": "查看退出码 0",
+        "fil": "Tingnan ang exit code 0",
+        "es": "Mira el código de salida 0",
+        "vi": "Xem mã thoát 0"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "output-contains",
+        "text": "Exited (0)"
+      }
+    },
+    {
+      "key": "restart",
+      "names": {
+        "en": "Restart the container",
+        "ko": "컨테이너 다시 시작하기",
+        "ja": "コンテナを再起動する",
+        "zh-CN": "重启容器",
+        "fil": "I-restart ang container",
+        "es": "Reinicia el contenedor",
+        "vi": "Khởi động lại container"
+      },
+      "command": "podbag restart app",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "kill",
+      "names": {
+        "en": "Kill the container",
+        "ko": "컨테이너 강제 종료하기",
+        "ja": "コンテナを強制終了する",
+        "zh-CN": "强制终止容器",
+        "fil": "Patayin agad ang container",
+        "es": "Mata el contenedor",
+        "vi": "Buộc dừng container"
+      },
+      "command": "podbag kill app",
+      "check": {
+        "kind": "container-exited",
+        "name": "app",
+        "code": 137
+      }
+    },
+    {
+      "key": "listKilled",
+      "names": {
+        "en": "See the exit code 137",
+        "ko": "종료 코드 137 확인하기",
+        "ja": "終了コード 137 を確認する",
+        "zh-CN": "查看退出码 137",
+        "fil": "Tingnan ang exit code 137",
+        "es": "Mira el código de salida 137",
+        "vi": "Xem mã thoát 137"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "output-contains",
+        "text": "Exited (137)"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container",
+        "ko": "컨테이너 삭제하기",
+        "ja": "コンテナを削除する",
+        "zh-CN": "删除容器",
+        "fil": "Burahin ang container",
+        "es": "Elimina el contenedor",
+        "vi": "Xóa container"
+      },
+      "command": "podbag rm app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

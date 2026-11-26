@@ -1,0 +1,171 @@
+{
+  "format": "podbag-course-v2",
+  "id": "local-registry",
+  "port": 18105,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Push and pull with a local registry",
+      "guide": "Start the session with podbag lab start local-registry.",
+      "url": "https://podbag.dev/blog/local-registry/"
+    },
+    "ko": {
+      "title": "Podbag Training · 로컬 레지스트리에 push하고 pull하기",
+      "guide": "podbag lab start local-registry 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/local-registry/"
+    }
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull the busybox image in the CLI",
+        "ko": "CLI에서 busybox 이미지 받기",
+        "ja": "CLI で busybox イメージを取得する",
+        "zh-CN": "在 CLI 中拉取 busybox 镜像",
+        "fil": "I-pull ang busybox image sa CLI",
+        "es": "Descarga la imagen busybox en la CLI",
+        "vi": "Tải image busybox trong CLI"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "runRegistry",
+      "names": {
+        "en": "Run a registry in a container",
+        "ko": "컨테이너로 레지스트리 실행하기",
+        "ja": "コンテナーでレジストリを起動する",
+        "zh-CN": "在容器中运行镜像仓库",
+        "fil": "Patakbuhin ang registry sa isang container",
+        "es": "Ejecuta un registro en un contenedor",
+        "vi": "Chạy registry trong container"
+      },
+      "command": "podbag run -d --name registry -p 127.0.0.1:{port}:5000 docker.io/library/registry:2.8.3",
+      "check": {
+        "kind": "container-running",
+        "name": "registry"
+      }
+    },
+    {
+      "key": "tag",
+      "names": {
+        "en": "Tag the image with the registry address",
+        "ko": "레지스트리 주소로 이미지 태그 붙이기",
+        "ja": "レジストリのアドレスでイメージにタグを付ける",
+        "zh-CN": "用仓库地址给镜像打标签",
+        "fil": "Lagyan ng tag ang image gamit ang address ng registry",
+        "es": "Etiqueta la imagen con la dirección del registro",
+        "vi": "Gắn thẻ image bằng địa chỉ registry"
+      },
+      "command": "podbag tag docker.io/library/busybox:1.37.0 127.0.0.1:{port}/training/busybox:1",
+      "check": {
+        "kind": "image-exists",
+        "name": "127.0.0.1:{port}/training/busybox:1"
+      }
+    },
+    {
+      "key": "push",
+      "names": {
+        "en": "Push the image to the registry",
+        "ko": "레지스트리에 이미지 push하기",
+        "ja": "レジストリにイメージを push する",
+        "zh-CN": "把镜像推送到仓库",
+        "fil": "I-push ang image sa registry",
+        "es": "Sube la imagen al registro",
+        "vi": "Đẩy image lên registry"
+      },
+      "command": "podbag push 127.0.0.1:{port}/training/busybox:1",
+      "check": {
+        "kind": "output-contains",
+        "text": "digest: sha256:"
+      }
+    },
+    {
+      "key": "removeTag",
+      "names": {
+        "en": "Remove the local tag",
+        "ko": "로컬 태그 삭제하기",
+        "ja": "ローカルのタグを削除する",
+        "zh-CN": "删除本地标签",
+        "fil": "Burahin ang lokal na tag",
+        "es": "Elimina la etiqueta local",
+        "vi": "Xóa thẻ cục bộ"
+      },
+      "command": "podbag rmi 127.0.0.1:{port}/training/busybox:1",
+      "check": {
+        "kind": "image-absent",
+        "name": "127.0.0.1:{port}/training/busybox:1"
+      }
+    },
+    {
+      "key": "pullBack",
+      "names": {
+        "en": "Pull the image back from the registry",
+        "ko": "레지스트리에서 이미지 다시 받기",
+        "ja": "レジストリからイメージを再取得する",
+        "zh-CN": "从仓库重新拉取镜像",
+        "fil": "I-pull muli ang image mula sa registry",
+        "es": "Descarga otra vez la imagen del registro",
+        "vi": "Tải lại image từ registry"
+      },
+      "command": "podbag pull 127.0.0.1:{port}/training/busybox:1",
+      "check": {
+        "kind": "image-exists",
+        "name": "127.0.0.1:{port}/training/busybox:1"
+      }
+    },
+    {
+      "key": "runPulled",
+      "names": {
+        "en": "Run a container from the pulled image",
+        "ko": "받은 이미지로 컨테이너 실행하기",
+        "ja": "取得したイメージでコンテナーを実行する",
+        "zh-CN": "用拉取的镜像运行容器",
+        "fil": "Patakbuhin ang container mula sa na-pull na image",
+        "es": "Ejecuta un contenedor con la imagen descargada",
+        "vi": "Chạy container từ image vừa tải"
+      },
+      "command": "podbag run --rm 127.0.0.1:{port}/training/busybox:1 echo \"Hello from the registry\"",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from the registry"
+      }
+    },
+    {
+      "key": "removeRegistry",
+      "names": {
+        "en": "Remove the registry in the CLI",
+        "ko": "CLI에서 레지스트리 삭제하기",
+        "ja": "CLI でレジストリを削除する",
+        "zh-CN": "在 CLI 中删除镜像仓库",
+        "fil": "Burahin ang registry sa CLI",
+        "es": "Elimina el registro en la CLI",
+        "vi": "Xóa registry trong CLI"
+      },
+      "command": "podbag rm -f registry",
+      "check": {
+        "kind": "container-absent",
+        "name": "registry"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

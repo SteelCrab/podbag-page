@@ -39,6 +39,16 @@ import blog
 
 CATALOG_FORMAT = "podbag-training-catalog-v1"
 COURSE = "podbag-course-v1"
+# v1 with more check kinds, files for the practice directory, and `docker …` steps.
+COURSE_V2 = "podbag-course-v2"
+COURSES = {COURSE, COURSE_V2}
+MAX_FILES = 8
+FILES_LIMIT = 16 * 1024
+PATH = re.compile(r"[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*")
+# What the practice session keeps in its directory: a module file cannot use these names.
+SESSION_NAMES = {"bin", "run", "data", "config", "ui", "docker", "api.sock", "disk.img",
+                 "console.log", "verified"}
+COUNT_MAX = 2 ** 32 - 1
 # Older module kinds. The app knows each one by a fixed id.
 LEGACY = {
     "podbag-container-basics-v1": "container-basics",
@@ -69,8 +79,19 @@ FIELDS = {
     "desktop-inspect-exited": NAME, "desktop-ports": NAME,
     "desktop-browser": {"name": str, "page": str}, "desktop-stop": NAME,
     "desktop-inspect-volume": NAME, "desktop-delete-volume": NAME,
+    # podbag-course-v2
+    "image-exists": NAME, "image-absent": NAME, "container-created": NAME,
+    "container-stopped": NAME, "container-paused": NAME, "container-healthy": NAME,
+    "container-restarted": {"name": str, "count": int},
+    "container-in-network": {"name": str, "network": str},
+    "container-not-in-network": {"name": str, "network": str},
+    "volume-absent": NAME, "output-contains": {"text": str}, "file-exists": {"path": str},
 }
 KINDS = set(FIELDS)
+V2_KINDS = {"image-exists", "image-absent", "container-created", "container-stopped",
+            "container-paused", "container-healthy", "container-restarted",
+            "container-in-network", "container-not-in-network", "volume-absent",
+            "output-contains", "file-exists"}
 MAX_COMMAND = 1000
 # Ids a course cannot have: the app's built-in labs, the library's other files, and names
 # Windows keeps for devices.
@@ -129,15 +150,33 @@ def check_fields(check, where):
             raise Invalid(f"{where}: a {kind} check needs {field!r}")
         value = check[field]
         if kind_of is int:
-            if type(value) is not int:
+            if type(value) is not int or not (field != "count" or 0 <= value <= COUNT_MAX):
                 raise Invalid(f"{where}: {field} must be a whole number")
         elif not plain(value):
             raise Invalid(f"{where}: {field} must be one line of text")
 
 
+def practice_path(path):
+    """A relative path in the practice directory: plain names, no `..`."""
+    return (isinstance(path, str) and len(path) <= 200 and PATH.fullmatch(path) is not None
+            and all(part not in (".", "..") for part in path.split("/")))
+
+
 def check_course(module, name):
+    v2 = module["format"] == COURSE_V2
+    files = module.get("files", {})
+    if files and not v2:
+        raise Invalid("files need podbag-course-v2")
+    if (not isinstance(files, dict) or len(files) > MAX_FILES
+            or not all(practice_path(p) and p.split("/")[0].lower() not in SESSION_NAMES for p in files)
+            or not all(isinstance(t, str) and not CONTROL.search(t.replace("\n", "").replace("\t", ""))
+                       for t in files.values())
+            or sum(len(t.encode()) for t in files.values()) > FILES_LIMIT):
+        raise Invalid("files are at most 8 plain text files, 16 KiB in all, under the practice directory")
     if module.get("id") != name:
         raise Invalid(f"id {module.get('id')!r} is not the file name {name!r}")
+    if module.get("port") is None and any("{port}" in t for t in files.values()):
+        raise Invalid("files use {port}, but the module has no port")
     if not ID.fullmatch(name):
         raise Invalid(f"id {name!r} must match [a-z0-9-]{{1,40}}")
     if name in RESERVED:
@@ -178,7 +217,13 @@ def check_course(module, name):
         kind = check.get("kind") if isinstance(check, dict) else None
         if kind not in KINDS:
             raise Invalid(f"{where}: unknown check kind {kind!r}")
+        if kind in V2_KINDS and not v2:
+            raise Invalid(f"{where}: a {kind} check needs podbag-course-v2")
         check_fields(check, where)
+        if port is None and any(isinstance(v, str) and "{port}" in v for v in check.values()):
+            raise Invalid(f"{where}: the check uses {{port}}, but the module has no port")
+        if kind == "file-exists" and not practice_path(check["path"]):
+            raise Invalid(f"{where}: file-exists checks a path outside the practice directory")
         if kind.startswith("desktop-"):
             if "command" in step:
                 raise Invalid(f"{where}: a Desktop step has no command")
@@ -188,8 +233,14 @@ def check_course(module, name):
             raise Invalid(f"{where}: no command")
         if (command == "exit") != (kind == "finish"):
             raise Invalid(f"{where}: exit is the command of the finish step only")
-        if command != "exit" and not command.startswith("podbag "):
-            raise Invalid(f"{where}: the command must be exit or start with 'podbag ': {command!r}")
+        programs = ("podbag ", "docker ") if v2 else ("podbag ",)
+        if command.startswith("docker ") and (command.split()[1].startswith("-")
+                                              or command.split()[1] == "context"):
+            raise Invalid(f"{where}: a docker command talks to the practice engine: no global "
+                          f"options before the command and no docker context: {command!r}")
+        if command != "exit" and not command.startswith(programs):
+            raise Invalid(f"{where}: the command must be exit or start with "
+                          f"{' or '.join(repr(p) for p in programs)}: {command!r}")
         if CONTROL.search(command):
             raise Invalid(f"{where}: the command has a control character")
         if len(command) > MAX_COMMAND:
@@ -215,8 +266,8 @@ def check(raw, name):
     if not isinstance(module, dict):
         raise Invalid("not a JSON object")
     form = module.get("format")
-    if form != COURSE and form not in LEGACY:
-        raise Invalid(f"unknown format {form!r}; use one of {[COURSE, *LEGACY]}")
+    if form not in COURSES and form not in LEGACY:
+        raise Invalid(f"unknown format {form!r}; use one of {[*sorted(COURSES), *LEGACY]}")
     translations = module.get("translations")
     if not isinstance(translations, dict) or not isinstance(translations.get("en"), dict) \
             or not text(translations["en"].get("title")):
@@ -235,13 +286,13 @@ def check(raw, name):
                 or not all(isinstance(c, str) and c and len(c) % 4 == 0 and BASE64.fullmatch(c)
                            for c in clips)):
             raise Invalid("animation needs translations.en.intro and base64 mp4 and webp")
-    if form == COURSE:
+    if form in COURSES:
         check_course(module, name)
     else:
         if LEGACY[form] != name:
             raise Invalid(f"a {form} file must be named {LEGACY[form]}.podbag")
-        if any(k in module for k in ("id", "port", "steps")):
-            raise Invalid(f"a {form} file has no id, port or steps")
+        if any(k in module for k in ("id", "port", "steps", "files")):
+            raise Invalid(f"a {form} file has no id, port, steps or files")
     return module
 
 
@@ -254,6 +305,9 @@ def load(folder):
     ids = source.get("modules") if isinstance(source, dict) else None
     if not isinstance(ids, list) or not ids:
         raise SystemExit('site/training/catalog.json: write {"modules": ["<id>", …]}')
+    times = source.get("minutes")
+    if not isinstance(times, dict):
+        raise SystemExit('site/training/catalog.json: write {"minutes": {"<id>": [10, 15]}}')
     modules = []
     for name in ids:
         if not isinstance(name, str) or not ID.fullmatch(name):
@@ -263,9 +317,15 @@ def load(folder):
         path = folder / "modules" / f"{name}.podbag"
         if not path.is_file():
             raise SystemExit(f"site/training/catalog.json: no file modules/{name}.podbag")
+        minutes = times.get(name)
+        if not (isinstance(minutes, list) and 1 <= len(minutes) <= 2
+                and all(type(m) is int and 1 <= m <= 240 for m in minutes)
+                and minutes == sorted(minutes)):
+            raise SystemExit(f"site/training/catalog.json: minutes of {name} must be "
+                             "[minutes] or [shortest, longest]")
         raw = path.read_bytes()
         try:
-            modules.append((name, raw, check(raw, name)))
+            modules.append((name, raw, check(raw, name), minutes))
         except Invalid as error:
             raise SystemExit(f"site/training/modules/{name}.podbag: {error}")
     return modules
@@ -274,7 +334,7 @@ def load(folder):
 def catalog(modules):
     """The served catalog.json text."""
     entries = [{"id": name, "file": f"modules/{name}.podbag", "sha256": sha256(raw).hexdigest()}
-               for name, raw, _ in modules]
+               for name, raw, *_ in modules]
     return json.dumps({"format": CATALOG_FORMAT, "modules": entries}, indent=2) + "\n"
 
 
@@ -296,7 +356,7 @@ class Hub:
 
     def guide(self, name, module, lang, root):
         """The guide's address from the page."""
-        if module["format"] == COURSE:
+        if module["format"] in COURSES:
             words = module["translations"].get(lang) or {}
             url = words.get("url") or module["translations"]["en"]["url"]
             return root + url[len(GUIDE_SITE):]
@@ -306,17 +366,19 @@ class Hub:
             return root + local
         return root + f"blog/{slug}/"
 
-    def item(self, n, name, module, lang, root, w):
+    def item(self, name, module, minutes, lang, root, w):
         words = module["translations"].get(lang) or {}
         title = short_title(words.get("title") or module["translations"]["en"]["title"])
-        facts = []
-        if module["format"] == COURSE:
-            facts.append(w["training_steps"].replace("{n}", str(len(module["steps"]))))
-        facts.append(f'<a href="{self.guide(name, module, lang, root)}">{w["training_guide"]}</a>')
+        if len(minutes) == 1:
+            time = w["training_time"].replace("{n}", str(minutes[0]))
+        else:
+            time = (w["training_time_range"].replace("{min}", str(minutes[0]))
+                    .replace("{max}", str(minutes[1])))
+        facts = [time, f'<a href="{self.guide(name, module, lang, root)}">{w["training_guide"]}</a>']
         facts.append(f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>')
         sep = '<span class="sep" aria-hidden="true">|</span>'
         start = blog.code_block(f"podbag lab start {name}", "sh", lang, blog.copy_button(w))
-        return (f'<li class="module reveal" id="{name}"><span class="module-number" aria-hidden="true">{n}</span>'
+        return (f'<li class="module reveal" id="{name}">'
                 f'<div class="module-text"><h3 class="post-title">{html.escape(title)}</h3>'
                 f'<p class="meta">{sep.join(f"<span>{f}</span>" for f in facts)}</p>'
                 f"{start}</div></li>")
@@ -337,13 +399,15 @@ class Hub:
         w = self.words[lang]
         path = self.path(lang)
         root = "../" * path.count("/")
-        items = "".join(self.item(n, name, module, lang, root, w)
-                        for n, (name, _, module) in enumerate(self.modules, 1))
+        items = "".join(self.item(name, module, minutes, lang, root, w)
+                        for name, _, module, minutes in self.modules)
         listing = blog.code_block("podbag lab list", "sh", lang, blog.copy_button(w))
         content = (f'<div class="training">'
                    f'<p>{w["training_refresh"]}</p><p>{w["training_cli"]}</p>{listing}'
                    f'<h2 class="list-title">{w["training_modules"]}</h2>'
-                   f'<ol class="modules" role="list">{items}</ol></div>')
+                   f'<ul class="modules" role="list">{items}</ul>'
+                   f'<h2 class="list-title">{w["training_outside_title"]}</h2>'
+                   f'<p>{w["training_outside"]}</p></div>')
         band = (f'<div class="band training-band"><div class="wrap">'
                 f'<h1 class="band-title">{w["training_title"]}</h1>'
                 f'<p class="band-sub">{w["training_lead"]}</p></div></div>')
@@ -366,7 +430,7 @@ def build(out, site, words):
     modules = load(site.SITE / "training")
     target = out / "training" / "modules"
     target.mkdir(parents=True, exist_ok=True)
-    for name, raw, _ in modules:
+    for name, raw, *_ in modules:
         (target / f"{name}.podbag").write_bytes(raw)
     (out / "training" / "catalog.json").write_text(catalog(modules))
     hub = Hub(out, site, words, modules)

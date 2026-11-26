@@ -1,0 +1,170 @@
+{
+  "format": "podbag-course-v2",
+  "id": "resource-limits",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Limit memory and CPU",
+      "guide": "Start the session with podbag lab start resource-limits.",
+      "url": "https://podbag.dev/blog/resource-limits/"
+    },
+    "ko": {
+      "title": "Podbag Training · 메모리와 CPU 제한하기",
+      "guide": "podbag lab start resource-limits 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/resource-limits/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runLimited",
+      "names": {
+        "en": "Run a container with limits",
+        "ko": "제한을 걸고 컨테이너 실행하기",
+        "ja": "制限を付けてコンテナを起動する",
+        "zh-CN": "运行带限制的容器",
+        "fil": "Patakbuhin ang container na may limit",
+        "es": "Ejecuta un contenedor con límites",
+        "vi": "Chạy container có giới hạn"
+      },
+      "command": "podbag run -d --name app --memory 64m --cpus 0.5 docker.io/library/busybox:1.37.0 sleep 3600",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "memoryMax",
+      "names": {
+        "en": "Read the memory limit in the container",
+        "ko": "컨테이너에서 메모리 제한 읽기",
+        "ja": "コンテナでメモリー制限を読む",
+        "zh-CN": "在容器中读取内存限制",
+        "fil": "Basahin ang memory limit sa container",
+        "es": "Lee el límite de memoria en el contenedor",
+        "vi": "Đọc giới hạn bộ nhớ trong container"
+      },
+      "command": "podbag exec app cat /sys/fs/cgroup/memory.max",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "67108864"
+      }
+    },
+    {
+      "key": "cpuMax",
+      "names": {
+        "en": "Read the CPU limit in the container",
+        "ko": "컨테이너에서 CPU 제한 읽기",
+        "ja": "コンテナで CPU 制限を読む",
+        "zh-CN": "在容器中读取 CPU 限制",
+        "fil": "Basahin ang CPU limit sa container",
+        "es": "Lee el límite de CPU en el contenedor",
+        "vi": "Đọc giới hạn CPU trong container"
+      },
+      "command": "podbag exec app cat /sys/fs/cgroup/cpu.max",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "50000 100000"
+      }
+    },
+    {
+      "key": "stats",
+      "names": {
+        "en": "See the use and the limit with stats",
+        "ko": "stats로 사용량과 제한 보기",
+        "ja": "stats で使用量と制限を見る",
+        "zh-CN": "用 stats 查看用量和限制",
+        "fil": "Tingnan ang gamit at limit gamit ang stats",
+        "es": "Mira el uso y el límite con stats",
+        "vi": "Xem mức dùng và giới hạn bằng stats"
+      },
+      "command": "podbag stats --no-stream app",
+      "check": {
+        "kind": "output-contains",
+        "text": "64MiB"
+      }
+    },
+    {
+      "key": "top",
+      "names": {
+        "en": "List the processes with top",
+        "ko": "top으로 프로세스 보기",
+        "ja": "top でプロセスを一覧する",
+        "zh-CN": "用 top 列出进程",
+        "fil": "Ilista ang mga process gamit ang top",
+        "es": "Lista los procesos con top",
+        "vi": "Liệt kê tiến trình bằng top"
+      },
+      "command": "podbag top app",
+      "check": {
+        "kind": "output-contains",
+        "text": "sleep 3600"
+      }
+    },
+    {
+      "key": "update",
+      "names": {
+        "en": "Raise the memory limit with update",
+        "ko": "update로 메모리 제한 늘리기",
+        "ja": "update でメモリー制限を上げる",
+        "zh-CN": "用 update 提高内存限制",
+        "fil": "Taasan ang memory limit gamit ang update",
+        "es": "Sube el límite de memoria con update",
+        "vi": "Tăng giới hạn bộ nhớ bằng update"
+      },
+      "command": "podbag update --memory 128m app",
+      "check": {
+        "kind": "output-has-line",
+        "text": "app"
+      }
+    },
+    {
+      "key": "memoryAfter",
+      "names": {
+        "en": "Read the new memory limit",
+        "ko": "새 메모리 제한 읽기",
+        "ja": "新しいメモリー制限を読む",
+        "zh-CN": "读取新的内存限制",
+        "fil": "Basahin ang bagong memory limit",
+        "es": "Lee el nuevo límite de memoria",
+        "vi": "Đọc giới hạn bộ nhớ mới"
+      },
+      "command": "podbag exec app cat /sys/fs/cgroup/memory.max",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "134217728"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm -f app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -37,7 +37,8 @@ class Rules(unittest.TestCase):
         self.assertIn(words, str(caught.exception))
 
     def test_every_source_module_passes(self):
-        self.assertEqual(len(IDS), 8)
+        files = sorted(f.stem for f in (SOURCE / "modules").glob("*.podbag"))
+        self.assertEqual(sorted(IDS), files, "every module file is in catalog.json, once")
         for name in IDS:
             module = training.check((SOURCE / f"modules/{name}.podbag").read_bytes(), name)
             self.assertTrue(module["translations"]["en"]["title"])
@@ -94,7 +95,7 @@ class Rules(unittest.TestCase):
 
     def test_an_unknown_check(self):
         module = course()
-        module["steps"][0]["check"]["kind"] = "container-healthy"
+        module["steps"][0]["check"]["kind"] = "container-happy"
         self.refuse(module, "unknown check kind")
 
     def test_too_many_or_no_steps(self):
@@ -166,6 +167,96 @@ class Rules(unittest.TestCase):
         with self.assertRaises(training.Invalid):
             training.check(encode(legacy), "tui-volumes")
 
+    def test_v2_adds_kinds_files_and_docker_steps(self):
+        """The same cases as podbag's v2_* tests in src/volume_lesson.rs."""
+        def v2(change=None):
+            module = course()
+            module["format"] = training.COURSE_V2
+            module["files"] = {"Dockerfile": "FROM busybox:1.37.0\n"}
+            module["steps"][:0] = [
+                {"key": "pull", "names": {"en": "Pull the image"},
+                 "command": "podbag pull docker.io/library/busybox:1.37.0",
+                 "check": {"kind": "image-exists", "name": "docker.io/library/busybox:1.37.0"}},
+                {"key": "list", "names": {"en": "List with the Docker CLI"},
+                 "command": "docker ps -a",
+                 "check": {"kind": "output-contains", "text": "CONTAINER ID"}},
+                {"key": "restarted", "names": {"en": "Watch it restart"},
+                 "command": "podbag ps",
+                 "check": {"kind": "container-restarted", "name": "api", "count": 1}},
+            ]
+            if change:
+                change(module)
+            return module
+        training.check(encode(v2()), "web-basics")
+        for kind in [{"kind": "image-absent", "name": "x:1"}, {"kind": "container-created", "name": "a"},
+                     {"kind": "container-stopped", "name": "a"}, {"kind": "container-paused", "name": "a"},
+                     {"kind": "container-healthy", "name": "a"},
+                     {"kind": "container-in-network", "name": "a", "network": "n"},
+                     {"kind": "container-not-in-network", "name": "a", "network": "n"},
+                     {"kind": "volume-absent", "name": "v"}, {"kind": "file-exists", "path": "out/app.tar"}]:
+            training.check(encode(v2(lambda m, k=kind: m["steps"][0].__setitem__("check", k))), "web-basics")
+        refused = {
+            "parent path": v2(lambda m: m.__setitem__("files", {"../x": "a"})),
+            "absolute path": v2(lambda m: m.__setitem__("files", {"/etc/x": "a"})),
+            "odd path": v2(lambda m: m.__setitem__("files", {"a b": "a"})),
+            "too much text": v2(lambda m: m.__setitem__("files", {"big": "x" * (16 * 1024 + 1)})),
+            "too many files": v2(lambda m: m.__setitem__("files", {f"f{n}": "a" for n in range(9)})),
+            "file-exists outside": v2(lambda m: m["steps"][0].__setitem__(
+                "check", {"kind": "file-exists", "path": "../x"})),
+            "docker with a pipe": v2(lambda m: m["steps"][1].__setitem__("command", "docker ps | sh")),
+            "other program": v2(lambda m: m["steps"][1].__setitem__("command", "kubectl get pods")),
+            "count as text": v2(lambda m: m["steps"][2]["check"].__setitem__("count", "1")),
+            "count below zero": v2(lambda m: m["steps"][2]["check"].__setitem__("count", -1)),
+            "count too big": v2(lambda m: m["steps"][2]["check"].__setitem__("count", 2 ** 32)),
+            "file over the podbag link": v2(lambda m: m.__setitem__("files", {"bin/podbag": "#!/bin/sh"})),
+            "file over the link, other case": v2(lambda m: m.__setitem__("files", {"BIN/podbag": "x"})),
+            "file in the run folder": v2(lambda m: m.__setitem__("files", {"run/closing": "x"})),
+            "docker config file": v2(lambda m: m.__setitem__("files", {"docker/config.json": "{}"})),
+            "the VM disk": v2(lambda m: m.__setitem__("files", {"disk.img": "x"})),
+            "docker -H": v2(lambda m: m["steps"][1].__setitem__(
+                "command", "docker -H unix:///var/run/docker.sock ps")),
+            "docker --context": v2(lambda m: m["steps"][1].__setitem__("command", "docker --context real ps")),
+            "docker context": v2(lambda m: m["steps"][1].__setitem__("command", "docker context use real")),
+            "port in a check without a port": v2(lambda m: (
+                m.pop("port"),
+                [st.__setitem__("command", st["command"].replace("{port}", "18080"))
+                 for st in m["steps"] if "command" in st],
+                m["steps"][0].__setitem__("check", {"kind": "image-exists", "name": "127.0.0.1:{port}/x:1"}))),
+            "port in a file without a port": v2(lambda m: (
+                m.pop("port"),
+                [st.__setitem__("command", st["command"].replace("{port}", "18080"))
+                 for st in m["steps"] if "command" in st],
+                m.__setitem__("files", {"compose.yaml": "127.0.0.1:{port}:8080"}))),
+        }
+        v1 = course()
+        v1["steps"][0]["command"] = "docker ps"
+        refused["v1 docker"] = v1
+        v1 = course()
+        v1["files"] = {"a": "b"}
+        refused["v1 files"] = v1
+        v1 = course()
+        v1["steps"][0]["check"] = {"kind": "image-exists", "name": "x:1"}
+        refused["v1 new kind"] = v1
+        for why, module in refused.items():
+            with self.subTest(why), self.assertRaises(training.Invalid):
+                training.check(encode(module), "web-basics")
+
+    def test_every_module_needs_a_time(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            (folder / "modules").mkdir()
+            (folder / "modules/web-basics.podbag").write_bytes(
+                (SOURCE / "modules/web-basics.podbag").read_bytes())
+            for minutes in [{}, {"web-basics": []}, {"web-basics": [15, 10]},
+                            {"web-basics": ["10"]}, {"web-basics": [0]}]:
+                (folder / "catalog.json").write_text(
+                    json.dumps({"modules": ["web-basics"], "minutes": minutes}))
+                with self.assertRaises(SystemExit, msg=minutes):
+                    training.load(folder)
+            (folder / "catalog.json").write_text(
+                json.dumps({"modules": ["web-basics"], "minutes": {"web-basics": [10, 15]}}))
+            self.assertEqual(training.load(folder)[0][0], "web-basics")
+
     def test_older_formats_keep_their_app_ids(self):
         raw = (SOURCE / "modules/tui-volumes.podbag").read_bytes()
         training.check(raw, "tui-volumes")
@@ -179,11 +270,13 @@ class Rules(unittest.TestCase):
             module = course()
             module["steps"][0]["command"] = "rm -rf /"
             (folder / "modules/web-basics.podbag").write_bytes(encode(module))
-            (folder / "catalog.json").write_text('{"modules": ["web-basics"]}')
+            (folder / "catalog.json").write_text(
+                '{"modules": ["web-basics"], "minutes": {"web-basics": [10]}}')
             with self.assertRaises(SystemExit) as caught:
                 training.load(folder)
             self.assertIn("modules/web-basics.podbag: step 1 (runWeb)", str(caught.exception))
-            (folder / "catalog.json").write_text('{"modules": ["web-basics", "missing"]}')
+            (folder / "catalog.json").write_text(
+                '{"modules": ["web-basics", "missing"], "minutes": {"web-basics": [10], "missing": [10]}}')
             (folder / "modules/web-basics.podbag").write_bytes(encode(course()))
             with self.assertRaises(SystemExit) as caught:
                 training.load(folder)
@@ -238,8 +331,77 @@ class Built(unittest.TestCase):
                 self.assertTrue((page.parent / guide / "index.html").is_file(), (code, guide))
                 self.assertTrue((page.parent / download).samefile(
                     self.out / "training/modules" / f"{name}.podbag"))
-                if module["format"] == training.COURSE:
-                    self.assertIn(str(len(module["steps"])), item)
+                # A plain list: no numbers before the modules, no step counts.
+                self.assertNotIn("module-number", item)
+                if module["format"] in training.COURSES:
+                    self.assertNotIn(f">{len(module['steps'])} ", item)
+            self.assertIn('<ul class="modules"', html)
+
+    def test_each_module_shows_its_time(self):
+        en = (self.out / "training/index.html").read_text()
+        ko = (self.out / "ko/training/index.html").read_text()
+        item = lambda html, name: re.search(  # noqa: E731
+            rf'<li class="module reveal" id="{name}">(.*?)</li>', html).group(1)
+        self.assertIn("About 10 min", item(en, "web-basics"))
+        self.assertIn("About 10–15 min", item(en, "container-network"))
+        self.assertIn("약 15분", item(ko, "volume-persistence"))
+        self.assertIn("약 10~15분", item(ko, "web-service-recovery"))
+        for code, _ in self.site.LANGS:
+            html = (self.out / self.site.path_of(code) / "training/index.html").read_text()
+            for name in IDS:
+                self.assertRegex(item(html, name), r"\d", (code, name))
+
+    def test_every_guide_opens_with_its_architecture(self):
+        """The first picture of a Training guide, before its first section, shows what the
+        module builds, in both themes."""
+        posts = HERE.parents[1] / "site/blog/posts"
+        slugs = set(training.LEGACY_GUIDES.values())
+        for name in IDS:
+            module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+            if module["format"] in training.COURSES:
+                slugs.add(module["translations"]["en"]["url"].rstrip("/").rsplit("/", 1)[1])
+        for slug in sorted(slugs):
+            for page in sorted((posts / slug).glob("*.md")):
+                body = page.read_text().split("\n---\n", 1)[1]
+                opening = body.split("\n## ", 1)[0]
+                first = re.search(r"!\[([^\]]+)\]\(([^) ]+)", body)
+                with self.subTest(page=f"{slug}/{page.name}"):
+                    self.assertIsNotNone(first)
+                    alt, src = first.groups()
+                    self.assertIn(first.group(0), opening, "before the first section")
+                    self.assertRegex(src, r"^architecture(-[a-zA-Z-]+)?-light\.svg$")
+                    self.assertTrue((posts / slug / src).is_file())
+                    self.assertTrue((posts / slug / src.replace("-light.svg", "-dark.svg")).is_file())
+                    self.assertGreater(len(alt), 20, "the alt text says what the picture shows")
+
+    def test_the_page_names_what_practice_sessions_leave_out(self):
+        usage = "https://github.com/SteelCrab/podbag/blob/main/docs/usage.md"
+        en = (self.out / "training/index.html").read_text()
+        self.assertIn("Not in the practice session", en)
+        self.assertIn("Kubernetes", en)
+        for code, _ in self.site.LANGS:
+            page = (self.out / self.site.path_of(code) / "training/index.html").read_text()
+            self.assertIn(f'href="{usage}"', page, code)
+
+    def test_the_blog_links_to_training(self):
+        for code, _ in self.site.LANGS:
+            path = self.site.path_of(code)
+            blog = (self.out / path / "blog/index.html").read_text()
+            target = "../" * (path.count("/") + 1) + path + "training/"
+            nav = re.search(r'<nav class="band-nav"[^>]*>(.*?)</nav>', blog).group(1)
+            self.assertIn(f'href="{target}"', nav, code)
+            side = re.search(r'<aside class="side".*?</aside>', blog, re.S).group(0)
+            self.assertIn(f'href="{target}"', side, code)
+            self.assertTrue((self.out / path / "training/index.html").is_file())
+
+    def test_architecture_pictures_are_up_to_date(self):
+        """The committed pictures are what dev/docs/training_diagrams.py draws."""
+        import training_diagrams
+        posts = HERE.parents[1] / "site/blog/posts"
+        for (guide, name), text in training_diagrams.pictures().items():
+            with self.subTest(f"{guide}/{name}"):
+                self.assertEqual((posts / guide / name).read_text(), text,
+                                 "run python3 dev/docs/training_diagrams.py")
 
     def test_guides_follow_the_page_language(self):
         ko = (self.out / "ko/training/index.html").read_text()

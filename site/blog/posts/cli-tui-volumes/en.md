@@ -14,6 +14,8 @@ Create a volume in the CLI, inspect and remove it in Podbag Desktop, and watch y
 
 [Download the lab module](cli-gui-volumes.podbag)
 
+![The terminal creates and lists the volume my-api in the practice session; Podbag Desktop or the TUI inspects and deletes it](architecture-en-light.svg)
+
 ## What is a volume?
 
 A volume stores files separately from a container. Here, `app-a` saves `note.txt` in the `my-api` volume. After `app-a` is removed, a new container, `app-b`, mounts the same volume and reads the file. Deleting the volume itself removes its files.

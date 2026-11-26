@@ -1,0 +1,154 @@
+{
+  "format": "podbag-course-v2",
+  "id": "container-changes",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Save a container's changes as an image",
+      "guide": "Start the session with podbag lab start container-changes.",
+      "url": "https://podbag.dev/blog/container-changes/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너 변경 내용을 이미지로 저장하기",
+      "guide": "podbag lab start container-changes 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/container-changes/"
+    }
+  },
+  "steps": [
+    {
+      "key": "run",
+      "names": {
+        "en": "Run a container that writes a file",
+        "ko": "파일을 쓰는 컨테이너 실행하기",
+        "ja": "ファイルを書き込むコンテナを実行する",
+        "zh-CN": "运行写入文件的容器",
+        "fil": "Patakbuhin ang container na sumusulat ng file",
+        "es": "Ejecuta un contenedor que escribe un archivo",
+        "vi": "Chạy container ghi một tệp"
+      },
+      "command": "podbag run --name app docker.io/library/busybox:1.37.0 sh -c 'echo \"Hello from app\" > /hello.txt'",
+      "check": {
+        "kind": "container-exited",
+        "name": "app",
+        "code": 0
+      }
+    },
+    {
+      "key": "diff",
+      "names": {
+        "en": "List the files the container changed",
+        "ko": "컨테이너가 바꾼 파일 보기",
+        "ja": "コンテナが変更したファイルを表示する",
+        "zh-CN": "列出容器更改的文件",
+        "fil": "Ilista ang mga file na binago ng container",
+        "es": "Muestra los archivos que cambió el contenedor",
+        "vi": "Xem các tệp container đã thay đổi"
+      },
+      "command": "podbag diff app",
+      "check": {
+        "kind": "output-contains",
+        "text": "A /hello.txt"
+      }
+    },
+    {
+      "key": "commit",
+      "names": {
+        "en": "Save the changes as an image",
+        "ko": "변경 내용을 이미지로 저장하기",
+        "ja": "変更をイメージとして保存する",
+        "zh-CN": "将更改保存为镜像",
+        "fil": "I-save ang mga pagbabago bilang image",
+        "es": "Guarda los cambios como imagen",
+        "vi": "Lưu thay đổi thành image"
+      },
+      "command": "podbag commit app app-snapshot:1",
+      "check": {
+        "kind": "image-exists",
+        "name": "app-snapshot:1"
+      }
+    },
+    {
+      "key": "readFile",
+      "names": {
+        "en": "Read the file from the new image",
+        "ko": "새 이미지에서 파일 읽기",
+        "ja": "新しいイメージからファイルを読む",
+        "zh-CN": "从新镜像读取文件",
+        "fil": "Basahin ang file mula sa bagong image",
+        "es": "Lee el archivo desde la imagen nueva",
+        "vi": "Đọc tệp từ image mới"
+      },
+      "command": "podbag run --rm app-snapshot:1 cat /hello.txt",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from app"
+      }
+    },
+    {
+      "key": "export",
+      "names": {
+        "en": "Export the container's files as a tar",
+        "ko": "컨테이너 파일을 tar로 내보내기",
+        "ja": "コンテナのファイルを tar に書き出す",
+        "zh-CN": "将容器文件导出为 tar",
+        "fil": "I-export ang mga file ng container bilang tar",
+        "es": "Exporta los archivos del contenedor como tar",
+        "vi": "Xuất các tệp của container thành tar"
+      },
+      "command": "podbag export -o app.tar app",
+      "check": {
+        "kind": "file-exists",
+        "path": "app.tar"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "removeImage",
+      "names": {
+        "en": "Remove the new image in the CLI",
+        "ko": "CLI에서 새 이미지 삭제하기",
+        "ja": "CLI で新しいイメージを削除する",
+        "zh-CN": "在 CLI 中删除新镜像",
+        "fil": "Burahin ang bagong image sa CLI",
+        "es": "Elimina la imagen nueva en la CLI",
+        "vi": "Xóa image mới trong CLI"
+      },
+      "command": "podbag rmi app-snapshot:1",
+      "check": {
+        "kind": "image-absent",
+        "name": "app-snapshot:1"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

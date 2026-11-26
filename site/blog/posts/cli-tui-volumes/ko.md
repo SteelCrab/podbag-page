@@ -14,6 +14,8 @@ CLI에서 만든 볼륨을 Podbag Desktop에서 열고 삭제합니다. 실습 �
 
 [실습 모듈 다운로드](cli-gui-volumes.podbag)
 
+![터미널이 실습 환경에서 my-api 볼륨을 만들고 확인합니다. Podbag Desktop 또는 TUI가 이 볼륨을 살펴보고 삭제합니다](architecture-ko-light.svg)
+
 ## 볼륨이란?
 
 볼륨은 컨테이너 밖에 파일을 보관하는 저장 공간입니다. `app-a`가 `my-api` 볼륨에 `note.txt`를 저장합니다. `app-a`를 삭제한 뒤 새 컨테이너 `app-b`에 같은 볼륨을 연결하면 파일을 다시 읽을 수 있습니다. 볼륨 자체를 삭제하면 그 안의 파일도 삭제됩니다.

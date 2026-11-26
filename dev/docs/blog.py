@@ -583,6 +583,9 @@ class Builder:
     def post_path(self, post, lang=None):
         return self.blog_path(lang or post.lang) + post.slug + "/"
 
+    def training_path(self, lang):
+        return self.site.path_of(lang) + "training/"
+
     def category_path(self, lang, category):
         return self.blog_path(lang) + f"category/{category}/"
 
@@ -593,7 +596,10 @@ class Builder:
                 return [], None
             path = (post_folder / src).resolve()
             if path.is_relative_to(post_folder.resolve()) and path.is_file():
-                return [], image_size(path)
+                dark = src[:-len("-light.svg")] + "-dark.svg" if src.endswith("-light.svg") else None
+                sources = ([("(prefers-color-scheme: dark)", dark)]
+                           if dark and (post_folder / dark).is_file() else [])
+                return sources, image_size(path)
             return [], None
         path = self.pictures / src[len("/images/"):]
         if not path.is_file():
@@ -694,7 +700,9 @@ class Builder:
         title = (f'<h1 class="band-title">{w["blog_title"]}</h1>' if heading else
                  f'<p class="band-title"><a href="{root}{self.blog_path(lang)}">{w["blog_title"]}</a></p>')
         links = [(root + self.blog_path(lang), w["blog_all"], current == "all")]
-        links += [(root + self.category_path(lang, c), w[cat_key(c)], current == c)
+        # Training has its own page: the guides, the modules and how to start them.
+        links += [(root + (self.training_path(lang) if c == "how-to" else self.category_path(lang, c)),
+                   w[cat_key(c)], current == c and c != "how-to")
                   for c in CATEGORIES]
         nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if on else ""}>{t}</a>'
                       for h, t, on in links)
@@ -707,6 +715,7 @@ class Builder:
         feed = root + self.blog_path(lang) + "feed.xml"
         gh = "https://github.com/SteelCrab/podbag"
         resources = [
+            (root + self.training_path(lang), w["nav_training"]),
             (f"{gh}/blob/main/docs/usage.md", w["blog_res_docs"]),
             (gh, "GitHub"),
             (f"{gh}/releases", w["footer_releases"]),

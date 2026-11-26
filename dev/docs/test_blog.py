@@ -135,6 +135,20 @@ class Blocks(unittest.TestCase):
                               'width="800" height="490" loading="lazy"></picture></figure>')
 
 
+class PostPictures(unittest.TestCase):
+    def test_a_post_picture_has_its_dark_variant(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            svg = '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400"></svg>'
+            (folder / "architecture-en-light.svg").write_text(svg)
+            (folder / "architecture-en-dark.svg").write_text(svg)
+            (folder / "plain-light.svg").write_text(svg)
+            sources, size = blog.Builder.picture(None, "architecture-en-light.svg", folder)
+            self.assertEqual(sources, [("(prefers-color-scheme: dark)", "architecture-en-dark.svg")])
+            self.assertEqual(size, (960, 400))
+            self.assertEqual(blog.Builder.picture(None, "plain-light.svg", folder)[0], [])
+
+
 class Inline(unittest.TestCase):
     def inline(self, text, **options):
         return blog.Markdown(**options).inline(text)
@@ -345,9 +359,12 @@ class Built(unittest.TestCase):
             creator = "{http://purl.org/dc/elements/1.1/}creator"
             items = ElementTree.parse(base / "feed.xml").findall(".//item")
             creators = {i.findtext("link"): i.findtext(creator) for i in items}
-            for slug, name in [("compose-stop-timeout", "@SteelCrab"), ("podbag-0-1-0", team)]:
-                url = self.site.URL + self.site.path_of(code) + f"blog/{slug}/"
-                self.assertEqual(creators[url], name)
+            # The feed has the newest posts only: check the author of every item in it.
+            by_url = {self.site.URL + self.site.path_of(code) + f"blog/{p.slug}/": p
+                      for p in posts[code]}
+            self.assertTrue(creators, code)
+            for url, name in creators.items():
+                self.assertEqual(name, team if by_url[url].author == "team" else "@SteelCrab", url)
 
     def test_volume_animation_matches_the_offline_module(self):
         assets = self.out / "blog/cli-tui-volumes"

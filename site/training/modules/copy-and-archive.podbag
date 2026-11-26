@@ -1,0 +1,173 @@
+{
+  "format": "podbag-course-v2",
+  "id": "copy-and-archive",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Copy files and move an image as an archive",
+      "guide": "Start the session with podbag lab start copy-and-archive.",
+      "url": "https://podbag.dev/blog/copy-and-archive/"
+    },
+    "ko": {
+      "title": "Podbag Training · 파일 복사하고 이미지를 아카이브로 옮기기",
+      "guide": "podbag lab start copy-and-archive 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/copy-and-archive/"
+    }
+  },
+  "files": {
+    "note.txt": "Hello from note.txt\n"
+  },
+  "steps": [
+    {
+      "key": "run",
+      "names": {
+        "en": "Run a container in the background",
+        "ko": "백그라운드에서 컨테이너 실행하기",
+        "ja": "バックグラウンドでコンテナを実行する",
+        "zh-CN": "在后台运行容器",
+        "fil": "Patakbuhin ang container sa background",
+        "es": "Ejecuta un contenedor en segundo plano",
+        "vi": "Chạy container ở chế độ nền"
+      },
+      "command": "podbag run -d --name app docker.io/library/busybox:1.37.0 sh -c 'echo \"Hello from app\" > /reply.txt && exec sleep 3600'",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "copyIn",
+      "names": {
+        "en": "Copy the note into the container",
+        "ko": "메모를 컨테이너에 복사하기",
+        "ja": "メモをコンテナにコピーする",
+        "zh-CN": "将笔记复制到容器中",
+        "fil": "Kopyahin ang note papasok sa container",
+        "es": "Copia la nota al contenedor",
+        "vi": "Sao chép ghi chú vào container"
+      },
+      "command": "docker cp note.txt app:/tmp/",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "readNote",
+      "names": {
+        "en": "Read the note in the container",
+        "ko": "컨테이너에서 메모 읽기",
+        "ja": "コンテナでメモを読む",
+        "zh-CN": "在容器中读取笔记",
+        "fil": "Basahin ang note sa container",
+        "es": "Lee la nota en el contenedor",
+        "vi": "Đọc ghi chú trong container"
+      },
+      "command": "podbag exec app cat /tmp/note.txt",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from note.txt"
+      }
+    },
+    {
+      "key": "copyOut",
+      "names": {
+        "en": "Copy a file out of the container",
+        "ko": "컨테이너에서 파일 꺼내기",
+        "ja": "コンテナからファイルを取り出す",
+        "zh-CN": "从容器中复制文件出来",
+        "fil": "Kopyahin ang file palabas ng container",
+        "es": "Copia un archivo fuera del contenedor",
+        "vi": "Sao chép tệp ra khỏi container"
+      },
+      "command": "docker cp app:/reply.txt reply.txt",
+      "check": {
+        "kind": "file-exists",
+        "path": "reply.txt"
+      }
+    },
+    {
+      "key": "save",
+      "names": {
+        "en": "Save the image to an archive",
+        "ko": "이미지를 아카이브로 저장하기",
+        "ja": "イメージをアーカイブに保存する",
+        "zh-CN": "将镜像保存为归档",
+        "fil": "I-save ang image sa archive",
+        "es": "Guarda la imagen en un archivo",
+        "vi": "Lưu image vào tệp lưu trữ"
+      },
+      "command": "podbag save -o busybox.tar docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "file-exists",
+        "path": "busybox.tar"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm -f app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "removeImage",
+      "names": {
+        "en": "Remove the image in the CLI",
+        "ko": "CLI에서 이미지 삭제하기",
+        "ja": "CLI でイメージを削除する",
+        "zh-CN": "在 CLI 中删除镜像",
+        "fil": "Burahin ang image sa CLI",
+        "es": "Elimina la imagen en la CLI",
+        "vi": "Xóa image trong CLI"
+      },
+      "command": "podbag rmi docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-absent",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "load",
+      "names": {
+        "en": "Load the image from the archive",
+        "ko": "아카이브에서 이미지 불러오기",
+        "ja": "アーカイブからイメージを読み込む",
+        "zh-CN": "从归档加载镜像",
+        "fil": "I-load ang image mula sa archive",
+        "es": "Carga la imagen desde el archivo",
+        "vi": "Tải image từ tệp lưu trữ"
+      },
+      "command": "podbag load -i busybox.tar",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

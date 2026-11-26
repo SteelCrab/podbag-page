@@ -1,0 +1,153 @@
+{
+  "format": "podbag-course-v2",
+  "id": "image-basics",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Pull, tag and remove an image",
+      "guide": "Start the session with podbag lab start image-basics.",
+      "url": "https://podbag.dev/blog/image-basics/"
+    },
+    "ko": {
+      "title": "Podbag Training · 이미지 내려받고 이름 붙이고 삭제하기",
+      "guide": "podbag lab start image-basics 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/image-basics/"
+    }
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull an image in the CLI",
+        "ko": "CLI에서 이미지 내려받기",
+        "ja": "CLI でイメージを取得する",
+        "zh-CN": "在 CLI 中拉取镜像",
+        "fil": "I-pull ang image sa CLI",
+        "es": "Descarga una imagen en la CLI",
+        "vi": "Tải image về trong CLI"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "listImages",
+      "names": {
+        "en": "List the images",
+        "ko": "이미지 목록 보기",
+        "ja": "イメージの一覧を表示する",
+        "zh-CN": "列出镜像",
+        "fil": "Ilista ang mga image",
+        "es": "Muestra la lista de imágenes",
+        "vi": "Xem danh sách image"
+      },
+      "command": "podbag images",
+      "check": {
+        "kind": "output-contains",
+        "text": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "tag",
+      "names": {
+        "en": "Give the image a new name",
+        "ko": "이미지에 새 이름 붙이기",
+        "ja": "イメージに新しい名前を付ける",
+        "zh-CN": "给镜像起一个新名称",
+        "fil": "Bigyan ng bagong pangalan ang image",
+        "es": "Da a la imagen un nombre nuevo",
+        "vi": "Đặt tên mới cho image"
+      },
+      "command": "podbag tag docker.io/library/busybox:1.37.0 my-busybox:1",
+      "check": {
+        "kind": "image-exists",
+        "name": "my-busybox:1"
+      }
+    },
+    {
+      "key": "runTag",
+      "names": {
+        "en": "Run a container from the new name",
+        "ko": "새 이름으로 컨테이너 실행하기",
+        "ja": "新しい名前でコンテナを実行する",
+        "zh-CN": "用新名称运行容器",
+        "fil": "Magpatakbo ng container gamit ang bagong pangalan",
+        "es": "Ejecuta un contenedor con el nombre nuevo",
+        "vi": "Chạy container bằng tên mới"
+      },
+      "command": "podbag run --rm my-busybox:1 echo Hello from my-busybox",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from my-busybox"
+      }
+    },
+    {
+      "key": "removeTag",
+      "names": {
+        "en": "Remove the new name",
+        "ko": "새 이름 삭제하기",
+        "ja": "新しい名前を削除する",
+        "zh-CN": "删除新名称",
+        "fil": "Burahin ang bagong pangalan",
+        "es": "Elimina el nombre nuevo",
+        "vi": "Xóa tên mới"
+      },
+      "command": "podbag rmi my-busybox:1",
+      "check": {
+        "kind": "image-absent",
+        "name": "my-busybox:1"
+      }
+    },
+    {
+      "key": "originalStays",
+      "names": {
+        "en": "Check that the original image stays",
+        "ko": "원래 이미지가 남았는지 확인하기",
+        "ja": "元のイメージが残っていることを確認する",
+        "zh-CN": "确认原来的镜像还在",
+        "fil": "Tiyaking nandoon pa ang orihinal na image",
+        "es": "Comprueba que la imagen original sigue ahí",
+        "vi": "Kiểm tra image gốc vẫn còn"
+      },
+      "command": "podbag images",
+      "check": {
+        "kind": "output-contains",
+        "text": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "removeImage",
+      "names": {
+        "en": "Remove the image in the CLI",
+        "ko": "CLI에서 이미지 삭제하기",
+        "ja": "CLI でイメージを削除する",
+        "zh-CN": "在 CLI 中删除镜像",
+        "fil": "Burahin ang image sa CLI",
+        "es": "Elimina la imagen en la CLI",
+        "vi": "Xóa image trong CLI"
+      },
+      "command": "podbag rmi docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-absent",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "format": "podbag-course-v2",
+  "id": "container-exec",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Run commands inside a container",
+      "guide": "Start the session with podbag lab start container-exec.",
+      "url": "https://podbag.dev/blog/container-exec/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너 안에서 명령 실행하기",
+      "guide": "podbag lab start container-exec 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/container-exec/"
+    }
+  },
+  "steps": [
+    {
+      "key": "runApp",
+      "names": {
+        "en": "Run a container with an environment variable",
+        "ko": "환경 변수를 넣어 컨테이너 실행하기",
+        "ja": "環境変数を付けてコンテナを起動する",
+        "zh-CN": "带环境变量运行容器",
+        "fil": "Patakbuhin ang container na may environment variable",
+        "es": "Ejecuta un contenedor con una variable de entorno",
+        "vi": "Chạy container với một biến môi trường"
+      },
+      "command": "podbag run -d --name app -e GREETING=hello docker.io/library/busybox:1.37.0 sleep 3600",
+      "check": {
+        "kind": "container-running",
+        "name": "app"
+      }
+    },
+    {
+      "key": "inspectApp",
+      "names": {
+        "en": "Inspect the container's details",
+        "ko": "컨테이너 상세 정보 보기",
+        "ja": "コンテナの詳細を確認する",
+        "zh-CN": "查看容器详情",
+        "fil": "Tingnan ang detalye ng container",
+        "es": "Consulta los detalles del contenedor",
+        "vi": "Xem chi tiết container"
+      },
+      "command": "podbag inspect app",
+      "check": {
+        "kind": "output-contains",
+        "text": "\"status\": \"running\""
+      }
+    },
+    {
+      "key": "printVar",
+      "names": {
+        "en": "Print the variable inside the container",
+        "ko": "컨테이너 안에서 변수 출력하기",
+        "ja": "コンテナ内で変数を表示する",
+        "zh-CN": "在容器内打印变量",
+        "fil": "Ipakita ang variable sa loob ng container",
+        "es": "Muestra la variable dentro del contenedor",
+        "vi": "In biến bên trong container"
+      },
+      "command": "podbag exec app printenv GREETING",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "hello"
+      }
+    },
+    {
+      "key": "execEnv",
+      "names": {
+        "en": "Give one command its own variable",
+        "ko": "명령 하나에만 변수 넣기",
+        "ja": "1 つのコマンドだけに変数を渡す",
+        "zh-CN": "只给一个命令设置变量",
+        "fil": "Bigyan ng sariling variable ang isang command",
+        "es": "Da una variable solo a un comando",
+        "vi": "Đặt biến riêng cho một lệnh"
+      },
+      "command": "podbag exec -e MODE=debug app printenv MODE",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "debug"
+      }
+    },
+    {
+      "key": "listFiles",
+      "names": {
+        "en": "List files in the container",
+        "ko": "컨테이너의 파일 목록 보기",
+        "ja": "コンテナのファイル一覧を表示する",
+        "zh-CN": "列出容器中的文件",
+        "fil": "Ilista ang mga file sa container",
+        "es": "Lista los archivos del contenedor",
+        "vi": "Liệt kê tệp trong container"
+      },
+      "command": "podbag exec app ls /etc",
+      "check": {
+        "kind": "output-has-line",
+        "text": "hosts"
+      }
+    },
+    {
+      "key": "writeFile",
+      "names": {
+        "en": "Write a file with a shell command",
+        "ko": "셸 명령으로 파일 쓰기",
+        "ja": "シェルコマンドでファイルを書く",
+        "zh-CN": "用 shell 命令写入文件",
+        "fil": "Sumulat ng file gamit ang shell command",
+        "es": "Escribe un archivo con un comando de shell",
+        "vi": "Ghi tệp bằng lệnh shell"
+      },
+      "command": "podbag exec app sh -c 'echo \"Written by exec\" > /tmp/note.txt && ls /tmp'",
+      "check": {
+        "kind": "output-has-line",
+        "text": "note.txt"
+      }
+    },
+    {
+      "key": "readFile",
+      "names": {
+        "en": "Read the file back",
+        "ko": "파일 다시 읽기",
+        "ja": "ファイルを読み返す",
+        "zh-CN": "读回文件",
+        "fil": "Basahin muli ang file",
+        "es": "Vuelve a leer el archivo",
+        "vi": "Đọc lại tệp"
+      },
+      "command": "podbag exec app cat /tmp/note.txt",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Written by exec"
+      }
+    },
+    {
+      "key": "workdir",
+      "names": {
+        "en": "Run a command in another folder",
+        "ko": "다른 폴더에서 명령 실행하기",
+        "ja": "別のフォルダーでコマンドを実行する",
+        "zh-CN": "在另一个文件夹中运行命令",
+        "fil": "Magpatakbo ng command sa ibang folder",
+        "es": "Ejecuta un comando en otra carpeta",
+        "vi": "Chạy lệnh trong thư mục khác"
+      },
+      "command": "podbag exec -w /tmp app ls",
+      "check": {
+        "kind": "output-has-line",
+        "text": "note.txt"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the running container",
+        "ko": "실행 중인 컨테이너 삭제하기",
+        "ja": "実行中のコンテナを削除する",
+        "zh-CN": "删除正在运行的容器",
+        "fil": "Burahin ang tumatakbong container",
+        "es": "Elimina el contenedor en ejecución",
+        "vi": "Xóa container đang chạy"
+      },
+      "command": "podbag rm -f app",
+      "check": {
+        "kind": "container-absent",
+        "name": "app"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

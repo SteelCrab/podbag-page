@@ -15,6 +15,8 @@ Containers on the same network can reach each other by name. In this module, you
 
 **Time** 10–15 minutes. This module follows [Recover a web server with logs](../web-service-recovery/).
 
+![On the network lab-net, a one-time container and the web server reach api by name; only web publishes a port, 127.0.0.1:18083](architecture-en-light.svg)
+
 ## Install and start the module
 
 This module requires a build of Podbag Desktop and the CLI that supports `container-network`. It was added after v0.3.2.

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-label="노드가 하나인 swarm에서 web 서비스가 복제본을 ingress 네트워크의 web.1, web.2, web.3 컨테이너로 실행합니다" font-family="ui-sans-serif, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', Helvetica, Arial, sans-serif">
+<title>노드가 하나인 swarm에서 web 서비스가 복제본을 ingress 네트워크의 web.1, web.2, web.3 컨테이너로 실행합니다</title>
+<defs><marker id="head-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="tail-arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="tail-accent" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="head-podbag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="tail-podbag" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="head-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker><marker id="tail-bad" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="960" height="330" rx="12" fill="#fcfcfb"/>
+<rect x="20" y="20" width="250" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7"/>
+<text x="38" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">내 컴퓨터</text>
+<rect x="300" y="20" width="640" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7" stroke-dasharray="6 5"/>
+<text x="318" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">실습 환경</text>
+<text x="318" y="67" font-size="11.5" fill="#52514e" text-anchor="start">임시 환경: exit를 입력하면 삭제됩니다</text>
+<rect x="40" y="80" width="210" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="105.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">터미널</text>
+<text x="54" y="123.0" font-size="11.5" fill="#52514e" text-anchor="start">swarm · service · podbag ps</text>
+<rect x="330" y="80" width="250" height="64" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="344" y="109.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">서비스 web</text>
+<text x="344" y="127.0" font-size="11.5" fill="#52514e" text-anchor="start">복제본: 2개, 그다음 3개</text>
+<rect x="640" y="80" width="270" height="64" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="654" y="109.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">swarm</text>
+<text x="654" y="127.0" font-size="11.5" fill="#52514e" text-anchor="start">노드 하나: 이 실습 환경</text>
+<rect x="330" y="176" width="590" height="116" rx="12" fill="#eaf1fb" stroke="#2a78d6" stroke-dasharray="4 4"/>
+<text x="344" y="198" font-size="12.5" fill="#2a78d6" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">ingress</text>
+<rect x="350" y="210" width="170" height="64" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="364" y="239.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">web.1</text>
+<text x="364" y="257.0" font-size="11.5" fill="#52514e" text-anchor="start">작업 · httpd :8080</text>
+<rect x="540" y="210" width="170" height="64" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="554" y="239.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">web.2</text>
+<text x="554" y="257.0" font-size="11.5" fill="#52514e" text-anchor="start">작업 · httpd :8080</text>
+<rect x="730" y="210" width="170" height="64" rx="8" fill="#f2f1ed" stroke="#2a78d6" stroke-width="1.4"/>
+<text x="744" y="239.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">web.3</text>
+<text x="744" y="257.0" font-size="11.5" fill="#52514e" text-anchor="start">scale로 추가</text>
+<line x1="455" y1="144" x2="455" y2="206" stroke="#898781" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<text x="465.0" y="161.0" font-size="11.5" fill="#52514e" text-anchor="start">작업 실행</text>
+</svg>

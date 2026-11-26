@@ -13,6 +13,8 @@ draft: false
 
 An image contains the files a program needs. A container runs the program from that image. In this lab, you run a small web server called `hello-web` and stop it with Podbag Desktop.
 
+![The terminal runs the container hello-web from the busybox image in the practice session; Podbag Desktop stops it](architecture-en-light.svg)
+
 ## Beginner course
 
 **Run your first container** → [Open a web server in the browser](../web-basics/) → [Keep files across containers](../volume-persistence/) → [Replace and clean up a web service](../web-service-lifecycle/)

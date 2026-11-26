@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-label="첫 번째 lab-web은 SITE_TITLE이 없어 종료되고 로그가 이유를 알려 줍니다. 설정을 받은 두 번째 lab-web이 127.0.0.1:18082로 페이지를 보여 줍니다" font-family="ui-sans-serif, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', Helvetica, Arial, sans-serif">
+<title>첫 번째 lab-web은 SITE_TITLE이 없어 종료되고 로그가 이유를 알려 줍니다. 설정을 받은 두 번째 lab-web이 127.0.0.1:18082로 페이지를 보여 줍니다</title>
+<defs><marker id="head-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="tail-arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="tail-accent" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="head-podbag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="tail-podbag" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="head-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker><marker id="tail-bad" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="960" height="330" rx="12" fill="#fcfcfb"/>
+<rect x="20" y="20" width="250" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7"/>
+<text x="38" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">내 컴퓨터</text>
+<rect x="300" y="20" width="640" height="290" rx="12" fill="#ffffff" stroke="#c3c2b7" stroke-dasharray="6 5"/>
+<text x="318" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">실습 환경</text>
+<text x="318" y="67" font-size="11.5" fill="#52514e" text-anchor="start">임시 환경: exit를 입력하면 삭제됩니다</text>
+<rect x="40" y="80" width="210" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="105.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">터미널</text>
+<text x="54" y="123.0" font-size="11.5" fill="#52514e" text-anchor="start">podbag run · logs · rm</text>
+<rect x="40" y="152" width="210" height="56" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="177.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">Podbag Desktop</text>
+<text x="54" y="195.0" font-size="11.5" fill="#52514e" text-anchor="start">포트 확인, 중지</text>
+<rect x="40" y="232" width="210" height="42" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="258.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">브라우저</text>
+<rect x="360" y="92" width="300" height="72" rx="8" fill="#f2f1ed" stroke="#c2410c" stroke-width="1.4"/>
+<text x="374" y="125.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">lab-web</text>
+<text x="374" y="143.0" font-size="11.5" fill="#52514e" text-anchor="start">SITE_TITLE is required</text>
+<rect x="581.6" y="102" width="68.4" height="20" rx="10" fill="none" stroke="#c2410c"/>
+<text x="615.8" y="116" font-size="11" fill="#c2410c" font-weight="600" text-anchor="middle">종료됨 (1)</text>
+<rect x="360" y="212" width="300" height="72" rx="8" fill="#f2f1ed" stroke="#15803d" stroke-width="1.4"/>
+<text x="374" y="245.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">lab-web</text>
+<text x="374" y="263.0" font-size="11.5" fill="#52514e" text-anchor="start">-e SITE_TITLE=…</text>
+<rect x="603.2" y="222" width="46.8" height="20" rx="10" fill="none" stroke="#15803d"/>
+<text x="626.6" y="236" font-size="11" fill="#15803d" font-weight="600" text-anchor="middle">실행 중</text>
+<rect x="527" y="254" width="123" height="20" rx="10" fill="#2a78d6"/>
+<text x="588.5" y="268" font-size="11" fill="#ffffff" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">127.0.0.1:18082</text>
+<line x1="356" y1="120" x2="254" y2="110" stroke="#c2410c" stroke-width="1.6" marker-end="url(#head-bad)"/>
+<text x="297.0" y="107.0" font-size="11.5" fill="#52514e" text-anchor="middle">로그</text>
+<line x1="250" y1="253" x2="356" y2="250" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+</svg>

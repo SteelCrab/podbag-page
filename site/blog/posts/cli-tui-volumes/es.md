@@ -14,6 +14,8 @@ Crea un volumen en la CLI, inspecciónalo y elimínalo en Desktop siguiendo el p
 
 [Descargar el módulo](cli-gui-volumes.podbag)
 
+![La terminal crea y lista el volumen my-api en la sesión de práctica; Podbag Desktop o la TUI lo revisa y lo elimina](architecture-es-light.svg)
+
 ## ¿Qué es un volumen?
 
 Un volumen guarda archivos por separado del contenedor. Aquí, `app-a` guarda `note.txt` en el volumen `my-api`. Después de eliminar `app-a`, el nuevo contenedor `app-b` monta el mismo volumen y lee el archivo. Al eliminar el propio volumen también se borran sus archivos.

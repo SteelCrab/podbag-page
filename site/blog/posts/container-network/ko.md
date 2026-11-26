@@ -15,6 +15,8 @@ draft: false
 
 **예상 시간** 10~15분. [로그로 웹 서버 장애 해결하기](/ko/blog/web-service-recovery/)를 마친 뒤 진행합니다.
 
+![lab-net 네트워크에서 일회용 컨테이너와 web 서버가 이름으로 api에 접속합니다. 포트는 web만 127.0.0.1:18083으로 공개합니다](architecture-ko-light.svg)
+
 ## 모듈 설치 및 실습 시작
 
 `container-network`를 지원하는 Podbag Desktop과 CLI가 필요합니다. 이 모듈은 v0.3.2 이후에 추가됐습니다.

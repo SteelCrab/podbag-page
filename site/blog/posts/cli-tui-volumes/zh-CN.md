@@ -14,6 +14,8 @@ draft: false
 
 [下载实验模块](cli-gui-volumes.podbag)
 
+![终端在练习环境中创建并列出卷 my-api，Podbag Desktop 或 TUI 查看并删除它](architecture-zh-CN-light.svg)
+
 ## 什么是卷？
 
 卷是独立于容器的存储空间。`app-a` 将 `note.txt` 保存到 `my-api` 卷。删除 `app-a` 后，新容器 `app-b` 挂载同一个卷，仍然可以读取该文件。 如果删除卷本身，其中的文件也会被删除。
