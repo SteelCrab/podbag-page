@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="514" viewBox="0 0 760 514" role="img" aria-labelledby="c-title c-desc">
+<title id="c-title">전체 포팅과 Tauri: 실행별 결과</title><desc id="c-desc">행 1,000개와 10,000개에서 실행마다 잰 시작 시간과 메모리입니다. 빈 원은 각 실행, 마름모는 중앙값입니다.</desc>
+<defs><style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#172b40}.h{font-weight:650;font-size:16px}.name{font-size:13px;fill:#3e5366}.group{font-weight:650;font-size:13px}.tick{font-size:12px;fill:#5b6b7a}.grid{stroke:#d9e1e8;stroke-width:1}</style></defs>
+<rect width="760" height="514" fill="#ffffff" rx="8"/>
+<text class="h" x="210" y="28">시작부터 첫 전체 프레임까지 (ms)</text>
+<line class="grid" x1="210.0" x2="210.0" y1="44" y2="222"/>
+<text class="tick" x="210.0" y="238" text-anchor="middle">0</text>
+<line class="grid" x1="314.0" x2="314.0" y1="44" y2="222"/>
+<text class="tick" x="314.0" y="238" text-anchor="middle">100</text>
+<line class="grid" x1="418.0" x2="418.0" y1="44" y2="222"/>
+<text class="tick" x="418.0" y="238" text-anchor="middle">200</text>
+<line class="grid" x1="522.0" x2="522.0" y1="44" y2="222"/>
+<text class="tick" x="522.0" y="238" text-anchor="middle">300</text>
+<line class="grid" x1="626.0" x2="626.0" y1="44" y2="222"/>
+<text class="tick" x="626.0" y="238" text-anchor="middle">400</text>
+<line class="grid" x1="730.0" x2="730.0" y1="44" y2="222"/>
+<text class="tick" x="730.0" y="238" text-anchor="middle">500</text>
+<text class="group" x="12" y="62">행 1,000개</text>
+<text class="name" x="200" y="70" text-anchor="end">직접 만든 UI 계층</text>
+<circle cx="430.7" cy="66" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="358.8" cy="66" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="354.0" cy="66" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="365.1" cy="66" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="385.8" cy="66" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<path d="M365.1 59 l7 7 l-7 7 l-7 -7 z" fill="#0f766e"/>
+<text class="name" x="200" y="92" text-anchor="end">GPUI + 자체 위젯</text>
+<circle cx="368.0" cy="88" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="359.1" cy="88" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="361.9" cy="88" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="355.8" cy="88" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="356.2" cy="88" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M359.1 81 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="114" text-anchor="end">Tauri · 가상 목록</text>
+<circle cx="554.7" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="612.7" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="542.3" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="549.4" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="554.9" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M554.7 103 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="group" x="12" y="144">행 10,000개</text>
+<text class="name" x="200" y="152" text-anchor="end">직접 만든 UI 계층</text>
+<circle cx="374.8" cy="148" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="377.0" cy="148" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="371.7" cy="148" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="360.6" cy="148" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="415.1" cy="148" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<path d="M374.8 141 l7 7 l-7 7 l-7 -7 z" fill="#0f766e"/>
+<text class="name" x="200" y="174" text-anchor="end">GPUI + 자체 위젯</text>
+<circle cx="372.3" cy="170" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="379.4" cy="170" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="365.2" cy="170" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="350.9" cy="170" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="368.8" cy="170" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M368.8 163 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="196" text-anchor="end">Tauri · 가상 목록</text>
+<circle cx="561.4" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="535.5" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="555.4" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="622.7" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="534.7" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M555.4 185 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="h" x="210" y="280">메모리, 앱과 WebKit 프로세스 (MiB)</text>
+<line class="grid" x1="210.0" x2="210.0" y1="296" y2="474"/>
+<text class="tick" x="210.0" y="490" text-anchor="middle">0</text>
+<line class="grid" x1="470.0" x2="470.0" y1="296" y2="474"/>
+<text class="tick" x="470.0" y="490" text-anchor="middle">50</text>
+<line class="grid" x1="730.0" x2="730.0" y1="296" y2="474"/>
+<text class="tick" x="730.0" y="490" text-anchor="middle">100</text>
+<text class="group" x="12" y="314">행 1,000개</text>
+<text class="name" x="200" y="322" text-anchor="end">직접 만든 UI 계층</text>
+<circle cx="369.7" cy="318" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="362.9" cy="318" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="365.3" cy="318" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="366.8" cy="318" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="364.7" cy="318" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<path d="M365.3 311 l7 7 l-7 7 l-7 -7 z" fill="#0f766e"/>
+<text class="name" x="200" y="344" text-anchor="end">GPUI + 자체 위젯</text>
+<circle cx="445.2" cy="340" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="416.9" cy="340" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="421.3" cy="340" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="423.7" cy="340" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="424.5" cy="340" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M423.7 333 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="366" text-anchor="end">Tauri · 가상 목록</text>
+<circle cx="590.0" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="583.0" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="591.1" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="592.6" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="585.5" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M590.0 355 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="group" x="12" y="396">행 10,000개</text>
+<text class="name" x="200" y="404" text-anchor="end">직접 만든 UI 계층</text>
+<circle cx="408.7" cy="400" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="409.0" cy="400" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="407.6" cy="400" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="407.9" cy="400" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<circle cx="416.7" cy="400" r="4.5" fill="none" stroke="#0f766e" stroke-width="1.6"/>
+<path d="M408.7 393 l7 7 l-7 7 l-7 -7 z" fill="#0f766e"/>
+<text class="name" x="200" y="426" text-anchor="end">GPUI + 자체 위젯</text>
+<circle cx="466.2" cy="422" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="463.3" cy="422" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="465.9" cy="422" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="440.2" cy="422" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="493.7" cy="422" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M465.9 415 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="448" text-anchor="end">Tauri · 가상 목록</text>
+<circle cx="608.2" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="638.6" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="624.1" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="650.2" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="650.2" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M638.6 437 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+</svg>

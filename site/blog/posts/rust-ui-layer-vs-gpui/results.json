@@ -1,0 +1,4460 @@
+{
+ "meta": {
+  "date": "2026-11-26T16:44:49",
+  "machine": "arm64",
+  "macos": "27.2.1",
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+  "memory_tool": "footprint (phys_footprint)",
+  "cpu_tool": "ps cumulative cpu time over the window",
+  "idle_before_memory_s": 3.0,
+  "cpu_window_s": 10.0,
+  "filter_query": "web-0004",
+  "screen_locked_at_start": false
+ },
+ "build": {
+  "gpui-app": {
+   "clean_release_build_s": 86.3,
+   "build_ok": true,
+   "binary_bytes": 2724336,
+   "cargo_tree_unique": 452,
+   "cargo_lock_packages": 721,
+   "target_dir_bytes": 1141125966
+  },
+  "own-app": {
+   "clean_release_build_s": 44.4,
+   "build_ok": true,
+   "binary_bytes": 3924704,
+   "cargo_tree_unique": 132,
+   "cargo_lock_packages": 304,
+   "target_dir_bytes": 464155463
+  },
+  "gpui-full": {
+   "clean_release_build_s": 103.0,
+   "build_ok": true,
+   "binary_bytes": 4876768,
+   "cargo_tree_unique": 454,
+   "cargo_lock_packages": 710,
+   "target_dir_bytes": 1147197608
+  },
+  "own-full": {
+   "clean_release_build_s": 48.4,
+   "build_ok": true,
+   "binary_bytes": 4354848,
+   "cargo_tree_unique": 140,
+   "cargo_lock_packages": 308,
+   "target_dir_bytes": 489415725
+  },
+  "tauri-app": {
+   "clean_release_build_s": 56.0,
+   "build_ok": true,
+   "binary_bytes": 3366448,
+   "cargo_tree_unique": 220,
+   "cargo_lock_packages": 433,
+   "target_dir_bytes": 774987259
+  },
+  "podbag-desktop": {
+   "binary_bytes": 5621936,
+   "target_dir_bytes": 3532022603
+  }
+ },
+ "runs": [
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 427.2,
+   "ready_in_app_ms": 167.1,
+   "render_ms": 33.7,
+   "memory": {
+    "app_bytes": 47514608,
+    "total_bytes": 595988584,
+    "processes": [
+     {
+      "pid": 16204,
+      "name": "gpui-app",
+      "bytes": 47514608
+     },
+     {
+      "pid": 16213,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 13550000
+     },
+     {
+      "pid": 16241,
+      "name": "com.apple.Virtualization.VirtualMachine",
+      "bytes": 534923976
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.09,
+    "app_pct": 0.2973277949268336,
+    "total_pct": 0.8919833847804988,
+    "processes": [
+     {
+      "pid": 16204,
+      "name": "gpui-app",
+      "pct": 0.2973277949268336
+     },
+     {
+      "pid": 16213,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.09910926497561101
+     },
+     {
+      "pid": 16241,
+      "name": "com.apple.Virtualization.VirtualMachine",
+      "pct": 0.4955463248780542
+     }
+    ]
+   },
+   "filter_ms": 14.7,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 16241,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 557.9,
+   "ready_in_app_ms": 267.9,
+   "render_ms": 117.3,
+   "memory": {
+    "app_bytes": 31261656,
+    "total_bytes": 44926368,
+    "processes": [
+     {
+      "pid": 16821,
+      "name": "own-app",
+      "bytes": 31261656
+     },
+     {
+      "pid": 16824,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 13664712
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 16821,
+      "name": "own-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 16824,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 2.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 402.6,
+   "ready_in_app_ms": 131.7,
+   "render_ms": 35.7,
+   "memory": {
+    "app_bytes": 44925912,
+    "total_bytes": 56034720,
+    "processes": [
+     {
+      "pid": 17337,
+      "name": "gpui-full",
+      "bytes": 44925912
+     },
+     {
+      "pid": 17339,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11108808
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.6929001952392724,
+    "total_pct": 0.7918859374163112,
+    "processes": [
+     {
+      "pid": 17337,
+      "name": "gpui-full",
+      "pct": 0.6929001952392724
+     },
+     {
+      "pid": 17339,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.09898574217703882
+     }
+    ]
+   },
+   "filter_ms": 16.7,
+   "filter_visible": 2,
+   "views": {
+    "images": 14.8,
+    "volumes": 17.5,
+    "networks": 16.5,
+    "kubernetes": 11.9,
+    "settings": 12.9,
+    "containers": 13.7
+   },
+   "memory_after_views": {
+    "app_bytes": 45155288,
+    "total_bytes": 58574240
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 503.6,
+   "ready_in_app_ms": 222.6,
+   "render_ms": 93.7,
+   "memory": {
+    "app_bytes": 32736216,
+    "total_bytes": 44172728,
+    "processes": [
+     {
+      "pid": 18030,
+      "name": "own-full",
+      "bytes": 32736216
+     },
+     {
+      "pid": 18073,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11436512
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.13,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 18030,
+      "name": "own-full",
+      "pct": 0.0
+     },
+     {
+      "pid": 18073,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 2.0,
+   "filter_visible": 2,
+   "views": {
+    "images": 4.1,
+    "volumes": 1.5,
+    "networks": 0.8,
+    "kubernetes": 2.6,
+    "settings": 3.3,
+    "containers": 0.5
+   },
+   "memory_after_views": {
+    "app_bytes": 40682456,
+    "total_bytes": 54347192
+   },
+   "lingering_helpers": [
+    {
+     "pid": 18605,
+     "name": "package_script_service",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 2355.5,
+   "ready_in_app_ms": 2076.1,
+   "render_ms": 58.0,
+   "data_ms": 1358.0,
+   "memory": {
+    "app_bytes": 30901304,
+    "total_bytes": 108138360,
+    "processes": [
+     {
+      "pid": 19617,
+      "name": "tauri-app",
+      "bytes": 30901304
+     },
+     {
+      "pid": 19639,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 17793744
+     },
+     {
+      "pid": 19640,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 47661992
+     },
+     {
+      "pid": 19641,
+      "name": "com.apple.accessibility.mediaaccessibilityd",
+      "bytes": 2801928
+     },
+     {
+      "pid": 19642,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 5931536
+     },
+     {
+      "pid": 19650,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 3047856
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.09905769264897414,
+    "total_pct": 1.5849230823835931,
+    "processes": [
+     {
+      "pid": 19617,
+      "name": "tauri-app",
+      "pct": 0.09905769264897414
+     },
+     {
+      "pid": 19639,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.8915192338407713
+     },
+     {
+      "pid": 19640,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.5943461558938476
+     },
+     {
+      "pid": 19641,
+      "name": "com.apple.accessibility.mediaaccessibilityd",
+      "pct": 0.0
+     },
+     {
+      "pid": 19642,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0
+     },
+     {
+      "pid": 19650,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 23.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 19641,
+     "name": "com.apple.accessibility.mediaaccessibilityd",
+     "killed": false
+    },
+    {
+     "pid": 21918,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 1156.1,
+   "ready_in_app_ms": 1144.4,
+   "render_ms": 81.0,
+   "data_ms": 94.0,
+   "memory": {
+    "app_bytes": 30737488,
+    "total_bytes": 80367096,
+    "processes": [
+     {
+      "pid": 22136,
+      "name": "tauri-app",
+      "bytes": 30737488
+     },
+     {
+      "pid": 22143,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15303352
+     },
+     {
+      "pid": 22144,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26526536
+     },
+     {
+      "pid": 22145,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4784632
+     },
+     {
+      "pid": 22146,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 3015088
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.09,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 22136,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 22143,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 22144,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 22145,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0
+     },
+     {
+      "pid": 22146,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 16.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 130.3,
+   "ready_in_app_ms": 117.4,
+   "render_ms": 27.3,
+   "memory": {
+    "app_bytes": 39683008,
+    "total_bytes": 50742640,
+    "processes": [
+     {
+      "pid": 22401,
+      "name": "gpui-app",
+      "bytes": 39683008
+     },
+     {
+      "pid": 22402,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11059632
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.09,
+    "app_pct": 0.5946380422147209,
+    "total_pct": 0.5946380422147209,
+    "processes": [
+     {
+      "pid": 22401,
+      "name": "gpui-app",
+      "pct": 0.5946380422147209
+     },
+     {
+      "pid": 22402,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 14.1,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 177.6,
+   "ready_in_app_ms": 169.4,
+   "render_ms": 74.0,
+   "memory": {
+    "app_bytes": 31097816,
+    "total_bytes": 42173832,
+    "processes": [
+     {
+      "pid": 22519,
+      "name": "own-app",
+      "bytes": 31097816
+     },
+     {
+      "pid": 22522,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11076016
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.09,
+    "app_pct": 0.0,
+    "total_pct": 0.09913971102358073,
+    "processes": [
+     {
+      "pid": 22519,
+      "name": "own-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 22522,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.09913971102358073
+     }
+    ]
+   },
+   "filter_ms": 1.2,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 151.9,
+   "ready_in_app_ms": 143.4,
+   "render_ms": 39.0,
+   "memory": {
+    "app_bytes": 47432664,
+    "total_bytes": 60458376,
+    "processes": [
+     {
+      "pid": 22632,
+      "name": "gpui-full",
+      "bytes": 47432664
+     },
+     {
+      "pid": 22633,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 13025712
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.3951939573662244,
+    "total_pct": 0.3951939573662244,
+    "processes": [
+     {
+      "pid": 22632,
+      "name": "gpui-full",
+      "pct": 0.3951939573662244
+     },
+     {
+      "pid": 22633,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 14.7,
+   "filter_visible": 2,
+   "views": {
+    "images": 17.8,
+    "volumes": 9.0,
+    "networks": 16.8,
+    "kubernetes": 17.8,
+    "settings": 10.9,
+    "containers": 8.6
+   },
+   "memory_after_views": {
+    "app_bytes": 47530968,
+    "total_bytes": 60966280
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 212.2,
+   "ready_in_app_ms": 205.6,
+   "render_ms": 89.4,
+   "memory": {
+    "app_bytes": 32211928,
+    "total_bytes": 43320736,
+    "processes": [
+     {
+      "pid": 22801,
+      "name": "own-full",
+      "bytes": 32211928
+     },
+     {
+      "pid": 22803,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11108808
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 22801,
+      "name": "own-full",
+      "pct": 0.0
+     },
+     {
+      "pid": 22803,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 1.6,
+   "filter_visible": 2,
+   "views": {
+    "images": 1.8,
+    "volumes": 0.9,
+    "networks": 0.7,
+    "kubernetes": 1.3,
+    "settings": 7.4,
+    "containers": 1.1
+   },
+   "memory_after_views": {
+    "app_bytes": 43697136,
+    "total_bytes": 57132472
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 332.6,
+   "ready_in_app_ms": 325.0,
+   "render_ms": 53.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 31130728,
+    "total_bytes": 102485472,
+    "processes": [
+     {
+      "pid": 27759,
+      "name": "tauri-app",
+      "bytes": 31130728
+     },
+     {
+      "pid": 27760,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15319664
+     },
+     {
+      "pid": 27761,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 45974416
+     },
+     {
+      "pid": 27762,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4669896
+     },
+     {
+      "pid": 27763,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.09895256810727575,
+    "processes": [
+     {
+      "pid": 27759,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 27760,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 27761,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 27762,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09895256810727575
+     },
+     {
+      "pid": 27763,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 25.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 27875,
+     "name": "NFStorageServer",
+     "killed": false
+    },
+    {
+     "pid": 28277,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 331.4,
+   "ready_in_app_ms": 325.3,
+   "render_ms": 57.0,
+   "data_ms": 48.0,
+   "memory": {
+    "app_bytes": 30327912,
+    "total_bytes": 79613408,
+    "processes": [
+     {
+      "pid": 28528,
+      "name": "tauri-app",
+      "bytes": 30327912
+     },
+     {
+      "pid": 28529,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15270584
+     },
+     {
+      "pid": 28530,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26313568
+     },
+     {
+      "pid": 28531,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4719024
+     },
+     {
+      "pid": 28533,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.09879243821434242,
+    "total_pct": 0.2963773146430272,
+    "processes": [
+     {
+      "pid": 28528,
+      "name": "tauri-app",
+      "pct": 0.09879243821434242
+     },
+     {
+      "pid": 28529,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 28530,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09879243821434242
+     },
+     {
+      "pid": 28531,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09879243821434233
+     },
+     {
+      "pid": 28533,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 26.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 146.3,
+   "ready_in_app_ms": 133.6,
+   "render_ms": 26.4,
+   "memory": {
+    "app_bytes": 33948608,
+    "total_bytes": 33948608,
+    "processes": [
+     {
+      "pid": 28675,
+      "name": "gpui-app",
+      "bytes": 33948608
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.9975846771087413,
+    "total_pct": 0.9975846771087413,
+    "processes": [
+     {
+      "pid": 28675,
+      "name": "gpui-app",
+      "pct": 0.9975846771087413
+     }
+    ]
+   },
+   "filter_ms": 12.9,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 160.0,
+   "ready_in_app_ms": 152.4,
+   "render_ms": 45.9,
+   "memory": {
+    "app_bytes": 28935104,
+    "total_bytes": 28935104,
+    "processes": [
+     {
+      "pid": 28759,
+      "name": "own-app",
+      "bytes": 28935104
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.09982849796474767,
+    "total_pct": 0.09982849796474767,
+    "processes": [
+     {
+      "pid": 28759,
+      "name": "own-app",
+      "pct": 0.09982849796474767
+     }
+    ]
+   },
+   "filter_ms": 6.1,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 143.4,
+   "ready_in_app_ms": 128.4,
+   "render_ms": 32.1,
+   "memory": {
+    "app_bytes": 41714624,
+    "total_bytes": 41714624,
+    "processes": [
+     {
+      "pid": 28871,
+      "name": "gpui-full",
+      "bytes": 41714624
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.8981327072866594,
+    "total_pct": 0.8981327072866594,
+    "processes": [
+     {
+      "pid": 28871,
+      "name": "gpui-full",
+      "pct": 0.8981327072866594
+     }
+    ]
+   },
+   "filter_ms": 10.8,
+   "filter_visible": 2,
+   "views": {
+    "images": 19.8,
+    "volumes": 14.0,
+    "networks": 16.2,
+    "kubernetes": 12.6,
+    "settings": 18.5,
+    "containers": 10.9
+   },
+   "memory_after_views": {
+    "app_bytes": 42337216,
+    "total_bytes": 42337216
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 143.1,
+   "ready_in_app_ms": 136.1,
+   "render_ms": 39.3,
+   "memory": {
+    "app_bytes": 30835672,
+    "total_bytes": 30835672,
+    "processes": [
+     {
+      "pid": 29047,
+      "name": "own-full",
+      "bytes": 30835672
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.09981435568899338,
+    "total_pct": 0.09981435568899338,
+    "processes": [
+     {
+      "pid": 29047,
+      "name": "own-full",
+      "pct": 0.09981435568899338
+     }
+    ]
+   },
+   "filter_ms": 4.5,
+   "filter_visible": 2,
+   "views": {
+    "images": 6.4,
+    "volumes": 1.8,
+    "networks": 1.5,
+    "kubernetes": 2.5,
+    "settings": 4.5,
+    "containers": 1.0
+   },
+   "memory_after_views": {
+    "app_bytes": 42353624,
+    "total_bytes": 42353624
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 373.7,
+   "ready_in_app_ms": 367.1,
+   "render_ms": 55.0,
+   "data_ms": 51.0,
+   "memory": {
+    "app_bytes": 29639760,
+    "total_bytes": 103304768,
+    "processes": [
+     {
+      "pid": 31877,
+      "name": "tauri-app",
+      "bytes": 29639760
+     },
+     {
+      "pid": 31878,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 17547984
+     },
+     {
+      "pid": 31879,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 47383416
+     },
+     {
+      "pid": 31880,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 5751288
+     },
+     {
+      "pid": 31881,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.19756185865793469,
+    "processes": [
+     {
+      "pid": 31877,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 31878,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 31879,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09878092932896733
+     },
+     {
+      "pid": 31880,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09878092932896737
+     },
+     {
+      "pid": 31881,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 18.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 32977,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 387.2,
+   "ready_in_app_ms": 378.4,
+   "render_ms": 51.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 28853328,
+    "total_bytes": 78204432,
+    "processes": [
+     {
+      "pid": 34260,
+      "name": "tauri-app",
+      "bytes": 28853328
+     },
+     {
+      "pid": 34261,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15205096
+     },
+     {
+      "pid": 34262,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26379104
+     },
+     {
+      "pid": 34263,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4784584
+     },
+     {
+      "pid": 34264,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.13,
+    "app_pct": 0.0,
+    "total_pct": 0.19752725343833089,
+    "processes": [
+     {
+      "pid": 34260,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 34261,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 34262,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09876362671916543
+     },
+     {
+      "pid": 34263,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09876362671916547
+     },
+     {
+      "pid": 34264,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 18.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 158.9,
+   "ready_in_app_ms": 146.2,
+   "render_ms": 24.9,
+   "memory": {
+    "app_bytes": 34571176,
+    "total_bytes": 34571176,
+    "processes": [
+     {
+      "pid": 34359,
+      "name": "gpui-app",
+      "bytes": 34571176
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 1.0972899817832211,
+    "total_pct": 1.0972899817832211,
+    "processes": [
+     {
+      "pid": 34359,
+      "name": "gpui-app",
+      "pct": 1.0972899817832211
+     }
+    ]
+   },
+   "filter_ms": 15.5,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 34387,
+     "name": "VTDecoderXPCService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 150.9,
+   "ready_in_app_ms": 143.2,
+   "render_ms": 41.3,
+   "memory": {
+    "app_bytes": 29721536,
+    "total_bytes": 29721536,
+    "processes": [
+     {
+      "pid": 34458,
+      "name": "own-app",
+      "bytes": 29721536
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.01,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 34458,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 1.3,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 146.1,
+   "ready_in_app_ms": 135.7,
+   "render_ms": 35.8,
+   "memory": {
+    "app_bytes": 42599360,
+    "total_bytes": 42599360,
+    "processes": [
+     {
+      "pid": 34504,
+      "name": "gpui-full",
+      "bytes": 42599360
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.01,
+    "app_pct": 0.39959472435744614,
+    "total_pct": 0.39959472435744614,
+    "processes": [
+     {
+      "pid": 34504,
+      "name": "gpui-full",
+      "pct": 0.39959472435744614
+     }
+    ]
+   },
+   "filter_ms": 11.5,
+   "filter_visible": 2,
+   "views": {
+    "images": 16.8,
+    "volumes": 15.6,
+    "networks": 16.0,
+    "kubernetes": 13.9,
+    "settings": 7.6,
+    "containers": 8.4
+   },
+   "memory_after_views": {
+    "app_bytes": 42337216,
+    "total_bytes": 42337216
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 138.5,
+   "ready_in_app_ms": 131.8,
+   "render_ms": 44.1,
+   "memory": {
+    "app_bytes": 31310808,
+    "total_bytes": 31310808,
+    "processes": [
+     {
+      "pid": 34585,
+      "name": "own-full",
+      "bytes": 31310808
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.01,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 34585,
+      "name": "own-full",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 2.5,
+   "filter_visible": 2,
+   "views": {
+    "images": 2.2,
+    "volumes": 2.7,
+    "networks": 5.1,
+    "kubernetes": 4.8,
+    "settings": 10.6,
+    "containers": 0.3
+   },
+   "memory_after_views": {
+    "app_bytes": 42140656,
+    "total_bytes": 42140656
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 361.5,
+   "ready_in_app_ms": 348.5,
+   "render_ms": 57.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 30868560,
+    "total_bytes": 102829680,
+    "processes": [
+     {
+      "pid": 35553,
+      "name": "tauri-app",
+      "bytes": 30868560
+     },
+     {
+      "pid": 35554,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15532800
+     },
+     {
+      "pid": 35555,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 46236560
+     },
+     {
+      "pid": 35556,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4800992
+     },
+     {
+      "pid": 35557,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0988213869640773,
+    "total_pct": 0.2964641608922318,
+    "processes": [
+     {
+      "pid": 35553,
+      "name": "tauri-app",
+      "pct": 0.0988213869640773
+     },
+     {
+      "pid": 35554,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 35555,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0988213869640773
+     },
+     {
+      "pid": 35556,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09882138696407719
+     },
+     {
+      "pid": 35557,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 20.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 35656,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    },
+    {
+     "pid": 35722,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 319.5,
+   "ready_in_app_ms": 312.8,
+   "render_ms": 48.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 30737512,
+    "total_bytes": 82218488,
+    "processes": [
+     {
+      "pid": 35883,
+      "name": "tauri-app",
+      "bytes": 30737512
+     },
+     {
+      "pid": 35884,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15139536
+     },
+     {
+      "pid": 35885,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26248032
+     },
+     {
+      "pid": 35886,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4719024
+     },
+     {
+      "pid": 35888,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5374384
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.09901214755615999,
+    "total_pct": 0.2970364426684797,
+    "processes": [
+     {
+      "pid": 35883,
+      "name": "tauri-app",
+      "pct": 0.09901214755615999
+     },
+     {
+      "pid": 35884,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 35885,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09901214755615986
+     },
+     {
+      "pid": 35886,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09901214755615989
+     },
+     {
+      "pid": 35888,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 21.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 147.6,
+   "ready_in_app_ms": 136.7,
+   "render_ms": 19.7,
+   "memory": {
+    "app_bytes": 35259304,
+    "total_bytes": 35259304,
+    "processes": [
+     {
+      "pid": 35930,
+      "name": "gpui-app",
+      "bytes": 35259304
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.7987217988757785,
+    "total_pct": 0.7987217988757785,
+    "processes": [
+     {
+      "pid": 35930,
+      "name": "gpui-app",
+      "pct": 0.7987217988757785
+     }
+    ]
+   },
+   "filter_ms": 10.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 134.4,
+   "ready_in_app_ms": 127.1,
+   "render_ms": 37.9,
+   "memory": {
+    "app_bytes": 29770688,
+    "total_bytes": 29770688,
+    "processes": [
+     {
+      "pid": 36169,
+      "name": "own-app",
+      "bytes": 29770688
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.09975927670529908,
+    "total_pct": 0.09975927670529908,
+    "processes": [
+     {
+      "pid": 36169,
+      "name": "own-app",
+      "pct": 0.09975927670529908
+     }
+    ]
+   },
+   "filter_ms": 6.1,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 140.2,
+   "ready_in_app_ms": 127.9,
+   "render_ms": 27.8,
+   "memory": {
+    "app_bytes": 43090880,
+    "total_bytes": 43090880,
+    "processes": [
+     {
+      "pid": 36271,
+      "name": "gpui-full",
+      "bytes": 43090880
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.8983592068301883,
+    "total_pct": 0.8983592068301883,
+    "processes": [
+     {
+      "pid": 36271,
+      "name": "gpui-full",
+      "pct": 0.8983592068301883
+     }
+    ]
+   },
+   "filter_ms": 12.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 20.3,
+    "volumes": 12.7,
+    "networks": 16.4,
+    "kubernetes": 15.3,
+    "settings": 12.0,
+    "containers": 13.1
+   },
+   "memory_after_views": {
+    "app_bytes": 43647936,
+    "total_bytes": 43647936
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 149.1,
+   "ready_in_app_ms": 139.0,
+   "render_ms": 42.3,
+   "memory": {
+    "app_bytes": 31622104,
+    "total_bytes": 31622104,
+    "processes": [
+     {
+      "pid": 36341,
+      "name": "own-full",
+      "bytes": 31622104
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.09973368944689426,
+    "total_pct": 0.09973368944689426,
+    "processes": [
+     {
+      "pid": 36341,
+      "name": "own-full",
+      "pct": 0.09973368944689426
+     }
+    ]
+   },
+   "filter_ms": 7.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 5.7,
+    "volumes": 3.9,
+    "networks": 3.1,
+    "kubernetes": 5.4,
+    "settings": 4.4,
+    "containers": 1.4
+   },
+   "memory_after_views": {
+    "app_bytes": 40158168,
+    "total_bytes": 47531280
+   },
+   "lingering_helpers": [
+    {
+     "pid": 36375,
+     "name": "mediaanalysisd-access",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 373.5,
+   "ready_in_app_ms": 357.5,
+   "render_ms": 51.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 29541480,
+    "total_bytes": 101289776,
+    "processes": [
+     {
+      "pid": 37225,
+      "name": "tauri-app",
+      "bytes": 29541480
+     },
+     {
+      "pid": 37228,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15336096
+     },
+     {
+      "pid": 37229,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 46154616
+     },
+     {
+      "pid": 37230,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4833784
+     },
+     {
+      "pid": 37231,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     },
+     {
+      "pid": 37240,
+      "name": "SetStoreUpdateService",
+      "bytes": 2441480
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.19771588476970944,
+    "processes": [
+     {
+      "pid": 37225,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 37228,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 37229,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09885794238485476
+     },
+     {
+      "pid": 37230,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09885794238485468
+     },
+     {
+      "pid": 37231,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     },
+     {
+      "pid": 37240,
+      "name": "SetStoreUpdateService",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 21.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 37240,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 326.3,
+   "ready_in_app_ms": 317.6,
+   "render_ms": 45.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 30688360,
+    "total_bytes": 82546144,
+    "processes": [
+     {
+      "pid": 37451,
+      "name": "tauri-app",
+      "bytes": 30688360
+     },
+     {
+      "pid": 37453,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15286968
+     },
+     {
+      "pid": 37454,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26346288
+     },
+     {
+      "pid": 37455,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4833760
+     },
+     {
+      "pid": 37456,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.09883689564515674,
+    "total_pct": 0.2965106869354701,
+    "processes": [
+     {
+      "pid": 37451,
+      "name": "tauri-app",
+      "pct": 0.09883689564515674
+     },
+     {
+      "pid": 37453,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 37454,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09883689564515674
+     },
+     {
+      "pid": 37455,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09883689564515663
+     },
+     {
+      "pid": 37456,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 17.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 139.5,
+   "ready_in_app_ms": 124.7,
+   "render_ms": 21.8,
+   "memory": {
+    "app_bytes": 35390400,
+    "total_bytes": 35390400,
+    "processes": [
+     {
+      "pid": 37506,
+      "name": "gpui-app",
+      "bytes": 35390400
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.8982436492817828,
+    "total_pct": 0.8982436492817828,
+    "processes": [
+     {
+      "pid": 37506,
+      "name": "gpui-app",
+      "pct": 0.8982436492817828
+     }
+    ]
+   },
+   "filter_ms": 13.4,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 131.5,
+   "ready_in_app_ms": 120.3,
+   "render_ms": 38.1,
+   "memory": {
+    "app_bytes": 29852608,
+    "total_bytes": 29852608,
+    "processes": [
+     {
+      "pid": 37579,
+      "name": "own-app",
+      "bytes": 29852608
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 37579,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 4.2,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 140.6,
+   "ready_in_app_ms": 127.2,
+   "render_ms": 28.1,
+   "memory": {
+    "app_bytes": 43254720,
+    "total_bytes": 43254720,
+    "processes": [
+     {
+      "pid": 37623,
+      "name": "gpui-full",
+      "bytes": 43254720
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.8983377831412984,
+    "total_pct": 0.8983377831412984,
+    "processes": [
+     {
+      "pid": 37623,
+      "name": "gpui-full",
+      "pct": 0.8983377831412984
+     }
+    ]
+   },
+   "filter_ms": 15.9,
+   "filter_visible": 2,
+   "views": {
+    "images": 19.9,
+    "volumes": 12.8,
+    "networks": 17.7,
+    "kubernetes": 18.7,
+    "settings": 14.1,
+    "containers": 12.1
+   },
+   "memory_after_views": {
+    "app_bytes": 42746816,
+    "total_bytes": 42746816
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 169.0,
+   "ready_in_app_ms": 159.3,
+   "render_ms": 56.3,
+   "memory": {
+    "app_bytes": 31196120,
+    "total_bytes": 563203696,
+    "processes": [
+     {
+      "pid": 37659,
+      "name": "own-full",
+      "bytes": 31196120
+     },
+     {
+      "pid": 37675,
+      "name": "com.apple.Virtualization.VirtualMachine",
+      "bytes": 532007576
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.9876736720752461,
+    "processes": [
+     {
+      "pid": 37659,
+      "name": "own-full",
+      "pct": 0.0
+     },
+     {
+      "pid": 37675,
+      "name": "com.apple.Virtualization.VirtualMachine",
+      "pct": 0.9876736720752461
+     }
+    ]
+   },
+   "filter_ms": 2.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 2.6,
+    "volumes": 5.5,
+    "networks": 1.8,
+    "kubernetes": 3.8,
+    "settings": 6.7,
+    "containers": 1.4
+   },
+   "memory_after_views": {
+    "app_bytes": 41567192,
+    "total_bytes": 533319256
+   },
+   "lingering_helpers": [
+    {
+     "pid": 37675,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 344.1,
+   "ready_in_app_ms": 337.1,
+   "render_ms": 56.0,
+   "data_ms": 1.0,
+   "memory": {
+    "app_bytes": 28755048,
+    "total_bytes": 98160240,
+    "processes": [
+     {
+      "pid": 38410,
+      "name": "tauri-app",
+      "bytes": 28755048
+     },
+     {
+      "pid": 38417,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15336144
+     },
+     {
+      "pid": 38419,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 46220152
+     },
+     {
+      "pid": 38420,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4850192
+     },
+     {
+      "pid": 38424,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2998704
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.2964876015753485,
+    "processes": [
+     {
+      "pid": 38410,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 38417,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 38419,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.19765840105023233
+     },
+     {
+      "pid": 38420,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09882920052511612
+     },
+     {
+      "pid": 38424,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 23.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 1000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 331.6,
+   "ready_in_app_ms": 325.8,
+   "render_ms": 53.0,
+   "data_ms": 2.0,
+   "memory": {
+    "app_bytes": 29459560,
+    "total_bytes": 81104352,
+    "processes": [
+     {
+      "pid": 38739,
+      "name": "tauri-app",
+      "bytes": 29459560
+     },
+     {
+      "pid": 38745,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15139536
+     },
+     {
+      "pid": 38747,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 26379080
+     },
+     {
+      "pid": 38749,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4735408
+     },
+     {
+      "pid": 38753,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.19764066944960335,
+    "processes": [
+     {
+      "pid": 38739,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 38745,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 38747,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09882033472480173
+     },
+     {
+      "pid": 38749,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09882033472480162
+     },
+     {
+      "pid": 38753,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 19.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 134.2,
+   "ready_in_app_ms": 121.1,
+   "render_ms": 21.5,
+   "memory": {
+    "app_bytes": 36848552,
+    "total_bytes": 36848552,
+    "processes": [
+     {
+      "pid": 38881,
+      "name": "gpui-app",
+      "bytes": 36848552
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.7983649187070565,
+    "total_pct": 0.7983649187070565,
+    "processes": [
+     {
+      "pid": 38881,
+      "name": "gpui-app",
+      "pct": 0.7983649187070565
+     }
+    ]
+   },
+   "filter_ms": 9.7,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 137.2,
+   "ready_in_app_ms": 126.3,
+   "render_ms": 37.3,
+   "memory": {
+    "app_bytes": 32179160,
+    "total_bytes": 32179160,
+    "processes": [
+     {
+      "pid": 39074,
+      "name": "own-app",
+      "bytes": 32179160
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 39074,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 7.3,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 134.6,
+   "ready_in_app_ms": 123.2,
+   "render_ms": 31.0,
+   "memory": {
+    "app_bytes": 51692480,
+    "total_bytes": 51692480,
+    "processes": [
+     {
+      "pid": 39180,
+      "name": "gpui-full",
+      "bytes": 51692480
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.898205639593629,
+    "total_pct": 0.898205639593629,
+    "processes": [
+     {
+      "pid": 39180,
+      "name": "gpui-full",
+      "pct": 0.898205639593629
+     }
+    ]
+   },
+   "filter_ms": 10.2,
+   "filter_visible": 2,
+   "views": {
+    "images": 20.0,
+    "volumes": 16.2,
+    "networks": 16.3,
+    "kubernetes": 17.5,
+    "settings": 21.9,
+    "containers": 18.8
+   },
+   "memory_after_views": {
+    "app_bytes": 49939392,
+    "total_bytes": 543264320
+   },
+   "lingering_helpers": [
+    {
+     "pid": 39233,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 147.4,
+   "ready_in_app_ms": 136.6,
+   "render_ms": 37.2,
+   "memory": {
+    "app_bytes": 40109016,
+    "total_bytes": 40109016,
+    "processes": [
+     {
+      "pid": 39308,
+      "name": "own-full",
+      "bytes": 40109016
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 39308,
+      "name": "own-full",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 5.9,
+   "filter_visible": 2,
+   "views": {
+    "images": 6.4,
+    "volumes": 2.3,
+    "networks": 2.5,
+    "kubernetes": 5.3,
+    "settings": 11.9,
+    "containers": 1.4
+   },
+   "memory_after_views": {
+    "app_bytes": 46859224,
+    "total_bytes": 46859224
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 617.9,
+   "ready_in_app_ms": 604.8,
+   "render_ms": 295.0,
+   "data_ms": 58.0,
+   "memory": {
+    "app_bytes": 35669096,
+    "total_bytes": 285396640,
+    "processes": [
+     {
+      "pid": 39367,
+      "name": "tauri-app",
+      "bytes": 35669096
+     },
+     {
+      "pid": 39368,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15549088
+     },
+     {
+      "pid": 39369,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 224101432
+     },
+     {
+      "pid": 39370,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4686256
+     },
+     {
+      "pid": 39371,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.09895180395620687,
+    "processes": [
+     {
+      "pid": 39367,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 39368,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 39369,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 39370,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09895180395620687
+     },
+     {
+      "pid": 39371,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 50.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 39463,
+     "name": "MTLCompilerService",
+     "killed": false
+    },
+    {
+     "pid": 39465,
+     "name": "MTLCompilerService",
+     "killed": false
+    },
+    {
+     "pid": 39466,
+     "name": "ImageIOXPCService",
+     "killed": false
+    },
+    {
+     "pid": 39468,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    },
+    {
+     "pid": 39470,
+     "name": "MTLCompilerService",
+     "killed": false
+    },
+    {
+     "pid": 39698,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 0,
+   "cold": true,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 343.9,
+   "ready_in_app_ms": 336.3,
+   "render_ms": 40.0,
+   "data_ms": 9.0,
+   "memory": {
+    "app_bytes": 34849896,
+    "total_bytes": 91442632,
+    "processes": [
+     {
+      "pid": 39740,
+      "name": "tauri-app",
+      "bytes": 34849896
+     },
+     {
+      "pid": 39741,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15254176
+     },
+     {
+      "pid": 39742,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31212336
+     },
+     {
+      "pid": 39743,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4735456
+     },
+     {
+      "pid": 39744,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.09883897887123451,
+    "total_pct": 0.1976779577424689,
+    "processes": [
+     {
+      "pid": 39740,
+      "name": "tauri-app",
+      "pct": 0.09883897887123451
+     },
+     {
+      "pid": 39741,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 39742,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 39743,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0988389788712344
+     },
+     {
+      "pid": 39744,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 20.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 119.5,
+   "ready_in_app_ms": 108.5,
+   "render_ms": 20.5,
+   "memory": {
+    "app_bytes": 37389248,
+    "total_bytes": 37389248,
+    "processes": [
+     {
+      "pid": 39789,
+      "name": "gpui-app",
+      "bytes": 37389248
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.898298678446307,
+    "total_pct": 0.898298678446307,
+    "processes": [
+     {
+      "pid": 39789,
+      "name": "gpui-app",
+      "pct": 0.898298678446307
+     }
+    ]
+   },
+   "filter_ms": 14.8,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 128.9,
+   "ready_in_app_ms": 119.6,
+   "render_ms": 33.0,
+   "memory": {
+    "app_bytes": 32113624,
+    "total_bytes": 32113624,
+    "processes": [
+     {
+      "pid": 39854,
+      "name": "own-app",
+      "bytes": 32113624
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 39854,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 5.6,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 39898,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 156.1,
+   "ready_in_app_ms": 144.9,
+   "render_ms": 31.7,
+   "memory": {
+    "app_bytes": 51659736,
+    "total_bytes": 51659736,
+    "processes": [
+     {
+      "pid": 39970,
+      "name": "gpui-full",
+      "bytes": 51659736
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.8975649735444605,
+    "total_pct": 0.8975649735444605,
+    "processes": [
+     {
+      "pid": 39970,
+      "name": "gpui-full",
+      "pct": 0.8975649735444605
+     }
+    ]
+   },
+   "filter_ms": 10.4,
+   "filter_visible": 2,
+   "views": {
+    "images": 18.9,
+    "volumes": 15.5,
+    "networks": 16.1,
+    "kubernetes": 18.8,
+    "settings": 24.0,
+    "containers": 15.1
+   },
+   "memory_after_views": {
+    "app_bytes": 50660312,
+    "total_bytes": 50660312
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 158.5,
+   "ready_in_app_ms": 146.3,
+   "render_ms": 43.1,
+   "memory": {
+    "app_bytes": 40059864,
+    "total_bytes": 40059864,
+    "processes": [
+     {
+      "pid": 40044,
+      "name": "own-full",
+      "bytes": 40059864
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 40044,
+      "name": "own-full",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 11.5,
+   "filter_visible": 2,
+   "views": {
+    "images": 6.6,
+    "volumes": 5.3,
+    "networks": 3.8,
+    "kubernetes": 6.8,
+    "settings": 9.5,
+    "containers": 1.9
+   },
+   "memory_after_views": {
+    "app_bytes": 47383536,
+    "total_bytes": 47383536
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 587.6,
+   "ready_in_app_ms": 574.3,
+   "render_ms": 293.0,
+   "data_ms": 9.0,
+   "memory": {
+    "app_bytes": 29148264,
+    "total_bytes": 276074144,
+    "processes": [
+     {
+      "pid": 41001,
+      "name": "tauri-app",
+      "bytes": 29148264
+     },
+     {
+      "pid": 41002,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15401656
+     },
+     {
+      "pid": 41003,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 223855624
+     },
+     {
+      "pid": 41004,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4686280
+     },
+     {
+      "pid": 41006,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.4942973939777182,
+    "total_pct": 0.7908758303643494,
+    "processes": [
+     {
+      "pid": 41001,
+      "name": "tauri-app",
+      "pct": 0.4942973939777182
+     },
+     {
+      "pid": 41002,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.09885947879554377
+     },
+     {
+      "pid": 41003,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09885947879554377
+     },
+     {
+      "pid": 41004,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09885947879554366
+     },
+     {
+      "pid": 41006,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 58.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 41039,
+     "name": "TrialArchivingService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 1,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 337.9,
+   "ready_in_app_ms": 331.3,
+   "render_ms": 43.0,
+   "data_ms": 53.0,
+   "memory": {
+    "app_bytes": 29197392,
+    "total_bytes": 83299736,
+    "processes": [
+     {
+      "pid": 41215,
+      "name": "tauri-app",
+      "bytes": 29197392
+     },
+     {
+      "pid": 41216,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15139440
+     },
+     {
+      "pid": 41217,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31294328
+     },
+     {
+      "pid": 41218,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4669872
+     },
+     {
+      "pid": 41219,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2998704
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.09888665574110647,
+    "processes": [
+     {
+      "pid": 41215,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 41216,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 41217,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 41218,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09888665574110647
+     },
+     {
+      "pid": 41219,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 21.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 41229,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    },
+    {
+     "pid": 41244,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 141.8,
+   "ready_in_app_ms": 128.6,
+   "render_ms": 19.9,
+   "memory": {
+    "app_bytes": 36946856,
+    "total_bytes": 36946856,
+    "processes": [
+     {
+      "pid": 41281,
+      "name": "gpui-app",
+      "bytes": 36946856
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.8977069683282509,
+    "total_pct": 0.8977069683282509,
+    "processes": [
+     {
+      "pid": 41281,
+      "name": "gpui-app",
+      "pct": 0.8977069683282509
+     }
+    ]
+   },
+   "filter_ms": 13.9,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 151.1,
+   "ready_in_app_ms": 138.8,
+   "render_ms": 38.8,
+   "memory": {
+    "app_bytes": 32277440,
+    "total_bytes": 32277440,
+    "processes": [
+     {
+      "pid": 41336,
+      "name": "own-app",
+      "bytes": 32277440
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 41336,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 6.7,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 41346,
+     "name": "EAUpdaterService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 162.9,
+   "ready_in_app_ms": 146.8,
+   "render_ms": 33.8,
+   "memory": {
+    "app_bytes": 51086272,
+    "total_bytes": 51086272,
+    "processes": [
+     {
+      "pid": 41459,
+      "name": "gpui-full",
+      "bytes": 51086272
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.9974202681287961,
+    "total_pct": 0.9974202681287961,
+    "processes": [
+     {
+      "pid": 41459,
+      "name": "gpui-full",
+      "pct": 0.9974202681287961
+     }
+    ]
+   },
+   "filter_ms": 7.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 19.9,
+    "volumes": 13.0,
+    "networks": 16.2,
+    "kubernetes": 23.7,
+    "settings": 13.9,
+    "containers": 16.7
+   },
+   "memory_after_views": {
+    "app_bytes": 50185152,
+    "total_bytes": 50185152
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 160.6,
+   "ready_in_app_ms": 152.2,
+   "render_ms": 43.2,
+   "memory": {
+    "app_bytes": 40125400,
+    "total_bytes": 40125400,
+    "processes": [
+     {
+      "pid": 41493,
+      "name": "own-full",
+      "bytes": 40125400
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.09973670507233097,
+    "total_pct": 0.09973670507233097,
+    "processes": [
+     {
+      "pid": 41493,
+      "name": "own-full",
+      "pct": 0.09973670507233097
+     }
+    ]
+   },
+   "filter_ms": 7.9,
+   "filter_visible": 2,
+   "views": {
+    "images": 7.8,
+    "volumes": 5.8,
+    "networks": 4.8,
+    "kubernetes": 5.6,
+    "settings": 10.6,
+    "containers": 1.9
+   },
+   "memory_after_views": {
+    "app_bytes": 46941144,
+    "total_bytes": 46941144
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 580.2,
+   "ready_in_app_ms": 573.3,
+   "render_ms": 293.0,
+   "data_ms": 53.0,
+   "memory": {
+    "app_bytes": 31786088,
+    "total_bytes": 279121688,
+    "processes": [
+     {
+      "pid": 42735,
+      "name": "tauri-app",
+      "bytes": 31786088
+     },
+     {
+      "pid": 42736,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15319760
+     },
+     {
+      "pid": 42737,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 224216120
+     },
+     {
+      "pid": 42738,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4817400
+     },
+     {
+      "pid": 42739,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.13,
+    "app_pct": 0.0,
+    "total_pct": 0.09870937248701252,
+    "processes": [
+     {
+      "pid": 42735,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 42736,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 42737,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 42738,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09870937248701252
+     },
+     {
+      "pid": 42739,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 60.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 42902,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 2,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 313.0,
+   "ready_in_app_ms": 308.2,
+   "render_ms": 47.0,
+   "data_ms": 53.0,
+   "memory": {
+    "app_bytes": 35341416,
+    "total_bytes": 91819440,
+    "processes": [
+     {
+      "pid": 42951,
+      "name": "tauri-app",
+      "bytes": 35341416
+     },
+     {
+      "pid": 42952,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15205024
+     },
+     {
+      "pid": 42953,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31097672
+     },
+     {
+      "pid": 42954,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4784560
+     },
+     {
+      "pid": 42955,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5390768
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.09900879898295734,
+    "total_pct": 0.19801759796591453,
+    "processes": [
+     {
+      "pid": 42951,
+      "name": "tauri-app",
+      "pct": 0.09900879898295734
+     },
+     {
+      "pid": 42952,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 42953,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0990087989829572
+     },
+     {
+      "pid": 42954,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0
+     },
+     {
+      "pid": 42955,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 15.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 115.0,
+   "ready_in_app_ms": 106.5,
+   "render_ms": 20.0,
+   "memory": {
+    "app_bytes": 37618624,
+    "total_bytes": 37618624,
+    "processes": [
+     {
+      "pid": 43081,
+      "name": "gpui-app",
+      "bytes": 37618624
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.9978246508602202,
+    "total_pct": 0.9978246508602202,
+    "processes": [
+     {
+      "pid": 43081,
+      "name": "gpui-app",
+      "pct": 0.9978246508602202
+     }
+    ]
+   },
+   "filter_ms": 10.5,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 140.1,
+   "ready_in_app_ms": 129.8,
+   "render_ms": 38.0,
+   "memory": {
+    "app_bytes": 32146392,
+    "total_bytes": 32146392,
+    "processes": [
+     {
+      "pid": 43154,
+      "name": "own-app",
+      "bytes": 32146392
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 43154,
+      "name": "own-app",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 6.8,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 149.2,
+   "ready_in_app_ms": 134.1,
+   "render_ms": 31.0,
+   "memory": {
+    "app_bytes": 51610536,
+    "total_bytes": 51610536,
+    "processes": [
+     {
+      "pid": 43196,
+      "name": "gpui-full",
+      "bytes": 51610536
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.8978510868894374,
+    "total_pct": 0.8978510868894374,
+    "processes": [
+     {
+      "pid": 43196,
+      "name": "gpui-full",
+      "pct": 0.8978510868894374
+     }
+    ]
+   },
+   "filter_ms": 14.6,
+   "filter_visible": 2,
+   "views": {
+    "images": 19.4,
+    "volumes": 8.4,
+    "networks": 21.1,
+    "kubernetes": 15.9,
+    "settings": 9.5,
+    "containers": 13.6
+   },
+   "memory_after_views": {
+    "app_bytes": 50430888,
+    "total_bytes": 50430888
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 155.5,
+   "ready_in_app_ms": 147.3,
+   "render_ms": 43.3,
+   "memory": {
+    "app_bytes": 39846872,
+    "total_bytes": 39846872,
+    "processes": [
+     {
+      "pid": 43258,
+      "name": "own-full",
+      "bytes": 39846872
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.03,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 43258,
+      "name": "own-full",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 7.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 6.7,
+    "volumes": 4.5,
+    "networks": 4.8,
+    "kubernetes": 7.6,
+    "settings": 10.6,
+    "containers": 1.9
+   },
+   "memory_after_views": {
+    "app_bytes": 50119664,
+    "total_bytes": 50119664
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 565.2,
+   "ready_in_app_ms": 557.3,
+   "render_ms": 282.0,
+   "data_ms": 53.0,
+   "memory": {
+    "app_bytes": 33801320,
+    "total_bytes": 281071312,
+    "processes": [
+     {
+      "pid": 44183,
+      "name": "tauri-app",
+      "bytes": 33801320
+     },
+     {
+      "pid": 44184,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15303328
+     },
+     {
+      "pid": 44185,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 224248864
+     },
+     {
+      "pid": 44186,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4735480
+     },
+     {
+      "pid": 44188,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0,
+    "total_pct": 0.0988471937820922,
+    "processes": [
+     {
+      "pid": 44183,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 44184,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 44185,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 44186,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0988471937820922
+     },
+     {
+      "pid": 44188,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 61.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 44302,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    },
+    {
+     "pid": 44387,
+     "name": "IntelligencePlatformComputeService",
+     "killed": false
+    },
+    {
+     "pid": 44412,
+     "name": "TrustedPeersHelper",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 3,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 332.1,
+   "ready_in_app_ms": 324.2,
+   "render_ms": 47.0,
+   "data_ms": 10.0,
+   "memory": {
+    "app_bytes": 32408680,
+    "total_bytes": 86478376,
+    "processes": [
+     {
+      "pid": 44543,
+      "name": "tauri-app",
+      "bytes": 32408680
+     },
+     {
+      "pid": 44545,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15205072
+     },
+     {
+      "pid": 44546,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31097696
+     },
+     {
+      "pid": 44547,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4784608
+     },
+     {
+      "pid": 44548,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 2982320
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.09887704475108519,
+    "processes": [
+     {
+      "pid": 44543,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 44545,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 44546,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 44547,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09887704475108519
+     },
+     {
+      "pid": 44548,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 14.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 44645,
+     "name": "com.apple.MobileAsset.DownloadService.Builtin",
+     "killed": false
+    },
+    {
+     "pid": 44670,
+     "name": "com.apple.MobileSoftwareUpdate.CleanupPreparePathService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 153.3,
+   "ready_in_app_ms": 139.0,
+   "render_ms": 21.2,
+   "memory": {
+    "app_bytes": 37536680,
+    "total_bytes": 37536680,
+    "processes": [
+     {
+      "pid": 44710,
+      "name": "gpui-app",
+      "bytes": 37536680
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.9980970073852293,
+    "total_pct": 0.9980970073852293,
+    "processes": [
+     {
+      "pid": 44710,
+      "name": "gpui-app",
+      "pct": 0.9980970073852293
+     }
+    ]
+   },
+   "filter_ms": 8.4,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 144.3,
+   "ready_in_app_ms": 132.0,
+   "render_ms": 38.1,
+   "memory": {
+    "app_bytes": 32146368,
+    "total_bytes": 32146368,
+    "processes": [
+     {
+      "pid": 44745,
+      "name": "own-app",
+      "bytes": 32146368
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.02,
+    "app_pct": 0.09984872959407803,
+    "total_pct": 0.09984872959407803,
+    "processes": [
+     {
+      "pid": 44745,
+      "name": "own-app",
+      "pct": 0.09984872959407803
+     }
+    ]
+   },
+   "filter_ms": 4.7,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 135.5,
+   "ready_in_app_ms": 126.1,
+   "render_ms": 37.2,
+   "memory": {
+    "app_bytes": 46416856,
+    "total_bytes": 57952152,
+    "processes": [
+     {
+      "pid": 44883,
+      "name": "gpui-full",
+      "bytes": 46416856
+     },
+     {
+      "pid": 44910,
+      "name": "com.apple.StreamingUnzipService",
+      "bytes": 6095112
+     },
+     {
+      "pid": 44916,
+      "name": "SetStoreUpdateService",
+      "bytes": 2474320
+     },
+     {
+      "pid": 44917,
+      "name": "SetStoreUpdateService",
+      "bytes": 2965864
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 1.1860429871146427,
+    "total_pct": 2.075575227450625,
+    "processes": [
+     {
+      "pid": 44883,
+      "name": "gpui-full",
+      "pct": 1.1860429871146427
+     },
+     {
+      "pid": 44910,
+      "name": "com.apple.StreamingUnzipService",
+      "pct": 0.6918584091502086
+     },
+     {
+      "pid": 44916,
+      "name": "SetStoreUpdateService",
+      "pct": 0.09883691559288688
+     },
+     {
+      "pid": 44917,
+      "name": "SetStoreUpdateService",
+      "pct": 0.09883691559288701
+     }
+    ]
+   },
+   "filter_ms": 14.3,
+   "filter_visible": 2,
+   "views": {
+    "images": 16.5,
+    "volumes": 14.1,
+    "networks": 14.5,
+    "kubernetes": 18.9,
+    "settings": 20.3,
+    "containers": 11.6
+   },
+   "memory_after_views": {
+    "app_bytes": 50430936,
+    "total_bytes": 70650400
+   },
+   "lingering_helpers": [
+    {
+     "pid": 44910,
+     "name": "com.apple.StreamingUnzipService",
+     "killed": false
+    },
+    {
+     "pid": 44916,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    },
+    {
+     "pid": 44917,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    },
+    {
+     "pid": 44930,
+     "name": "ContainerMetadataExtractor",
+     "killed": false
+    },
+    {
+     "pid": 44953,
+     "name": "MTLCompilerService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": true,
+   "errors": [],
+   "startup_ms": 144.8,
+   "ready_in_app_ms": 137.1,
+   "render_ms": 42.5,
+   "memory": {
+    "app_bytes": 39912408,
+    "total_bytes": 50824824,
+    "processes": [
+     {
+      "pid": 45174,
+      "name": "own-full",
+      "bytes": 39912408
+     },
+     {
+      "pid": 45347,
+      "name": "com.apple.iCloudHelper",
+      "bytes": 3293496
+     },
+     {
+      "pid": 45351,
+      "name": "SiriSuggestionsBookkeepingService",
+      "bytes": 7618920
+     },
+     {
+      "pid": 45364,
+      "name": "com.apple.hiservices-xpcservice",
+      "bytes": null
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.1980285212738922,
+    "total_pct": 0.1980285212738922,
+    "processes": [
+     {
+      "pid": 45174,
+      "name": "own-full",
+      "pct": 0.1980285212738922
+     },
+     {
+      "pid": 45347,
+      "name": "com.apple.iCloudHelper",
+      "pct": 0.0
+     },
+     {
+      "pid": 45351,
+      "name": "SiriSuggestionsBookkeepingService",
+      "pct": 0.0
+     },
+     {
+      "pid": 45364,
+      "name": "com.apple.hiservices-xpcservice",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 2.0,
+   "filter_visible": 2,
+   "views": {
+    "images": 3.7,
+    "volumes": 2.1,
+    "networks": 1.6,
+    "kubernetes": 2.8,
+    "settings": 5.3,
+    "containers": 1.5
+   },
+   "memory_after_views": {
+    "app_bytes": 49841112,
+    "total_bytes": 59246200
+   },
+   "lingering_helpers": [
+    {
+     "pid": 45347,
+     "name": "com.apple.iCloudHelper",
+     "killed": false
+    },
+    {
+     "pid": 45351,
+     "name": "SiriSuggestionsBookkeepingService",
+     "killed": false
+    },
+    {
+     "pid": 45364,
+     "name": "com.apple.hiservices-xpcservice",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 744.9,
+   "ready_in_app_ms": 736.1,
+   "render_ms": 414.0,
+   "data_ms": 9.0,
+   "memory": {
+    "app_bytes": 37799016,
+    "total_bytes": 288018056,
+    "processes": [
+     {
+      "pid": 50285,
+      "name": "tauri-app",
+      "bytes": 37799016
+     },
+     {
+      "pid": 50286,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15843952
+     },
+     {
+      "pid": 50287,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 223478840
+     },
+     {
+      "pid": 50289,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 5472712
+     },
+     {
+      "pid": 50294,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5423536
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.09,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 50285,
+      "name": "tauri-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 50286,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 50287,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 50289,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0
+     },
+     {
+      "pid": 50294,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 40.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 50446,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    },
+    {
+     "pid": 50447,
+     "name": "AppPredictionIntentsHelperService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 4,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 396.8,
+   "ready_in_app_ms": 387.3,
+   "render_ms": 44.0,
+   "data_ms": 60.0,
+   "memory": {
+    "app_bytes": 37520440,
+    "total_bytes": 94178760,
+    "processes": [
+     {
+      "pid": 51669,
+      "name": "tauri-app",
+      "bytes": 37520440
+     },
+     {
+      "pid": 51671,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15139440
+     },
+     {
+      "pid": 51672,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31277944
+     },
+     {
+      "pid": 51673,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4833784
+     },
+     {
+      "pid": 51674,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5407152
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.09904788079206246,
+    "total_pct": 0.09904788079206246,
+    "processes": [
+     {
+      "pid": 51669,
+      "name": "tauri-app",
+      "pct": 0.09904788079206246
+     },
+     {
+      "pid": 51671,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 51672,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.0
+     },
+     {
+      "pid": 51673,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.0
+     },
+     {
+      "pid": 51674,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 11.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "gpui",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 137.6,
+   "ready_in_app_ms": 123.4,
+   "render_ms": 24.9,
+   "memory": {
+    "app_bytes": 47203288,
+    "total_bytes": 58230152,
+    "processes": [
+     {
+      "pid": 51903,
+      "name": "gpui-app",
+      "bytes": 47203288
+     },
+     {
+      "pid": 51904,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11026864
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.1,
+    "app_pct": 0.6930113587619897,
+    "total_pct": 0.6930113587619897,
+    "processes": [
+     {
+      "pid": 51903,
+      "name": "gpui-app",
+      "pct": 0.6930113587619897
+     },
+     {
+      "pid": 51904,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 13.3,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 168.4,
+   "ready_in_app_ms": 158.3,
+   "render_ms": 63.6,
+   "memory": {
+    "app_bytes": 34227160,
+    "total_bytes": 45204848,
+    "processes": [
+     {
+      "pid": 51977,
+      "name": "own-app",
+      "bytes": 34227160
+     },
+     {
+      "pid": 51978,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 10977688
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 51977,
+      "name": "own-app",
+      "pct": 0.0
+     },
+     {
+      "pid": 51978,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 4.6,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 52005,
+     "name": "com.apple.Virtualization.VirtualMachine",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "gpui-full",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 152.7,
+   "ready_in_app_ms": 138.4,
+   "render_ms": 36.9,
+   "memory": {
+    "app_bytes": 57213888,
+    "total_bytes": 68339104,
+    "processes": [
+     {
+      "pid": 52083,
+      "name": "gpui-full",
+      "bytes": 57213888
+     },
+     {
+      "pid": 52084,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11125216
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.6922055691898411,
+    "total_pct": 0.7910920790741041,
+    "processes": [
+     {
+      "pid": 52083,
+      "name": "gpui-full",
+      "pct": 0.6922055691898411
+     },
+     {
+      "pid": 52084,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.09888650988426298
+     }
+    ]
+   },
+   "filter_ms": 15.7,
+   "filter_visible": 2,
+   "views": {
+    "images": 16.4,
+    "volumes": 12.8,
+    "networks": 12.9,
+    "kubernetes": 14.7,
+    "settings": 11.6,
+    "containers": 9.7
+   },
+   "memory_after_views": {
+    "app_bytes": 57426880,
+    "total_bytes": 68470176
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "own-full",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 197.2,
+   "ready_in_app_ms": 185.5,
+   "render_ms": 72.1,
+   "memory": {
+    "app_bytes": 41681880,
+    "total_bytes": 52741512,
+    "processes": [
+     {
+      "pid": 52153,
+      "name": "own-full",
+      "bytes": 41681880
+     },
+     {
+      "pid": 52154,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "bytes": 11059632
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0,
+    "total_pct": 0.0,
+    "processes": [
+     {
+      "pid": 52153,
+      "name": "own-full",
+      "pct": 0.0
+     },
+     {
+      "pid": 52154,
+      "name": "com.apple.SafariPlatformSupport.Helper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 2.6,
+   "filter_visible": 2,
+   "views": {
+    "images": 2.4,
+    "volumes": 4.4,
+    "networks": 2.9,
+    "kubernetes": 5.2,
+    "settings": 8.3,
+    "containers": 1.5
+   },
+   "memory_after_views": {
+    "app_bytes": 50414552,
+    "total_bytes": 61457800
+   },
+   "lingering_helpers": []
+  },
+  {
+   "variant": "tauri-full",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 677.1,
+   "ready_in_app_ms": 670.8,
+   "render_ms": 364.0,
+   "data_ms": 9.0,
+   "memory": {
+    "app_bytes": 37356648,
+    "total_bytes": 285740680,
+    "processes": [
+     {
+      "pid": 52841,
+      "name": "tauri-app",
+      "bytes": 37356648
+     },
+     {
+      "pid": 52842,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15467120
+     },
+     {
+      "pid": 52843,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 222692408
+     },
+     {
+      "pid": 52844,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4817352
+     },
+     {
+      "pid": 52845,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5407152
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.12,
+    "app_pct": 0.0988483540645872,
+    "total_pct": 0.2965450621937609,
+    "processes": [
+     {
+      "pid": 52841,
+      "name": "tauri-app",
+      "pct": 0.0988483540645872
+     },
+     {
+      "pid": 52842,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 52843,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09884835406458664
+     },
+     {
+      "pid": 52844,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09884835406458709
+     },
+     {
+      "pid": 52845,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 42.0,
+   "filter_visible": 2,
+   "lingering_helpers": [
+    {
+     "pid": 52920,
+     "name": "SetStoreUpdateService",
+     "killed": false
+    }
+   ]
+  },
+  {
+   "variant": "tauri-virtual",
+   "rows": 10000,
+   "run": 5,
+   "cold": false,
+   "screen_locked": false,
+   "errors": [],
+   "startup_ms": 312.2,
+   "ready_in_app_ms": 307.1,
+   "render_ms": 41.0,
+   "data_ms": 9.0,
+   "memory": {
+    "app_bytes": 37536872,
+    "total_bytes": 94195264,
+    "processes": [
+     {
+      "pid": 53220,
+      "name": "tauri-app",
+      "bytes": 37536872
+     },
+     {
+      "pid": 53221,
+      "name": "com.apple.WebKit.GPU",
+      "bytes": 15286968
+     },
+     {
+      "pid": 53222,
+      "name": "com.apple.WebKit.WebContent",
+      "bytes": 31146872
+     },
+     {
+      "pid": 53223,
+      "name": "com.apple.WebKit.Networking",
+      "bytes": 4801016
+     },
+     {
+      "pid": 53226,
+      "name": "com.apple.audio.SandboxHelper",
+      "bytes": 5423536
+     }
+    ]
+   },
+   "cpu": {
+    "window_s": 10.11,
+    "app_pct": 0.0988965391968048,
+    "total_pct": 0.2966896175904141,
+    "processes": [
+     {
+      "pid": 53220,
+      "name": "tauri-app",
+      "pct": 0.0988965391968048
+     },
+     {
+      "pid": 53221,
+      "name": "com.apple.WebKit.GPU",
+      "pct": 0.0
+     },
+     {
+      "pid": 53222,
+      "name": "com.apple.WebKit.WebContent",
+      "pct": 0.09889653919680466
+     },
+     {
+      "pid": 53223,
+      "name": "com.apple.WebKit.Networking",
+      "pct": 0.09889653919680469
+     },
+     {
+      "pid": 53226,
+      "name": "com.apple.audio.SandboxHelper",
+      "pct": 0.0
+     }
+    ]
+   },
+   "filter_ms": 15.0,
+   "filter_visible": 2,
+   "lingering_helpers": []
+  }
+ ],
+ "notes": [
+  "tauri-full: the view-switch step ran by mistake (it only applies to gpui-full and own-full); its 'no VIEW line' errors and the redone runs were removed. Startup, memory, CPU and filter were measured before that step."
+ ]
+}
