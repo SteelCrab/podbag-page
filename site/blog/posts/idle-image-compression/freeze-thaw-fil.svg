@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340" role="img" aria-labelledby="d-title d-desc">
+<title id="d-title">Pag-compress at pag-decompress ng image</title><desc id="d-desc">Ang idle na image ay nagiging mga .zst file. Dine-decompress ito kapag gumawa ng container o kapag binasa ito ng build.</desc>
+<defs><style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#172b40}.h{font-weight:650;font-size:16px}.b{font-size:13px;fill:#3e5366}.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;fill:#172b40}.a{font-weight:650;font-size:15px}.n{font-size:13px;fill:#3e5366}</style></defs>
+<rect width="760" height="340" fill="#ffffff" rx="8"/>
+<text class="a" x="380" y="26" text-anchor="middle" style="fill:#2f6fdf">I-compress</text>
+<text class="n" x="380" y="46" text-anchor="middle">Idle na image · mga file lang na hindi kailangan ng ginagamit na image</text>
+<path d="M180 100 C180 52, 580 52, 580 92" fill="none" stroke="#2f6fdf" stroke-width="2"/>
+<path d="M573 88 L580 100 L587 88 z" fill="#2f6fdf"/>
+<rect x="20" y="100" width="320" height="140" rx="10" fill="#f0f8f6" stroke="#0f766e" stroke-width="1.6"/>
+<text class="h" x="38" y="130" fill="#0f766e" style="fill:#0f766e">Karaniwang image</text>
+<text class="b" x="38" y="158">File tree o EROFS metadata</text>
+<text class="m" x="38" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;</text>
+<text class="b" x="38" y="214">Orihinal na file, binabasa ng container</text>
+<rect x="420" y="100" width="320" height="140" rx="10" fill="#f1f5fd" stroke="#2f6fdf" stroke-width="1.6"/>
+<text class="h" x="438" y="130" fill="#2f6fdf" style="fill:#2f6fdf">Naka-compress na image</text>
+<text class="b" x="438" y="158">Walang file tree at EROFS</text>
+<text class="m" x="438" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;.zst</text>
+<text class="b" x="438" y="214">zstd, mga frame na 1 MiB</text>
+<path d="M580 240 C580 288, 180 288, 180 248" fill="none" stroke="#0f766e" stroke-width="2"/>
+<path d="M173 252 L180 240 L187 252 z" fill="#0f766e"/>
+<text class="a" x="380" y="306" text-anchor="middle" style="fill:#0f766e">I-decompress</text>
+<text class="n" x="380" y="326" text-anchor="middle">Kapag gumawa ng container · kapag binasa ng build ang image</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340" role="img" aria-labelledby="d-title d-desc">
+<title id="d-title">镜像的压缩与解压</title><desc id="d-desc">闲置镜像被压缩成 .zst 文件。创建容器或构建读取镜像时，它会被解压。</desc>
+<defs><style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#172b40}.h{font-weight:650;font-size:16px}.b{font-size:13px;fill:#3e5366}.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;fill:#172b40}.a{font-weight:650;font-size:15px}.n{font-size:13px;fill:#3e5366}</style></defs>
+<rect width="760" height="340" fill="#ffffff" rx="8"/>
+<text class="a" x="380" y="26" text-anchor="middle" style="fill:#2f6fdf">压缩</text>
+<text class="n" x="380" y="46" text-anchor="middle">闲置镜像 · 只压缩在用镜像不需要的文件</text>
+<path d="M180 100 C180 52, 580 52, 580 92" fill="none" stroke="#2f6fdf" stroke-width="2"/>
+<path d="M573 88 L580 100 L587 88 z" fill="#2f6fdf"/>
+<rect x="20" y="100" width="320" height="140" rx="10" fill="#f0f8f6" stroke="#0f766e" stroke-width="1.6"/>
+<text class="h" x="38" y="130" fill="#0f766e" style="fill:#0f766e">普通镜像</text>
+<text class="b" x="38" y="158">文件树或 EROFS 元数据</text>
+<text class="m" x="38" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;</text>
+<text class="b" x="38" y="214">原始文件，容器直接读取</text>
+<rect x="420" y="100" width="320" height="140" rx="10" fill="#f1f5fd" stroke="#2f6fdf" stroke-width="1.6"/>
+<text class="h" x="438" y="130" fill="#2f6fdf" style="fill:#2f6fdf">已压缩的镜像</text>
+<text class="b" x="438" y="158">没有文件树和 EROFS</text>
+<text class="m" x="438" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;.zst</text>
+<text class="b" x="438" y="214">zstd，每帧 1 MiB</text>
+<path d="M580 240 C580 288, 180 288, 180 248" fill="none" stroke="#0f766e" stroke-width="2"/>
+<path d="M173 252 L180 240 L187 252 z" fill="#0f766e"/>
+<text class="a" x="380" y="306" text-anchor="middle" style="fill:#0f766e">解压</text>
+<text class="n" x="380" y="326" text-anchor="middle">创建容器时 · 构建读取镜像时</text>
+</svg>

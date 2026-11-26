@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340" role="img" aria-labelledby="d-title d-desc">
+<title id="d-title">Comprimir y descomprimir una imagen</title><desc id="d-desc">Una imagen sin uso se comprime en archivos .zst. Se descomprime al crear un contenedor o cuando un build la lee.</desc>
+<defs><style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#172b40}.h{font-weight:650;font-size:16px}.b{font-size:13px;fill:#3e5366}.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;fill:#172b40}.a{font-weight:650;font-size:15px}.n{font-size:13px;fill:#3e5366}</style></defs>
+<rect width="760" height="340" fill="#ffffff" rx="8"/>
+<text class="a" x="380" y="26" text-anchor="middle" style="fill:#2f6fdf">Comprimir</text>
+<text class="n" x="380" y="46" text-anchor="middle">Imágenes sin uso · solo archivos que ninguna imagen en uso necesita</text>
+<path d="M180 100 C180 52, 580 52, 580 92" fill="none" stroke="#2f6fdf" stroke-width="2"/>
+<path d="M573 88 L580 100 L587 88 z" fill="#2f6fdf"/>
+<rect x="20" y="100" width="320" height="140" rx="10" fill="#f0f8f6" stroke="#0f766e" stroke-width="1.6"/>
+<text class="h" x="38" y="130" fill="#0f766e" style="fill:#0f766e">Imagen normal</text>
+<text class="b" x="38" y="158">Árbol de archivos o metadatos EROFS</text>
+<text class="m" x="38" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;</text>
+<text class="b" x="38" y="214">Archivos originales para los contenedores</text>
+<rect x="420" y="100" width="320" height="140" rx="10" fill="#f1f5fd" stroke="#2f6fdf" stroke-width="1.6"/>
+<text class="h" x="438" y="130" fill="#2f6fdf" style="fill:#2f6fdf">Imagen comprimida</text>
+<text class="b" x="438" y="158">Sin árbol de archivos ni EROFS</text>
+<text class="m" x="438" y="186">objects/ab/&lt;sha256.uid.gid.mode&gt;.zst</text>
+<text class="b" x="438" y="214">zstd, en tramas de 1 MiB</text>
+<path d="M580 240 C580 288, 180 288, 180 248" fill="none" stroke="#0f766e" stroke-width="2"/>
+<path d="M173 252 L180 240 L187 252 z" fill="#0f766e"/>
+<text class="a" x="380" y="306" text-anchor="middle" style="fill:#0f766e">Descomprimir</text>
+<text class="n" x="380" y="326" text-anchor="middle">Al crear un contenedor · cuando un build lee la imagen</text>
+</svg>
