@@ -323,11 +323,12 @@ class Built(unittest.TestCase):
             starts = re.findall(r"podbag lab start ([a-z0-9-]+)</code>", html)
             self.assertEqual(starts, IDS, code)
             for name in IDS:
-                item = re.search(rf'<li class="module reveal" id="{name}">(.*?)</li>', html).group(1)
+                item = re.search(rf'<li class="post-card module reveal" id="{name}">(.*?)</li>', html).group(1)
                 module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
                 words = module["translations"].get(code) or module["translations"]["en"]
                 self.assertIn(training.short_title(words["title"]), item.replace("&#x27;", "'"))
-                guide, download = re.findall(r'<a href="([^"]+)"', item)
+                picture, guide, download = re.findall(r'<a [^>]*href="([^"]+)"', item)
+                self.assertEqual(picture, guide)
                 self.assertTrue((page.parent / guide / "index.html").is_file(), (code, guide))
                 self.assertTrue((page.parent / download).samefile(
                     self.out / "training/modules" / f"{name}.podbag"))
@@ -337,11 +338,39 @@ class Built(unittest.TestCase):
                     self.assertNotIn(f">{len(module['steps'])} ", item)
             self.assertIn('<ul class="modules"', html)
 
+    def test_each_module_is_a_card_like_the_blog_list(self):
+        """Every module is a card like the blog's lists: its guide's picture, the title linking
+        to the guide, and the guide's summary, in the page's language."""
+        posts = HERE.parents[1] / "site/blog/posts"
+        for code, _ in self.site.LANGS:
+            page = self.out / self.site.path_of(code) / "training/index.html"
+            html = page.read_text()
+            for name in IDS:
+                with self.subTest(code=code, name=name):
+                    item = re.search(rf'<li class="post-card module reveal" id="{name}">(.*?)</li>',
+                                     html).group(1)
+                    self.assertTrue(item.startswith('<a class="thumb"'), item[:80])
+                    src = re.search(r'<img src="([^"]+)"', item).group(1)
+                    self.assertTrue((page.parent / src).is_file(), src)
+                    self.assertRegex(item, r'<img [^>]*width="\d+" height="\d+"')
+                    title = re.search(r'<h3 class="post-title"><a href="([^"]+)">', item)
+                    self.assertTrue((page.parent / title.group(1) / "index.html").is_file())
+                    slug = Path(title.group(1).rstrip("/")).name
+                    text = (posts / slug / f"{code}.md").read_text()
+                    # The same picture as the blog's lists: the post's image, or its card.
+                    image = re.search(r'^image: "?(.*?)"?$', text, re.M)
+                    picture = image.group(1) if image else f"card-{code}.png"
+                    self.assertEqual(Path(src).parts[-3:], ("blog", slug, picture))
+                    summary = re.search(r'^summary: "?(.*?)"?$', text, re.M).group(1)
+                    words = re.sub(r"[`*]", "", summary).split()[:3]
+                    plain = re.sub(r"<[^>]+>", "", item).replace("&#x27;", "'").replace("&quot;", '"')
+                    self.assertIn(" ".join(words), plain)
+
     def test_each_module_shows_its_time(self):
         en = (self.out / "training/index.html").read_text()
         ko = (self.out / "ko/training/index.html").read_text()
         item = lambda html, name: re.search(  # noqa: E731
-            rf'<li class="module reveal" id="{name}">(.*?)</li>', html).group(1)
+            rf'<li class="post-card module reveal" id="{name}">(.*?)</li>', html).group(1)
         self.assertIn("About 10 min", item(en, "web-basics"))
         self.assertIn("About 10–15 min", item(en, "container-network"))
         self.assertIn("약 15분", item(ko, "volume-persistence"))

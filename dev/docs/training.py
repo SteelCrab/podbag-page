@@ -374,14 +374,33 @@ class Hub:
         else:
             time = (w["training_time_range"].replace("{min}", str(minutes[0]))
                     .replace("{max}", str(minutes[1])))
-        facts = [time, f'<a href="{self.guide(name, module, lang, root)}">{w["training_guide"]}</a>']
-        facts.append(f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>')
+        facts = [time, f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>']
         sep = '<span class="sep" aria-hidden="true">|</span>'
         start = blog.code_block(f"podbag lab start {name}", "sh", lang, blog.copy_button(w))
-        return (f'<li class="module reveal" id="{name}">'
-                f'<div class="module-text"><h3 class="post-title">{html.escape(title)}</h3>'
+        href = self.guide(name, module, lang, root)
+        post = self.post(name, module, lang)
+        # A card like the blog's lists: the guide's picture, then the title and summary.
+        src, size = self.pages.image_url(post, root)
+        dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
+        return (f'<li class="post-card module reveal" id="{name}">'
+                f'<a class="thumb" href="{href}" tabindex="-1" aria-hidden="true">'
+                f'<img src="{src}" alt=""{dims} loading="lazy"></a>'
+                f'<div class="post-text"><h3 class="post-title"><a href="{href}">{html.escape(title)}</a></h3>'
                 f'<p class="meta">{sep.join(f"<span>{f}</span>" for f in facts)}</p>'
+                f'<p class="summary">{blog.inline(post.summary, post.lang)}</p>'
                 f"{start}</div></li>")
+
+    def post(self, name, module, lang):
+        """The module's guide post in LANG, or in English when it has none."""
+        if module["format"] in COURSES:
+            slug = module["translations"]["en"]["url"].rstrip("/").rsplit("/", 1)[1]
+        else:
+            slug = LEGACY_GUIDES[name]
+        for code in (lang, "en"):
+            for post in self.pages.posts[code]:
+                if post.slug == slug:
+                    return post
+        raise ValueError(f"{name}: no guide post {slug}")
 
     def side(self, lang, w, root):
         install = blog.code_block("curl -fsSL https://podbag.dev/install.sh | sh",
