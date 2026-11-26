@@ -8,10 +8,11 @@ The pictures, videos, install.sh and version come from the podbag repository: a 
 this folder (../podbag), or the folder in PODBAG_REPO.
 
 The blog (dev/docs/blog.py, posts in site/blog/posts) is at /blog/ and /<lang>/blog/.
+Training (dev/docs/training.py, modules in site/training) is at /training/ and /<lang>/training/.
 
 usage: python3 dev/docs/site.py OUT
        python3 dev/docs/check_links.py OUT     # no broken internal links
-       python3 -m unittest dev/docs/test_blog.py
+       python3 -m unittest dev/docs/test_blog.py dev/docs/test_training.py
        python3 -m http.server -d OUT 8000      # look at it
        python3 dev/docs/site.py --moved OUT    # pages that send the old address to podbag.dev
 """
@@ -26,6 +27,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import blog  # noqa: E402
+import training  # noqa: E402
 from comparisons import Metric, Reading, picker, series  # noqa: E402
 
 PAGE = Path(__file__).resolve().parents[2]
@@ -269,7 +271,8 @@ def main():
         {"lang_links": " · ".join(f'<a href="/{path_of(c)}" hreflang="{c}" lang="{c}">{n}</a>'
                                   for c, n in LANGS)}, "en"))
     posts = blog.build(out, sys.modules[__name__], words_of)
-    print(f"built {len(LANGS)} languages and {posts} blog posts into {out}")
+    modules = training.build(out, sys.modules[__name__], words_of)
+    print(f"built {len(LANGS)} languages, {posts} blog posts and {modules} training modules into {out}")
 
 
 if __name__ == "__main__":

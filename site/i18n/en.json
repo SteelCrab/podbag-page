@@ -169,5 +169,17 @@
   "blog_tags": "Tags",
   "blog_related": "Related posts",
   "blog_older": "Older post",
-  "blog_newer": "Newer post"
+  "blog_newer": "Newer post",
+  "nav_training": "Training",
+  "training_title": "Podbag Training",
+  "training_description": "Hands-on modules for podbag. Start each one in Podbag Desktop and the CLI with one command.",
+  "training_lead": "Short hands-on modules for Podbag Desktop and the CLI. Pick a module, read its guide and start it.",
+  "training_refresh": "New modules come from this page. Podbag Desktop shows them after you select <b>Refresh</b> in <b>Training</b> or restart the app.",
+  "training_cli": "In the CLI, this command lists the modules:",
+  "training_modules": "Modules",
+  "training_steps": "{n} steps",
+  "training_guide": "Read the guide",
+  "training_download": "Download the file",
+  "training_side": "About Training",
+  "training_guides": "Guides on the blog"
 }

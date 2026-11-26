@@ -1,0 +1,204 @@
+{
+  "format": "podbag-course-v1",
+  "id": "container-network",
+  "port": 18083,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Connect two containers by name",
+      "guide": "Start the session with podbag lab start container-network.",
+      "url": "https://podbag.dev/blog/container-network/"
+    },
+    "ko": {
+      "title": "Podbag Training · 이름으로 컨테이너 두 개 연결하기",
+      "guide": "podbag lab start container-network 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/container-network/"
+    }
+  },
+  "steps": [
+    {
+      "key": "createNetwork",
+      "names": {
+        "en": "Create a network in the CLI",
+        "ko": "CLI에서 네트워크 만들기",
+        "ja": "CLI でネットワークを作成する",
+        "zh-CN": "在 CLI 中创建网络",
+        "fil": "Gumawa ng network sa CLI",
+        "es": "Crea una red en la CLI",
+        "vi": "Tạo mạng trong CLI"
+      },
+      "command": "podbag network create lab-net",
+      "check": {
+        "kind": "network-exists",
+        "name": "lab-net"
+      }
+    },
+    {
+      "key": "runApi",
+      "names": {
+        "en": "Run the api server on the network",
+        "ko": "네트워크에 api 서버 실행하기",
+        "ja": "ネットワーク上で api サーバーを起動する",
+        "zh-CN": "在网络中运行 api 服务器",
+        "fil": "Patakbuhin ang api server sa network",
+        "es": "Ejecuta el servidor api en la red",
+        "vi": "Chạy máy chủ api trên mạng"
+      },
+      "command": "podbag run -d --name api --network lab-net docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && printf \"%s\\n\" \"Hello from api\" > /www/index.html && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-running",
+        "name": "api"
+      }
+    },
+    {
+      "key": "callByName",
+      "names": {
+        "en": "Call the api server by name",
+        "ko": "이름으로 api 서버 호출하기",
+        "ja": "名前で api サーバーを呼び出す",
+        "zh-CN": "按名称调用 api 服务器",
+        "fil": "Tawagin ang api server gamit ang pangalan nito",
+        "es": "Llama al servidor api por su nombre",
+        "vi": "Gọi máy chủ api bằng tên"
+      },
+      "command": "podbag run --rm --network lab-net docker.io/library/busybox:1.37.0 wget -qO- http://api:8080/",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from api"
+      }
+    },
+    {
+      "key": "runFront",
+      "names": {
+        "en": "Run the web server that reads from api",
+        "ko": "api 내용을 받는 웹 서버 실행하기",
+        "ja": "api の内容を取得するウェブサーバーを起動する",
+        "zh-CN": "运行从 api 读取内容的 Web 服务器",
+        "fil": "Patakbuhin ang web server na kumukuha mula sa api",
+        "es": "Ejecuta el servidor web que lee de api",
+        "vi": "Chạy máy chủ web lấy nội dung từ api"
+      },
+      "command": "podbag run -d --name web --network lab-net -p 127.0.0.1:{port}:8080 docker.io/library/busybox:1.37.0 sh -c 'mkdir -p /www && wget -qO /www/index.html http://api:8080/ && exec httpd -f -p 8080 -h /www'",
+      "check": {
+        "kind": "container-published",
+        "name": "web",
+        "page": "Hello from api"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "web"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "web",
+        "page": "Hello from api"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container in Desktop",
+        "ko": "Desktop에서 컨테이너 중지하기",
+        "ja": "Desktop でコンテナを停止する",
+        "zh-CN": "在 Desktop 中停止容器",
+        "fil": "Ihinto ang container sa Desktop",
+        "es": "Detén el contenedor en Desktop",
+        "vi": "Dừng container trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-stop",
+        "name": "web"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm web",
+      "check": {
+        "kind": "container-absent",
+        "name": "web"
+      }
+    },
+    {
+      "key": "removeApi",
+      "names": {
+        "en": "Remove the api server in the CLI",
+        "ko": "CLI에서 api 서버 삭제하기",
+        "ja": "CLI で api サーバーを削除する",
+        "zh-CN": "在 CLI 中删除 api 服务器",
+        "fil": "Burahin ang api server sa CLI",
+        "es": "Elimina el servidor api en la CLI",
+        "vi": "Xóa máy chủ api trong CLI"
+      },
+      "command": "podbag rm -f api",
+      "check": {
+        "kind": "container-absent",
+        "name": "api"
+      }
+    },
+    {
+      "key": "deleteNetwork",
+      "names": {
+        "en": "Delete the network in the CLI",
+        "ko": "CLI에서 네트워크 삭제하기",
+        "ja": "CLI でネットワークを削除する",
+        "zh-CN": "在 CLI 中删除网络",
+        "fil": "Burahin ang network sa CLI",
+        "es": "Elimina la red en la CLI",
+        "vi": "Xóa mạng trong CLI"
+      },
+      "command": "podbag network rm lab-net",
+      "check": {
+        "kind": "network-absent",
+        "name": "lab-net"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "format": "podbag-course-v1",
+  "id": "web-service-lifecycle",
+  "port": 18081,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Replace and clean up a web service",
+      "guide": "Start the session with podbag lab start web-service-lifecycle.",
+      "url": "https://podbag.dev/blog/web-service-lifecycle/"
+    },
+    "ko": {
+      "title": "Podbag Training · 웹 서비스 교체하고 정리하기",
+      "guide": "podbag lab start web-service-lifecycle 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/web-service-lifecycle/"
+    }
+  },
+  "steps": [
+    {
+      "key": "create",
+      "names": {
+        "en": "Create the volume in the CLI",
+        "ko": "CLI에서 볼륨 만들기",
+        "ja": "CLI でボリュームを作成する",
+        "zh-CN": "在 CLI 中创建卷",
+        "fil": "Gumawa ng volume sa CLI",
+        "es": "Crea el volumen en la CLI",
+        "vi": "Tạo volume trong CLI"
+      },
+      "command": "podbag volume create site-data",
+      "check": {
+        "kind": "volume-exists",
+        "name": "site-data"
+      }
+    },
+    {
+      "key": "runFirst",
+      "names": {
+        "en": "Start the first server",
+        "ko": "첫 서버 실행하기",
+        "ja": "最初のサーバーを起動する",
+        "zh-CN": "启动第一台服务器",
+        "fil": "Simulan ang unang server",
+        "es": "Inicia el primer servidor",
+        "vi": "Khởi động máy chủ đầu tiên"
+      },
+      "command": "podbag run -d --name site-v1 -p 127.0.0.1:{port}:8080 -v site-data:/site docker.io/library/busybox:1.37.0 sh -c 'printf \"%s\\n\" \"My Podbag site\" > /site/index.html && exec httpd -f -p 8080 -h /site'",
+      "check": {
+        "kind": "container-published",
+        "name": "site-v1"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "Check the ports in Practice containers",
+        "ko": "실습 컨테이너에서 포트 확인하기",
+        "ja": "実習コンテナでポートを確認する",
+        "zh-CN": "在实验容器中查看端口",
+        "fil": "Tingnan ang mga port sa Mga practice container",
+        "es": "Consulta los puertos en Contenedores de práctica",
+        "vi": "Kiểm tra cổng trong Container thực hành"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "site-v1"
+      }
+    },
+    {
+      "key": "browser",
+      "names": {
+        "en": "Open the page in the browser",
+        "ko": "브라우저에서 페이지 열기",
+        "ja": "ブラウザーでページを開く",
+        "zh-CN": "在浏览器中打开页面",
+        "fil": "Buksan ang pahina sa browser",
+        "es": "Abre la página en el navegador",
+        "vi": "Mở trang trong trình duyệt"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "site-v1",
+        "page": "My Podbag site"
+      }
+    },
+    {
+      "key": "stop",
+      "names": {
+        "en": "Stop the container in Desktop",
+        "ko": "Desktop에서 컨테이너 중지하기",
+        "ja": "Desktop でコンテナを停止する",
+        "zh-CN": "在 Desktop 中停止容器",
+        "fil": "Ihinto ang container sa Desktop",
+        "es": "Detén el contenedor en Desktop",
+        "vi": "Dừng container trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-stop",
+        "name": "site-v1"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container in the CLI",
+        "ko": "CLI에서 컨테이너 삭제하기",
+        "ja": "CLI でコンテナを削除する",
+        "zh-CN": "在 CLI 中删除容器",
+        "fil": "Burahin ang container sa CLI",
+        "es": "Elimina el contenedor en la CLI",
+        "vi": "Xóa container trong CLI"
+      },
+      "command": "podbag rm site-v1",
+      "check": {
+        "kind": "container-absent",
+        "name": "site-v1"
+      }
+    },
+    {
+      "key": "runReplacement",
+      "names": {
+        "en": "Start the replacement server",
+        "ko": "교체 서버 실행하기",
+        "ja": "交換後のサーバーを起動する",
+        "zh-CN": "启动替换服务器",
+        "fil": "Simulan ang kapalit na server",
+        "es": "Inicia el servidor de reemplazo",
+        "vi": "Khởi động máy chủ thay thế"
+      },
+      "command": "podbag run -d --name site-v2 -p 127.0.0.1:{port}:8080 -v site-data:/site:ro docker.io/library/busybox:1.37.0 httpd -f -p 8080 -h /site",
+      "check": {
+        "kind": "container-published",
+        "name": "site-v2"
+      }
+    },
+    {
+      "key": "portsReplacement",
+      "names": {
+        "en": "Check the replacement server ports",
+        "ko": "교체 서버의 포트 확인하기",
+        "ja": "交換後のサーバーのポートを確認する",
+        "zh-CN": "查看替换服务器的端口",
+        "fil": "Tingnan ang mga port ng kapalit na server",
+        "es": "Consulta los puertos del servidor de reemplazo",
+        "vi": "Kiểm tra cổng máy chủ thay thế"
+      },
+      "check": {
+        "kind": "desktop-ports",
+        "name": "site-v2"
+      }
+    },
+    {
+      "key": "browserReplacement",
+      "names": {
+        "en": "Open the replacement server page",
+        "ko": "브라우저에서 교체 서버 페이지 열기",
+        "ja": "交換後のサーバーのページを開く",
+        "zh-CN": "打开替换服务器的页面",
+        "fil": "Buksan ang pahina ng kapalit na server",
+        "es": "Abre la página del servidor de reemplazo",
+        "vi": "Mở trang của máy chủ thay thế"
+      },
+      "check": {
+        "kind": "desktop-browser",
+        "name": "site-v2",
+        "page": "My Podbag site"
+      }
+    },
+    {
+      "key": "stopReplacement",
+      "names": {
+        "en": "Stop the replacement server in Desktop",
+        "ko": "Desktop에서 교체 서버 중지하기",
+        "ja": "Desktop で交換後のサーバーを停止する",
+        "zh-CN": "在 Desktop 中停止替换服务器",
+        "fil": "Ihinto ang kapalit na server sa Desktop",
+        "es": "Detén el servidor de reemplazo en Desktop",
+        "vi": "Dừng máy chủ thay thế trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-stop",
+        "name": "site-v2"
+      }
+    },
+    {
+      "key": "removeReplacement",
+      "names": {
+        "en": "Remove the replacement server in the CLI",
+        "ko": "CLI에서 교체 서버 삭제하기",
+        "ja": "CLI で交換後のサーバーを削除する",
+        "zh-CN": "在 CLI 中删除替换服务器",
+        "fil": "Burahin ang kapalit na server sa CLI",
+        "es": "Elimina el servidor de reemplazo en la CLI",
+        "vi": "Xóa máy chủ thay thế trong CLI"
+      },
+      "command": "podbag rm site-v2",
+      "check": {
+        "kind": "container-absent",
+        "name": "site-v2"
+      }
+    },
+    {
+      "key": "inspect",
+      "names": {
+        "en": "Inspect the volume in Practice volumes",
+        "ko": "실습 볼륨에서 상세 정보 열기",
+        "ja": "実習ボリュームで詳細を開く",
+        "zh-CN": "在实验卷中查看详情",
+        "fil": "Buksan ang detalye sa Mga practice volume",
+        "es": "Abre los detalles en Volúmenes de práctica",
+        "vi": "Mở chi tiết trong Volume thực hành"
+      },
+      "check": {
+        "kind": "desktop-inspect-volume",
+        "name": "site-data"
+      }
+    },
+    {
+      "key": "delete",
+      "names": {
+        "en": "Delete the volume in Desktop",
+        "ko": "Desktop에서 볼륨 삭제하기",
+        "ja": "Desktop でボリュームを削除する",
+        "zh-CN": "在 Desktop 中删除卷",
+        "fil": "Burahin ang volume sa Desktop",
+        "es": "Elimina el volumen en Desktop",
+        "vi": "Xóa volume trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-delete-volume",
+        "name": "site-data"
+      }
+    },
+    {
+      "key": "checkContainers",
+      "names": {
+        "en": "Check the container list in the CLI",
+        "ko": "CLI에서 컨테이너 목록 확인하기",
+        "ja": "CLI でコンテナ一覧を確認する",
+        "zh-CN": "在 CLI 中检查容器列表",
+        "fil": "Tingnan ang listahan ng container sa CLI",
+        "es": "Consulta los contenedores en la CLI",
+        "vi": "Kiểm tra danh sách container trong CLI"
+      },
+      "command": "podbag ps -a",
+      "check": {
+        "kind": "containers-empty"
+      }
+    },
+    {
+      "key": "checkVolumes",
+      "names": {
+        "en": "Check the volume list in the CLI",
+        "ko": "CLI에서 볼륨 목록 확인하기",
+        "ja": "CLI でボリューム一覧を確認する",
+        "zh-CN": "在 CLI 中检查卷列表",
+        "fil": "Tingnan ang listahan ng volume sa CLI",
+        "es": "Consulta los volúmenes en la CLI",
+        "vi": "Kiểm tra danh sách volume trong CLI"
+      },
+      "command": "podbag volume ls",
+      "check": {
+        "kind": "volumes-empty"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

@@ -169,5 +169,17 @@
   "blog_tags": "Thẻ",
   "blog_related": "Bài viết liên quan",
   "blog_older": "Bài cũ hơn",
-  "blog_newer": "Bài mới hơn"
+  "blog_newer": "Bài mới hơn",
+  "nav_training": "Thực hành",
+  "training_title": "Podbag Training",
+  "training_description": "Các mô-đun thực hành cho podbag. Bắt đầu mỗi mô-đun trong Podbag Desktop và CLI bằng một lệnh.",
+  "training_lead": "Các bài thực hành ngắn cho Podbag Desktop và CLI. Chọn một mô-đun, đọc hướng dẫn rồi bắt đầu.",
+  "training_refresh": "Mô-đun mới đến từ trang này. Podbag Desktop hiện chúng khi bạn chọn <b>Làm mới</b> trong <b>Training</b> hoặc khởi động lại ứng dụng.",
+  "training_cli": "Trong CLI, lệnh này liệt kê các mô-đun:",
+  "training_modules": "Mô-đun",
+  "training_steps": "{n} bước",
+  "training_guide": "Đọc hướng dẫn",
+  "training_download": "Tải tệp",
+  "training_side": "Về Thực hành",
+  "training_guides": "Hướng dẫn trên blog"
 }

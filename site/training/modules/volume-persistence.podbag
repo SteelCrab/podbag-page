@@ -1,0 +1,168 @@
+{
+  "format": "podbag-course-v1",
+  "id": "volume-persistence",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Keep files across containers",
+      "guide": "Start the session with podbag lab start volume-persistence.",
+      "url": "https://podbag.dev/blog/volume-persistence/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너를 바꿔도 파일 남기기",
+      "guide": "podbag lab start volume-persistence 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/volume-persistence/"
+    }
+  },
+  "steps": [
+    {
+      "key": "create",
+      "names": {
+        "en": "Create the volume in the CLI",
+        "ko": "CLI에서 볼륨 만들기",
+        "ja": "CLI でボリュームを作成する",
+        "zh-CN": "在 CLI 中创建卷",
+        "fil": "Gumawa ng volume sa CLI",
+        "es": "Crea el volumen en la CLI",
+        "vi": "Tạo volume trong CLI"
+      },
+      "command": "podbag volume create training-data",
+      "check": {
+        "kind": "volume-exists",
+        "name": "training-data"
+      }
+    },
+    {
+      "key": "write",
+      "names": {
+        "en": "Write a file from app-a",
+        "ko": "app-a에서 파일 쓰기",
+        "ja": "app-a でファイルを書き込む",
+        "zh-CN": "用 app-a 写入文件",
+        "fil": "Sumulat ng file mula sa app-a",
+        "es": "Escribe un archivo desde app-a",
+        "vi": "Ghi tệp từ app-a"
+      },
+      "command": "podbag run --name app-a --network none -v training-data:/data docker.io/library/busybox:1.37.0 sh -c 'printf \"%s\\n\" \"hello from app-a\" > /data/note.txt'",
+      "check": {
+        "kind": "container-exited",
+        "name": "app-a",
+        "code": 0
+      }
+    },
+    {
+      "key": "removeWriter",
+      "names": {
+        "en": "Remove app-a in the CLI",
+        "ko": "CLI에서 app-a 삭제하기",
+        "ja": "CLI で app-a を削除する",
+        "zh-CN": "在 CLI 中删除 app-a",
+        "fil": "Burahin ang app-a sa CLI",
+        "es": "Elimina app-a en la CLI",
+        "vi": "Xóa app-a trong CLI"
+      },
+      "command": "podbag rm app-a",
+      "check": {
+        "kind": "container-absent",
+        "name": "app-a"
+      }
+    },
+    {
+      "key": "read",
+      "names": {
+        "en": "Read the same file from app-b",
+        "ko": "app-b에서 같은 파일 읽기",
+        "ja": "app-b で同じファイルを読み取る",
+        "zh-CN": "用 app-b 读取同一文件",
+        "fil": "Basahin ang parehong file mula sa app-b",
+        "es": "Lee el mismo archivo desde app-b",
+        "vi": "Đọc cùng tệp từ app-b"
+      },
+      "command": "podbag run --name app-b --network none -v training-data:/data:ro docker.io/library/busybox:1.37.0 cat /data/note.txt",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "hello from app-a"
+      }
+    },
+    {
+      "key": "removeReader",
+      "names": {
+        "en": "Remove app-b in the CLI",
+        "ko": "CLI에서 app-b 삭제하기",
+        "ja": "CLI で app-b を削除する",
+        "zh-CN": "在 CLI 中删除 app-b",
+        "fil": "Burahin ang app-b sa CLI",
+        "es": "Elimina app-b en la CLI",
+        "vi": "Xóa app-b trong CLI"
+      },
+      "command": "podbag rm app-b",
+      "check": {
+        "kind": "container-absent",
+        "name": "app-b"
+      }
+    },
+    {
+      "key": "inspect",
+      "names": {
+        "en": "Inspect the volume in Practice volumes",
+        "ko": "실습 볼륨에서 상세 정보 열기",
+        "ja": "実習ボリュームで詳細を開く",
+        "zh-CN": "在实验卷中查看详情",
+        "fil": "Buksan ang detalye sa Mga practice volume",
+        "es": "Abre los detalles en Volúmenes de práctica",
+        "vi": "Mở chi tiết trong Volume thực hành"
+      },
+      "check": {
+        "kind": "desktop-inspect-volume",
+        "name": "training-data"
+      }
+    },
+    {
+      "key": "delete",
+      "names": {
+        "en": "Delete the volume in Desktop",
+        "ko": "Desktop에서 볼륨 삭제하기",
+        "ja": "Desktop でボリュームを削除する",
+        "zh-CN": "在 Desktop 中删除卷",
+        "fil": "Burahin ang volume sa Desktop",
+        "es": "Elimina el volumen en Desktop",
+        "vi": "Xóa volume trong Desktop"
+      },
+      "check": {
+        "kind": "desktop-delete-volume",
+        "name": "training-data"
+      }
+    },
+    {
+      "key": "checkVolumes",
+      "names": {
+        "en": "Check the volume list in the CLI",
+        "ko": "CLI에서 볼륨 목록 확인하기",
+        "ja": "CLI でボリューム一覧を確認する",
+        "zh-CN": "在 CLI 中检查卷列表",
+        "fil": "Tingnan ang listahan ng volume sa CLI",
+        "es": "Consulta los volúmenes en la CLI",
+        "vi": "Kiểm tra danh sách volume trong CLI"
+      },
+      "command": "podbag volume ls",
+      "check": {
+        "kind": "volumes-empty"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

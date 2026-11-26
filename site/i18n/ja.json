@@ -169,5 +169,17 @@
   "blog_tags": "タグ",
   "blog_related": "関連記事",
   "blog_older": "前の記事",
-  "blog_newer": "次の記事"
+  "blog_newer": "次の記事",
+  "nav_training": "トレーニング",
+  "training_title": "Podbag Training",
+  "training_description": "podbag の実習モジュールです。コマンド 1 つで Podbag Desktop と CLI から始めます。",
+  "training_lead": "Podbag Desktop と CLI で行う短い実習です。モジュールを選び、ガイドを読んで始めます。",
+  "training_refresh": "新しいモジュールはこのページから届きます。Podbag Desktop の <b>Training</b> で<b>更新</b>を選ぶか、アプリを再起動すると表示されます。",
+  "training_cli": "CLI では、このコマンドでモジュールの一覧を表示します。",
+  "training_modules": "モジュール",
+  "training_steps": "{n} ステップ",
+  "training_guide": "ガイドを読む",
+  "training_download": "ファイルをダウンロード",
+  "training_side": "トレーニングについて",
+  "training_guides": "ブログのガイド"
 }

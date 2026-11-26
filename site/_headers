@@ -80,3 +80,11 @@
 /blog/container-network/container-network.podbag
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="container-network.podbag"
+
+/training/catalog.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=300
+
+/training/modules/*
+  Content-Type: application/json
+  Content-Disposition: attachment
