@@ -135,6 +135,20 @@ class Blocks(unittest.TestCase):
                               'width="800" height="490" loading="lazy"></picture></figure>')
 
 
+class PostPictures(unittest.TestCase):
+    def test_a_post_picture_has_its_dark_variant(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            svg = '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400"></svg>'
+            (folder / "architecture-en-light.svg").write_text(svg)
+            (folder / "architecture-en-dark.svg").write_text(svg)
+            (folder / "plain-light.svg").write_text(svg)
+            sources, size = blog.Builder.picture(None, "architecture-en-light.svg", folder)
+            self.assertEqual(sources, [("(prefers-color-scheme: dark)", "architecture-en-dark.svg")])
+            self.assertEqual(size, (960, 400))
+            self.assertEqual(blog.Builder.picture(None, "plain-light.svg", folder)[0], [])
+
+
 class Inline(unittest.TestCase):
     def inline(self, text, **options):
         return blog.Markdown(**options).inline(text)

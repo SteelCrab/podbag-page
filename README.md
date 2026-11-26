@@ -77,8 +77,14 @@ A new module needs no app release.
   top of `dev/docs/training.py`.
 - Add the id to `site/training/catalog.json`. The list order is the order in the apps and
   on `/training/`.
+- Add its time in minutes to `"minutes"` in the same file: `[10]`, or `[10, 15]` for a
+  range. `/training/` shows it.
 - Write the guide as a blog post (see above). Point `translations.<lang>.url` in the module
   to it.
+- The guide opens with its architecture picture, before the first `##` section: what the
+  module builds. Add the guide to `dev/docs/training_diagrams.py`, run
+  `python3 dev/docs/training_diagrams.py`, and put
+  `![what it shows](architecture-<lang>-light.svg)` in each language. The checks fail without it.
 - Run the checks above. The build stops on a bad module file and says why.
 - After a deploy, Desktop shows the module after **Refresh** in **Training** or a restart.
   `podbag lab list` shows it in the CLI.
