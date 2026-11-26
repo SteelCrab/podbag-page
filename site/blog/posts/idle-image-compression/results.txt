@@ -1,0 +1,52 @@
+Idle image compression: measured results
+
+Setup
+  podbag-dev VM (a Linux VM on a laptop), arm64, 4 CPUs, Linux 7.0.0-44.
+  podbag: a development build of podbag 0.3.2 with image compression.
+  The store is on ext4 (a loop file on the host disk).
+  Run as root, so images use composefs (EROFS metadata + overlayfs).
+  Script: compress.sh (in this folder). It needs root and about 2 GiB of disk.
+    sudo bash compress.sh [work-dir]
+    PODBAG_BIN=/path/to/podbag picks the program to measure.
+
+Images (pulled with compression off)
+  python:3.12.7-slim-bookworm           146 MB
+  python:3.12.8-slim-bookworm           146 MB
+  eclipse-temurin:21.0.5_11-jre-noble   310 MB
+  eclipse-temurin:21.0.6_7-jre-noble    310 MB
+  alpine:3.22                           8.52 MB
+
+What the script measures
+  size        Objects row of `podbag system df`, before and after
+              `podbag system compress` (PODBAG_COMPRESS_IDLE_AFTER=0, so every
+              image counts as idle).
+  compress_ms time of that `podbag system compress` for all 5 images.
+  first_run   `podbag run --rm --network none IMAGE CMD` right after
+              `podbag system compress IMAGE` and dropping the page cache.
+              Median of 5. CMD is `python3 -c pass` or `java -version`.
+  plain_run   the same start when the image is not compressed, page cache
+              dropped too. Median of 5.
+  alpine      `podbag run --rm --network none alpine:3.22 true`, 30 runs with
+              compression off and 30 with compression on (idle), alternating.
+              Median. The alpine image is not compressed in these runs.
+
+Run 1 (quiet host, the numbers in the post)
+  size before:     725MB
+  size after:      337MB
+  Compressed row:  330MB (718MB before)
+  compress_ms=8365
+  python:3.12.8-slim-bookworm: first_run_ms=1391 plain_run_ms=30
+  eclipse-temurin:21.0.6_7-jre-noble: first_run_ms=1801 plain_run_ms=55
+  alpine_off_ms=12 alpine_idle_ms=11
+
+Run 2 (quiet host)
+  compress_ms=11389
+  python:3.12.8-slim-bookworm: first_run_ms=1496 plain_run_ms=31
+  eclipse-temurin:21.0.6_7-jre-noble: first_run_ms=1781 plain_run_ms=56
+  alpine_off_ms=10 alpine_idle_ms=10
+
+Busy host
+  Two more runs were made while other programs kept the host busy. The store
+  is a file on the host disk, so compressing and the first start of a
+  compressed image took longer (several seconds for the python image).
+  Alpine with compression off and on stayed equal within 1 ms.
