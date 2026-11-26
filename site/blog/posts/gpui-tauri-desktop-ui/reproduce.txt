@@ -1,0 +1,63 @@
+Reproduce the GPUI and Tauri desktop UI benchmark
+
+Environment
+  Apple M5, 24 GB memory, macOS 27.2.1, WebKit 22625.2.8.11.9.
+  Rust 1.96.0. The Mac was in normal use with an unlocked screen, and other
+  work ran on it, so single runs vary; the post reports medians.
+  Windows open and close during the runs. Run one benchmark at a time.
+
+Prototypes (prototypes.tar.gz)
+  gpui-app   gpui 0.2.2 from crates.io with the runtime_shaders feature,
+             so no Metal toolchain is needed at build time. The search box
+             (src/input.rs) is adapted from GPUI's examples/input.rs
+             (Apache-2.0).
+  tauri-app  Tauri 2.12.7 (wry 0.57.3). --mode full renders every row into a
+             <table>; --mode virtual keeps only the visible rows in the page.
+  Both use Podbag Desktop's release profile: opt-level "s", lto, one codegen
+  unit, panic abort, strip. Cargo.lock files pin every crate.
+  Window 1200 x 800 points of content in both apps. Rows are generated
+  deterministically from --rows N.
+
+Build
+  tar -xzf prototypes.tar.gz && cd gpui-tauri-bench
+  (cd gpui-app && cargo build --release)
+  (cd tauri-app && cargo build --release)
+
+Run
+  Tables and chart (no search focus, so no blinking caret):
+    BENCH_NO_FOCUS=1 python3 bench/run.py --rows 100,1000,10000 --runs 5
+    python3 bench/summary.py bench/results.json
+  Caret paragraph (search box focused):
+    python3 bench/run.py --rows 1000,10000 --runs 3 --out bench/focused.json
+  Published data: results.json (tables, chart, build figures) and
+  results-focused.json (caret paragraph).
+
+What run.py does per run
+  Spawn the app and wait for its READY line: the first frame with the full
+  table has been presented (GPUI: the next-frame callback after the first
+  render; Tauri: two requestAnimationFrame calls after the DOM is built).
+  Wait 3 s, then read phys_footprint with `footprint`. Measure CPU time over
+  10 s with `ps`. Send "filter web-0004" on stdin and wait for the FILTER line.
+  Send "quit" and check that no WebKit process is left.
+  One cold run per case comes first and is left out of the medians.
+
+Which processes count
+  run.py finds helper processes by comparing the process list before and
+  after the launch, so unrelated processes that start during a run are caught
+  too. summary.py counts the app process and com.apple.WebKit.* services only.
+  Not counted: com.apple.SafariPlatformSupport.Helper (about 10.6 MiB, seen
+  with GPUI), com.apple.audio.SandboxHelper (about 5 MiB, Tauri only), and
+  other virtual machines that started during some runs.
+
+Limits
+  Render and filter times are measured inside each app, from the moment the
+  rows reach the interface layer until the next frame. For Tauri this leaves
+  out the transfer of the rows from Rust to JavaScript. Start-to-frame time is
+  measured from outside and includes everything. Linux, Windows, scrolling
+  smoothness and long sessions were not measured.
+
+The blinking caret
+  With the search box focused, WebKit draws a blinking caret. It kept Tauri's
+  idle CPU near 3% and its GPU process near 57 MiB (about 15 MiB without it).
+  The prototype's GPUI caret does not blink, so the tables use
+  BENCH_NO_FOCUS=1 for both apps.

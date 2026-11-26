@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="514" viewBox="0 0 760 514" role="img" aria-labelledby="c-title c-desc">
+<title id="c-title">Bản mẫu GPUI và Tauri: kết quả từng lần chạy</title><desc id="c-desc">Thời gian khởi động và bộ nhớ của mỗi lần chạy với 1.000 và 10.000 hàng. Vòng tròn rỗng là từng lần chạy, hình thoi là trung vị.</desc>
+<defs><style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#172b40}.h{font-weight:650;font-size:16px}.name{font-size:13px;fill:#3e5366}.group{font-weight:650;font-size:13px}.tick{font-size:12px;fill:#5b6b7a}.grid{stroke:#d9e1e8;stroke-width:1}</style></defs>
+<rect width="760" height="514" fill="#ffffff" rx="8"/>
+<text class="h" x="210" y="28">Từ khởi động đến khung hình đầy đủ đầu tiên (ms)</text>
+<line class="grid" x1="210.0" x2="210.0" y1="44" y2="222"/>
+<text class="tick" x="210.0" y="238" text-anchor="middle">0</text>
+<line class="grid" x1="275.0" x2="275.0" y1="44" y2="222"/>
+<text class="tick" x="275.0" y="238" text-anchor="middle">100</text>
+<line class="grid" x1="340.0" x2="340.0" y1="44" y2="222"/>
+<text class="tick" x="340.0" y="238" text-anchor="middle">200</text>
+<line class="grid" x1="405.0" x2="405.0" y1="44" y2="222"/>
+<text class="tick" x="405.0" y="238" text-anchor="middle">300</text>
+<line class="grid" x1="470.0" x2="470.0" y1="44" y2="222"/>
+<text class="tick" x="470.0" y="238" text-anchor="middle">400</text>
+<line class="grid" x1="535.0" x2="535.0" y1="44" y2="222"/>
+<text class="tick" x="535.0" y="238" text-anchor="middle">500</text>
+<line class="grid" x1="600.0" x2="600.0" y1="44" y2="222"/>
+<text class="tick" x="600.0" y="238" text-anchor="middle">600</text>
+<line class="grid" x1="665.0" x2="665.0" y1="44" y2="222"/>
+<text class="tick" x="665.0" y="238" text-anchor="middle">700</text>
+<line class="grid" x1="730.0" x2="730.0" y1="44" y2="222"/>
+<text class="tick" x="730.0" y="238" text-anchor="middle">800</text>
+<text class="group" x="12" y="62">1.000 hàng</text>
+<text class="name" x="200" y="70" text-anchor="end">GPUI</text>
+<circle cx="268.3" cy="66" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="266.9" cy="66" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="272.2" cy="66" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="271.9" cy="66" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="269.2" cy="66" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M269.2 59 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="92" text-anchor="end">Tauri · DOM đầy đủ</text>
+<circle cx="411.5" cy="88" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="388.8" cy="88" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="405.5" cy="88" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="402.7" cy="88" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="396.4" cy="88" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<path d="M402.7 81 l7 7 l-7 7 l-7 -7 z" fill="#c2410c"/>
+<text class="name" x="200" y="114" text-anchor="end">Tauri · danh sách ảo</text>
+<circle cx="399.0" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="403.2" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="389.2" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="391.5" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="397.7" cy="110" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M397.7 103 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="group" x="12" y="144">10.000 hàng</text>
+<text class="name" x="200" y="152" text-anchor="end">GPUI</text>
+<circle cx="278.5" cy="148" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="290.6" cy="148" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="273.1" cy="148" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="269.4" cy="148" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="278.2" cy="148" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M278.2 141 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="174" text-anchor="end">Tauri · DOM đầy đủ</text>
+<circle cx="616.8" cy="170" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="588.7" cy="170" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="650.8" cy="170" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="580.2" cy="170" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="618.0" cy="170" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<path d="M616.8 163 l7 7 l-7 7 l-7 -7 z" fill="#c2410c"/>
+<text class="name" x="200" y="196" text-anchor="end">Tauri · danh sách ảo</text>
+<circle cx="414.4" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="391.2" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="396.9" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="402.0" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="417.4" cy="192" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M402.0 185 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="h" x="210" y="280">Bộ nhớ, ứng dụng và tiến trình WebKit (MiB)</text>
+<line class="grid" x1="210.0" x2="210.0" y1="296" y2="474"/>
+<text class="tick" x="210.0" y="490" text-anchor="middle">0</text>
+<line class="grid" x1="296.7" x2="296.7" y1="296" y2="474"/>
+<text class="tick" x="296.7" y="490" text-anchor="middle">50</text>
+<line class="grid" x1="383.3" x2="383.3" y1="296" y2="474"/>
+<text class="tick" x="383.3" y="490" text-anchor="middle">100</text>
+<line class="grid" x1="470.0" x2="470.0" y1="296" y2="474"/>
+<text class="tick" x="470.0" y="490" text-anchor="middle">150</text>
+<line class="grid" x1="556.7" x2="556.7" y1="296" y2="474"/>
+<text class="tick" x="556.7" y="490" text-anchor="middle">200</text>
+<line class="grid" x1="643.3" x2="643.3" y1="296" y2="474"/>
+<text class="tick" x="643.3" y="490" text-anchor="middle">250</text>
+<line class="grid" x1="730.0" x2="730.0" y1="296" y2="474"/>
+<text class="tick" x="730.0" y="490" text-anchor="middle">300</text>
+<text class="group" x="12" y="314">1.000 hàng</text>
+<text class="name" x="200" y="322" text-anchor="end">GPUI</text>
+<circle cx="278.3" cy="318" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="283.6" cy="318" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="277.0" cy="318" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="277.0" cy="318" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="283.7" cy="318" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M278.3 311 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="344" text-anchor="end">Tauri · DOM đầy đủ</text>
+<circle cx="384.4" cy="340" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="373.5" cy="340" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="373.4" cy="340" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="373.8" cy="340" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="373.8" cy="340" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<path d="M373.8 333 l7 7 l-7 7 l-7 -7 z" fill="#c2410c"/>
+<text class="name" x="200" y="366" text-anchor="end">Tauri · danh sách ảo</text>
+<circle cx="345.9" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="340.6" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="340.7" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="340.2" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="340.5" cy="362" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M340.6 355 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+<text class="group" x="12" y="396">10.000 hàng</text>
+<text class="name" x="200" y="404" text-anchor="end">GPUI</text>
+<circle cx="280.9" cy="400" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="280.8" cy="400" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="287.4" cy="400" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="287.2" cy="400" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<circle cx="280.4" cy="400" r="4.5" fill="none" stroke="#2f6fdf" stroke-width="1.6"/>
+<path d="M280.9 393 l7 7 l-7 7 l-7 -7 z" fill="#2f6fdf"/>
+<text class="name" x="200" y="426" text-anchor="end">Tauri · DOM đầy đủ</text>
+<circle cx="672.9" cy="422" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="673.0" cy="422" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="672.1" cy="422" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="672.7" cy="422" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<circle cx="672.5" cy="422" r="4.5" fill="none" stroke="#c2410c" stroke-width="1.6"/>
+<path d="M672.7 415 l7 7 l-7 7 l-7 -7 z" fill="#c2410c"/>
+<text class="name" x="200" y="448" text-anchor="end">Tauri · danh sách ảo</text>
+<circle cx="354.3" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="355.5" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="355.7" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="356.2" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="355.4" cy="444" r="4.5" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<path d="M355.5 437 l7 7 l-7 7 l-7 -7 z" fill="#7c3aed"/>
+</svg>
