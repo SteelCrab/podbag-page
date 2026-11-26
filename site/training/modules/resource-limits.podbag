@@ -11,6 +11,31 @@
       "title": "Podbag Training · 메모리와 CPU 제한하기",
       "guide": "podbag lab start resource-limits 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/resource-limits/"
+    },
+    "ja": {
+      "title": "Podbag Training · メモリと CPU を制限する",
+      "guide": "podbag lab start resource-limits で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/resource-limits/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 限制内存和 CPU",
+      "guide": "用 podbag lab start resource-limits 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/resource-limits/"
+    },
+    "fil": {
+      "title": "Podbag Training · Limitahan ang memory at CPU",
+      "guide": "Simulan ang session gamit ang podbag lab start resource-limits.",
+      "url": "https://podbag.dev/fil/blog/resource-limits/"
+    },
+    "es": {
+      "title": "Podbag Training · Limita la memoria y la CPU",
+      "guide": "Inicia la sesión con podbag lab start resource-limits.",
+      "url": "https://podbag.dev/es/blog/resource-limits/"
+    },
+    "vi": {
+      "title": "Podbag Training · Giới hạn bộ nhớ và CPU",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start resource-limits.",
+      "url": "https://podbag.dev/vi/blog/resource-limits/"
     }
   },
   "steps": [

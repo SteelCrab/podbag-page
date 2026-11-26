@@ -11,6 +11,31 @@
       "title": "Podbag Training · 컨테이너 안에서 명령 실행하기",
       "guide": "podbag lab start container-exec 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/container-exec/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナの中でコマンドを実行する",
+      "guide": "podbag lab start container-exec で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/container-exec/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 在容器内运行命令",
+      "guide": "用 podbag lab start container-exec 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/container-exec/"
+    },
+    "fil": {
+      "title": "Podbag Training · Magpatakbo ng mga command sa loob ng container",
+      "guide": "Simulan ang session gamit ang podbag lab start container-exec.",
+      "url": "https://podbag.dev/fil/blog/container-exec/"
+    },
+    "es": {
+      "title": "Podbag Training · Ejecuta comandos dentro de un contenedor",
+      "guide": "Inicia la sesión con podbag lab start container-exec.",
+      "url": "https://podbag.dev/es/blog/container-exec/"
+    },
+    "vi": {
+      "title": "Podbag Training · Chạy lệnh bên trong container",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start container-exec.",
+      "url": "https://podbag.dev/vi/blog/container-exec/"
     }
   },
   "steps": [

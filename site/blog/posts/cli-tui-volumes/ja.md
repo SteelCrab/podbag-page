@@ -14,7 +14,7 @@ CLI で作成したボリュームを Desktop で確認し、削除します。�
 
 [実習モジュールをダウンロード](cli-gui-volumes.podbag)
 
-![ターミナルが練習環境でボリューム my-api を作成して一覧表示し、Podbag Desktop または TUI が確認して削除します](architecture-ja-light.svg)
+![ターミナルが実習環境でボリューム my-api を作成して一覧表示し、Podbag Desktop または TUI が確認して削除します](architecture-ja-light.svg)
 
 ## ボリュームとは？
 

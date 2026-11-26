@@ -12,6 +12,31 @@
       "title": "Podbag Training · 브라우저에서 웹 서버 열기",
       "guide": "podbag lab start web-basics 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/web-basics/"
+    },
+    "ja": {
+      "title": "Podbag Training · ブラウザーで Web サーバーを開く",
+      "guide": "podbag lab start web-basics で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/web-basics/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 在浏览器中打开 Web 服务器",
+      "guide": "用 podbag lab start web-basics 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/web-basics/"
+    },
+    "fil": {
+      "title": "Podbag Training · Buksan ang web server sa browser",
+      "guide": "Simulan ang session gamit ang podbag lab start web-basics.",
+      "url": "https://podbag.dev/fil/blog/web-basics/"
+    },
+    "es": {
+      "title": "Podbag Training · Abre un servidor web en el navegador",
+      "guide": "Inicia la sesión con podbag lab start web-basics.",
+      "url": "https://podbag.dev/es/blog/web-basics/"
+    },
+    "vi": {
+      "title": "Podbag Training · Mở máy chủ web trong trình duyệt",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start web-basics.",
+      "url": "https://podbag.dev/vi/blog/web-basics/"
     }
   },
   "steps": [

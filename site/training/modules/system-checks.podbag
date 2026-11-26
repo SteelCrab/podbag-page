@@ -11,6 +11,31 @@
       "title": "Podbag Training · 시스템과 이미지 점검하기",
       "guide": "podbag lab start system-checks 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/system-checks/"
+    },
+    "ja": {
+      "title": "Podbag Training · システムとイメージを点検する",
+      "guide": "podbag lab start system-checks で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/system-checks/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 检查系统和镜像",
+      "guide": "用 podbag lab start system-checks 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/system-checks/"
+    },
+    "fil": {
+      "title": "Podbag Training · Suriin ang system at ang mga image",
+      "guide": "Simulan ang session gamit ang podbag lab start system-checks.",
+      "url": "https://podbag.dev/fil/blog/system-checks/"
+    },
+    "es": {
+      "title": "Podbag Training · Comprueba el sistema y las imágenes",
+      "guide": "Inicia la sesión con podbag lab start system-checks.",
+      "url": "https://podbag.dev/es/blog/system-checks/"
+    },
+    "vi": {
+      "title": "Podbag Training · Kiểm tra hệ thống và các image",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start system-checks.",
+      "url": "https://podbag.dev/vi/blog/system-checks/"
     }
   },
   "steps": [

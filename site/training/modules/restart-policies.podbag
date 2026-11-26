@@ -11,6 +11,31 @@
       "title": "Podbag Training · 멈춘 컨테이너 다시 시작하기",
       "guide": "podbag lab start restart-policies 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/restart-policies/"
+    },
+    "ja": {
+      "title": "Podbag Training · 停止したコンテナを再起動する",
+      "guide": "podbag lab start restart-policies で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/restart-policies/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 重启已停止的容器",
+      "guide": "用 podbag lab start restart-policies 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/restart-policies/"
+    },
+    "fil": {
+      "title": "Podbag Training · I-restart ang mga container na humihinto",
+      "guide": "Simulan ang session gamit ang podbag lab start restart-policies.",
+      "url": "https://podbag.dev/fil/blog/restart-policies/"
+    },
+    "es": {
+      "title": "Podbag Training · Reinicia los contenedores que se detienen",
+      "guide": "Inicia la sesión con podbag lab start restart-policies.",
+      "url": "https://podbag.dev/es/blog/restart-policies/"
+    },
+    "vi": {
+      "title": "Podbag Training · Khởi động lại container khi nó dừng",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start restart-policies.",
+      "url": "https://podbag.dev/vi/blog/restart-policies/"
     }
   },
   "steps": [

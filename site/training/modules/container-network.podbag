@@ -12,6 +12,31 @@
       "title": "Podbag Training · 이름으로 컨테이너 두 개 연결하기",
       "guide": "podbag lab start container-network 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/container-network/"
+    },
+    "ja": {
+      "title": "Podbag Training · 2 つのコンテナを名前でつなぐ",
+      "guide": "podbag lab start container-network で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/container-network/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 通过名称连接两个容器",
+      "guide": "用 podbag lab start container-network 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/container-network/"
+    },
+    "fil": {
+      "title": "Podbag Training · Ikonekta ang dalawang container gamit ang pangalan",
+      "guide": "Simulan ang session gamit ang podbag lab start container-network.",
+      "url": "https://podbag.dev/fil/blog/container-network/"
+    },
+    "es": {
+      "title": "Podbag Training · Conecta dos contenedores por su nombre",
+      "guide": "Inicia la sesión con podbag lab start container-network.",
+      "url": "https://podbag.dev/es/blog/container-network/"
+    },
+    "vi": {
+      "title": "Podbag Training · Kết nối hai container bằng tên",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start container-network.",
+      "url": "https://podbag.dev/vi/blog/container-network/"
     }
   },
   "steps": [

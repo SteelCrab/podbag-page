@@ -11,6 +11,31 @@
       "title": "Podbag Training · 파일 복사하고 이미지를 아카이브로 옮기기",
       "guide": "podbag lab start copy-and-archive 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/copy-and-archive/"
+    },
+    "ja": {
+      "title": "Podbag Training · ファイルをコピーし、イメージをアーカイブで移す",
+      "guide": "podbag lab start copy-and-archive で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/copy-and-archive/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 复制文件并用归档迁移镜像",
+      "guide": "用 podbag lab start copy-and-archive 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/copy-and-archive/"
+    },
+    "fil": {
+      "title": "Podbag Training · Kumopya ng mga file at ilipat ang image bilang archive",
+      "guide": "Simulan ang session gamit ang podbag lab start copy-and-archive.",
+      "url": "https://podbag.dev/fil/blog/copy-and-archive/"
+    },
+    "es": {
+      "title": "Podbag Training · Copia archivos y mueve una imagen en un archivo tar",
+      "guide": "Inicia la sesión con podbag lab start copy-and-archive.",
+      "url": "https://podbag.dev/es/blog/copy-and-archive/"
+    },
+    "vi": {
+      "title": "Podbag Training · Sao chép tệp và chuyển image bằng tệp lưu trữ",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start copy-and-archive.",
+      "url": "https://podbag.dev/vi/blog/copy-and-archive/"
     }
   },
   "files": {

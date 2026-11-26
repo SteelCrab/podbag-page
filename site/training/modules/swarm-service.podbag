@@ -11,6 +11,31 @@
       "title": "Podbag Training · Swarm 모드로 서비스 실행하기",
       "guide": "podbag lab start swarm-service 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/swarm-service/"
+    },
+    "ja": {
+      "title": "Podbag Training · Swarm モードでサービスを実行する",
+      "guide": "podbag lab start swarm-service で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/swarm-service/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 在 Swarm 模式下运行服务",
+      "guide": "用 podbag lab start swarm-service 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/swarm-service/"
+    },
+    "fil": {
+      "title": "Podbag Training · Magpatakbo ng service sa Swarm mode",
+      "guide": "Simulan ang session gamit ang podbag lab start swarm-service.",
+      "url": "https://podbag.dev/fil/blog/swarm-service/"
+    },
+    "es": {
+      "title": "Podbag Training · Ejecuta un servicio en modo Swarm",
+      "guide": "Inicia la sesión con podbag lab start swarm-service.",
+      "url": "https://podbag.dev/es/blog/swarm-service/"
+    },
+    "vi": {
+      "title": "Podbag Training · Chạy dịch vụ ở chế độ Swarm",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start swarm-service.",
+      "url": "https://podbag.dev/vi/blog/swarm-service/"
     }
   },
   "steps": [

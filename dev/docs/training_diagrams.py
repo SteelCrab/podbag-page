@@ -15,7 +15,8 @@ from html import escape
 from pathlib import Path
 
 POSTS = Path(__file__).resolve().parents[2] / "site" / "blog" / "posts"
-FONT = "ui-sans-serif, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', Helvetica, Arial, sans-serif"
+# Latin fonts first; Korean, Japanese and Chinese fonts fill in only their own letters.
+FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'Noto Sans CJK KR', sans-serif"
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 THEMES = {
     "light": {"surface": "#fcfcfb", "panel": "#ffffff", "box": "#f2f1ed", "line": "#c3c2b7",
@@ -30,45 +31,212 @@ THEMES = {
 W = 960
 
 WORDS = {
-    "en": {"computer": "Your computer", "session": "Practice session",
-           "session_note": "temporary: removed when you type exit", "terminal": "Terminal",
-           "browser": "Browser", "desktop": "Podbag Desktop", "image": "image",
-           "volume": "volume", "network": "network", "runs": "runs", "writes": "writes",
-           "reads": "reads", "stop": "stop", "ports": "ports, stop", "inspect": "inspect, delete",
-           "logs": "logs", "replaces": "replaces", "exited": "exited (1)", "running": "running",
-           "by_name": "by name", "copies": "copies the page", "no_port": "no published port",
-           "stays": "stays after the containers go",
-           "or_tui": "or the TUI"},
-    "ko": {"computer": "내 컴퓨터", "session": "실습 환경",
-           "session_note": "임시 환경: exit를 입력하면 삭제됩니다", "terminal": "터미널",
-           "browser": "브라우저", "desktop": "Podbag Desktop", "image": "이미지",
-           "volume": "볼륨", "network": "네트워크", "runs": "실행", "writes": "쓰기",
-           "reads": "읽기", "stop": "중지", "ports": "포트 확인, 중지", "inspect": "확인, 삭제",
-           "logs": "로그", "replaces": "교체", "exited": "종료됨 (1)", "running": "실행 중",
-           "by_name": "이름으로 접속", "copies": "페이지 복사", "no_port": "공개 포트 없음",
-           "stays": "컨테이너를 지워도 남음",
-           "or_tui": "또는 TUI"},
-    "ja": {"computer": "このコンピューター", "session": "練習環境",
-           "session_note": "一時的: exit で削除されます", "terminal": "ターミナル",
-           "browser": "ブラウザー", "desktop": "Podbag Desktop", "volume": "ボリューム",
-           "inspect": "確認、削除", "or_tui": "または TUI"},
-    "zh-CN": {"computer": "你的电脑", "session": "练习环境",
-              "session_note": "临时环境：输入 exit 后删除", "terminal": "终端",
-              "browser": "浏览器", "desktop": "Podbag Desktop", "volume": "卷",
-              "inspect": "查看、删除", "or_tui": "或 TUI"},
-    "fil": {"computer": "Iyong computer", "session": "Practice session",
-            "session_note": "pansamantala: nabubura kapag nag-exit ka", "terminal": "Terminal",
-            "browser": "Browser", "desktop": "Podbag Desktop", "volume": "volume",
-            "inspect": "tingnan, burahin", "or_tui": "o ang TUI"},
-    "es": {"computer": "Tu computadora", "session": "Sesión de práctica",
-           "session_note": "temporal: se borra al escribir exit", "terminal": "Terminal",
-           "browser": "Navegador", "desktop": "Podbag Desktop", "volume": "volumen",
-           "inspect": "ver, eliminar", "or_tui": "o la TUI"},
-    "vi": {"computer": "Máy tính của bạn", "session": "Phiên thực hành",
-           "session_note": "tạm thời: bị xóa khi bạn gõ exit", "terminal": "Terminal",
-           "browser": "Trình duyệt", "desktop": "Podbag Desktop", "volume": "volume",
-           "inspect": "xem, xóa", "or_tui": "hoặc TUI"},
+    'en': {
+        'computer': 'Your computer',
+        'session': 'Practice session',
+        'session_note': 'temporary: removed when you type exit',
+        'terminal': 'Terminal',
+        'browser': 'Browser',
+        'desktop': 'Podbag Desktop',
+        'image': 'image',
+        'volume': 'volume',
+        'network': 'network',
+        'runs': 'runs',
+        'writes': 'writes',
+        'reads': 'reads',
+        'stop': 'stop',
+        'ports': 'ports, stop',
+        'inspect': 'inspect, delete',
+        'logs': 'logs',
+        'replaces': 'replaces',
+        'exited': 'exited (1)',
+        'running': 'running',
+        'by_name': 'by name',
+        'copies': 'copies the page',
+        'no_port': 'no published port',
+        'stays': 'stays after the containers go',
+        'or_tui': 'or the TUI',
+    },
+    'ko': {
+        'computer': '내 컴퓨터',
+        'session': '실습 환경',
+        'session_note': '임시 환경: exit를 입력하면 삭제됩니다',
+        'terminal': '터미널',
+        'browser': '브라우저',
+        'desktop': 'Podbag Desktop',
+        'image': '이미지',
+        'volume': '볼륨',
+        'network': '네트워크',
+        'runs': '실행',
+        'writes': '쓰기',
+        'reads': '읽기',
+        'stop': '중지',
+        'ports': '포트 확인, 중지',
+        'inspect': '확인, 삭제',
+        'logs': '로그',
+        'replaces': '교체',
+        'exited': '종료됨 (1)',
+        'running': '실행 중',
+        'by_name': '이름으로 접속',
+        'copies': '페이지 복사',
+        'no_port': '공개 포트 없음',
+        'stays': '컨테이너를 지워도 남음',
+        'or_tui': '또는 TUI',
+    },
+    'ja': {
+        'computer': 'このコンピューター',
+        'session': '実習環境',
+        'session_note': '一時的: exit で削除されます',
+        'terminal': 'ターミナル',
+        'browser': 'ブラウザー',
+        'desktop': 'Podbag Desktop',
+        'volume': 'ボリューム',
+        'inspect': '確認、削除',
+        'or_tui': 'または TUI',
+        'image': 'イメージ',
+        'network': 'ネットワーク',
+        'runs': '実行',
+        'writes': '書き込み',
+        'reads': '読み取り',
+        'stop': '停止',
+        'ports': 'ポート確認、停止',
+        'logs': 'ログ',
+        'replaces': '入れ替え',
+        'exited': '終了 (1)',
+        'running': '実行中',
+        'by_name': '名前で接続',
+        'copies': 'ページをコピー',
+        'no_port': '公開ポートなし',
+        'stays': 'コンテナを削除しても残る',
+    },
+    'zh-CN': {
+        'computer': '你的电脑',
+        'session': '练习环境',
+        'session_note': '临时环境：输入 exit 后删除',
+        'terminal': '终端',
+        'browser': '浏览器',
+        'desktop': 'Podbag Desktop',
+        'volume': '卷',
+        'inspect': '查看、删除',
+        'or_tui': '或 TUI',
+        'image': '镜像',
+        'network': '网络',
+        'runs': '运行',
+        'writes': '写入',
+        'reads': '读取',
+        'stop': '停止',
+        'ports': '端口、停止',
+        'logs': '日志',
+        'replaces': '替换',
+        'exited': '已退出 (1)',
+        'running': '运行中',
+        'by_name': '通过名称',
+        'copies': '复制页面',
+        'no_port': '不发布端口',
+        'stays': '容器删除后仍保留',
+    },
+    'fil': {
+        'computer': 'Iyong computer',
+        'session': 'Practice session',
+        'session_note': 'pansamantala: nabubura kapag nag-exit ka',
+        'terminal': 'Terminal',
+        'browser': 'Browser',
+        'desktop': 'Podbag Desktop',
+        'volume': 'volume',
+        'inspect': 'tingnan, burahin',
+        'or_tui': 'o ang TUI',
+        'image': 'image',
+        'network': 'network',
+        'runs': 'nagpapatakbo',
+        'writes': 'nagsusulat',
+        'reads': 'nagbabasa',
+        'stop': 'ihinto',
+        'ports': 'mga port, ihinto',
+        'logs': 'mga log',
+        'replaces': 'pumapalit',
+        'exited': 'nakahinto (1)',
+        'running': 'tumatakbo',
+        'by_name': 'gamit ang pangalan',
+        'copies': 'kinokopya ang page',
+        'no_port': 'walang na-publish na port',
+        'stays': 'nananatili kahit wala na ang mga container',
+    },
+    'es': {
+        'computer': 'Tu computadora',
+        'session': 'Sesión de práctica',
+        'session_note': 'temporal: se borra al escribir exit',
+        'terminal': 'Terminal',
+        'browser': 'Navegador',
+        'desktop': 'Podbag Desktop',
+        'volume': 'volumen',
+        'inspect': 'ver, eliminar',
+        'or_tui': 'o la TUI',
+        'image': 'imagen',
+        'network': 'red',
+        'runs': 'ejecuta',
+        'writes': 'escribe',
+        'reads': 'lee',
+        'stop': 'detener',
+        'ports': 'puertos, detener',
+        'logs': 'registros',
+        'replaces': 'sustituye',
+        'exited': 'terminado (1)',
+        'running': 'en ejecución',
+        'by_name': 'por nombre',
+        'copies': 'copia la página',
+        'no_port': 'sin puerto publicado',
+        'stays': 'sigue sin los contenedores',
+    },
+    'vi': {
+        'computer': 'Máy tính của bạn',
+        'session': 'Phiên thực hành',
+        'session_note': 'tạm thời: bị xóa khi bạn gõ exit',
+        'terminal': 'Terminal',
+        'browser': 'Trình duyệt',
+        'desktop': 'Podbag Desktop',
+        'volume': 'volume',
+        'inspect': 'xem, xóa',
+        'or_tui': 'hoặc TUI',
+        'image': 'image',
+        'network': 'mạng',
+        'runs': 'chạy',
+        'writes': 'ghi',
+        'reads': 'đọc',
+        'stop': 'dừng',
+        'ports': 'cổng, dừng',
+        'logs': 'nhật ký',
+        'replaces': 'thay thế',
+        'exited': 'exited (1)',
+        'running': 'đang chạy',
+        'by_name': 'bằng tên',
+        'copies': 'sao chép trang',
+        'no_port': 'không công bố cổng',
+        'stays': 'vẫn còn khi container bị xóa',
+    },
 }
+
+def width(text, size):
+    """About how wide TEXT is at font SIZE: CJK letters are square, spaces and dots narrow."""
+    def one(c):
+        if ord(c) >= 0x2E80:
+            return 1.0
+        if c in " .,:;·'|!il()[]":
+            return 0.3
+        return 0.62 if c.isupper() else 0.52
+    return size * sum(one(c) for c in text)
+
+
+def fit(text, room, size):
+    """TEXT in one line, or two when it is wider than ROOM."""
+    if width(text, size) <= room:
+        return [text]
+    if " " in text:
+        spaces = [i for i, c in enumerate(text) if c == " "]
+        cut = min(spaces, key=lambda i: abs(width(text[:i], size) - width(text, size) / 2))
+        return [text[:cut], text[cut + 1:]]
+    half = len(text) // 2
+    return [text[:half], text[half:]]
+
 
 class Picture:
     def __init__(self, t, height):
@@ -92,8 +260,11 @@ class Picture:
         self.o.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" '
                       f'fill="{self.t["box"]}" stroke="{self.t[color]}" stroke-width="1.4"/>')
         if note:
-            self.text(x + 14, y + h / 2 - 3, name, 14, "ink", 600, mono=mono_name)
-            self.text(x + 14, y + h / 2 + 15, note, 11.5)
+            lines = fit(note, w - 28, 11.5)
+            top = y + h / 2 - 3 - 7 * (len(lines) - 1)
+            self.text(x + 14, top, name, 14, "ink", 600, mono=mono_name)
+            for n, line in enumerate(lines):
+                self.text(x + 14, top + 18 + 14 * n, line, 11.5)
         else:
             self.text(x + 14, y + h / 2 + 5, name, 14, "ink", 600, mono=mono_name)
         if badge:
@@ -133,7 +304,12 @@ class Picture:
                       f'{f" marker-start=\"url(#tail-{color})\"" if both else ""}/>')
         if label:
             lx, ly = x1 + (x2 - x1) * at + dx, y1 + (y2 - y1) * at + dy
-            for i, line in enumerate(label.split("\n")):
+            lines = label.split("\n")
+            # A label longer than a level arrow goes on two lines, above it.
+            if len(lines) == 1 and abs(y2 - y1) < 20 and anchor == "start":
+                lines = fit(label, max(x1, x2) - lx - 8, 11.5)
+                ly -= 15 * (len(lines) - 1)
+            for i, line in enumerate(lines):
                 self.text(lx, ly + i * 15, line, 11.5, "ink2", None, anchor, mono=mono)
 
     def document(self, title):

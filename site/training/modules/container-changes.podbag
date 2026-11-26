@@ -11,6 +11,31 @@
       "title": "Podbag Training · 컨테이너 변경 내용을 이미지로 저장하기",
       "guide": "podbag lab start container-changes 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/container-changes/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナの変更をイメージとして保存する",
+      "guide": "podbag lab start container-changes で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/container-changes/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 将容器的更改保存为镜像",
+      "guide": "用 podbag lab start container-changes 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/container-changes/"
+    },
+    "fil": {
+      "title": "Podbag Training · I-save bilang image ang mga pagbabago sa container",
+      "guide": "Simulan ang session gamit ang podbag lab start container-changes.",
+      "url": "https://podbag.dev/fil/blog/container-changes/"
+    },
+    "es": {
+      "title": "Podbag Training · Guarda los cambios de un contenedor como imagen",
+      "guide": "Inicia la sesión con podbag lab start container-changes.",
+      "url": "https://podbag.dev/es/blog/container-changes/"
+    },
+    "vi": {
+      "title": "Podbag Training · Lưu thay đổi của container thành image",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start container-changes.",
+      "url": "https://podbag.dev/vi/blog/container-changes/"
     }
   },
   "steps": [

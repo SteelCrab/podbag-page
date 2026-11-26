@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="310" viewBox="0 0 960 310" role="img" aria-label="El contenedor app se ejecuta en un cgroup con memory.max y cpu.max; podbag update sube el límite de memoria de 64 MiB a 128 MiB mientras se ejecuta" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'Noto Sans CJK KR', sans-serif">
+<title>El contenedor app se ejecuta en un cgroup con memory.max y cpu.max; podbag update sube el límite de memoria de 64 MiB a 128 MiB mientras se ejecuta</title>
+<defs><marker id="head-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="tail-arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#898781"/></marker><marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="tail-accent" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a78d6"/></marker><marker id="head-podbag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="tail-podbag" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8853b4"/></marker><marker id="head-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker><marker id="tail-bad" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c2410c"/></marker></defs>
+<rect width="960" height="310" rx="12" fill="#fcfcfb"/>
+<rect x="20" y="20" width="250" height="270" rx="12" fill="#ffffff" stroke="#c3c2b7"/>
+<text x="38" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">Tu computadora</text>
+<rect x="300" y="20" width="640" height="270" rx="12" fill="#ffffff" stroke="#c3c2b7" stroke-dasharray="6 5"/>
+<text x="318" y="48" font-size="15" fill="#0b0b0b" font-weight="700" text-anchor="start">Sesión de práctica</text>
+<text x="318" y="67" font-size="11.5" fill="#52514e" text-anchor="start">temporal: se borra al escribir exit</text>
+<rect x="40" y="100" width="210" height="110" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="54" y="152.0" font-size="14" fill="#0b0b0b" font-weight="600" text-anchor="start">Terminal</text>
+<text x="54" y="170.0" font-size="11.5" fill="#52514e" text-anchor="start">podbag run · exec</text>
+<text x="54" y="188" font-size="11.5" fill="#52514e" text-anchor="start">stats · top · update</text>
+<rect x="330" y="80" width="590" height="190" rx="12" fill="#eaf1fb" stroke="#2a78d6" stroke-dasharray="4 4"/>
+<text x="344" y="102" font-size="12.5" fill="#2a78d6" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">cgroup</text>
+<rect x="360" y="140" width="210" height="72" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="374" y="173.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">app</text>
+<text x="374" y="191.0" font-size="11.5" fill="#52514e" text-anchor="start">sleep 3600</text>
+<rect x="660" y="112" width="230" height="60" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="674" y="139.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">memory.max</text>
+<text x="674" y="157.0" font-size="11.5" fill="#52514e" text-anchor="start">64 MiB → 128 MiB</text>
+<rect x="660" y="188" width="230" height="60" rx="8" fill="#f2f1ed" stroke="#c3c2b7" stroke-width="1.4"/>
+<text x="674" y="215.0" font-size="14" fill="#0b0b0b" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">cpu.max</text>
+<text x="674" y="233.0" font-size="11.5" fill="#52514e" text-anchor="start">50000 100000 · media CPU</text>
+<line x1="656" y1="142" x2="574" y2="166" stroke="#898781" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<text x="609.0" y="144.0" font-size="11.5" fill="#52514e" text-anchor="middle">límites</text>
+<line x1="656" y1="218" x2="574" y2="190" stroke="#898781" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<line x1="250" y1="132" x2="326" y2="132" stroke="#2a78d6" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<line x1="326" y1="180" x2="250" y2="180" stroke="#898781" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+</svg>

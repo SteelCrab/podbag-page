@@ -7,11 +7,42 @@ HEIGHT = 330
 ALT = {
     'en': 'podbag build makes the image my-site:1 from the folder my-site; the container web runs it and publishes 127.0.0.1:18095',
     'ko': 'podbag build가 my-site 폴더로 my-site:1 이미지를 만듭니다. web 컨테이너가 이 이미지를 실행하고 127.0.0.1:18095를 공개합니다',
+    'ja': 'podbag build がフォルダー my-site からイメージ my-site:1 を作ります。コンテナ web がそれを実行し、127.0.0.1:18095 を公開します',
+    'zh-CN': 'podbag build 用文件夹 my-site 制作镜像 my-site:1；容器 web 运行该镜像并发布 127.0.0.1:18095',
+    'fil': 'Ginagawa ng podbag build ang image na my-site:1 mula sa folder na my-site; pinapatakbo ito ng container na web at nagpa-publish ito ng 127.0.0.1:18095',
+    'es': 'podbag build crea la imagen my-site:1 a partir de la carpeta my-site; el contenedor web la ejecuta y publica 127.0.0.1:18095',
+    'vi': 'podbag build tạo image my-site:1 từ thư mục my-site; container web chạy image này và công bố 127.0.0.1:18095',
 }
 
 WORDS = {
-    "en": {"build": "build", "folder": "Dockerfile · index.html"},
-    "ko": {"build": "빌드", "folder": "Dockerfile · index.html"},
+    'en': {
+        'build': 'build',
+        'folder': 'Dockerfile · index.html',
+    },
+    'ko': {
+        'build': '빌드',
+        'folder': 'Dockerfile · index.html',
+    },
+    'ja': {
+        'build': 'ビルド',
+        'folder': 'Dockerfile · index.html',
+    },
+    'zh-CN': {
+        'build': 'build',
+        'folder': 'Dockerfile · index.html',
+    },
+    'fil': {
+        'build': 'build',
+        'folder': 'Dockerfile · index.html',
+    },
+    'es': {
+        'build': 'build',
+        'folder': 'Dockerfile · index.html',
+    },
+    'vi': {
+        'build': 'build',
+        'folder': 'Dockerfile · index.html',
+    },
 }
 
 

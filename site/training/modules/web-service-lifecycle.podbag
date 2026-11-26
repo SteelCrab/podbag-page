@@ -12,6 +12,31 @@
       "title": "Podbag Training · 웹 서비스 교체하고 정리하기",
       "guide": "podbag lab start web-service-lifecycle 명령으로 실습을 시작합니다.",
       "url": "https://podbag.dev/ko/blog/web-service-lifecycle/"
+    },
+    "ja": {
+      "title": "Podbag Training · Web サービスを入れ替えて片付ける",
+      "guide": "podbag lab start web-service-lifecycle で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/web-service-lifecycle/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 替换并清理 Web 服务",
+      "guide": "用 podbag lab start web-service-lifecycle 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/web-service-lifecycle/"
+    },
+    "fil": {
+      "title": "Podbag Training · Palitan at linisin ang web service",
+      "guide": "Simulan ang session gamit ang podbag lab start web-service-lifecycle.",
+      "url": "https://podbag.dev/fil/blog/web-service-lifecycle/"
+    },
+    "es": {
+      "title": "Podbag Training · Sustituye y limpia un servicio web",
+      "guide": "Inicia la sesión con podbag lab start web-service-lifecycle.",
+      "url": "https://podbag.dev/es/blog/web-service-lifecycle/"
+    },
+    "vi": {
+      "title": "Podbag Training · Thay thế và dọn dẹp dịch vụ web",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start web-service-lifecycle.",
+      "url": "https://podbag.dev/vi/blog/web-service-lifecycle/"
     }
   },
   "steps": [

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="310" viewBox="0 0 960 310" role="img" aria-label="コンテナ app が memory.max と cpu.max を持つ cgroup の中で動きます。podbag update が実行中にメモリの制限を 64 MiB から 128 MiB に引き上げます" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Apple SD Gothic Neo', 'Hiragino Sans', 'PingFang SC', 'Noto Sans CJK KR', sans-serif">
+<title>コンテナ app が memory.max と cpu.max を持つ cgroup の中で動きます。podbag update が実行中にメモリの制限を 64 MiB から 128 MiB に引き上げます</title>
+<defs><marker id="head-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9a988f"/></marker><marker id="tail-arrow" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9a988f"/></marker><marker id="head-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3987e5"/></marker><marker id="tail-accent" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3987e5"/></marker><marker id="head-podbag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b88ae0"/></marker><marker id="tail-podbag" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b88ae0"/></marker><marker id="head-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fb923c"/></marker><marker id="tail-bad" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fb923c"/></marker></defs>
+<rect width="960" height="310" rx="12" fill="#1a1a19"/>
+<rect x="20" y="20" width="250" height="270" rx="12" fill="#141413" stroke="#45453f"/>
+<text x="38" y="48" font-size="15" fill="#f0efec" font-weight="700" text-anchor="start">このコンピューター</text>
+<rect x="300" y="20" width="640" height="270" rx="12" fill="#141413" stroke="#45453f" stroke-dasharray="6 5"/>
+<text x="318" y="48" font-size="15" fill="#f0efec" font-weight="700" text-anchor="start">実習環境</text>
+<text x="318" y="67" font-size="11.5" fill="#c3c2b7" text-anchor="start">一時的: exit で削除されます</text>
+<rect x="40" y="100" width="210" height="110" rx="8" fill="#242422" stroke="#45453f" stroke-width="1.4"/>
+<text x="54" y="152.0" font-size="14" fill="#f0efec" font-weight="600" text-anchor="start">ターミナル</text>
+<text x="54" y="170.0" font-size="11.5" fill="#c3c2b7" text-anchor="start">podbag run · exec</text>
+<text x="54" y="188" font-size="11.5" fill="#c3c2b7" text-anchor="start">stats · top · update</text>
+<rect x="330" y="80" width="590" height="190" rx="12" fill="#17263a" stroke="#3987e5" stroke-dasharray="4 4"/>
+<text x="344" y="102" font-size="12.5" fill="#3987e5" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">cgroup</text>
+<rect x="360" y="140" width="210" height="72" rx="8" fill="#242422" stroke="#45453f" stroke-width="1.4"/>
+<text x="374" y="173.0" font-size="14" fill="#f0efec" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">app</text>
+<text x="374" y="191.0" font-size="11.5" fill="#c3c2b7" text-anchor="start">sleep 3600</text>
+<rect x="660" y="112" width="230" height="60" rx="8" fill="#242422" stroke="#45453f" stroke-width="1.4"/>
+<text x="674" y="139.0" font-size="14" fill="#f0efec" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">memory.max</text>
+<text x="674" y="157.0" font-size="11.5" fill="#c3c2b7" text-anchor="start">64 MiB → 128 MiB</text>
+<rect x="660" y="188" width="230" height="60" rx="8" fill="#242422" stroke="#45453f" stroke-width="1.4"/>
+<text x="674" y="215.0" font-size="14" fill="#f0efec" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="start">cpu.max</text>
+<text x="674" y="233.0" font-size="11.5" fill="#c3c2b7" text-anchor="start">50000 100000 · CPU 半分</text>
+<line x1="656" y1="142" x2="574" y2="166" stroke="#9a988f" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<text x="609.0" y="144.0" font-size="11.5" fill="#c3c2b7" text-anchor="middle">制限</text>
+<line x1="656" y1="218" x2="574" y2="190" stroke="#9a988f" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+<line x1="250" y1="132" x2="326" y2="132" stroke="#3987e5" stroke-width="1.6" marker-end="url(#head-accent)"/>
+<line x1="326" y1="180" x2="250" y2="180" stroke="#9a988f" stroke-width="1.6" marker-end="url(#head-arrow)"/>
+</svg>
