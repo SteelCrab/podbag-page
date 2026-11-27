@@ -184,5 +184,16 @@
   "training_guide": "Basahin ang gabay",
   "training_download": "I-download ang file",
   "training_side": "Tungkol sa Pagsasanay",
-  "training_guides": "Mga gabay sa blog"
+  "training_guides": "Mga gabay sa blog",
+  "training_tabs": "Mga bahagi ng Pagsasanay",
+  "training_tab_gui": "Pagsasanay sa GUI",
+  "training_tab_tui": "Paano gamitin ang TUI",
+  "tui_title": "Paano gamitin ang Podbag TUI",
+  "tui_description": "Paano gamitin ang podbag tui, ang dashboard sa terminal: ang mga pangunahing key at maiikling gabay para sa container, image, volume, network, engine at setting.",
+  "tui_lead": "Ipinapakita ng podbag tui ang iyong mga container, image, volume at network sa terminal. Pumili ng paksa at basahin kung paano ito gamitin.",
+  "tui_intro": "Patakbuhin ang command na ito sa terminal. Gumagana ang TUI sa podbag at sa iba pang Docker API engine, gaya ng Docker at Podman.",
+  "tui_keys": "Mga pangunahing key",
+  "tui_key": "Key",
+  "tui_action": "Ginagawa nito",
+  "tui_guides": "Mga gabay"
 }

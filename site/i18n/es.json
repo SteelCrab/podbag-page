@@ -184,5 +184,16 @@
   "training_guide": "Lee la guía",
   "training_download": "Descarga el archivo",
   "training_side": "Sobre la formación",
-  "training_guides": "Guías del blog"
+  "training_guides": "Guías del blog",
+  "training_tabs": "Secciones de Formación",
+  "training_tab_gui": "Práctica con GUI",
+  "training_tab_tui": "Cómo usar la TUI",
+  "tui_title": "Cómo usar la TUI de Podbag",
+  "tui_description": "Cómo usar podbag tui, el panel de la terminal: las teclas principales y guías cortas sobre contenedores, imágenes, volúmenes, redes, motores y ajustes.",
+  "tui_lead": "podbag tui muestra tus contenedores, imágenes, volúmenes y redes en la terminal. Elige un tema y lee cómo usarlo.",
+  "tui_intro": "Ejecuta este comando en una terminal. La TUI funciona con podbag y con otros motores de la API de Docker, como Docker y Podman.",
+  "tui_keys": "Teclas principales",
+  "tui_key": "Tecla",
+  "tui_action": "Qué hace",
+  "tui_guides": "Guías"
 }

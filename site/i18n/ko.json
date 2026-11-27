@@ -184,5 +184,16 @@
   "training_guide": "가이드 읽기",
   "training_download": "파일 받기",
   "training_side": "트레이닝 안내",
-  "training_guides": "블로그의 가이드"
+  "training_guides": "블로그의 가이드",
+  "training_tabs": "트레이닝 구분",
+  "training_tab_gui": "GUI 실습",
+  "training_tab_tui": "TUI 사용법",
+  "tui_title": "Podbag TUI 사용법",
+  "tui_description": "터미널 대시보드 podbag tui의 사용법입니다. 자주 쓰는 키와 컨테이너, 이미지, 볼륨, 네트워크, 엔진, 설정 안내가 있습니다.",
+  "tui_lead": "podbag tui는 터미널에서 컨테이너, 이미지, 볼륨, 네트워크를 보여줍니다. 주제를 골라 사용법을 읽습니다.",
+  "tui_intro": "터미널에서 이 명령을 실행합니다. TUI는 podbag과 Docker, Podman 같은 다른 Docker API 엔진에서 동작합니다.",
+  "tui_keys": "자주 쓰는 키",
+  "tui_key": "키",
+  "tui_action": "하는 일",
+  "tui_guides": "사용법"
 }

@@ -184,5 +184,16 @@
   "training_guide": "ガイドを読む",
   "training_download": "ファイルをダウンロード",
   "training_side": "トレーニングについて",
-  "training_guides": "ブログのガイド"
+  "training_guides": "ブログのガイド",
+  "training_tabs": "トレーニングの種類",
+  "training_tab_gui": "GUI 実習",
+  "training_tab_tui": "TUI の使い方",
+  "tui_title": "Podbag TUI の使い方",
+  "tui_description": "ターミナルのダッシュボード podbag tui の使い方です。よく使うキーと、コンテナー、イメージ、ボリューム、ネットワーク、エンジン、設定の短いガイドがあります。",
+  "tui_lead": "podbag tui は、コンテナー、イメージ、ボリューム、ネットワークをターミナルに表示します。トピックを選んで使い方を読みます。",
+  "tui_intro": "ターミナルでこのコマンドを実行します。TUI は podbag のほか、Docker や Podman などの Docker API エンジンでも動きます。",
+  "tui_keys": "よく使うキー",
+  "tui_key": "キー",
+  "tui_action": "動作",
+  "tui_guides": "使い方"
 }

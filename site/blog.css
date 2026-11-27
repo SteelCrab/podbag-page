@@ -201,10 +201,16 @@ html:not(.can-share) [data-native] { display: none; }
 .related time { flex: none; color: var(--muted); font-size: 14px; }
 
 /* The training page: the modules in order */
-.training-band .wrap { padding-bottom: 30px; }
 .training { min-width: 0; }
 .training > p { margin: 0 0 10px; color: var(--ink-2); max-width: 70ch; }
 .training > .code { max-width: 70ch; }
+.training .keys { max-width: 70ch; margin: 0 0 8px; }
+.training .keys td:first-child { white-space: nowrap; color: var(--ink); }
+kbd {
+  display: inline-block; min-width: 1.6em; margin: 0 2px 2px 0; padding: 1px 6px;
+  border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px;
+  background: var(--code-bg); font: 0.86em var(--mono); text-align: center;
+}
 .modules { list-style: none; margin: 0; padding: 0; }
 .module .meta a { white-space: nowrap; }
 .module .code { margin: 14px 0 0; }

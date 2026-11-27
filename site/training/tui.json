@@ -1,0 +1,252 @@
+{
+  "guides": [
+    "tui-start",
+    "tui-containers",
+    "tui-images",
+    "tui-volumes-networks",
+    "tui-engines",
+    "tui-kubernetes-settings"
+  ],
+  "minutes": {
+    "tui-start": 5,
+    "tui-containers": 5,
+    "tui-images": 5,
+    "tui-volumes-networks": 5,
+    "tui-engines": 5,
+    "tui-kubernetes-settings": 5
+  },
+  "keys": [
+    {
+      "keys": [
+        "1–4",
+        "Tab"
+      ],
+      "words": {
+        "en": "Open the Containers, Images, Volumes or Networks list",
+        "ko": "컨테이너, 이미지, 볼륨, 네트워크 목록을 엽니다",
+        "ja": "コンテナ、イメージ、ボリューム、ネットワークの一覧を開きます",
+        "zh-CN": "打开容器、镜像、卷或网络列表",
+        "fil": "Buksan ang listahan ng Mga container, Mga image, Mga volume o Mga network",
+        "es": "Abre la lista Contenedores, Imágenes, Volúmenes o Redes",
+        "vi": "Mở danh sách Container, Image, Volume hoặc Mạng"
+      }
+    },
+    {
+      "keys": [
+        "↑",
+        "↓"
+      ],
+      "words": {
+        "en": "Move in the list",
+        "ko": "목록에서 이동합니다",
+        "ja": "一覧の中で移動します",
+        "zh-CN": "在列表中移动",
+        "fil": "Lumipat sa listahan",
+        "es": "Muévete por la lista",
+        "vi": "Di chuyển trong danh sách"
+      }
+    },
+    {
+      "keys": [
+        "Enter",
+        "i"
+      ],
+      "words": {
+        "en": "Show all details",
+        "ko": "모든 상세 정보를 봅니다",
+        "ja": "すべての詳細を表示します",
+        "zh-CN": "显示全部详情",
+        "fil": "Ipakita ang lahat ng detalye",
+        "es": "Muestra todos los detalles",
+        "vi": "Hiện tất cả chi tiết"
+      }
+    },
+    {
+      "keys": [
+        "/"
+      ],
+      "words": {
+        "en": "Search the list",
+        "ko": "목록을 검색합니다",
+        "ja": "一覧を検索します",
+        "zh-CN": "搜索列表",
+        "fil": "Maghanap sa listahan",
+        "es": "Busca en la lista",
+        "vi": "Tìm trong danh sách"
+      }
+    },
+    {
+      "keys": [
+        "a",
+        "F2"
+      ],
+      "words": {
+        "en": "Open the actions menu",
+        "ko": "작업 메뉴를 엽니다",
+        "ja": "操作メニューを開きます",
+        "zh-CN": "打开操作菜单",
+        "fil": "Buksan ang menu ng Mga aksyon",
+        "es": "Abre el menú Acciones",
+        "vi": "Mở menu Thao tác"
+      }
+    },
+    {
+      "keys": [
+        "s",
+        "x",
+        "r"
+      ],
+      "words": {
+        "en": "Start, stop or restart a container",
+        "ko": "컨테이너를 시작, 중지, 재시작합니다",
+        "ja": "コンテナを開始、停止、再起動します",
+        "zh-CN": "启动、停止或重启容器",
+        "fil": "Simulan, ihinto o i-restart ang container",
+        "es": "Inicia, detén o reinicia un contenedor",
+        "vi": "Chạy, dừng hoặc khởi động lại container"
+      }
+    },
+    {
+      "keys": [
+        "l"
+      ],
+      "words": {
+        "en": "Show a container's logs",
+        "ko": "컨테이너 로그를 봅니다",
+        "ja": "コンテナのログを表示します",
+        "zh-CN": "显示容器的日志",
+        "fil": "Ipakita ang mga log ng container",
+        "es": "Muestra los registros de un contenedor",
+        "vi": "Xem nhật ký của container"
+      }
+    },
+    {
+      "keys": [
+        "e"
+      ],
+      "words": {
+        "en": "Open a shell in a container",
+        "ko": "컨테이너 안에서 셸을 엽니다",
+        "ja": "コンテナの中でシェルを開きます",
+        "zh-CN": "在容器中打开 shell",
+        "fil": "Magbukas ng shell sa loob ng container",
+        "es": "Abre un shell en un contenedor",
+        "vi": "Mở shell trong container"
+      }
+    },
+    {
+      "keys": [
+        "p"
+      ],
+      "words": {
+        "en": "Pull an image (in Images)",
+        "ko": "이미지를 받습니다 (이미지 목록)",
+        "ja": "イメージを取得します（イメージの一覧）",
+        "zh-CN": "拉取镜像（在镜像列表中）",
+        "fil": "Kumuha ng image (sa Mga image)",
+        "es": "Descarga una imagen (en Imágenes)",
+        "vi": "Tải image (trong danh sách Image)"
+      }
+    },
+    {
+      "keys": [
+        "v"
+      ],
+      "words": {
+        "en": "Create a volume (in Volumes)",
+        "ko": "볼륨을 만듭니다 (볼륨 목록)",
+        "ja": "ボリュームを作成します（ボリュームの一覧）",
+        "zh-CN": "创建卷（在卷列表中）",
+        "fil": "Gumawa ng volume (sa Mga volume)",
+        "es": "Crea un volumen (en Volúmenes)",
+        "vi": "Tạo volume (trong danh sách Volume)"
+      }
+    },
+    {
+      "keys": [
+        "d"
+      ],
+      "words": {
+        "en": "Remove the selected item (it asks first)",
+        "ko": "선택한 항목을 삭제합니다 (먼저 묻습니다)",
+        "ja": "選択した項目を削除します（先に確認します）",
+        "zh-CN": "删除选中的项目（会先询问）",
+        "fil": "Alisin ang napiling item (nagtatanong muna)",
+        "es": "Elimina el elemento seleccionado (pregunta antes)",
+        "vi": "Xóa mục đang chọn (hỏi trước)"
+      }
+    },
+    {
+      "keys": [
+        "c"
+      ],
+      "words": {
+        "en": "Remove all that is not used (it asks first)",
+        "ko": "쓰지 않는 항목을 모두 삭제합니다 (먼저 묻습니다)",
+        "ja": "使われていない項目をすべて削除します（先に確認します）",
+        "zh-CN": "删除所有未使用的项目（会先询问）",
+        "fil": "Alisin ang lahat ng hindi ginagamit (nagtatanong muna)",
+        "es": "Elimina todo lo que no se usa (pregunta antes)",
+        "vi": "Xóa mọi mục không dùng đến (hỏi trước)"
+      }
+    },
+    {
+      "keys": [
+        "E"
+      ],
+      "words": {
+        "en": "Switch between podbag and Docker",
+        "ko": "podbag과 Docker 사이에서 엔진을 바꿉니다",
+        "ja": "podbag と Docker を切り替えます",
+        "zh-CN": "在 podbag 和 Docker 之间切换",
+        "fil": "Magpalit sa pagitan ng podbag at Docker",
+        "es": "Cambia entre podbag y Docker",
+        "vi": "Đổi giữa podbag và Docker"
+      }
+    },
+    {
+      "keys": [
+        "F6",
+        "F7",
+        "F9"
+      ],
+      "words": {
+        "en": "Open Kubernetes, migration or settings",
+        "ko": "쿠버네티스, 마이그레이션, 설정을 엽니다",
+        "ja": "Kubernetes、移行、設定を開きます",
+        "zh-CN": "打开 Kubernetes、迁移或设置",
+        "fil": "Buksan ang Kubernetes, Ilipat o Mga setting",
+        "es": "Abre Kubernetes, Migrar o Ajustes",
+        "vi": "Mở Kubernetes, Di chuyển hoặc Cài đặt"
+      }
+    },
+    {
+      "keys": [
+        "?"
+      ],
+      "words": {
+        "en": "Show all keys",
+        "ko": "모든 단축키를 봅니다",
+        "ja": "すべてのキーを表示します",
+        "zh-CN": "显示所有快捷键",
+        "fil": "Ipakita ang lahat ng key",
+        "es": "Muestra todas las teclas",
+        "vi": "Hiện tất cả phím tắt"
+      }
+    },
+    {
+      "keys": [
+        "q"
+      ],
+      "words": {
+        "en": "Quit",
+        "ko": "끝냅니다",
+        "ja": "終了します",
+        "zh-CN": "退出",
+        "fil": "Umalis",
+        "es": "Sale de la TUI",
+        "vi": "Thoát"
+      }
+    }
+  ]
+}
