@@ -9,9 +9,9 @@
   --ink-2: light-dark(#52514e, #c3c2b7);
   --muted: #898781;
   --line: light-dark(#e1e0d9, #2c2c2a);
-  --accent: light-dark(#2a78d6, #3987e5);
+  --accent: light-dark(#8853b4, #b88ae0);
   --code-bg: light-dark(#f2f1ed, #242422);
-  --glow: light-dark(rgb(42 120 214 / 0.16), rgb(57 135 229 / 0.2));
+  --glow: light-dark(rgb(136 83 180 / 0.16), rgb(184 138 224 / 0.2));
   --dot: light-dark(rgb(11 11 11 / 0.07), rgb(240 239 236 / 0.07));
   --again: light-dark(#c2410c, #fb923c);
   --once: light-dark(#15803d, #4ade80);
@@ -216,7 +216,7 @@ nav a[aria-current="true"] { color: var(--ink); font-weight: 600; }
 }
 .term-body > code { grid-area: 1 / 1; font: inherit; background: none; padding: 0; color: inherit; }
 .term.typing .full { visibility: hidden; }
-.term .p { color: #6fb3ff; }
+.term .p { color: #c9a3ef; }
 .term .o { color: #d6d4cf; }
 .term .m { color: #8b8f98; }
 .caret {
