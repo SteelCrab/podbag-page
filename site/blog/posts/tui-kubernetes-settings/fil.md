@@ -28,6 +28,8 @@ Ginagamit ng TUI ang `kubectl` at ang mga context nito. I-install muna ang `kube
 
 Ipinapakita ng listahan ang bawat resource bilang `namespace/name`. Pindutin ang `Enter` para makita ito bilang JSON. Binabasa ulit ng **I-refresh** ang listahan. Binabasa lang ng TUI ang cluster. Hindi nito binabago ang cluster.
 
+Sa isang OpenShift cluster, ang **Mga Route** ay isa ring uri ng resource. Ipinapakita lang ito ng TUI kapag ibinibigay ng API ng cluster ang mga Route. Ipinapakita ng Route ang host at path nito, ang Service nito at ang mode ng TLS nito, halimbawa `default/shop   shop.example.com/cart  frontend  edge`.
+
 ## Magpatakbo ng lab sa Mga tutorial
 
 Pindutin ang `F8`. Nag-i-install ang **Mga tutorial** ng lesson file at pinapatakbo nito ang mga exercise ng file sa isang practice lab.

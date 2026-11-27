@@ -1,0 +1,178 @@
+{
+  "format": "podbag-course-v2",
+  "id": "hosts-and-dns",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Set hosts and DNS for a container",
+      "guide": "Start the session with podbag lab start hosts-and-dns.",
+      "url": "https://podbag.dev/blog/hosts-and-dns/"
+    },
+    "ko": {
+      "title": "Podbag Training · 컨테이너의 호스트와 DNS 설정하기",
+      "guide": "podbag lab start hosts-and-dns 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/hosts-and-dns/"
+    },
+    "ja": {
+      "title": "Podbag Training · コンテナーのホストと DNS を設定する",
+      "guide": "podbag lab start hosts-and-dns で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/hosts-and-dns/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 为容器设置主机和 DNS",
+      "guide": "用 podbag lab start hosts-and-dns 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/hosts-and-dns/"
+    },
+    "fil": {
+      "title": "Podbag Training · Itakda ang hosts at DNS ng isang container",
+      "guide": "Simulan ang session gamit ang podbag lab start hosts-and-dns.",
+      "url": "https://podbag.dev/fil/blog/hosts-and-dns/"
+    },
+    "es": {
+      "title": "Podbag Training · Configura los hosts y el DNS de un contenedor",
+      "guide": "Inicia la sesión con podbag lab start hosts-and-dns.",
+      "url": "https://podbag.dev/es/blog/hosts-and-dns/"
+    },
+    "vi": {
+      "title": "Podbag Training · Đặt hosts và DNS cho container",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start hosts-and-dns.",
+      "url": "https://podbag.dev/vi/blog/hosts-and-dns/"
+    }
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull the busybox image",
+        "ko": "busybox 이미지 받기",
+        "ja": "busybox イメージを取得する",
+        "zh-CN": "拉取 busybox 镜像",
+        "fil": "I-pull ang busybox image",
+        "es": "Descarga la imagen busybox",
+        "vi": "Tải image busybox"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "addHost",
+      "names": {
+        "en": "Add a host name with --add-host",
+        "ko": "--add-host로 호스트 이름 추가하기",
+        "ja": "--add-host でホスト名を追加する",
+        "zh-CN": "用 --add-host 添加主机名",
+        "fil": "Magdagdag ng host name gamit ang --add-host",
+        "es": "Añade un nombre de host con --add-host",
+        "vi": "Thêm tên máy bằng --add-host"
+      },
+      "command": "podbag run --rm --add-host db.training:192.0.2.10 docker.io/library/busybox:1.37.0 cat /etc/hosts",
+      "check": {
+        "kind": "output-contains",
+        "text": "db.training"
+      }
+    },
+    {
+      "key": "runDns",
+      "names": {
+        "en": "Run a container with DNS settings",
+        "ko": "DNS 설정으로 컨테이너 실행하기",
+        "ja": "DNS の設定付きでコンテナーを実行する",
+        "zh-CN": "带 DNS 设置运行容器",
+        "fil": "Patakbuhin ang container na may DNS settings",
+        "es": "Ejecuta un contenedor con ajustes de DNS",
+        "vi": "Chạy container với cài đặt DNS"
+      },
+      "command": "podbag run -d --name dns-demo --dns 192.0.2.53 --dns-search training.example --dns-option ndots:2 docker.io/library/busybox:1.37.0 sleep 3600",
+      "check": {
+        "kind": "container-running",
+        "name": "dns-demo"
+      }
+    },
+    {
+      "key": "nameserver",
+      "names": {
+        "en": "Find the DNS server",
+        "ko": "DNS 서버 찾기",
+        "ja": "DNS サーバーを確認する",
+        "zh-CN": "查找 DNS 服务器",
+        "fil": "Hanapin ang DNS server",
+        "es": "Busca el servidor DNS",
+        "vi": "Tìm máy chủ DNS"
+      },
+      "command": "podbag exec dns-demo grep nameserver /etc/resolv.conf",
+      "check": {
+        "kind": "output-has-line",
+        "text": "nameserver 192.0.2.53"
+      }
+    },
+    {
+      "key": "search",
+      "names": {
+        "en": "Find the search domain",
+        "ko": "검색 도메인 찾기",
+        "ja": "検索ドメインを確認する",
+        "zh-CN": "查找搜索域",
+        "fil": "Hanapin ang search domain",
+        "es": "Busca el dominio de búsqueda",
+        "vi": "Tìm miền tìm kiếm"
+      },
+      "command": "podbag exec dns-demo grep search /etc/resolv.conf",
+      "check": {
+        "kind": "output-has-line",
+        "text": "search training.example"
+      }
+    },
+    {
+      "key": "options",
+      "names": {
+        "en": "Find the DNS option",
+        "ko": "DNS 옵션 찾기",
+        "ja": "DNS オプションを確認する",
+        "zh-CN": "查找 DNS 选项",
+        "fil": "Hanapin ang DNS option",
+        "es": "Busca la opción de DNS",
+        "vi": "Tìm tùy chọn DNS"
+      },
+      "command": "podbag exec dns-demo grep options /etc/resolv.conf",
+      "check": {
+        "kind": "output-has-line",
+        "text": "options ndots:2"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the container",
+        "ko": "컨테이너 삭제하기",
+        "ja": "コンテナーを削除する",
+        "zh-CN": "删除容器",
+        "fil": "Burahin ang container",
+        "es": "Elimina el contenedor",
+        "vi": "Xóa container"
+      },
+      "command": "podbag rm -f dns-demo",
+      "check": {
+        "kind": "container-absent",
+        "name": "dns-demo"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

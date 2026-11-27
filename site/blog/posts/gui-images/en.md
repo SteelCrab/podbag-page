@@ -45,6 +45,10 @@ When the engine is podbag and Docker is installed, **Images** has **Import from 
 
 ![The Import images from Docker window of Podbag Desktop](gui-import-en.png)
 
+## Run an image
+
+**Run** on an image row opens the run form with that image filled in. See [Run a container](../gui-containers/).
+
 ## See and remove images
 
 Click an image to see its tags, its size and the containers that use it. **Remove** removes the image. **Clean up** removes all images that no container uses. The app asks first.

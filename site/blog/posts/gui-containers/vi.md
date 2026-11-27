@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, containers]
-summary: "Chạy, dừng, tạm dừng và xóa container, đọc nhật ký và chi tiết, mở shell, rồi dọn dẹp các container đã dừng."
+summary: "Chạy một container mới, dừng, tạm dừng và xóa container, đọc nhật ký và chi tiết, mở shell, rồi dọn dẹp các container đã dừng."
 image: gui-logs-vi.png
 image_alt: "Tab Nhật ký của container web trong Podbag Desktop"
 outline: "Trong hướng dẫn này"
@@ -14,6 +14,27 @@ draft: false
 Mở **Container** trên thanh bên. Danh sách hiện tên và ID, image, trạng thái, cổng và ngày tạo của mỗi container.
 
 **Thời gian** 5 phút.
+
+## Chạy một container mới
+
+Nhấp vào **Chạy container** ở đầu danh sách. Một biểu mẫu mở ra.
+
+1. Gõ **Image**, ví dụ `nginx:alpine`. Ô này gợi ý những image bạn đã có.
+2. Gõ **Tên**. Bạn có thể để trống.
+3. Trong **Cổng**, gõ một cổng máy chủ và một cổng container, ví dụ `8081` và `80`. Chọn TCP hoặc UDP. Để trống cổng máy chủ để engine tự chọn. **Thêm cổng** thêm một dòng.
+4. Nhấp vào **Chạy**.
+
+![Biểu mẫu Chạy một container của Podbag Desktop](gui-run-vi.png)
+
+**Tùy chọn khác** hiện thêm các ô.
+
+- **Biến môi trường:** mỗi dòng một `KEY=VALUE`.
+- **Ổ đĩa:** tên ổ đĩa hoặc đường dẫn đầy đủ trên máy, rồi đến đường dẫn trong container. Đánh dấu **Chỉ đọc** nếu container không được ghi vào đó.
+- **Lệnh:** để trống để dùng lệnh của image.
+- **Chính sách khởi động lại:** **Không khởi động lại**, **Khi bị lỗi**, **Luôn luôn** hoặc **Trừ khi bạn dừng**.
+- **Xóa khi dừng:** xóa container khi nó dừng. Tùy chọn này tắt chính sách khởi động lại.
+
+Biểu mẫu kiểm tra những gì bạn nhập trước khi gửi. Khi engine chưa có image, ứng dụng tải image trước. Ứng dụng dùng thông tin đăng nhập registry của bạn, như **Tải image**. Sau đó container mới mở ra cùng nhật ký của nó.
 
 ## Chạy và dừng container
 

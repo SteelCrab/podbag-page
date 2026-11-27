@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "クラスタの Pod、Service、デプロイメント、ボリューム要求を見ます。起動、言語、テーマ、VM、アップデート、ターミナルコマンドを設定します。"
+summary: "クラスタの Pod、Service、デプロイメント、ボリューム要求、OpenShift の Route を見ます。起動、言語、テーマ、VM、アップデート、ターミナルコマンドを設定します。"
 image: gui-settings-ja.png
 image_alt: "Podbag Desktop の設定ページ"
 outline: "このガイドの内容"
@@ -27,6 +27,16 @@ Podbag Desktop は、コンテナの横に Kubernetes クラスタを表示し�
 ![Podbag Desktop の dev コンテキストの Pod の一覧](gui-kubernetes-ja.png)
 
 項目をクリックすると、すべての内容が JSON で表示されます。Kubernetes ページは読むだけです。クラスタを何も変更しません。
+
+## OpenShift の Route を見る
+
+OpenShift のクラスタでは、Kubernetes ページに **Route** タブも表示され、サイドバーにも **Route** が並びます。Route は、Service の公開アドレスです。クラスタの API が `route.openshift.io/v1` を提供しているときだけ、アプリは Route を表示します。ほかのクラスタには、Route タブはありません。
+
+![Podbag Desktop の ocp コンテキストの Route の一覧](gui-routes-ja.png)
+
+一覧には、Route ごとに**ホスト**、**パス**、**Service**、TLS のモードが表示されます。ホストをクリックすると、そのアドレスがブラウザで開きます。Route に TLS の設定があるときは、アドレスは `https://` で始まります。ないときは `http://` で始まります。
+
+**移行**は Route をコピーしません。Route のホストは、そのクラスタのものだからです。
 
 ## 設定を変更する
 

@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "Xem Pod, Service, Deployment và yêu cầu ổ đĩa của một cụm, rồi đặt khởi động, ngôn ngữ, giao diện, VM, cập nhật và lệnh terminal."
+summary: "Xem Pod, Service, Deployment, yêu cầu ổ đĩa và Route của OpenShift trong một cụm, rồi đặt khởi động, ngôn ngữ, giao diện, VM, cập nhật và lệnh terminal."
 image: gui-settings-vi.png
 image_alt: "Trang Cài đặt của Podbag Desktop"
 outline: "Trong hướng dẫn này"
@@ -27,6 +27,16 @@ Podbag Desktop hiện các cụm Kubernetes bên cạnh container của bạn. *
 ![Danh sách Pod của ngữ cảnh dev trong Podbag Desktop](gui-kubernetes-vi.png)
 
 Nhấp vào một mục để xem toàn bộ mục đó ở dạng JSON. Trang Kubernetes chỉ đọc. Trang này không thay đổi gì trong cụm.
+
+## Xem Route của OpenShift
+
+Trên một cụm OpenShift, trang Kubernetes còn có tab **Route**, và thanh bên cũng liệt kê **Route**. Route là địa chỉ công khai của một Service. Ứng dụng chỉ hiện Route khi API của cụm cung cấp `route.openshift.io/v1`. Các cụm khác không có tab Route.
+
+![Danh sách Route của ngữ cảnh ocp trong Podbag Desktop](gui-routes-vi.png)
+
+Danh sách hiện **Máy chủ**, **Đường dẫn**, **Service** và chế độ **TLS** của mỗi Route. Nhấp vào một máy chủ để mở địa chỉ của nó trong trình duyệt. Địa chỉ bắt đầu bằng `https://` khi Route có cài đặt TLS. Nếu không, địa chỉ bắt đầu bằng `http://`.
+
+**Di chuyển** không sao chép Route. Máy chủ của một Route thuộc về cụm của nó.
 
 ## Thay đổi cài đặt
 

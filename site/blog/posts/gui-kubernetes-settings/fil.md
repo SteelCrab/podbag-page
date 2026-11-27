@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "Tingnan ang mga pod, service, deployment at volume claim ng isang cluster. I-set ang pagsisimula, ang wika, ang tema, ang VM, ang mga update at ang command sa terminal."
+summary: "Tingnan ang mga pod, service, deployment, volume claim at Route ng OpenShift sa isang cluster. I-set ang pagsisimula, ang wika, ang tema, ang VM, ang mga update at ang command sa terminal."
 image: gui-settings-fil.png
 image_alt: "Ang page na Mga setting ng Podbag Desktop"
 outline: "Sa gabay na ito"
@@ -27,6 +27,16 @@ Ginagamit ng app ang `kubectl` at ang mga context nito. I-install muna ang `kube
 ![Ang listahan ng Mga Pod ng context na dev sa Podbag Desktop](gui-kubernetes-fil.png)
 
 I-click ang item para makita ang buong item bilang JSON. Nagbabasa lang ang page ng Kubernetes. Wala itong binabago sa cluster.
+
+## Tingnan ang mga Route ng OpenShift
+
+Sa isang OpenShift cluster, may tab ding **Mga Route** ang page ng Kubernetes, at nakalista rin ang **Mga Route** sa sidebar. Ang Route ay ang pampublikong address ng isang Service. Ipinapakita lang ng app ang mga Route kapag ibinibigay ng API ng cluster ang `route.openshift.io/v1`. Walang tab na Mga Route ang ibang cluster.
+
+![Ang listahan ng Mga Route ng context na ocp sa Podbag Desktop](gui-routes-fil.png)
+
+Ipinapakita ng listahan ang **Host**, **Path**, **Service** at mode ng **TLS** ng bawat Route. I-click ang host para buksan ang address nito sa browser. Nagsisimula sa `https://` ang address kapag may mga setting ng TLS ang Route. Kung wala, nagsisimula ito sa `http://`.
+
+Hindi kinokopya ng **Ilipat** ang mga Route. Pag-aari ng cluster nito ang host ng Route.
 
 ## Baguhin ang mga setting
 

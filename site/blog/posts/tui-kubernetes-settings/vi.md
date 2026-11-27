@@ -28,6 +28,8 @@ TUI dùng `kubectl` và các ngữ cảnh (context) của nó. Hãy cài `kubect
 
 Danh sách hiện mỗi tài nguyên dưới dạng `namespace/name`. Nhấn `Enter` để xem tài nguyên dưới dạng JSON. **Làm mới** đọc lại danh sách. TUI chỉ đọc cụm. TUI không thay đổi cụm.
 
+Trên một cụm OpenShift, **Route** cũng là một loại tài nguyên. TUI chỉ hiện nó khi API của cụm cung cấp Route. Một Route hiện máy chủ và đường dẫn, Service và chế độ TLS của nó, ví dụ `default/shop   shop.example.com/cart  frontend  edge`.
+
 ## Thực hành trong Hướng dẫn
 
 Nhấn `F8`. **Hướng dẫn** cài một tệp bài học và chạy các bài tập của nó trong một môi trường thực hành.

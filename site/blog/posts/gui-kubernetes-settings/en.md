@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "See the pods, services, deployments and volume claims of a cluster, and set the startup, the language, the theme, the VM, updates and the terminal command."
+summary: "See the pods, services, deployments, volume claims and OpenShift Routes of a cluster, and set the startup, the language, the theme, the VM, updates and the terminal command."
 image: gui-settings-en.png
 image_alt: "The Settings page of Podbag Desktop"
 outline: "In this guide"
@@ -27,6 +27,16 @@ The app uses `kubectl` and its contexts. Install `kubectl` first.
 ![The Pods list of the dev context in Podbag Desktop](gui-kubernetes-en.png)
 
 Click an item to see all of it as JSON. The Kubernetes page only reads. It changes nothing in the cluster.
+
+## Look at OpenShift Routes
+
+On an OpenShift cluster, the Kubernetes page also has a **Routes** tab, and the sidebar lists **Routes**. A Route is the public address of a Service. The app shows Routes only when the cluster's API serves `route.openshift.io/v1`. Other clusters have no Routes tab.
+
+![The Routes list of the ocp context in Podbag Desktop](gui-routes-en.png)
+
+The list shows the **Host**, **Path**, **Service** and **TLS** mode of each Route. Click a host to open its address in the browser. The address starts with `https://` when the Route has TLS settings. Otherwise it starts with `http://`.
+
+**Migrate** does not copy Routes. A Route's host belongs to its cluster.
 
 ## Change the settings
 

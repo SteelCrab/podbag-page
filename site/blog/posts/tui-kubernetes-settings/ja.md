@@ -28,6 +28,8 @@ TUI は `kubectl` とそのコンテキストを使います。先に `kubectl` 
 
 一覧には、リソースが `namespace/name` の形で表示されます。`Enter` を押すと JSON で表示されます。**更新**で一覧を読み直します。TUI はクラスタを読むだけです。クラスタを変更しません。
 
+OpenShift のクラスタでは、リソースの種類に **Route** も表示されます。クラスタの API が Route を提供しているときだけ、TUI は表示します。Route は、ホストとパス、Service、TLS のモードの順に表示されます。例: `default/shop   shop.example.com/cart  frontend  edge`
+
 ## チュートリアルで実習する
 
 `F8` を押します。**チュートリアル**は、レッスンファイルをインストールし、その演習を実習環境で実行します。
