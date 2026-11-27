@@ -45,6 +45,10 @@ Cuando el motor es podbag y Docker está instalado, **Imágenes** tiene **Import
 
 ![La ventana Importar imágenes de Docker de Podbag Desktop](gui-import-es.png)
 
+## Ejecuta una imagen
+
+**Ejecutar** en la fila de una imagen abre el formulario para ejecutar un contenedor con esa imagen ya escrita. Consulta [Ejecuta un contenedor](../gui-containers/).
+
 ## Mira y elimina imágenes
 
 Haz clic en una imagen para ver sus etiquetas, su tamaño y los contenedores que la usan. **Eliminar** elimina la imagen. **Limpiar** elimina todas las imágenes que ningún contenedor usa. La app pregunta antes.

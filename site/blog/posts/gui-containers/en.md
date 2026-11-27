@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, containers]
-summary: "Start, stop, pause and remove containers, read their logs and details, open a shell, and clean up the stopped ones."
+summary: "Run a container, stop, pause and remove containers, read their logs and details, open a shell, and clean up the stopped ones."
 image: gui-logs-en.png
 image_alt: "The Logs tab of the web container in Podbag Desktop"
 outline: "In this guide"
@@ -14,6 +14,27 @@ draft: false
 Open **Containers** in the sidebar. The list shows each container's name and ID, its image, its state, its ports and when it was created.
 
 **Time** 5 minutes.
+
+## Run a container
+
+Click **Run container** at the top of the list. A form opens.
+
+1. Type the **Image**, for example `nginx:alpine`. The field suggests the images you already have.
+2. Type a **Name**. You can leave it empty.
+3. Under **Ports**, type a host port and a container port, for example `8081` and `80`. Choose TCP or UDP. Leave the host port empty to let the engine choose one. **Add port** adds a row.
+4. Click **Run**.
+
+![The Run a container form of Podbag Desktop](gui-run-en.png)
+
+**More options** shows more fields.
+
+- **Environment variables:** one `KEY=VALUE` on each row.
+- **Volumes:** a volume name or a full host path, then the path in the container. Check **Read-only** if the container must not write there.
+- **Command:** leave it empty to use the image's command.
+- **Restart policy:** **Do not restart**, **When it fails**, **Always** or **Unless stopped**.
+- **Remove when it stops:** removes the container when it stops. This turns the restart policy off.
+
+The form checks your input before it sends anything. When the engine does not have the image, the app pulls it first. It uses your registry login, as **Pull image** does. Then the new container opens with its logs.
 
 ## Start and stop a container
 

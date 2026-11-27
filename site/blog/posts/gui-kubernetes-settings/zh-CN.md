@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "查看集群中的 Pod、Service、部署和持久卷申领，并设置启动、语言、主题、虚拟机、更新和终端命令。"
+summary: "查看集群中的 Pod、Service、部署、持久卷申领和 OpenShift Route，并设置启动、语言、主题、虚拟机、更新和终端命令。"
 image: gui-settings-zh-CN.png
 image_alt: "Podbag Desktop 的设置页面"
 outline: "本文内容"
@@ -27,6 +27,16 @@ Podbag Desktop 在你的容器旁边显示 Kubernetes 集群。**设置**中有�
 ![Podbag Desktop 中 dev 上下文的 Pod 列表](gui-kubernetes-zh-CN.png)
 
 点击一个项目，可以用 JSON 格式查看它的全部内容。Kubernetes 页面只读取集群。它不会更改集群中的任何内容。
+
+## 查看 OpenShift Route
+
+在 OpenShift 集群上，Kubernetes 页面还有一个 **Route** 标签页，侧边栏中也会列出 **Route**。Route 是 Service 的公开地址。只有当集群的 API 提供 `route.openshift.io/v1` 时，应用才会显示 Route。其他集群没有 Route 标签页。
+
+![Podbag Desktop 中 ocp 上下文的 Route 列表](gui-routes-zh-CN.png)
+
+列表显示每个 Route 的**主机**、**路径**、**Service** 和 TLS 模式。点击主机，会在浏览器中打开它的地址。Route 有 TLS 设置时，地址以 `https://` 开头。否则以 `http://` 开头。
+
+**迁移**不会复制 Route。Route 的主机属于它所在的集群。
 
 ## 更改设置
 

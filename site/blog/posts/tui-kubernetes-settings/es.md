@@ -28,6 +28,8 @@ La TUI usa `kubectl` y sus contextos. Instala `kubectl` primero.
 
 La lista muestra cada recurso como `namespace/nombre`. Pulsa `Enter` para verlo en JSON. **Actualizar** vuelve a leer la lista. La TUI solo lee el clúster. No lo cambia.
 
+En un clúster de OpenShift, **Routes** es también un tipo de recurso. La TUI lo muestra solo cuando la API del clúster ofrece Routes. Un Route muestra su host y su ruta, su Servicio y su modo de TLS, por ejemplo `default/shop   shop.example.com/cart  frontend  edge`.
+
 ## Haz una práctica en Tutoriales
 
 Pulsa `F8`. **Tutoriales** instala un archivo de lección y ejecuta sus ejercicios en un entorno de práctica.

@@ -1,0 +1,234 @@
+{
+  "format": "podbag-course-v2",
+  "id": "private-base-image",
+  "port": 18112,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Build from a private base image",
+      "guide": "Start the session with podbag lab start private-base-image.",
+      "url": "https://podbag.dev/blog/private-base-image/"
+    },
+    "ko": {
+      "title": "Podbag Training · 비공개 베이스 이미지로 빌드하기",
+      "guide": "podbag lab start private-base-image 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/private-base-image/"
+    },
+    "ja": {
+      "title": "Podbag Training · 非公開のベースイメージからビルドする",
+      "guide": "podbag lab start private-base-image で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/private-base-image/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 从私有基础镜像构建",
+      "guide": "用 podbag lab start private-base-image 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/private-base-image/"
+    },
+    "fil": {
+      "title": "Podbag Training · Mag-build mula sa pribadong base image",
+      "guide": "Simulan ang session gamit ang podbag lab start private-base-image.",
+      "url": "https://podbag.dev/fil/blog/private-base-image/"
+    },
+    "es": {
+      "title": "Podbag Training · Construye a partir de una imagen base privada",
+      "guide": "Inicia la sesión con podbag lab start private-base-image.",
+      "url": "https://podbag.dev/es/blog/private-base-image/"
+    },
+    "vi": {
+      "title": "Podbag Training · Build từ image nền riêng tư",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start private-base-image.",
+      "url": "https://podbag.dev/vi/blog/private-base-image/"
+    }
+  },
+  "files": {
+    "auth/htpasswd": "training:$2y$10$DsVFtlEmiuzu20.SNUvdG.3h44Cxtw98kJP7Nd13vMhus6QpmqPoS\n",
+    "app/Dockerfile": "ARG BASE\nFROM ${BASE}\nCMD [\"echo\", \"Hello from a private base image\"]\n"
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull the busybox image",
+        "ko": "busybox 이미지 받기",
+        "ja": "busybox イメージを取得する",
+        "zh-CN": "拉取 busybox 镜像",
+        "fil": "I-pull ang busybox image",
+        "es": "Descarga la imagen busybox",
+        "vi": "Tải image busybox"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "runRegistry",
+      "names": {
+        "en": "Run a registry that needs a login",
+        "ko": "로그인이 필요한 레지스트리 실행하기",
+        "ja": "ログインが必要なレジストリを起動する",
+        "zh-CN": "运行需要登录的镜像仓库",
+        "fil": "Patakbuhin ang registry na nangangailangan ng login",
+        "es": "Ejecuta un registro que pide inicio de sesión",
+        "vi": "Chạy registry cần đăng nhập"
+      },
+      "command": "podbag run -d --name registry -p 127.0.0.1:{port}:5000 -v ./auth:/auth:ro -e REGISTRY_AUTH=htpasswd -e REGISTRY_AUTH_HTPASSWD_REALM=Training -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd docker.io/library/registry:2.8.3",
+      "check": {
+        "kind": "container-running",
+        "name": "registry"
+      }
+    },
+    {
+      "key": "login",
+      "names": {
+        "en": "Log in to the registry",
+        "ko": "레지스트리에 로그인하기",
+        "ja": "レジストリにログインする",
+        "zh-CN": "登录镜像仓库",
+        "fil": "Mag-log in sa registry",
+        "es": "Inicia sesión en el registro",
+        "vi": "Đăng nhập vào registry"
+      },
+      "command": "podbag login 127.0.0.1:{port} -u training -p podbag-training",
+      "check": {
+        "kind": "output-contains",
+        "text": "Login Succeeded"
+      }
+    },
+    {
+      "key": "tag",
+      "names": {
+        "en": "Tag busybox as the base image",
+        "ko": "busybox에 베이스 이미지 태그 붙이기",
+        "ja": "busybox にベースイメージのタグを付ける",
+        "zh-CN": "把 busybox 标记为基础镜像",
+        "fil": "Lagyan ng tag ang busybox bilang base image",
+        "es": "Etiqueta busybox como imagen base",
+        "vi": "Gắn tag image nền cho busybox"
+      },
+      "command": "podbag tag docker.io/library/busybox:1.37.0 127.0.0.1:{port}/training/base:1",
+      "check": {
+        "kind": "image-exists",
+        "name": "127.0.0.1:{port}/training/base:1"
+      }
+    },
+    {
+      "key": "push",
+      "names": {
+        "en": "Push the base image",
+        "ko": "베이스 이미지 push하기",
+        "ja": "ベースイメージを push する",
+        "zh-CN": "推送基础镜像",
+        "fil": "I-push ang base image",
+        "es": "Sube la imagen base",
+        "vi": "Đẩy image nền lên"
+      },
+      "command": "podbag push 127.0.0.1:{port}/training/base:1",
+      "check": {
+        "kind": "output-contains",
+        "text": "digest: sha256:"
+      }
+    },
+    {
+      "key": "removeBase",
+      "names": {
+        "en": "Remove the local base image",
+        "ko": "로컬 베이스 이미지 삭제하기",
+        "ja": "ローカルのベースイメージを削除する",
+        "zh-CN": "删除本地基础镜像",
+        "fil": "Burahin ang lokal na base image",
+        "es": "Elimina la imagen base local",
+        "vi": "Xóa image nền cục bộ"
+      },
+      "command": "podbag rmi 127.0.0.1:{port}/training/base:1",
+      "check": {
+        "kind": "image-absent",
+        "name": "127.0.0.1:{port}/training/base:1"
+      }
+    },
+    {
+      "key": "build",
+      "names": {
+        "en": "Build on the private base image",
+        "ko": "비공개 베이스 이미지로 빌드하기",
+        "ja": "非公開のベースイメージでビルドする",
+        "zh-CN": "基于私有基础镜像构建",
+        "fil": "Mag-build sa pribadong base image",
+        "es": "Construye sobre la imagen base privada",
+        "vi": "Build trên image nền riêng tư"
+      },
+      "command": "podbag build --build-arg BASE=127.0.0.1:{port}/training/base:1 -t hello-app:1 app",
+      "check": {
+        "kind": "output-contains",
+        "text": "Pulling 127.0.0.1:{port}/training/base:1"
+      }
+    },
+    {
+      "key": "runApp",
+      "names": {
+        "en": "Run the new image",
+        "ko": "새 이미지 실행하기",
+        "ja": "新しいイメージを実行する",
+        "zh-CN": "运行新镜像",
+        "fil": "Patakbuhin ang bagong image",
+        "es": "Ejecuta la imagen nueva",
+        "vi": "Chạy image mới"
+      },
+      "command": "podbag run --rm hello-app:1",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from a private base image"
+      }
+    },
+    {
+      "key": "logout",
+      "names": {
+        "en": "Log out from the registry",
+        "ko": "레지스트리에서 로그아웃하기",
+        "ja": "レジストリからログアウトする",
+        "zh-CN": "退出镜像仓库",
+        "fil": "Mag-log out sa registry",
+        "es": "Cierra la sesión del registro",
+        "vi": "Đăng xuất khỏi registry"
+      },
+      "command": "podbag logout 127.0.0.1:{port}",
+      "check": {
+        "kind": "output-contains",
+        "text": "Removing login credentials for 127.0.0.1:{port}"
+      }
+    },
+    {
+      "key": "removeRegistry",
+      "names": {
+        "en": "Remove the registry",
+        "ko": "레지스트리 삭제하기",
+        "ja": "レジストリを削除する",
+        "zh-CN": "删除镜像仓库",
+        "fil": "Burahin ang registry",
+        "es": "Elimina el registro",
+        "vi": "Xóa registry"
+      },
+      "command": "podbag rm -f registry",
+      "check": {
+        "kind": "container-absent",
+        "name": "registry"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}

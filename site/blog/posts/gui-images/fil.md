@@ -45,6 +45,10 @@ Kapag podbag ang engine at naka-install ang Docker, may **Mag-import mula sa Doc
 
 ![Ang window na Mag-import ng mga image mula sa Docker ng Podbag Desktop](gui-import-fil.png)
 
+## Magpatakbo ng image
+
+Ang **Patakbuhin** sa row ng image ay nagbubukas ng form sa pagpapatakbo na nakalagay na ang image na iyon. Tingnan ang [Magpatakbo ng container](../gui-containers/).
+
 ## Tingnan at alisin ang mga image
 
 I-click ang image para makita ang mga tag nito, ang laki nito at ang mga container na gumagamit nito. Inaalis ng **Alisin** ang image. Inaalis ng **Linisin** ang lahat ng image na hindi ginagamit ng anumang container. Nagtatanong muna ang app.

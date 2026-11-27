@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "클러스터의 파드, 서비스, 디플로이먼트, 볼륨 클레임을 봅니다. 시작, 언어, 테마, VM, 업데이트, 터미널 명령을 설정합니다."
+summary: "클러스터의 파드, 서비스, 디플로이먼트, 볼륨 클레임, OpenShift 라우트를 봅니다. 시작, 언어, 테마, VM, 업데이트, 터미널 명령을 설정합니다."
 image: gui-settings-ko.png
 image_alt: "Podbag Desktop의 설정 페이지"
 outline: "이 글의 순서"
@@ -27,6 +27,16 @@ Podbag Desktop은 컨테이너 옆에 Kubernetes 클러스터를 보여줍니다
 ![Podbag Desktop에서 보는 dev 컨텍스트의 파드 목록](gui-kubernetes-ko.png)
 
 항목을 클릭하면 전체 내용이 JSON으로 보입니다. 쿠버네티스 페이지는 읽기만 합니다. 클러스터를 바꾸지 않습니다.
+
+## OpenShift 라우트 보기
+
+OpenShift 클러스터에서는 쿠버네티스 페이지에 **라우트** 탭도 생기고, 사이드바에도 **라우트**가 나옵니다. 라우트는 서비스의 공개 주소입니다. 클러스터의 API가 `route.openshift.io/v1`을 제공할 때만 앱이 라우트를 보여줍니다. 다른 클러스터에는 라우트 탭이 없습니다.
+
+![Podbag Desktop에서 보는 ocp 컨텍스트의 라우트 목록](gui-routes-ko.png)
+
+목록에는 라우트마다 **호스트**, **경로**, **서비스**, TLS 방식이 보입니다. 호스트를 클릭하면 브라우저에서 그 주소가 열립니다. 라우트에 TLS 설정이 있으면 주소는 `https://`로 시작하고, 없으면 `http://`로 시작합니다.
+
+**마이그레이션**은 라우트를 복사하지 않습니다. 라우트의 호스트는 그 클러스터에 속하기 때문입니다.
 
 ## 설정 바꾸기
 

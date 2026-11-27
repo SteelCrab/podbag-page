@@ -1,0 +1,162 @@
+{
+  "format": "podbag-course-v2",
+  "id": "udp-ports",
+  "port": 18111,
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Publish a UDP port",
+      "guide": "Start the session with podbag lab start udp-ports.",
+      "url": "https://podbag.dev/blog/udp-ports/"
+    },
+    "ko": {
+      "title": "Podbag Training · UDP 포트 공개하기",
+      "guide": "podbag lab start udp-ports 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/udp-ports/"
+    },
+    "ja": {
+      "title": "Podbag Training · UDP ポートを公開する",
+      "guide": "podbag lab start udp-ports で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/udp-ports/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 发布 UDP 端口",
+      "guide": "用 podbag lab start udp-ports 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/udp-ports/"
+    },
+    "fil": {
+      "title": "Podbag Training · Mag-publish ng UDP port",
+      "guide": "Simulan ang session gamit ang podbag lab start udp-ports.",
+      "url": "https://podbag.dev/fil/blog/udp-ports/"
+    },
+    "es": {
+      "title": "Podbag Training · Publica un puerto UDP",
+      "guide": "Inicia la sesión con podbag lab start udp-ports.",
+      "url": "https://podbag.dev/es/blog/udp-ports/"
+    },
+    "vi": {
+      "title": "Podbag Training · Công bố cổng UDP",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start udp-ports.",
+      "url": "https://podbag.dev/vi/blog/udp-ports/"
+    }
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull the busybox image",
+        "ko": "busybox 이미지 받기",
+        "ja": "busybox イメージを取得する",
+        "zh-CN": "拉取 busybox 镜像",
+        "fil": "I-pull ang busybox image",
+        "es": "Descarga la imagen busybox",
+        "vi": "Tải image busybox"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "runServer",
+      "names": {
+        "en": "Run a UDP server with a published port",
+        "ko": "UDP 서버를 포트 공개로 실행하기",
+        "ja": "ポートを公開して UDP サーバーを実行する",
+        "zh-CN": "运行发布端口的 UDP 服务器",
+        "fil": "Patakbuhin ang UDP server na may na-publish na port",
+        "es": "Ejecuta un servidor UDP con un puerto publicado",
+        "vi": "Chạy máy chủ UDP với cổng đã công bố"
+      },
+      "command": "podbag run -d --name udp-server -p 127.0.0.1:{port}:9999/udp docker.io/library/busybox:1.37.0 nc -u -l -p 9999",
+      "check": {
+        "kind": "container-running",
+        "name": "udp-server"
+      }
+    },
+    {
+      "key": "ports",
+      "names": {
+        "en": "See the UDP port in ps",
+        "ko": "ps에서 UDP 포트 보기",
+        "ja": "ps で UDP ポートを確認する",
+        "zh-CN": "在 ps 中查看 UDP 端口",
+        "fil": "Tingnan ang UDP port sa ps",
+        "es": "Mira el puerto UDP en ps",
+        "vi": "Xem cổng UDP trong ps"
+      },
+      "command": "podbag ps",
+      "check": {
+        "kind": "output-contains",
+        "text": "127.0.0.1:{port}->9999/udp"
+      }
+    },
+    {
+      "key": "send",
+      "names": {
+        "en": "Send a datagram to the published port",
+        "ko": "공개 포트로 데이터그램 보내기",
+        "ja": "公開ポートにデータグラムを送る",
+        "zh-CN": "向发布的端口发送数据报",
+        "fil": "Magpadala ng datagram sa na-publish na port",
+        "es": "Envía un datagrama al puerto publicado",
+        "vi": "Gửi một datagram tới cổng đã công bố"
+      },
+      "command": "podbag run --rm --network host docker.io/library/busybox:1.37.0 sh -c 'echo \"Hello over UDP\" | nc -u -w 1 127.0.0.1 {port}'",
+      "check": {
+        "kind": "container-running",
+        "name": "udp-server"
+      }
+    },
+    {
+      "key": "logs",
+      "names": {
+        "en": "Read the datagram in the server's logs",
+        "ko": "서버 로그에서 데이터그램 읽기",
+        "ja": "サーバーのログでデータグラムを読む",
+        "zh-CN": "在服务器日志中读取数据报",
+        "fil": "Basahin ang datagram sa mga log ng server",
+        "es": "Lee el datagrama en los registros del servidor",
+        "vi": "Đọc datagram trong nhật ký máy chủ"
+      },
+      "command": "podbag logs udp-server",
+      "check": {
+        "kind": "output-has-line",
+        "text": "Hello over UDP"
+      }
+    },
+    {
+      "key": "remove",
+      "names": {
+        "en": "Remove the server",
+        "ko": "서버 삭제하기",
+        "ja": "サーバーを削除する",
+        "zh-CN": "删除服务器",
+        "fil": "Burahin ang server",
+        "es": "Elimina el servidor",
+        "vi": "Xóa máy chủ"
+      },
+      "command": "podbag rm -f udp-server",
+      "check": {
+        "kind": "container-absent",
+        "name": "udp-server"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}
