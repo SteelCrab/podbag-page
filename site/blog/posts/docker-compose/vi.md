@@ -25,7 +25,17 @@ Mở **Training** trong Podbag Desktop và chọn **Chạy hai dịch vụ bằn
 podbag lab start docker-compose
 ```
 
-Tiếp tục tại dấu nhắc `training $`. Trong shell này, `docker` đi tới engine của phiên thực hành. Phiên đặt `compose.yaml` vào thư mục thực hành:
+Tiếp tục tại dấu nhắc `training $`.
+
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
+Trong shell này, `docker` đi tới engine của phiên thực hành. Phiên đặt `compose.yaml` vào thư mục thực hành:
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose đặt cả hai container vào `lab_default`. podbag cho mỗi container
 ## Mở trang trong Desktop
 
 Đi tới **Container thực hành → web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from api**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xem cổng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18107/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
 
 ## Dọn dẹp và kết thúc
 

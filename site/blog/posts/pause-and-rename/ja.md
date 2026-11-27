@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## Web サーバーを実行する
 
 `web` という小さな Web サーバーを実行します。このサーバーはテキスト `Hello from web` を配信し、このコンピューターのポート `18090` を公開します。`18090` がすでに使われている場合は、Training に表示されるポートを使います。
@@ -41,6 +49,9 @@ Podbag は、`web` がポートを公開し、ページに `Hello from web` と�
 podbag pause web
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → web → 一時停止**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`p` を押します。
+
 サーバーは凍結されています。ここで `http://127.0.0.1:18090/` を開いても、ページは読み込まれません。Podbag は `web` が `paused` の状態であることを確認します。
 
 ## 一覧で Paused を確認する
@@ -56,6 +67,9 @@ podbag ps
 ```sh
 podbag unpause web
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → web → 再開**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`p` を押します。
 
 サーバーが再び動き、リクエストに応答します。Podbag はもう一度ページを確認します。
 
@@ -81,9 +95,15 @@ podbag ps -a
 
 Podbag Desktop で**実習コンテナ → site → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Hello from web** と表示されます。Podbag は、HTTP 200 の応答とこのテキストを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → site → ポートを表示 → ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18090/` を開きます。ページが表示されたら `o` を押します。
+
 ## 片付けて終了する
 
 `site` はまだ実行中です。`rm -f` はコンテナを停止して削除します。
+
+- **Podbag Desktop で:** **実習コンテナ → site → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `site` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm -f site

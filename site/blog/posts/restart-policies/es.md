@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Ejecuta una tarea que falla
 
 Ejecuta un contenedor llamado `job`. Muestra `try` y termina con el código de error `1`. La opción `--restart on-failure:3` lo vuelve a iniciar después de un error, como máximo 3 veces.
@@ -53,6 +61,9 @@ Los registros guardan la salida de cada ejecución.
 podbag logs job
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → job → Registros**.
+- **En la TUI:** Selecciona `job` en **Contenedores** y pulsa `l`.
+
 La palabra `try` aparece 4 veces: la primera ejecución y los 3 reinicios. Podbag busca una línea `try`.
 
 Elimina la tarea. Ya se detuvo, así que `rm` no necesita `-f`.
@@ -60,6 +71,9 @@ Elimina la tarea. Ya se detuvo, así que `rm` no necesita `-f`.
 ```sh
 podbag rm job
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → job → Eliminar** y confirma.
+- **En la TUI:** Selecciona `job` en **Contenedores**, pulsa `d` y luego `y`.
 
 ## Inicia un contenedor de nuevo después de cada salida
 
@@ -79,6 +93,9 @@ Podbag espera hasta que `app` se haya reiniciado al menos una vez. `--restart un
 podbag stop app
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Detener**.
+- **En la TUI:** Selecciona `app` en **Contenedores** y pulsa `x`.
+
 Podbag comprueba que `app` se ha detenido. Lista todos los contenedores para ver que sigue detenido.
 
 ```sh
@@ -95,11 +112,17 @@ El estado de `app` es `Exited`. Podbag busca esta palabra.
 podbag start app
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Iniciar**.
+- **En la TUI:** Selecciona `app` en **Contenedores** y pulsa `s`.
+
 Podbag comprueba que `app` está en ejecución.
 
 ## Limpia y termina
 
 Elimina el contenedor. Puede estar en ejecución, así que `-f` lo detiene primero. Luego termina la sesión.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f app

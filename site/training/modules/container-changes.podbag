@@ -140,6 +140,10 @@
       "check": {
         "kind": "container-absent",
         "name": "app"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "app"
       }
     },
     {
@@ -156,6 +160,10 @@
       "command": "podbag rmi app-snapshot:1",
       "check": {
         "kind": "image-absent",
+        "name": "app-snapshot:1"
+      },
+      "ui": {
+        "action": "remove-image",
         "name": "app-snapshot:1"
       }
     },

@@ -121,6 +121,10 @@
       "check": {
         "kind": "container-absent",
         "name": "lab-web"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "lab-web"
       }
     },
     {

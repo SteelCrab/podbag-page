@@ -2,10 +2,12 @@
 
 usage: python3 -m unittest dev/docs/test_training.py
 """
+import collections
 import copy
 import importlib.util
 import itertools
 import json
+import os
 import re
 import sys
 import tempfile
@@ -43,6 +45,96 @@ def course():
 
 def encode(module):
     return json.dumps(module).encode()
+
+
+UI_STEPS = {  # module → {step key: (action, name)}, the table of the plan
+    "container-changes": {
+        "remove": ("remove", "app"),
+        "removeImage": ("remove-image", "app-snapshot:1"),
+    },
+    "container-exec": {"remove": ("remove", "app")},
+    "container-lifecycle": {
+        "start": ("start", "app"),
+        "stop": ("stop", "app"),
+        "restart": ("restart", "app"),
+        "remove": ("remove", "app"),
+    },
+    "container-network": {
+        "remove": ("remove", "web"),
+        "removeApi": ("remove", "api"),
+        "deleteNetwork": ("remove-network", "lab-net"),
+    },
+    "copy-and-archive": {
+        "remove": ("remove", "app"),
+        "removeImage": ("remove-image", "docker.io/library/busybox:1.37.0"),
+    },
+    "docker-cli": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "stop": ("stop", "web"),
+        "remove": ("remove", "web"),
+    },
+    "health-checks": {"remove": ("remove", "web")},
+    "image-basics": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "removeTag": ("remove-image", "my-busybox:1"),
+        "removeImage": ("remove-image", "docker.io/library/busybox:1.37.0"),
+    },
+    "image-build": {"remove": ("remove", "web"), "removeImage": ("remove-image", "my-site:1")},
+    "local-registry": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "removeTag": ("remove-image", "127.0.0.1:{port}/training/busybox:1"),
+        "pullBack": ("pull", "127.0.0.1:{port}/training/busybox:1"),
+        "removeRegistry": ("remove", "registry"),
+    },
+    "network-connect": {
+        "stopApi": ("stop", "api"),
+        "startApi": ("start", "api"),
+        "stopAgain": ("stop", "api"),
+        "removeApi": ("remove", "api"),
+        "removeNetworks": ("remove-network", "back-net"),
+    },
+    "pause-and-rename": {
+        "pause": ("pause", "web"),
+        "unpause": ("resume", "web"),
+        "remove": ("remove", "site"),
+    },
+    "resource-limits": {"remove": ("remove", "app")},
+    "restart-policies": {
+        "logsJob": ("logs", "job"),
+        "removeJob": ("remove", "job"),
+        "stopApp": ("stop", "app"),
+        "startApp": ("start", "app"),
+        "removeApp": ("remove", "app"),
+    },
+    "system-checks": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "removeImage": ("remove-image", "docker.io/library/busybox:1.37.0"),
+    },
+    "volume-persistence": {
+        "create": ("create-volume", "training-data"),
+        "removeWriter": ("remove", "app-a"),
+        "removeReader": ("remove", "app-b"),
+    },
+    "web-basics": {"remove": ("remove", "lab-web")},
+    "web-service-lifecycle": {
+        "create": ("create-volume", "site-data"),
+        "remove": ("remove", "site-v1"),
+        "removeReplacement": ("remove", "site-v2"),
+    },
+    "web-service-recovery": {
+        "readRecoveryLogs": ("logs", "lab-web"),
+        "removeFailed": ("remove", "lab-web"),
+        "remove": ("remove", "lab-web"),
+    },
+}
+
+TRACK_LINES = {"en": ("- **In Podbag Desktop:**", "- **In the TUI:**"),
+               "ko": ("- **Podbag Desktop에서:**", "- **TUI에서:**"),
+               "ja": ("- **Podbag Desktop で:**", "- **TUI で:**"),
+               "zh-CN": ("- **在 Podbag Desktop 中：**", "- **在 TUI 中：**"),
+               "fil": ("- **Sa Podbag Desktop:**", "- **Sa TUI:**"),
+               "es": ("- **En Podbag Desktop:**", "- **En la TUI:**"),
+               "vi": ("- **Trong Podbag Desktop:**", "- **Trong TUI:**")}
 
 
 class Rules(unittest.TestCase):
@@ -98,6 +190,47 @@ class Rules(unittest.TestCase):
         module = course()
         module["steps"][1]["command"] = "podbag ps"
         self.refuse(module, "a Desktop step has no command")
+
+    def with_ui(self, key, ui, name="web-basics"):
+        module = course()
+        next(s for s in module["steps"] if s["key"] == key)["ui"] = ui
+        return encode(module)
+
+    def test_ui_rules(self):
+        training.check(self.with_ui("remove", {"action": "remove", "name": "lab-web"}), "web-basics")
+        for why, key, ui in [
+            ("wrong check", "remove", {"action": "stop", "name": "lab-web"}),
+            ("desktop step", "stop", {"action": "stop", "name": "lab-web"}),
+            ("unknown action", "remove", {"action": "kill", "name": "lab-web"}),
+            ("empty name", "remove", {"action": "remove", "name": " "}),
+            ("space in name", "remove", {"action": "remove", "name": "lab web"}),
+            ("not an object", "remove", "remove lab-web"),
+            ("open-web is the app's", "remove", {"action": "open-web", "name": "lab-web"}),
+            ("too long", "remove", {"action": "remove", "name": "a" * 201}),
+            ("control character", "remove", {"action": "remove", "name": "lab\x07web"}),
+            ("prune of a name", "remove", {"action": "prune", "name": "lab-web"}),
+        ]:
+            with self.subTest(why):
+                self.refuse(self.with_ui(key, ui), "the ui cannot do this step")
+
+    def test_ui_name_with_a_port(self):
+        ui = {"action": "remove", "name": "web-{port}"}
+        training.check(self.with_ui("remove", ui), "web-basics")
+        module = json.loads(json.dumps(course()).replace("{port}", "8080"))  # only the ui has it
+        del module["port"]
+        next(s for s in module["steps"] if s["key"] == "remove")["ui"] = ui
+        self.refuse(module, "the ui cannot do this step")
+
+    def test_the_ui_rules_are_the_apps(self):
+        """The same table as UI_CHECKS in podbag's src/volume_lesson/course.rs."""
+        repo = Path(os.environ.get("PODBAG_REPO", HERE.parents[2] / "podbag"))
+        source = (repo / "src/volume_lesson/course.rs").read_text()
+        block = source.split("pub const UI_CHECKS", 1)[1].split("];", 1)[0]
+        app = {a: set(re.findall(r'"([a-z-]+)"', checks))
+               for a, checks in re.findall(r'\("([a-z-]+)", &\[([^\]]*)\]\)', block)}
+        self.assertEqual(app, training.UI_CHECKS)
+        self.assertIn('["containers", "images", "volumes", "networks"]', source)  # PRUNE_KINDS
+        self.assertEqual(training.UI_CHECKS["resume"], {"container-running", "container-published"})
 
     def test_port_placeholder_without_a_port(self):
         module = course()
@@ -344,6 +477,30 @@ class Rules(unittest.TestCase):
             self.assertIn("no file modules/missing.podbag", str(caught.exception))
 
 
+class UiSteps(unittest.TestCase):
+    def test_ui_steps(self):
+        found = {}
+        for name in IDS:
+            module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+            for step in module.get("steps", []):
+                if "ui" in step:
+                    found.setdefault(name, {})[step["key"]] = (step["ui"]["action"], step["ui"]["name"])
+        self.assertEqual(found, UI_STEPS)
+        self.assertEqual(sum(len(v) for v in found.values()), 51)
+        self.assertEqual(found["pause-and-rename"]["unpause"], ("resume", "web"))
+
+    def test_ui_keeps_the_format(self):
+        """Released apps read the files: the format strings do not change."""
+        formats = collections.Counter()
+        for name in IDS:
+            module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+            self.assertIn(module["format"], {*training.COURSES, *training.LEGACY}, name)
+            formats[module["format"]] += 1
+        # Exact counts, as on origin/main on 2026-11-27 (a new module changes them on purpose).
+        self.assertEqual(formats, {"podbag-course-v1": 5, "podbag-course-v2": 16,
+                                   "podbag-container-basics-v1": 1, "podbag-cli-gui-volumes-v1": 1})
+
+
 class Built(unittest.TestCase):
     """Build the whole site once and look at the catalog and the training pages."""
 
@@ -398,6 +555,21 @@ class Built(unittest.TestCase):
                 if module["format"] in training.COURSES:
                     self.assertNotIn(f">{len(module['steps'])} ", item)
             self.assertIn('<ul class="modules"', html)
+
+    def test_cards_show_both_tracks(self):
+        for code, _ in self.site.LANGS:
+            html = (self.out / self.site.path_of(code) / "training/index.html").read_text()
+            words = json.loads((HERE.parents[1] / f"site/i18n/{code}.json").read_text())
+            for name in IDS:
+                item = re.search(rf'<li class="post-card module reveal" id="{name}">(.*?)</li>', html).group(1)
+                module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+                with self.subTest(code=code, name=name):
+                    self.assertIn(f"podbag lab start {name}</code>", item)
+                    if module["format"] in training.COURSES:
+                        self.assertIn(f"podbag lab start {name} --tui</code>", item)
+                        self.assertIn(html_escape(words["training_tracks_note"]), item)
+                    else:
+                        self.assertNotIn("--tui", item)
 
     def test_each_module_is_a_card_like_the_blog_list(self):
         """Every module is a card like the blog's lists: its guide's picture, the title linking
@@ -483,6 +655,26 @@ class Built(unittest.TestCase):
                     self.assertTrue((posts / slug / src).is_file())
                     self.assertTrue((posts / slug / src.replace("-light.svg", "-dark.svg")).is_file())
                     self.assertGreater(len(alt), 20, "the alt text says what the picture shows")
+
+    def test_guides_show_both_tracks(self):
+        """Every language's guide starts both tracks and name, for each step done in a
+        UI, what to click in Podbag Desktop and what to press in the TUI."""
+        posts = HERE.parents[1] / "site/blog/posts"
+        for name in IDS:
+            module = json.loads((SOURCE / f"modules/{name}.podbag").read_text())
+            if module["format"] not in training.COURSES:
+                continue
+            slug = module["translations"]["en"]["url"].rstrip("/").rsplit("/", 1)[1]
+            ui_steps = sum(1 for s in module["steps"]
+                           if "ui" in s or s["check"]["kind"].startswith("desktop-"))
+            for lang, (desktop, tui) in TRACK_LINES.items():
+                with self.subTest(name=name, lang=lang):
+                    text = (posts / slug / f"{lang}.md").read_text()
+                    self.assertIn(f"podbag lab start {name} --tui", text)
+                    lines = text.splitlines()
+                    # Exactly one line per track for each ui or desktop-* step.
+                    self.assertEqual(sum(l.startswith(desktop) for l in lines), ui_steps)
+                    self.assertEqual(sum(l.startswith(tui) for l in lines), ui_steps)
 
     def test_the_page_names_what_practice_sessions_leave_out(self):
         usage = "https://github.com/SteelCrab/podbag/blob/main/docs/usage.md"

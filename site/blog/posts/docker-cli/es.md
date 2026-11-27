@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 Continúa en el prompt `training $`. En esta shell, `docker` va a la sesión de práctica. La sesión sirve la API de Docker en su propio socket y apunta `DOCKER_HOST` a él. Tu otra configuración de docker no cambia.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Pide su versión al motor
 
 ```sh
@@ -40,6 +48,9 @@ La salida tiene dos partes. `Client` es el comando docker. `Server` es el motor 
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 El comando docker pide a podbag que descargue la imagen. podbag la descarga y la guarda en su propio almacén. Podbag comprueba que existe la imagen `busybox:1.37.0`.
 
@@ -73,9 +84,19 @@ podbag muestra el mismo contenedor. Hay un solo motor, y `docker` y `podbag` son
 
 Ve a **Contenedores de práctica → web → Ver puertos**. Selecciona **Abrir en el navegador**. La página muestra **Hello from the Docker CLI**. Podbag comprueba que hay una respuesta HTTP 200 y este texto.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Ver puertos**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `Enter`.
+- **En Podbag Desktop:** Selecciona **Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18106/` en un navegador. Cuando se vea la página, pulsa `o`.
+
 ## Limpia y termina
 
 Detén y elimina el contenedor con `docker`. Podbag comprueba que `web` se detiene y después que ya no existe.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Detener**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `x`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Eliminar** y confirma.
+- **En la TUI:** Selecciona `web` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 docker stop web

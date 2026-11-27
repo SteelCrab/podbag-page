@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![実習を開始する](start-en.png)
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## ボリュームを作成する
 
 実習環境に、名前付きボリューム `training-data` を作成します。
@@ -50,6 +58,9 @@ podbag lab start volume-persistence
 ```sh
 podbag volume create training-data
 ```
+
+- **Podbag Desktop で:** **実習ボリューム → ボリューム training-data を作成**を選びます。
+- **TUI で:** **ボリューム**を開き、`v` を押して `training-data` と入力し、`Enter` を押します。
 
 ![ボリュームを作成する](create-en.png)
 
@@ -70,6 +81,9 @@ podbag run --name app-a --network none -v training-data:/data docker.io/library/
 ```sh
 podbag rm app-a
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → app-a → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app-a` を選び、`d` を押してから `y` を押します。
 
 ![app-a を削除する](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ podbag run --name app-b --network none -v training-data:/data:ro docker.io/libra
 podbag rm app-b
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → app-b → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app-b` を選び、`d` を押してから `y` を押します。
+
 ![app-b を削除する](removeReader-en.png)
 
 ## ボリュームの詳細を開く
 
 **実習ボリューム → training-data** を選びます。詳細に名前とマウントポイントが表示されます。
+
+- **Podbag Desktop で:** **実習ボリューム → training-data**を選びます。
+- **TUI で:** **ボリューム**で `training-data` を選び、`Enter` を押します。
 
 ![ボリュームの詳細を開く](inspect-en.png)
 
@@ -106,6 +126,9 @@ podbag rm app-b
 ## Desktop でボリュームを削除する
 
 **削除**を選び、確認画面に `training-data` と表示されていることを確かめます。ボリュームと中のファイルが削除されます。
+
+- **Podbag Desktop で:** **実習ボリューム → training-data → 削除**を選び、確認します。
+- **TUI で:** **ボリューム**で `training-data` を選び、`d` を押してから `y` を押します。
 
 ![Desktop でボリュームを削除する](delete-en.png)
 

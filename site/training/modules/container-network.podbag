@@ -173,6 +173,10 @@
       "check": {
         "kind": "container-absent",
         "name": "web"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "web"
       }
     },
     {
@@ -190,6 +194,10 @@
       "check": {
         "kind": "container-absent",
         "name": "api"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "api"
       }
     },
     {
@@ -206,6 +214,10 @@
       "command": "podbag network rm lab-net",
       "check": {
         "kind": "network-absent",
+        "name": "lab-net"
+      },
+      "ui": {
+        "action": "remove-network",
         "name": "lab-net"
       }
     },

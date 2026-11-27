@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## 起動せずにコンテナを作成する
 
 `podbag create` はコンテナを作成しますが、プログラムは起動しません。このプログラムは小さなシェルのループです。停止シグナル（`TERM`）を受け取るまで動き、受け取ると終了コード `0` で終わります。
@@ -53,6 +61,9 @@ podbag ps -a
 podbag start app
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → app → 開始**を選びます。
+- **TUI で:** **コンテナ**で `app` を選び、`s` を押します。
+
 Podbag は `app` が実行中であることを確認します。
 
 ## コンテナを停止する
@@ -62,6 +73,9 @@ Podbag は `app` が実行中であることを確認します。
 ```sh
 podbag stop app
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → app → 停止**を選びます。
+- **TUI で:** **コンテナ**で `app` を選び、`x` を押します。
 
 Podbag は `app` が `exited` の状態であることを確認します。
 
@@ -80,6 +94,9 @@ podbag ps -a
 ```sh
 podbag restart app
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → app → 再起動**を選びます。
+- **TUI で:** **コンテナ**で `app` を選び、`r` を押します。
 
 Podbag は `app` が再び実行中であることを確認します。
 
@@ -104,6 +121,9 @@ podbag ps -a
 ## コンテナを削除して終了する
 
 `podbag rm` は停止したコンテナを削除します。実行中のコンテナには `rm -f` が必要です。
+
+- **Podbag Desktop で:** **実習コンテナ → app → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm app

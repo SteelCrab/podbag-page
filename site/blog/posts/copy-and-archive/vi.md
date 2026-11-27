@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 Tiếp tục tại dấu nhắc `training $`. Phiên thực hành đặt một tệp tên `note.txt` vào thư mục thực hành. Tệp có một dòng: `Hello from note.txt`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy container ở chế độ nền
 
 Chạy một container tên `app`. Nó ghi `/reply.txt` rồi chờ.
@@ -83,6 +91,11 @@ Podbag kiểm tra rằng `busybox.tar` có trong thư mục thực hành.
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image docker.io/library/busybox:1.37.0** và xác nhận.
+- **Trong TUI:** Chọn `docker.io/library/busybox:1.37.0` trong **Image**, nhấn `d`, rồi nhấn `y`.
 
 Podbag kiểm tra rằng container không còn, rồi kiểm tra rằng image không còn.
 

@@ -54,6 +54,10 @@
       "check": {
         "kind": "image-exists",
         "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "pull",
+        "name": "docker.io/library/busybox:1.37.0"
       }
     },
     {
@@ -122,6 +126,10 @@
       "check": {
         "kind": "image-absent",
         "name": "my-busybox:1"
+      },
+      "ui": {
+        "action": "remove-image",
+        "name": "my-busybox:1"
       }
     },
     {
@@ -155,6 +163,10 @@
       "command": "podbag rmi docker.io/library/busybox:1.37.0",
       "check": {
         "kind": "image-absent",
+        "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "remove-image",
         "name": "docker.io/library/busybox:1.37.0"
       }
     },

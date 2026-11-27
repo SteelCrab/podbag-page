@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training의 네트워크 단계 목록과 시작 명령](start-ko.png)
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start container-network --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 네트워크 만들고 api 서버 실행
 
 각 명령은 Training에서 복사합니다. 먼저 `lab-net`이라는 네트워크를 만듭니다.
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 **실습 컨테이너 → web → 포트 보기**를 누릅니다. **브라우저에서 열기**를 누릅니다. 페이지에 **Hello from api**가 표시됩니다. Podbag은 HTTP 200 응답과 이 글자를 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `Enter` 키를 누릅니다.
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18083/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ![web 서버 상세 화면의 로컬 주소와 브라우저 열기 버튼](ports-ko.png)
 
 ![Hello from api가 표시된 웹 페이지](page-en.png)
@@ -80,6 +93,15 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 ## 실습 리소스 정리
 
 Desktop에서 **실습 컨테이너 → web → 중지**를 누릅니다. 같은 터미널에서 컨테이너 두 개와 네트워크를 삭제합니다. `api`는 아직 실행 중이므로 `-f` 옵션으로 중지한 뒤 삭제합니다. 네트워크는 사용하는 컨테이너가 없을 때 삭제할 수 있습니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `x` 키를 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → api → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `api` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → 네트워크 lab-net 삭제**를 누르고 확인합니다.
+- **TUI에서:** **네트워크**에서 `lab-net` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm web

@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 `training $` 프롬프트에서 계속 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start local-registry --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## busybox 이미지 받기
 
 먼저 나중에 push할 이미지를 받습니다.
@@ -34,6 +42,9 @@ podbag lab start local-registry
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 Podbag은 `busybox:1.37.0` 이미지가 있는지 확인합니다.
 
@@ -71,6 +82,9 @@ podbag은 레이어를 하나씩 레지스트리로 보내고, 마지막에 매�
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 127.0.0.1:18105/training/busybox:1 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `127.0.0.1:18105/training/busybox:1` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 이 명령은 이름만 지웁니다. `busybox:1.37.0` 이름이 아직 이미지를 가리키므로 파일은 남습니다. Podbag은 `127.0.0.1:18105/training/busybox:1` 이름이 없어졌는지 확인합니다.
 
 ## 이미지 다시 받기
@@ -78,6 +92,9 @@ podbag rmi 127.0.0.1:18105/training/busybox:1
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → 127.0.0.1:18105/training/busybox:1 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `127.0.0.1:18105/training/busybox:1` 입력 후 `Enter` 키를 누릅니다.
 
 podbag은 내 레지스트리에 이미지를 요청하고 그 이름으로 다시 저장합니다. Podbag은 이 이름이 있는지 확인합니다.
 
@@ -92,6 +109,9 @@ podbag run --rm 127.0.0.1:18105/training/busybox:1 echo "Hello from the registry
 ## 정리 및 실습 종료
 
 레지스트리를 삭제합니다. 아직 실행 중이므로 `-f`가 먼저 멈춥니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → registry → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `registry` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f registry

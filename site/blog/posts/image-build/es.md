@@ -25,7 +25,17 @@ Abre **Training** en Podbag Desktop y selecciona **Crea una imagen a partir de u
 podbag lab start image-build
 ```
 
-Continúa en el prompt `training $`. La sesión pone una carpeta llamada `my-site` en el directorio de práctica. Tiene dos archivos. `index.html` es la página:
+Continúa en el prompt `training $`.
+
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start image-build --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
+La sesión pone una carpeta llamada `my-site` en el directorio de práctica. Tiene dos archivos. `index.html` es la página:
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ No das ningún comando. El contenedor ejecuta el `CMD` del Dockerfile. Podbag co
 
 Ve a **Contenedores de práctica → web → Ver puertos**. Selecciona **Abrir en el navegador**. La página muestra **Hello from my-site**. Podbag comprueba que hay una respuesta HTTP 200 y este texto.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Ver puertos**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `Enter`.
+- **En Podbag Desktop:** Selecciona **Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18095/` en un navegador. Cuando se vea la página, pulsa `o`.
+
 ## Limpia y termina
 
 En Desktop, selecciona **Contenedores de práctica → web → Detener**. Luego elimina el contenedor y la imagen en la misma terminal.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Detener**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `x`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Eliminar** y confirma.
+- **En la TUI:** Selecciona `web` en **Contenedores**, pulsa `d` y luego `y`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la imagen my-site:1** y confirma.
+- **En la TUI:** Selecciona `my-site:1` en **Imágenes**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm web

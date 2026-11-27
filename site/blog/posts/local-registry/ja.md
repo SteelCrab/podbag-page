@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 `training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start local-registry --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## busybox イメージを取得する
 
 まず、後で push するイメージを取得します。
@@ -34,6 +42,9 @@ podbag lab start local-registry
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → docker.io/library/busybox:1.37.0 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `docker.io/library/busybox:1.37.0` と入力し、`Enter` を押します。
 
 Podbag はイメージ `busybox:1.37.0` があることを確認します。
 
@@ -71,6 +82,9 @@ podbag は各レイヤーをレジストリに送り、最後にマニフェス�
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → イメージ 127.0.0.1:18105/training/busybox:1 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `127.0.0.1:18105/training/busybox:1` を選び、`d` を押してから `y` を押します。
+
 このコマンドは名前だけを削除します。`busybox:1.37.0` という名前がまだイメージを指しているので、ファイルは残ります。Podbag は名前 `127.0.0.1:18105/training/busybox:1` が消えたことを確認します。
 
 ## イメージを pull で取り戻す
@@ -78,6 +92,9 @@ podbag rmi 127.0.0.1:18105/training/busybox:1
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → 127.0.0.1:18105/training/busybox:1 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `127.0.0.1:18105/training/busybox:1` と入力し、`Enter` を押します。
 
 podbag は自分のレジストリにイメージを要求し、もう一度その名前で保存します。Podbag はその名前があることを確認します。
 
@@ -92,6 +109,9 @@ podbag run --rm 127.0.0.1:18105/training/busybox:1 echo "Hello from the registry
 ## 片付けて終了する
 
 レジストリを削除します。まだ実行中なので、`-f` で先に停止します。
+
+- **Podbag Desktop で:** **実習コンテナ → registry → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `registry` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm -f registry

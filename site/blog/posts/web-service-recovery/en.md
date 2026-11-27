@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Training lists the recovery steps and shows the start command](start-en.png)
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run the server and inspect the failure
 
 Copy the command from Training. The server starts in the background and checks for the `SITE_TITLE` environment variable. The startup script exits with code `1` because this command leaves the setting unset.
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 Open **Practice containers → lab-web**. Look for `Exited (1)` in the container details. Training advances to the log step when you open this container.
 
+- **In Podbag Desktop:** Select **Practice containers → lab-web**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `Enter`.
+
 ![The Practice containers detail shows lab-web exited with code 1](failed-en.png)
 
 ## Read the startup log
@@ -54,6 +65,9 @@ Return to the same terminal. The log tells you which setting the process needs.
 ```sh
 podbag logs lab-web
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Logs**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `l`.
 
 ![Training highlights the log command after the exited container is inspected](logs-step-en.png)
 
@@ -67,6 +81,9 @@ Remove the failed container to reuse its name. Then run the command shown in Tra
 podbag rm lab-web
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Remove** and confirm.
+- **In the TUI:** Select `lab-web` in **Containers**, press `d`, then `y`.
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 Go to **Practice containers → lab-web → View ports**. Select **Open in browser**. The page displays **Recovered Podbag site**. Podbag checks for an HTTP 200 response and the expected title.
 
+- **In Podbag Desktop:** Select **Practice containers → lab-web → View ports**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `Enter`.
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18082/` in a browser. When the page shows, press `o`.
+
 ![The running server details show the localhost address and browser button](ports-en.png)
 
 ![The recovered page displays Recovered Podbag site](page-en.png)
@@ -82,6 +104,11 @@ Go to **Practice containers → lab-web → View ports**. Select **Open in brows
 ## Clean up and finish
 
 In Desktop, select **Practice containers → lab-web → Stop**. Remove the container in the same terminal and end the session.
+
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Stop**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `x`.
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Remove** and confirm.
+- **In the TUI:** Select `lab-web` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm lab-web

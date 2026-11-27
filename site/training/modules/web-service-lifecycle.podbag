@@ -55,6 +55,10 @@
       "check": {
         "kind": "volume-exists",
         "name": "site-data"
+      },
+      "ui": {
+        "action": "create-volume",
+        "name": "site-data"
       }
     },
     {
@@ -138,6 +142,10 @@
       "check": {
         "kind": "container-absent",
         "name": "site-v1"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "site-v1"
       }
     },
     {
@@ -220,6 +228,10 @@
       "command": "podbag rm site-v2",
       "check": {
         "kind": "container-absent",
+        "name": "site-v2"
+      },
+      "ui": {
+        "action": "remove",
         "name": "site-v2"
       }
     },

@@ -190,6 +190,10 @@
       "check": {
         "kind": "container-absent",
         "name": "app"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "app"
       }
     },
     {

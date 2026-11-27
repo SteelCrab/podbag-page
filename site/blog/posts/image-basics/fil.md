@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 Magpatuloy sa prompt na `training $`. May sariling walang lamang imbakan ng image ang practice session.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start image-basics --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Kumuha ng image
 
 Dina-download ng `pull` ang image mula sa registry. Ang registry ay server na nag-iimbak ng mga image. Ang `docker.io` ay Docker Hub.
@@ -34,6 +42,9 @@ Dina-download ng `pull` ang image mula sa registry. Ang registry ay server na na
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang docker.io/library/busybox:1.37.0**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `docker.io/library/busybox:1.37.0` at pindutin ang `Enter`.
 
 Ipinapakita ng podbag ang bawat layer habang dina-download ito. Sinusuri ng Podbag na naka-imbak na ang image na `docker.io/library/busybox:1.37.0`.
 
@@ -75,6 +86,9 @@ Inaalis ng `rmi` ang pangalan ng image. Kapag may iba pang pangalan na gumagamit
 podbag rmi my-busybox:1
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na my-busybox:1** at kumpirmahin.
+- **Sa TUI:** Piliin ang `my-busybox:1` sa **Mga image**, pindutin ang `d`, saka ang `y`.
+
 Ipinapakita ng podbag ang `Untagged: docker.io/library/my-busybox:1`. Sinusuri ng Podbag na wala na ang tag.
 
 ## Tiyaking nananatili ang orihinal na image
@@ -94,6 +108,9 @@ Alisin ang huling pangalan. Ngayon, wala nang pangalang tumuturo sa image.
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na docker.io/library/busybox:1.37.0** at kumpirmahin.
+- **Sa TUI:** Piliin ang `docker.io/library/busybox:1.37.0` sa **Mga image**, pindutin ang `d`, saka ang `y`.
 
 Sinusuri ng Podbag na wala na ang image.
 

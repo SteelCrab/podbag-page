@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 出现 `training $` 提示符后继续。实验会在练习目录中放入一个名为 `note.txt` 的文件。文件中只有一行：`Hello from note.txt`。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 在后台运行容器
 
 运行一个名为 `app` 的容器。它写入 `/reply.txt`，然后等待。
@@ -83,6 +91,11 @@ Podbag 会检查 `busybox.tar` 是否在练习目录中。
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 docker.io/library/busybox:1.37.0**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `docker.io/library/busybox:1.37.0`，按 `d`，再按 `y`。
 
 Podbag 会先检查容器是否已删除，再检查镜像是否已删除。
 

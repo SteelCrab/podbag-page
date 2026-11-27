@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training 列出网络实验步骤并显示启动命令](start-en.png)
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start container-network --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 创建网络并运行 api 服务器
 
 从 Training 复制每条命令。首先，创建名为 `lab-net` 的网络。
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 前往**实验容器 → web → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from api**。Podbag 会检查 HTTP 200 响应和这段文字。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18083/`。页面显示后按 `o`。
+
 ![Web 服务器详情显示 localhost 地址和浏览器按钮](ports-en.png)
 
 ![网页显示 Hello from api](page-en.png)
@@ -80,6 +93,15 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 ## 清理并结束
 
 在 Desktop 中选择**实验容器 → web → 停止**。然后在同一个终端中删除两个容器和网络。`api` 仍在运行，所以 `-f` 会先停止它再删除。没有容器使用网络时，才能删除网络。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `x`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `web`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → api → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `api`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除网络 lab-net**并确认。
+- **在 TUI 中：** 在**网络**中选择 `lab-net`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm web

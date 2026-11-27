@@ -25,6 +25,14 @@ podbag lab start container-exec
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start container-exec --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Ejecuta un contenedor con una variable de entorno
 
 Una variable de entorno es un nombre con un valor que los programas pueden leer. La opción `-e` le da una al contenedor. El contenedor ejecuta `sleep 3600`. Así sigue activo durante una hora y no hace nada más. La opción `-d` lo ejecuta en segundo plano.
@@ -110,6 +118,9 @@ Para abrir tú mismo una shell en el contenedor, usa `podbag exec -it app sh`. E
 ## Limpia y termina
 
 `app` sigue en ejecución. `rm -f` lo detiene y lo elimina. Sus archivos, con `/tmp/note.txt`, se eliminan con él.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f app

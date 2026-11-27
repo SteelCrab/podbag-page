@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![Inicia la sesión de práctica](start-en.png)
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start web-basics --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 Si el puerto predeterminado ya está en uso, usa el puerto que indica Training. El comando y la dirección del navegador muestran el mismo puerto.
 
 ## Ejecuta el servidor web
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 Abre **Contenedores de práctica → lab-web → Ver puertos**. La asignación predeterminada es `127.0.0.1:18080 → 8080/tcp`. El primer puerto es de tu computadora. El segundo es del contenedor.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → lab-web → Ver puertos**.
+- **En la TUI:** Selecciona `lab-web` en **Contenedores** y pulsa `Enter`.
+
 ![Comprueba la asignación de puertos en Desktop](ports-en.png)
 
 ![Comprueba la asignación de puertos en Desktop](gui-ports-en.png)
@@ -65,6 +76,9 @@ Abre **Contenedores de práctica → lab-web → Ver puertos**. La asignación p
 
 Selecciona **Abrir en el navegador**. La página muestra **Podbag Training**. Desktop comprueba que la dirección local devuelve HTTP 200 y el texto esperado.
 
+- **En Podbag Desktop:** Selecciona **Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18080/` en un navegador. Cuando se vea la página, pulsa `o`.
+
 ![Abre la página en el navegador](browser-en.png)
 
 ![Abre la página en el navegador](web-browser-en.png)
@@ -72,6 +86,9 @@ Selecciona **Abrir en el navegador**. La página muestra **Podbag Training**. De
 ## Detén el servidor en Desktop
 
 Vuelve a **Contenedores de práctica**. Busca `lab-web` y selecciona **Detener** en su fila.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → lab-web → Detener**.
+- **En la TUI:** Selecciona `lab-web` en **Contenedores** y pulsa `x`.
 
 ![Detén el servidor en Desktop](stop-en.png)
 
@@ -84,6 +101,9 @@ Ejecuta el comando de eliminación en la misma terminal. El siguiente paso apare
 ```sh
 podbag rm lab-web
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → lab-web → Eliminar** y confirma.
+- **En la TUI:** Selecciona `lab-web` en **Contenedores**, pulsa `d` y luego `y`.
 
 ![Elimina el contenedor detenido](remove-en.png)
 

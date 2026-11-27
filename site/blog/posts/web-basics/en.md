@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![Start the practice session](start-en.png)
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start web-basics --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 If the default port is already in use, use the port in Training. The command and browser address show the same port.
 
 ## Run the web server
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 Open **Practice containers → lab-web → View ports**. The default mapping is `127.0.0.1:18080 → 8080/tcp`. The first port belongs to your computer. The second belongs to the container.
 
+- **In Podbag Desktop:** Select **Practice containers → lab-web → View ports**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `Enter`.
+
 ![Check the port mapping in Desktop](ports-en.png)
 
 ![Check the port mapping in Desktop](gui-ports-en.png)
@@ -65,6 +76,9 @@ Open **Practice containers → lab-web → View ports**. The default mapping is 
 
 Select **Open in browser**. The page shows **Podbag Training**. Desktop checks that the local address returns HTTP 200 and the expected text.
 
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18080/` in a browser. When the page shows, press `o`.
+
 ![Open the page in the browser](browser-en.png)
 
 ![Open the page in the browser](web-browser-en.png)
@@ -72,6 +86,9 @@ Select **Open in browser**. The page shows **Podbag Training**. Desktop checks t
 ## Stop the server in Desktop
 
 Return to **Practice containers**. Find `lab-web` and select **Stop** in its row.
+
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Stop**.
+- **In the TUI:** Select `lab-web` in **Containers** and press `x`.
 
 ![Stop the server in Desktop](stop-en.png)
 
@@ -84,6 +101,9 @@ Run the removal command in the same terminal. The next step appears when `lab-we
 ```sh
 podbag rm lab-web
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → lab-web → Remove** and confirm.
+- **In the TUI:** Select `lab-web` in **Containers**, press `d`, then `y`.
 
 ![Remove the stopped container](remove-en.png)
 

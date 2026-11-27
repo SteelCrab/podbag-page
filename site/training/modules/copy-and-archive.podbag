@@ -142,6 +142,10 @@
       "check": {
         "kind": "container-absent",
         "name": "app"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "app"
       }
     },
     {
@@ -158,6 +162,10 @@
       "command": "podbag rmi docker.io/library/busybox:1.37.0",
       "check": {
         "kind": "image-absent",
+        "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "remove-image",
         "name": "docker.io/library/busybox:1.37.0"
       }
     },

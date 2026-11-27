@@ -88,6 +88,10 @@
       "check": {
         "kind": "container-running",
         "name": "app"
+      },
+      "ui": {
+        "action": "start",
+        "name": "app"
       }
     },
     {
@@ -104,6 +108,10 @@
       "command": "podbag stop app",
       "check": {
         "kind": "container-stopped",
+        "name": "app"
+      },
+      "ui": {
+        "action": "stop",
         "name": "app"
       }
     },
@@ -138,6 +146,10 @@
       "command": "podbag restart app",
       "check": {
         "kind": "container-running",
+        "name": "app"
+      },
+      "ui": {
+        "action": "restart",
         "name": "app"
       }
     },
@@ -190,6 +202,10 @@
       "command": "podbag rm app",
       "check": {
         "kind": "container-absent",
+        "name": "app"
+      },
+      "ui": {
+        "action": "remove",
         "name": "app"
       }
     },

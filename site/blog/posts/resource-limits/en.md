@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a container with limits
 
 Run a quiet container named `app`. It gets at most 64 MiB of memory and half of one CPU. The `-d` option runs it in the background, and `sleep 3600` keeps it up for an hour.
@@ -90,6 +98,9 @@ The output is now `134217728`, which is 128 MiB. Podbag checks this number.
 ## Clean up and finish
 
 Remove the container. `app` still runs, so `-f` stops it first. Then end the session.
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f app

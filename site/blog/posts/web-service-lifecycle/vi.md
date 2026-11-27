@@ -41,6 +41,14 @@ podbag lab start web-service-lifecycle
 
 ![Bắt đầu phiên thực hành](start-en.png)
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start web-service-lifecycle --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 Nếu cổng mặc định đang được dùng, hãy dùng cổng hiển thị trong Training. Lệnh và địa chỉ trình duyệt hiển thị cùng một cổng.
 
 ## Tạo volume cho trang web
@@ -50,6 +58,9 @@ Tạo `site-data` để chứa trang web.
 ```sh
 podbag volume create site-data
 ```
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → Tạo volume site-data**.
+- **Trong TUI:** Mở **Volume**, nhấn `v`, gõ `site-data` rồi nhấn `Enter`.
 
 ![Tạo volume cho trang web](create-en.png)
 
@@ -67,6 +78,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 Chọn **Container thực hành → site-v1 → Xem cổng**. Kiểm tra địa chỉ trong bảng chi tiết.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v1 → Xem cổng**.
+- **Trong TUI:** Chọn `site-v1` trong **Container** rồi nhấn `Enter`.
+
 ![Kiểm tra cổng của máy chủ đầu tiên](ports-en.png)
 
 ![Kiểm tra cổng của máy chủ đầu tiên](gui-ports-en.png)
@@ -75,6 +89,9 @@ Chọn **Container thực hành → site-v1 → Xem cổng**. Kiểm tra địa 
 
 Chọn **Mở trong trình duyệt**. Kiểm tra rằng trang hiển thị **My Podbag site**.
 
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18081/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ![Mở trang của máy chủ đầu tiên](browser-en.png)
 
 ![Mở trang của máy chủ đầu tiên](web-browser-en.png)
@@ -82,6 +99,9 @@ Chọn **Mở trong trình duyệt**. Kiểm tra rằng trang hiển thị **My 
 ## Dừng máy chủ đầu tiên
 
 Chọn **Container thực hành → site-v1 → Dừng**.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v1 → Dừng**.
+- **Trong TUI:** Chọn `site-v1` trong **Container** rồi nhấn `x`.
 
 ![Dừng máy chủ đầu tiên](stop-en.png)
 
@@ -94,6 +114,9 @@ Chạy lệnh xóa. Container biến mất, còn `site-data` vẫn ở trong phi
 ```sh
 podbag rm site-v1
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v1 → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `site-v1` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ![Xóa máy chủ đầu tiên](remove-en.png)
 
@@ -111,6 +134,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 Chọn **Container thực hành → site-v2 → Xem cổng**. Kiểm tra rằng địa chỉ giống với máy chủ đầu tiên.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v2 → Xem cổng**.
+- **Trong TUI:** Chọn `site-v2` trong **Container** rồi nhấn `Enter`.
+
 ![Kiểm tra cổng của máy chủ thay thế](portsReplacement-en.png)
 
 ![Kiểm tra cổng của máy chủ thay thế](gui-ports-replacement-en.png)
@@ -119,6 +145,9 @@ Chọn **Container thực hành → site-v2 → Xem cổng**. Kiểm tra rằng 
 
 Chọn lại **Mở trong trình duyệt**. Trang vẫn hiển thị **My Podbag site**. Desktop kiểm tra phản hồi bằng một yêu cầu mới.
 
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18081/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ![Mở trang của máy chủ thay thế](browserReplacement-en.png)
 
 ![Mở trang của máy chủ thay thế](web-browserReplacement-en.png)
@@ -126,6 +155,9 @@ Chọn lại **Mở trong trình duyệt**. Trang vẫn hiển thị **My Podbag
 ## Dừng máy chủ thay thế
 
 Chọn **Container thực hành → site-v2 → Dừng**.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v2 → Dừng**.
+- **Trong TUI:** Chọn `site-v2` trong **Container** rồi nhấn `x`.
 
 ![Dừng máy chủ thay thế](stopReplacement-en.png)
 
@@ -139,11 +171,17 @@ Xóa container đã dừng trong cùng terminal.
 podbag rm site-v2
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site-v2 → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `site-v2` trong **Container**, nhấn `d`, rồi nhấn `y`.
+
 ![Xóa máy chủ thay thế](removeReplacement-en.png)
 
 ## Mở chi tiết volume của trang web
 
 Chọn **Volume thực hành → site-data** để xem volume còn lại.
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → site-data**.
+- **Trong TUI:** Chọn `site-data` trong **Volume** rồi nhấn `Enter`.
 
 ![Mở chi tiết volume của trang web](inspect-en.png)
 
@@ -152,6 +190,9 @@ Chọn **Volume thực hành → site-data** để xem volume còn lại.
 ## Xóa volume của trang web
 
 Chọn **Xóa** và xác nhận tên volume.
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → site-data → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `site-data` trong **Volume**, nhấn `d`, rồi nhấn `y`.
 
 ![Xóa volume của trang web](delete-en.png)
 

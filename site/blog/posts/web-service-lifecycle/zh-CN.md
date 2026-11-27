@@ -41,6 +41,14 @@ podbag lab start web-service-lifecycle
 
 ![开始实验](start-en.png)
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start web-service-lifecycle --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 如果默认端口已被占用，请使用 Training 中显示的端口。命令和浏览器地址会显示同一个端口。
 
 ## 创建网站卷
@@ -50,6 +58,9 @@ podbag lab start web-service-lifecycle
 ```sh
 podbag volume create site-data
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → 创建卷 site-data**。
+- **在 TUI 中：** 打开**卷**，按 `v`，输入 `site-data` 并按 `Enter`。
 
 ![创建网站卷](create-en.png)
 
@@ -67,6 +78,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 选择**实验容器 → site-v1 → 查看端口**。在详情面板中查看地址。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v1 → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `site-v1`，然后按 `Enter`。
+
 ![查看第一个服务器的端口](ports-en.png)
 
 ![查看第一个服务器的端口](gui-ports-en.png)
@@ -75,6 +89,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 点击**在浏览器中打开**。确认页面显示 **My Podbag site**。
 
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18081/`。页面显示后按 `o`。
+
 ![打开第一个服务器的页面](browser-en.png)
 
 ![打开第一个服务器的页面](web-browser-en.png)
@@ -82,6 +99,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ## 停止第一个服务器
 
 选择**实验容器 → site-v1 → 停止**。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v1 → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `site-v1`，然后按 `x`。
 
 ![停止第一个服务器](stop-en.png)
 
@@ -94,6 +114,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ```sh
 podbag rm site-v1
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v1 → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `site-v1`，按 `d`，再按 `y`。
 
 ![删除第一个服务器](remove-en.png)
 
@@ -111,6 +134,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 选择**实验容器 → site-v2 → 查看端口**。确认地址与第一个服务器相同。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v2 → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `site-v2`，然后按 `Enter`。
+
 ![查看替换服务器的端口](portsReplacement-en.png)
 
 ![查看替换服务器的端口](gui-ports-replacement-en.png)
@@ -119,6 +145,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 再次点击**在浏览器中打开**。页面仍然显示 **My Podbag site**。Desktop 会用新的请求检查响应。
 
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18081/`。页面显示后按 `o`。
+
 ![打开替换服务器的页面](browserReplacement-en.png)
 
 ![打开替换服务器的页面](web-browserReplacement-en.png)
@@ -126,6 +155,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 ## 停止替换服务器
 
 选择**实验容器 → site-v2 → 停止**。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v2 → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `site-v2`，然后按 `x`。
 
 ![停止替换服务器](stopReplacement-en.png)
 
@@ -139,11 +171,17 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 podbag rm site-v2
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → site-v2 → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `site-v2`，按 `d`，再按 `y`。
+
 ![删除替换服务器](removeReplacement-en.png)
 
 ## 打开网站卷详情
 
 选择**实验卷 → site-data**，查看保留下来的卷。
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → site-data**。
+- **在 TUI 中：** 在**卷**中选择 `site-data`，然后按 `Enter`。
 
 ![打开网站卷详情](inspect-en.png)
 
@@ -152,6 +190,9 @@ podbag rm site-v2
 ## 删除网站卷
 
 点击**删除**，确认卷名。
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → site-data → 删除**并确认。
+- **在 TUI 中：** 在**卷**中选择 `site-data`，按 `d`，再按 `y`。
 
 ![删除网站卷](delete-en.png)
 

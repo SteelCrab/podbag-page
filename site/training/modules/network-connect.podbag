@@ -122,6 +122,10 @@
       "check": {
         "kind": "container-stopped",
         "name": "api"
+      },
+      "ui": {
+        "action": "stop",
+        "name": "api"
       }
     },
     {
@@ -157,6 +161,10 @@
       "check": {
         "kind": "container-running",
         "name": "api"
+      },
+      "ui": {
+        "action": "start",
+        "name": "api"
       }
     },
     {
@@ -190,6 +198,10 @@
       "command": "podbag stop api",
       "check": {
         "kind": "container-stopped",
+        "name": "api"
+      },
+      "ui": {
+        "action": "stop",
         "name": "api"
       }
     },
@@ -226,6 +238,10 @@
       "check": {
         "kind": "container-absent",
         "name": "api"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "api"
       }
     },
     {
@@ -242,6 +258,10 @@
       "command": "podbag network rm front-net back-net",
       "check": {
         "kind": "network-absent",
+        "name": "back-net"
+      },
+      "ui": {
+        "action": "remove-network",
         "name": "back-net"
       }
     },

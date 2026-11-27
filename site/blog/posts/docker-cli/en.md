@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 Continue at the `training $` prompt. In this shell, `docker` goes to the practice session. The session serves the Docker API on its own socket and sets `DOCKER_HOST` to it. Your other docker settings do not change.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Ask the engine for its version
 
 ```sh
@@ -40,6 +48,9 @@ The output has two parts. `Client` is the docker command. `Server` is the engine
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 The docker command asks podbag to pull the image. podbag downloads it and keeps it in its own store. Podbag checks that the image `busybox:1.37.0` exists.
 
@@ -73,9 +84,19 @@ podbag shows the same container. There is one engine, and `docker` and `podbag` 
 
 Go to **Practice containers → web → View ports**. Select **Open in browser**. The page displays **Hello from the Docker CLI**. Podbag checks for an HTTP 200 response and this text.
 
+- **In Podbag Desktop:** Select **Practice containers → web → View ports**.
+- **In the TUI:** Select `web` in **Containers** and press `Enter`.
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18106/` in a browser. When the page shows, press `o`.
+
 ## Clean up and finish
 
 Stop and remove the container with `docker`. Podbag checks that `web` stops, and then that it is gone.
+
+- **In Podbag Desktop:** Select **Practice containers → web → Stop**.
+- **In the TUI:** Select `web` in **Containers** and press `x`.
+- **In Podbag Desktop:** Select **Practice containers → web → Remove** and confirm.
+- **In the TUI:** Select `web` in **Containers**, press `d`, then `y`.
 
 ```sh
 docker stop web

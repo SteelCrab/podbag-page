@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training liệt kê các bước về mạng và hiển thị lệnh bắt đầu](start-en.png)
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start container-network --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Tạo mạng và chạy máy chủ api
 
 Sao chép từng lệnh từ Training. Đầu tiên, tạo một mạng tên `lab-net`.
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 Đi tới **Container thực hành → web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from api**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xem cổng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18083/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ![Chi tiết máy chủ web hiển thị địa chỉ localhost và nút mở trình duyệt](ports-en.png)
 
 ![Trang web hiển thị Hello from api](page-en.png)
@@ -80,6 +93,15 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 ## Dọn dẹp và kết thúc
 
 Trong Desktop, chọn **Container thực hành → web → Dừng**. Sau đó xóa cả hai container và mạng trong cùng terminal. `api` vẫn đang chạy, nên `-f` dừng nó trước khi xóa. Chỉ xóa được mạng khi không còn container nào dùng nó.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Dừng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `x`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `web` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → api → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `api` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa mạng lab-net** và xác nhận.
+- **Trong TUI:** Chọn `lab-net` trong **Mạng**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm web

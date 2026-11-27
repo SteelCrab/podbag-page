@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![开始实验](start-en.png)
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 创建卷
 
 在练习环境中创建名为 `training-data` 的卷。
@@ -50,6 +58,9 @@ podbag lab start volume-persistence
 ```sh
 podbag volume create training-data
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → 创建卷 training-data**。
+- **在 TUI 中：** 打开**卷**，按 `v`，输入 `training-data` 并按 `Enter`。
 
 ![创建卷](create-en.png)
 
@@ -70,6 +81,9 @@ podbag run --name app-a --network none -v training-data:/data docker.io/library/
 ```sh
 podbag rm app-a
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app-a → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app-a`，按 `d`，再按 `y`。
 
 ![删除 app-a](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ podbag run --name app-b --network none -v training-data:/data:ro docker.io/libra
 podbag rm app-b
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → app-b → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app-b`，按 `d`，再按 `y`。
+
 ![删除 app-b](removeReader-en.png)
 
 ## 打开卷详情
 
 选择**实验卷 → training-data**。详情中显示卷名和挂载点。
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → training-data**。
+- **在 TUI 中：** 在**卷**中选择 `training-data`，然后按 `Enter`。
 
 ![打开卷详情](inspect-en.png)
 
@@ -106,6 +126,9 @@ podbag rm app-b
 ## 在 Desktop 中删除卷
 
 点击**删除**，确认对话框中显示的是 `training-data`。卷及其中的文件会被删除。
+
+- **在 Podbag Desktop 中：** 选择**实验卷 → training-data → 删除**并确认。
+- **在 TUI 中：** 在**卷**中选择 `training-data`，按 `d`，再按 `y`。
 
 ![在 Desktop 中删除卷](delete-en.png)
 

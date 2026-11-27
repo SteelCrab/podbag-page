@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start container-changes --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行写入文件的容器
 
 运行一个名为 `app` 的容器。它写入一个文件 `/hello.txt`，然后结束。命令中没有 `--rm`，所以停止后的容器会保留。
@@ -80,6 +88,11 @@ podbag export -o app.tar app
 ## 清理并结束
 
 在同一个终端中删除容器和新镜像。然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 app-snapshot:1**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `app-snapshot:1`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm app

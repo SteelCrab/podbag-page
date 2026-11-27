@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy máy chủ web
 
 Chạy một máy chủ web nhỏ tên `web`. Nó phục vụ dòng chữ `Hello from web` và công bố cổng `18090` trên máy tính của bạn. Nếu `18090` đang được dùng, hãy dùng cổng hiển thị trong Training.
@@ -41,6 +49,9 @@ Podbag kiểm tra rằng `web` công bố cổng và trang hiển thị `Hello f
 podbag pause web
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Tạm dừng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `p`.
+
 Máy chủ bị đóng băng. Nếu bạn mở `http://127.0.0.1:18090/` lúc này, trang sẽ không tải được. Podbag kiểm tra rằng `web` ở trạng thái `paused`.
 
 ## Xem Paused trong danh sách
@@ -56,6 +67,9 @@ Trạng thái của `web` kết thúc bằng `(Paused)`. Container bị tạm d�
 ```sh
 podbag unpause web
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Tiếp tục**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `p`.
 
 Máy chủ chạy lại và trả lời các yêu cầu. Podbag kiểm tra lại trang.
 
@@ -81,9 +95,15 @@ Danh sách có `site` và không có `web`. Podbag kiểm tra rằng không có 
 
 Trong Podbag Desktop, đi tới **Container thực hành → site → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from web**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site → Xem cổng → Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18090/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ## Dọn dẹp và kết thúc
 
 `site` vẫn đang chạy. `rm -f` dừng rồi xóa nó.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → site → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `site` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f site

@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![Start the practice session](start-en.png)
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Create the volume
 
 Create the named volume `training-data` in the practice session.
@@ -50,6 +58,9 @@ Create the named volume `training-data` in the practice session.
 ```sh
 podbag volume create training-data
 ```
+
+- **In Podbag Desktop:** Select **Practice volumes → Create volume training-data**.
+- **In the TUI:** Open **Volumes**, press `v`, type `training-data` and press `Enter`.
 
 ![Create the volume](create-en.png)
 
@@ -70,6 +81,9 @@ Remove the stopped container. The volume stays in the practice session.
 ```sh
 podbag rm app-a
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → app-a → Remove** and confirm.
+- **In the TUI:** Select `app-a` in **Containers**, press `d`, then `y`.
 
 ![Remove app-a](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ Remove the second container to release the volume before you delete it.
 podbag rm app-b
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → app-b → Remove** and confirm.
+- **In the TUI:** Select `app-b` in **Containers**, press `d`, then `y`.
+
 ![Remove app-b](removeReader-en.png)
 
 ## Open the volume details
 
 Select **Practice volumes → training-data**. The details show its name and mount point.
+
+- **In Podbag Desktop:** Select **Practice volumes → training-data**.
+- **In the TUI:** Select `training-data` in **Volumes** and press `Enter`.
 
 ![Open the volume details](inspect-en.png)
 
@@ -106,6 +126,9 @@ Select **Practice volumes → training-data**. The details show its name and mou
 ## Delete the volume in Desktop
 
 Select **Remove** and confirm that the dialog names `training-data`. The volume and its file are deleted.
+
+- **In Podbag Desktop:** Select **Practice volumes → training-data → Remove** and confirm.
+- **In the TUI:** Select `training-data` in **Volumes**, press `d`, then `y`.
 
 ![Delete the volume in Desktop](delete-en.png)
 

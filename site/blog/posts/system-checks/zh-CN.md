@@ -25,6 +25,14 @@ podbag lab start system-checks
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start system-checks --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 检查系统
 
 `podbag check` 列出 Podbag 在此系统上需要的条件，每项一行。例如内核、cgroup v2 和 keeper。keeper 是在后台监视容器的小型进程。
@@ -42,6 +50,9 @@ podbag check
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 Podbag 会检查镜像是否存在。
 
@@ -78,6 +89,9 @@ podbag system verify
 ## 清理并结束
 
 删除镜像。然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 docker.io/library/busybox:1.37.0**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `docker.io/library/busybox:1.37.0`，按 `d`，再按 `y`。
 
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0

@@ -25,7 +25,17 @@ Mở **Training** trong Podbag Desktop và chọn **Build image từ Dockerfile*
 podbag lab start image-build
 ```
 
-Tiếp tục tại dấu nhắc `training $`. Phiên thực hành đặt một thư mục tên `my-site` vào thư mục thực hành. Thư mục này có hai tệp. `index.html` là trang web:
+Tiếp tục tại dấu nhắc `training $`.
+
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start image-build --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
+Phiên thực hành đặt một thư mục tên `my-site` vào thư mục thực hành. Thư mục này có hai tệp. `index.html` là trang web:
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ Bạn không đưa lệnh nào. Container chạy `CMD` trong Dockerfile. Podbag 
 
 Đi tới **Container thực hành → web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from my-site**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xem cổng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18095/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ## Dọn dẹp và kết thúc
 
 Trong Desktop, chọn **Container thực hành → web → Dừng**. Sau đó xóa container và image trong cùng terminal.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Dừng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `x`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `web` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image my-site:1** và xác nhận.
+- **Trong TUI:** Chọn `my-site:1` trong **Image**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm web

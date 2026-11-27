@@ -41,6 +41,14 @@ podbag lab start web-service-lifecycle
 
 ![실습 시작하기](start-ko.png)
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start web-service-lifecycle --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 기본 포트가 사용 중이면 Training에 표시된 포트를 사용합니다. 실행 명령과 접속 주소에 같은 포트가 표시됩니다.
 
 ## 웹 페이지용 볼륨 만들기
@@ -50,6 +58,9 @@ podbag lab start web-service-lifecycle
 ```sh
 podbag volume create site-data
 ```
+
+- **Podbag Desktop에서:** **실습 볼륨 → 볼륨 site-data 만들기**를 누릅니다.
+- **TUI에서:** **볼륨** 탭을 열고 `v` 키를 누른 뒤 `site-data` 입력 후 `Enter` 키를 누릅니다.
 
 ![웹 페이지용 볼륨 만들기](create-ko.png)
 
@@ -67,6 +78,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 **실습 컨테이너 → site-v1 → 포트 보기**를 누릅니다. 상세 화면에서 접속 주소를 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v1 → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `site-v1` 선택 후 `Enter` 키를 누릅니다.
+
 ![첫 서버의 포트 확인하기](ports-ko.png)
 
 ![첫 서버의 포트 확인하기](gui-ports-ko.png)
@@ -75,6 +89,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 **브라우저에서 열기**를 누릅니다. 페이지에 **My Podbag site**가 표시되는지 확인합니다.
 
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18081/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ![첫 서버의 페이지 열기](browser-ko.png)
 
 ![첫 서버의 페이지 열기](web-browser-en.png)
@@ -82,6 +99,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ## 첫 서버 중지하기
 
 **실습 컨테이너 → site-v1 → 중지**를 누릅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v1 → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `site-v1` 선택 후 `x` 키를 누릅니다.
 
 ![첫 서버 중지하기](stop-ko.png)
 
@@ -94,6 +114,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ```sh
 podbag rm site-v1
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v1 → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `site-v1` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ![첫 서버 삭제하기](remove-ko.png)
 
@@ -111,6 +134,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 **실습 컨테이너 → site-v2 → 포트 보기**를 누릅니다. 첫 서버와 주소가 같은지 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v2 → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `site-v2` 선택 후 `Enter` 키를 누릅니다.
+
 ![교체 서버의 포트 확인하기](portsReplacement-ko.png)
 
 ![교체 서버의 포트 확인하기](gui-ports-replacement-ko.png)
@@ -119,6 +145,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 **브라우저에서 열기**를 다시 누릅니다. **My Podbag site**가 계속 표시됩니다. Desktop은 새 HTTP 요청으로 응답을 확인합니다.
 
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18081/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ![교체 서버의 페이지 열기](browserReplacement-ko.png)
 
 ![교체 서버의 페이지 열기](web-browserReplacement-en.png)
@@ -126,6 +155,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 ## 교체 서버 중지하기
 
 **실습 컨테이너 → site-v2 → 중지**를 누릅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v2 → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `site-v2` 선택 후 `x` 키를 누릅니다.
 
 ![교체 서버 중지하기](stopReplacement-ko.png)
 
@@ -139,11 +171,17 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 podbag rm site-v2
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → site-v2 → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `site-v2` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 ![교체 서버 삭제하기](removeReplacement-ko.png)
 
 ## 웹 페이지용 볼륨 확인하기
 
 **실습 볼륨 → site-data**를 눌러 남은 볼륨을 확인합니다.
+
+- **Podbag Desktop에서:** **실습 볼륨 → site-data**를 누릅니다.
+- **TUI에서:** **볼륨**에서 `site-data` 선택 후 `Enter` 키를 누릅니다.
 
 ![웹 페이지용 볼륨 확인하기](inspect-ko.png)
 
@@ -152,6 +190,9 @@ podbag rm site-v2
 ## 웹 페이지용 볼륨 삭제하기
 
 **삭제**를 누릅니다. 확인 창에서 볼륨 이름을 확인한 뒤 삭제합니다.
+
+- **Podbag Desktop에서:** **실습 볼륨 → site-data → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **볼륨**에서 `site-data` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ![웹 페이지용 볼륨 삭제하기](delete-ko.png)
 

@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Training의 복구 단계 목록과 시작 명령](start-ko.png)
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 설정 없이 실행하고 종료 상태 확인
 
 Training에서 명령을 복사합니다. 서버가 백그라운드에서 시작해 `SITE_TITLE` 환경 변수를 확인합니다. 이 명령에는 해당 설정이 빠져 있어 시작 스크립트가 종료 코드 `1`을 반환합니다.
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 Desktop에서 **실습 컨테이너 → lab-web**을 엽니다. 상세 화면에서 `Exited (1)`을 확인합니다. 컨테이너 상세를 열면 Training에서 로그 읽기 단계가 진행 중으로 표시됩니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web**을 엽니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `Enter` 키를 누릅니다.
+
 ![실습 컨테이너 상세 화면에서 lab-web이 코드 1로 종료된 상태](failed-ko.png)
 
 ## 시작 실패 로그 읽기
@@ -54,6 +65,9 @@ Desktop에서 **실습 컨테이너 → lab-web**을 엽니다. 상세 화면에
 ```sh
 podbag logs lab-web
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 로그**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `l` 키를 누릅니다.
 
 ![종료 상태를 확인한 뒤 Training에 표시된 로그 명령](logs-step-ko.png)
 
@@ -67,6 +81,9 @@ podbag logs lab-web
 podbag rm lab-web
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 **실습 컨테이너 → lab-web → 포트 보기**로 이동합니다. **브라우저에서 열기**를 누르면 **Recovered Podbag site**가 표시됩니다. Podbag은 HTTP 200과 설정한 제목을 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `Enter` 키를 누릅니다.
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18082/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ![복구한 컨테이너의 로컬 주소와 브라우저에서 열기 버튼](ports-ko.png)
 
 ![브라우저에 Recovered Podbag site가 표시된 화면](page-en.png)
@@ -82,6 +104,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 ## 실습 리소스 정리
 
 Desktop에서 **실습 컨테이너 → lab-web → 중지**를 누릅니다. 같은 터미널에서 컨테이너를 삭제하고 실습을 종료합니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `x` 키를 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm lab-web

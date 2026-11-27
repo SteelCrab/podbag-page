@@ -25,7 +25,17 @@ Buksan ang **Training** sa Podbag Desktop at piliin ang **Magpatakbo ng dalawang
 podbag lab start docker-compose
 ```
 
-Magpatuloy sa prompt na `training $`. Sa shell na ito, papunta sa engine ng practice session ang `docker`. Naglalagay ang session ng `compose.yaml` sa practice directory:
+Magpatuloy sa prompt na `training $`.
+
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
+Sa shell na ito, papunta sa engine ng practice session ang `docker`. Naglalagay ang session ng `compose.yaml` sa practice directory:
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Inilagay ng Compose ang dalawang container sa `lab_default`. Idinaragdag ng podb
 ## Buksan ang page sa Desktop
 
 Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from api**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18107/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
 
 ## Maglinis at tapusin
 

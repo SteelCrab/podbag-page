@@ -72,6 +72,10 @@
       "check": {
         "kind": "image-exists",
         "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "pull",
+        "name": "docker.io/library/busybox:1.37.0"
       }
     },
     {
@@ -174,6 +178,10 @@
       "check": {
         "kind": "container-stopped",
         "name": "web"
+      },
+      "ui": {
+        "action": "stop",
+        "name": "web"
       }
     },
     {
@@ -190,6 +198,10 @@
       "command": "docker rm web",
       "check": {
         "kind": "container-absent",
+        "name": "web"
+      },
+      "ui": {
+        "action": "remove",
         "name": "web"
       }
     },

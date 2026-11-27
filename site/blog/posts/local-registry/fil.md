@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start local-registry --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## I-pull ang image na busybox
 
 Una, kunin ang image na ipu-push mo mamaya.
@@ -34,6 +42,9 @@ Una, kunin ang image na ipu-push mo mamaya.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang docker.io/library/busybox:1.37.0**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `docker.io/library/busybox:1.37.0` at pindutin ang `Enter`.
 
 Sinusuri ng Podbag na may image na `busybox:1.37.0`.
 
@@ -71,6 +82,9 @@ Ipinapadala ng podbag ang bawat layer sa registry, at saka ang manifest. Ang man
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na 127.0.0.1:18105/training/busybox:1** at kumpirmahin.
+- **Sa TUI:** Piliin ang `127.0.0.1:18105/training/busybox:1` sa **Mga image**, pindutin ang `d`, saka ang `y`.
+
 Pangalan lang ang inaalis nito. Tumuturo pa rin sa image ang pangalang `busybox:1.37.0`, kaya nananatili ang mga file nito. Sinusuri ng Podbag na wala na ang pangalang `127.0.0.1:18105/training/busybox:1`.
 
 ## I-pull ulit ang image
@@ -78,6 +92,9 @@ Pangalan lang ang inaalis nito. Tumuturo pa rin sa image ang pangalang `busybox:
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang 127.0.0.1:18105/training/busybox:1**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `127.0.0.1:18105/training/busybox:1` at pindutin ang `Enter`.
 
 Hinihingi ng podbag sa registry mo ang image at iniimbak ito ulit sa pangalang iyon. Sinusuri ng Podbag na may ganoong pangalan.
 
@@ -92,6 +109,9 @@ Ipinapakita ng container ang text at humihinto ito. Agad itong inaalis ng `--rm`
 ## Maglinis at tapusin
 
 Alisin ang registry. Tumatakbo pa ito, kaya inihihinto muna ito ng `-f`.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → registry → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `registry` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f registry

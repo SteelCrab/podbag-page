@@ -25,6 +25,14 @@ podbag lab start system-checks
 
 Training 카탈로그를 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start system-checks --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 시스템 점검
 
 `podbag check`는 Podbag이 이 시스템에서 필요한 것을 한 줄씩 보여 줍니다. 커널, cgroup v2, keeper 등이 있습니다. keeper는 백그라운드에서 컨테이너를 지켜보는 작은 프로세스입니다.
@@ -42,6 +50,9 @@ podbag check
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 Podbag은 이미지가 있는지 확인합니다.
 
@@ -78,6 +89,9 @@ podbag system verify
 ## 실습 리소스 정리
 
 이미지를 삭제합니다. 그다음 실습을 끝냅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 docker.io/library/busybox:1.37.0 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `docker.io/library/busybox:1.37.0` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0

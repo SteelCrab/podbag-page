@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 出现 `training $` 提示符后继续。在这个 shell 中，`docker` 会连接到练习环境。练习环境在自己的套接字上提供 Docker API，并把 `DOCKER_HOST` 设为该套接字。你的其他 docker 设置不会改变。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 查询引擎版本
 
 ```sh
@@ -40,6 +48,9 @@ docker version
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 docker 命令请求 podbag 拉取镜像。podbag 下载镜像，并保存在自己的存储中。Podbag 会检查镜像 `busybox:1.37.0` 是否存在。
 
@@ -73,9 +84,19 @@ podbag 显示同一个容器。引擎只有一个，`docker` 和 `podbag` 是使
 
 前往**实验容器 → web → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from the Docker CLI**。Podbag 会检查 HTTP 200 响应和这段文字。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18106/`。页面显示后按 `o`。
+
 ## 清理并结束
 
 用 `docker` 停止并删除容器。Podbag 会先检查 `web` 是否已停止，再检查它是否已删除。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `x`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `web`，按 `d`，再按 `y`。
 
 ```sh
 docker stop web

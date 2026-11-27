@@ -89,6 +89,10 @@
       "check": {
         "kind": "output-has-line",
         "text": "try"
+      },
+      "ui": {
+        "action": "logs",
+        "name": "job"
       }
     },
     {
@@ -105,6 +109,10 @@
       "command": "podbag rm job",
       "check": {
         "kind": "container-absent",
+        "name": "job"
+      },
+      "ui": {
+        "action": "remove",
         "name": "job"
       }
     },
@@ -141,6 +149,10 @@
       "check": {
         "kind": "container-stopped",
         "name": "app"
+      },
+      "ui": {
+        "action": "stop",
+        "name": "app"
       }
     },
     {
@@ -175,6 +187,10 @@
       "check": {
         "kind": "container-running",
         "name": "app"
+      },
+      "ui": {
+        "action": "start",
+        "name": "app"
       }
     },
     {
@@ -191,6 +207,10 @@
       "command": "podbag rm -f app",
       "check": {
         "kind": "container-absent",
+        "name": "app"
+      },
+      "ui": {
+        "action": "remove",
         "name": "app"
       }
     },

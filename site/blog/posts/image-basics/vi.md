@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 Tiếp tục tại dấu nhắc `training $`. Phiên thực hành có kho image riêng và kho này đang trống.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start image-basics --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kéo image
 
 `pull` tải image từ một registry. Registry là máy chủ lưu image. `docker.io` là Docker Hub.
@@ -34,6 +42,9 @@ Tiếp tục tại dấu nhắc `training $`. Phiên thực hành có kho image 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 podbag in từng layer khi tải về. Podbag kiểm tra rằng image `docker.io/library/busybox:1.37.0` đã được lưu.
 
@@ -75,6 +86,9 @@ Terminal in `Hello from my-busybox`. Podbag kiểm tra kết quả này.
 podbag rmi my-busybox:1
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image my-busybox:1** và xác nhận.
+- **Trong TUI:** Chọn `my-busybox:1` trong **Image**, nhấn `d`, rồi nhấn `y`.
+
 podbag in `Untagged: docker.io/library/my-busybox:1`. Podbag kiểm tra rằng tag không còn.
 
 ## Kiểm tra rằng image gốc vẫn còn
@@ -94,6 +108,9 @@ Xóa tên cuối cùng. Bây giờ không còn tên nào trỏ tới image.
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image docker.io/library/busybox:1.37.0** và xác nhận.
+- **Trong TUI:** Chọn `docker.io/library/busybox:1.37.0` trong **Image**, nhấn `d`, rồi nhấn `y`.
 
 Podbag kiểm tra rằng image không còn.
 

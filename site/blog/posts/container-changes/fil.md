@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start container-changes --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng container na nagsusulat ng file
 
 Magpatakbo ng container na `app`. Nagsusulat ito ng isang file, ang `/hello.txt`, at saka natatapos. Walang `--rm`, kaya nananatili ang nakahintong container.
@@ -80,6 +88,11 @@ Napupunta ang archive sa practice directory. Sinusuri ng Podbag na nandoon ang `
 ## Maglinis at tapusin
 
 Alisin ang container at ang bagong image sa parehong terminal. Pagkatapos, tapusin ang session.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na app-snapshot:1** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app-snapshot:1` sa **Mga image**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm app

@@ -25,6 +25,14 @@ podbag lab start health-checks
 
 Training 카탈로그를 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start health-checks --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 상태 검사를 넣어 웹 서버 실행
 
 `web`이라는 웹 서버를 실행합니다. 이 서버는 `8080` 포트에서 `Hello from web`이라는 글자를 보여 줍니다. 기본 포트 `18100`이 이미 사용 중이면 Training에 표시된 포트를 사용합니다.
@@ -62,9 +70,17 @@ podbag inspect web
 
 **실습 컨테이너 → web → 포트 보기**를 누릅니다. **브라우저에서 열기**를 누릅니다. 페이지에 **Hello from web**이 표시됩니다. Podbag은 HTTP 200 응답과 이 글자를 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `Enter` 키를 누릅니다.
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18100/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ## 실습 리소스 정리
 
 컨테이너를 삭제합니다. `web`은 아직 실행 중이므로 `-f` 옵션으로 먼저 중지합니다. 그다음 실습을 끝냅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f web

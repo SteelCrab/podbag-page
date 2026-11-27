@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start local-registry --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Pull the busybox image
 
 First, get the image that you will push later.
@@ -34,6 +42,9 @@ First, get the image that you will push later.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 Podbag checks that the image `busybox:1.37.0` exists.
 
@@ -71,6 +82,9 @@ podbag sends each layer to the registry, and then the manifest. The manifest is 
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → Remove image 127.0.0.1:18105/training/busybox:1** and confirm.
+- **In the TUI:** Select `127.0.0.1:18105/training/busybox:1` in **Images**, press `d`, then `y`.
+
 This removes the name only. The name `busybox:1.37.0` still points to the image, so its files stay. Podbag checks that the name `127.0.0.1:18105/training/busybox:1` is gone.
 
 ## Pull the image back
@@ -78,6 +92,9 @@ This removes the name only. The name `busybox:1.37.0` still points to the image,
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull 127.0.0.1:18105/training/busybox:1**.
+- **In the TUI:** Open **Images**, press `p`, type `127.0.0.1:18105/training/busybox:1` and press `Enter`.
 
 podbag asks your registry for the image and stores it under that name again. Podbag checks that the name exists.
 
@@ -92,6 +109,9 @@ The container prints the text and stops. `--rm` removes it at once. Podbag check
 ## Clean up and finish
 
 Remove the registry. It is still running, so `-f` stops it first.
+
+- **In Podbag Desktop:** Select **Practice containers → registry → Remove** and confirm.
+- **In the TUI:** Select `registry` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f registry

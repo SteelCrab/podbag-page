@@ -25,6 +25,14 @@ podbag lab start system-checks
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start system-checks --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Check the system
 
 `podbag check` lists what Podbag needs on this system, one line each. Examples are the kernel, cgroup v2 and the keeper. The keeper is the small process that watches containers in the background.
@@ -42,6 +50,9 @@ The practice session starts with no images. Pull a small one.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 Podbag checks that the image is there.
 
@@ -78,6 +89,9 @@ The output ends with `0 damaged`. Podbag checks for these words. If a file is da
 ## Clean up and finish
 
 Remove the image. Then end the session.
+
+- **In Podbag Desktop:** Select **Practice containers → Remove image docker.io/library/busybox:1.37.0** and confirm.
+- **In the TUI:** Select `docker.io/library/busybox:1.37.0` in **Images**, press `d`, then `y`.
 
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0

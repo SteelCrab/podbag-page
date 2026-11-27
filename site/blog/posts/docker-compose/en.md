@@ -25,7 +25,17 @@ Open **Training** in Podbag Desktop and select **Run two services with Docker Co
 podbag lab start docker-compose
 ```
 
-Continue at the `training $` prompt. In this shell, `docker` goes to the practice session's engine. The session puts `compose.yaml` in the practice directory:
+Continue at the `training $` prompt.
+
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
+In this shell, `docker` goes to the practice session's engine. The session puts `compose.yaml` in the practice directory:
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose put both containers on `lab_default`. podbag adds the name of each conta
 ## Open the page in Desktop
 
 Go to **Practice containers → web → View ports**. Select **Open in browser**. The page displays **Hello from api**. Podbag checks for an HTTP 200 response and this text.
+
+- **In Podbag Desktop:** Select **Practice containers → web → View ports**.
+- **In the TUI:** Select `web` in **Containers** and press `Enter`.
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18107/` in a browser. When the page shows, press `o`.
 
 ## Clean up and finish
 

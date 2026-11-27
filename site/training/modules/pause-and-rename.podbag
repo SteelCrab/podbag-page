@@ -73,6 +73,10 @@
       "check": {
         "kind": "container-paused",
         "name": "web"
+      },
+      "ui": {
+        "action": "pause",
+        "name": "web"
       }
     },
     {
@@ -108,6 +112,10 @@
         "kind": "container-published",
         "name": "web",
         "page": "Hello from web"
+      },
+      "ui": {
+        "action": "resume",
+        "name": "web"
       }
     },
     {
@@ -176,6 +184,10 @@
       "command": "podbag rm -f site",
       "check": {
         "kind": "container-absent",
+        "name": "site"
+      },
+      "ui": {
+        "action": "remove",
         "name": "site"
       }
     },

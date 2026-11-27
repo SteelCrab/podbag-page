@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng container na may mga limitasyon
 
 Magpatakbo ng tahimik na container na `app`. Makakakuha ito ng hanggang 64 MiB na memory at kalahati ng isang CPU. Pinapatakbo ito ng option na `-d` sa background, at pinapanatili itong tumatakbo ng `sleep 3600` nang isang oras.
@@ -90,6 +98,9 @@ podbag exec app cat /sys/fs/cgroup/memory.max
 ## Maglinis at tapusin
 
 Alisin ang container. Tumatakbo pa ang `app`, kaya inihihinto muna ito ng `-f`. Pagkatapos, tapusin ang session.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f app

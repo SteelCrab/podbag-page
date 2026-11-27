@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng web server
 
 Magpatakbo ng maliit na web server na `web`. Inihahain nito ang text na `Hello from web` at nagpa-publish ito ng port na `18090` sa computer mo. Gamitin ang port na nasa Training kung gamit na ang `18090`.
@@ -41,6 +49,9 @@ Sinusuri ng Podbag na nagpa-publish ng port ang `web` at ipinapakita ng page ang
 podbag pause web
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → I-pause**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `p`.
+
 Naka-freeze ang server. Kung bubuksan mo ngayon ang `http://127.0.0.1:18090/`, hindi maglo-load ang page. Sinusuri ng Podbag na nasa state na `paused` ang `web`.
 
 ## Tingnan ang Paused sa listahan
@@ -56,6 +67,9 @@ Nagtatapos sa `(Paused)` ang status ng `web`. Binibilang pa ring up ang naka-pau
 ```sh
 podbag unpause web
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Ituloy**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `p`.
 
 Tumatakbo ulit ang server at sumasagot ito sa mga request. Sinusuri ulit ng Podbag ang page.
 
@@ -81,9 +95,15 @@ May `site` sa listahan at walang `web`. Sinusuri ng Podbag na walang container n
 
 Sa Podbag Desktop, pumunta sa **Mga practice container → site → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from web**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → site → Tingnan ang mga port → Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18090/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ## Maglinis at tapusin
 
 Tumatakbo pa rin ang `site`. Inihihinto at inaalis ito ng `rm -f`.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → site → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `site` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f site

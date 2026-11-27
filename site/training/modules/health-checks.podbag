@@ -139,6 +139,10 @@
       "check": {
         "kind": "container-absent",
         "name": "web"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "web"
       }
     },
     {

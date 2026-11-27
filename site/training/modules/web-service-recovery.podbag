@@ -89,6 +89,10 @@
       "check": {
         "kind": "output-has-line",
         "text": "SITE_TITLE is required"
+      },
+      "ui": {
+        "action": "logs",
+        "name": "lab-web"
       }
     },
     {
@@ -105,6 +109,10 @@
       "command": "podbag rm lab-web",
       "check": {
         "kind": "container-absent",
+        "name": "lab-web"
+      },
+      "ui": {
+        "action": "remove",
         "name": "lab-web"
       }
     },
@@ -188,6 +196,10 @@
       "command": "podbag rm lab-web",
       "check": {
         "kind": "container-absent",
+        "name": "lab-web"
+      },
+      "ui": {
+        "action": "remove",
         "name": "lab-web"
       }
     },

@@ -27,6 +27,14 @@ podbag lab start swarm-service
 
 Continúa en el prompt `training $`. En esta shell, `docker` va al motor de la sesión de práctica.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start swarm-service --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Inicia un swarm
 
 ```sh

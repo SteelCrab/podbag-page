@@ -25,7 +25,17 @@ Podbag Desktop で **Training** を開き、**Dockerfile からイメージを�
 podbag lab start image-build
 ```
 
-`training $` プロンプトが表示されたら続けます。実習環境は、実習用のディレクトリに `my-site` というフォルダーを置きます。このフォルダーには 2 つのファイルがあります。`index.html` はページです。
+`training $` プロンプトが表示されたら続けます。
+
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start image-build --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
+実習環境は、実習用のディレクトリに `my-site` というフォルダーを置きます。このフォルダーには 2 つのファイルがあります。`index.html` はページです。
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ podbag run -d --name web -p 127.0.0.1:18095:8080 my-site:1
 
 **実習コンテナ → web → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Hello from my-site** と表示されます。Podbag は、HTTP 200 の応答とこのテキストを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`Enter` を押します。
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18095/` を開きます。ページが表示されたら `o` を押します。
+
 ## 片付けて終了する
 
 Desktop で**実習コンテナ → web → 停止**を選びます。次に、同じターミナルでコンテナとイメージを削除します。
+
+- **Podbag Desktop で:** **実習コンテナ → web → 停止**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`x` を押します。
+- **Podbag Desktop で:** **実習コンテナ → web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `web` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → イメージ my-site:1 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `my-site:1` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm web

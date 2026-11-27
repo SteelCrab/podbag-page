@@ -25,6 +25,14 @@ podbag lab start container-exec
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start container-exec --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a container with an environment variable
 
 An environment variable is a name with a value that programs can read. The `-e` option gives one to the container. The container runs `sleep 3600`, so it stays up for an hour and does nothing else. The `-d` option runs it in the background.
@@ -110,6 +118,9 @@ To open a shell in the container yourself, use `podbag exec -it app sh`. Type `e
 ## Clean up and finish
 
 `app` is still running. `rm -f` stops it and removes it. Its files, with `/tmp/note.txt`, go with it.
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f app

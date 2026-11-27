@@ -25,7 +25,17 @@ Docker Compose 用一个文件 `compose.yaml` 启动多个容器。这个文件�
 podbag lab start docker-compose
 ```
 
-出现 `training $` 提示符后继续。在这个 shell 中，`docker` 会连接到练习环境的引擎。实验会在练习目录中放入 `compose.yaml`：
+出现 `training $` 提示符后继续。
+
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
+在这个 shell 中，`docker` 会连接到练习环境的引擎。实验会在练习目录中放入 `compose.yaml`：
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose 把两个容器都放在 `lab_default` 中。podbag 会把网络中每�
 ## 在 Desktop 中打开页面
 
 前往**实验容器 → web → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from api**。Podbag 会检查 HTTP 200 响应和这段文字。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18107/`。页面显示后按 `o`。
 
 ## 清理并结束
 

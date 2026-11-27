@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 `training $` プロンプトが表示されたら続けます。このシェルでは、`docker` は実習環境に接続します。実習環境は専用のソケットで Docker API を提供し、`DOCKER_HOST` をそのソケットに設定します。ほかの docker の設定は変わりません。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## エンジンにバージョンを問い合わせる
 
 ```sh
@@ -40,6 +48,9 @@ docker version
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → docker.io/library/busybox:1.37.0 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `docker.io/library/busybox:1.37.0` と入力し、`Enter` を押します。
 
 docker コマンドは podbag にイメージの取得を依頼します。podbag はイメージをダウンロードし、自分のストアに保存します。Podbag はイメージ `busybox:1.37.0` があることを確認します。
 
@@ -73,9 +84,19 @@ podbag にも同じコンテナが表示されます。エンジンは 1 つで�
 
 **実習コンテナ → web → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Hello from the Docker CLI** と表示されます。Podbag は、HTTP 200 の応答とこのテキストを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`Enter` を押します。
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18106/` を開きます。ページが表示されたら `o` を押します。
+
 ## 片付けて終了する
 
 `docker` でコンテナを停止して削除します。Podbag は、`web` が停止したこと、次に消えたことを確認します。
+
+- **Podbag Desktop で:** **実習コンテナ → web → 停止**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`x` を押します。
+- **Podbag Desktop で:** **実習コンテナ → web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `web` を選び、`d` を押してから `y` を押します。
 
 ```sh
 docker stop web

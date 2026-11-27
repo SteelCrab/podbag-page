@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![开始实验](start-en.png)
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start web-basics --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 如果默认端口已被占用，请使用 Training 中显示的端口。命令和浏览器地址会显示同一个端口。
 
 ## 运行 Web 服务器
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 打开**实验容器 → lab-web → 查看端口**。默认映射是 `127.0.0.1:18080 → 8080/tcp`。第一个端口属于你的电脑。第二个端口属于容器。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `Enter`。
+
 ![在 Desktop 中查看端口映射](ports-en.png)
 
 ![在 Desktop 中查看端口映射](gui-ports-en.png)
@@ -65,6 +76,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 点击**在浏览器中打开**。页面显示 **Podbag Training**。Desktop 会检查本地地址是否返回 HTTP 200 和预期的文字。
 
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18080/`。页面显示后按 `o`。
+
 ![在浏览器中打开页面](browser-en.png)
 
 ![在浏览器中打开页面](web-browser-en.png)
@@ -72,6 +86,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ## 在 Desktop 中停止服务器
 
 回到**实验容器**。找到 `lab-web`，点击该行的**停止**。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `x`。
 
 ![在 Desktop 中停止服务器](stop-en.png)
 
@@ -84,6 +101,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ```sh
 podbag rm lab-web
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，按 `d`，再按 `y`。
 
 ![删除已停止的容器](remove-en.png)
 

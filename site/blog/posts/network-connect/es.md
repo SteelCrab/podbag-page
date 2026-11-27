@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start network-connect --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Crea dos redes
 
 Crea las redes `front-net` y `back-net`. Cada una es un bridge independiente con sus propias direcciones.
@@ -64,6 +72,9 @@ Podbag cambia las redes de un contenedor solo mientras está detenido. El cambio
 podbag stop api
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → api → Detener**.
+- **En la TUI:** Selecciona `api` en **Contenedores** y pulsa `x`.
+
 Podbag comprueba que `api` está en el estado `exited`.
 
 ## Conecta api a back-net
@@ -82,6 +93,9 @@ Podbag comprueba que `api` ya está en `back-net`.
 podbag start api
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → api → Iniciar**.
+- **En la TUI:** Selecciona `api` en **Contenedores** y pulsa `s`.
+
 `api` se inicia con dos redes. Su primera red sigue siendo `front-net`.
 
 ## Llama a api desde back-net
@@ -98,6 +112,9 @@ La terminal muestra `Hello from api`. Podbag comprueba esta salida. Cada alias f
 
 Detén `api` otra vez. Luego quítale `back-net` con `podbag network disconnect`.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → api → Detener**.
+- **En la TUI:** Selecciona `api` en **Contenedores** y pulsa `x`.
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag comprueba que `api` ya no está en `back-net`. No puedes desconectar un c
 ## Limpia y termina
 
 Elimina `api`. Luego elimina las dos redes con un solo comando. Una red se puede eliminar cuando ningún contenedor la usa.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → api → Eliminar** y confirma.
+- **En la TUI:** Selecciona `api` en **Contenedores**, pulsa `d` y luego `y`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la red back-net** y confirma.
+- **En la TUI:** Selecciona `back-net` en **Redes**, pulsa `d` y luego `y`.
+
+El comando `podbag network rm front-net back-net` elimina las dos redes. En Podbag Desktop y en la TUI, este paso elimina solo `back-net`. `front-net` desaparece cuando termina la sesión.
 
 ```sh
 podbag rm api

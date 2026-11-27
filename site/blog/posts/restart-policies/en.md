@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a job that fails
 
 Run a container named `job`. It prints `try` and ends with the error code `1`. The option `--restart on-failure:3` starts it again after an error, at most 3 times.
@@ -53,6 +61,9 @@ The logs keep the output of every run.
 podbag logs job
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → job → Logs**.
+- **In the TUI:** Select `job` in **Containers** and press `l`.
+
 The word `try` is printed 4 times: the first run and the 3 restarts. Podbag checks for a line `try`.
 
 Remove the job. It has stopped, so `rm` does not need `-f`.
@@ -60,6 +71,9 @@ Remove the job. It has stopped, so `rm` does not need `-f`.
 ```sh
 podbag rm job
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → job → Remove** and confirm.
+- **In the TUI:** Select `job` in **Containers**, press `d`, then `y`.
 
 ## Start a container again after every exit
 
@@ -79,6 +93,9 @@ Podbag waits until `app` has restarted at least once. `--restart unless-stopped`
 podbag stop app
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → app → Stop**.
+- **In the TUI:** Select `app` in **Containers** and press `x`.
+
 Podbag checks that `app` has stopped. List all containers to see it stay stopped.
 
 ```sh
@@ -95,11 +112,17 @@ The status of `app` is `Exited`. Podbag checks for this word.
 podbag start app
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → app → Start**.
+- **In the TUI:** Select `app` in **Containers** and press `s`.
+
 Podbag checks that `app` runs.
 
 ## Clean up and finish
 
 Remove the container. It may be running, so `-f` stops it first. Then end the session.
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f app

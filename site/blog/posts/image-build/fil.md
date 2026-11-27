@@ -25,7 +25,17 @@ Buksan ang **Training** sa Podbag Desktop at piliin ang **Mag-build ng image mul
 podbag lab start image-build
 ```
 
-Magpatuloy sa prompt na `training $`. Naglalagay ang session ng folder na `my-site` sa practice directory. May dalawang file ito. Ang `index.html` ang page:
+Magpatuloy sa prompt na `training $`.
+
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start image-build --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
+Naglalagay ang session ng folder na `my-site` sa practice directory. May dalawang file ito. Ang `index.html` ang page:
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ Wala kang ibinibigay na command. Pinapatakbo ng container ang `CMD` mula sa Dock
 
 Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from my-site**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18095/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ## Maglinis at tapusin
 
 Sa Desktop, piliin ang **Mga practice container → web → Ihinto**. Pagkatapos, alisin ang container at ang image sa parehong terminal.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Ihinto**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `x`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na my-site:1** at kumpirmahin.
+- **Sa TUI:** Piliin ang `my-site:1` sa **Mga image**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm web

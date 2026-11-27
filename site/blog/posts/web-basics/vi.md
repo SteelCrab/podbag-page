@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![Bắt đầu phiên thực hành](start-en.png)
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start web-basics --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 Nếu cổng mặc định đang được dùng, hãy dùng cổng hiển thị trong Training. Lệnh và địa chỉ trình duyệt hiển thị cùng một cổng.
 
 ## Chạy máy chủ web
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 Mở **Container thực hành → lab-web → Xem cổng**. Ánh xạ mặc định là `127.0.0.1:18080 → 8080/tcp`. Cổng đầu tiên thuộc về máy tính của bạn. Cổng thứ hai thuộc về container.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Xem cổng**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `Enter`.
+
 ![Kiểm tra ánh xạ cổng trong Desktop](ports-en.png)
 
 ![Kiểm tra ánh xạ cổng trong Desktop](gui-ports-en.png)
@@ -65,6 +76,9 @@ Mở **Container thực hành → lab-web → Xem cổng**. Ánh xạ mặc đ�
 
 Chọn **Mở trong trình duyệt**. Trang hiển thị **Podbag Training**. Desktop kiểm tra rằng địa chỉ cục bộ trả về HTTP 200 và đúng nội dung mong đợi.
 
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18080/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ![Mở trang trong trình duyệt](browser-en.png)
 
 ![Mở trang trong trình duyệt](web-browser-en.png)
@@ -72,6 +86,9 @@ Chọn **Mở trong trình duyệt**. Trang hiển thị **Podbag Training**. De
 ## Dừng máy chủ trong Desktop
 
 Quay lại **Container thực hành**. Tìm `lab-web` và chọn **Dừng** ở hàng của nó.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Dừng**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `x`.
 
 ![Dừng máy chủ trong Desktop](stop-en.png)
 
@@ -84,6 +101,9 @@ Chạy lệnh xóa trong cùng terminal. Bước tiếp theo xuất hiện khi `
 ```sh
 podbag rm lab-web
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `lab-web` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ![Xóa container đã dừng](remove-en.png)
 

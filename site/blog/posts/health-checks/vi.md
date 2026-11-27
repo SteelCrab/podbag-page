@@ -25,6 +25,14 @@ podbag lab start health-checks
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start health-checks --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy máy chủ web có health check
 
 Chạy một máy chủ web tên `web`. Nó phục vụ dòng chữ `Hello from web` ở cổng `8080`. Nếu cổng mặc định `18100` đang được dùng, hãy dùng cổng hiển thị trong Training.
@@ -62,9 +70,17 @@ Phần `health` hiển thị `"status": "healthy"`, số lần kiểm tra thất
 
 Đi tới **Container thực hành → web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from web**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xem cổng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18100/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ## Dọn dẹp và kết thúc
 
 Xóa container. `web` vẫn đang chạy, nên `-f` dừng nó trước. Sau đó kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `web` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f web

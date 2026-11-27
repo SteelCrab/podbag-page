@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 Continue at the `training $` prompt. The session puts a file named `note.txt` in the practice directory. It has one line: `Hello from note.txt`.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a container in the background
 
 Run a container named `app`. It writes `/reply.txt` and then waits.
@@ -83,6 +91,11 @@ Podbag checks that `busybox.tar` is in the practice directory.
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → Remove image docker.io/library/busybox:1.37.0** and confirm.
+- **In the TUI:** Select `docker.io/library/busybox:1.37.0` in **Images**, press `d`, then `y`.
 
 Podbag checks that the container is gone, then that the image is gone.
 

@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行会失败的任务
 
 运行一个名为 `job` 的容器。它打印 `try`，然后以错误码 `1` 结束。选项 `--restart on-failure:3` 会在出错后重新启动它，最多 3 次。
@@ -53,6 +61,9 @@ podbag inspect job
 podbag logs job
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → job → 日志**。
+- **在 TUI 中：** 在**容器**中选择 `job`，然后按 `l`。
+
 `try` 打印了 4 次：第一次运行和 3 次重启。Podbag 会检查是否有 `try` 这一行。
 
 删除这个任务。它已经停止，所以 `rm` 不需要 `-f`。
@@ -60,6 +71,9 @@ podbag logs job
 ```sh
 podbag rm job
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → job → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `job`，按 `d`，再按 `y`。
 
 ## 每次退出后都重新启动容器
 
@@ -79,6 +93,9 @@ Podbag 会等到 `app` 至少重启一次。在 Podbag 中，`--restart unless-s
 podbag stop app
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `app`，然后按 `x`。
+
 Podbag 会检查 `app` 是否已停止。列出所有容器，确认它保持停止状态。
 
 ```sh
@@ -95,11 +112,17 @@ podbag ps -a
 podbag start app
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 启动**。
+- **在 TUI 中：** 在**容器**中选择 `app`，然后按 `s`。
+
 Podbag 会检查 `app` 是否正在运行。
 
 ## 清理并结束
 
 删除容器。它可能正在运行，所以 `-f` 会先停止它。然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f app

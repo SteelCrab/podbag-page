@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 Training 카탈로그를 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 제한을 걸고 컨테이너 실행
 
 `app`이라는 조용한 컨테이너를 실행합니다. 이 컨테이너는 메모리를 최대 64 MiB, CPU를 하나의 절반만 씁니다. `-d` 옵션은 백그라운드에서 실행합니다. `sleep 3600`은 컨테이너를 한 시간 동안 켜 둡니다.
@@ -90,6 +98,9 @@ podbag exec app cat /sys/fs/cgroup/memory.max
 ## 실습 리소스 정리
 
 컨테이너를 삭제합니다. `app`은 아직 실행 중이므로 `-f` 옵션으로 먼저 중지합니다. 그다음 실습을 끝냅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f app
