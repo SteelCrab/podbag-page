@@ -19,7 +19,7 @@ Press `2` to open the Images list. It shows each image's name, ID, size and age.
 
 ## Pull an image
 
-1. Press `p`. The **Pull image** window opens.
+1. Press `p`. The **Pull image** window opens. On any list, `Ctrl+Shift+P` also opens it.
 2. Type a name, for example `nginx`. On Docker Hub, the results show after two letters.
 3. Choose a result with `↑` `↓` and press `Enter`. The TUI asks for the tag. Leave it empty for `latest`.
 
@@ -32,7 +32,7 @@ You can also type the full name with its tag, for example `nginx:alpine`, and pr
 - `Tab` changes where you pull from: Docker Hub, GitHub, Amazon ECR, Quay.io, Google Artifact Registry, GitLab, Azure Container Registry or another registry.
 - `F2` opens the list of registries. Type to filter it.
 - Some registries need a host, for example your Amazon ECR address. The window then shows a host line.
-- `F3` logs in to the registry.
+- `F3` logs in to the registry. The actions menu (`a`) also has **Log in**: choose a registry and log in before you pull.
 
 The search works on Docker Hub only. For the other registries, type the image name.
 

@@ -19,7 +19,7 @@ Pulsa `2` para abrir la lista Imágenes. Muestra el nombre, el ID, el tamaño y 
 
 ## Descarga una imagen
 
-1. Pulsa `p`. Se abre la ventana **Descargar imagen**.
+1. Pulsa `p`. Se abre la ventana **Descargar imagen**. En cualquier lista, `Ctrl+Shift+P` también la abre.
 2. Escribe un nombre, por ejemplo `nginx`. En Docker Hub, los resultados aparecen después de dos letras.
 3. Elige un resultado con `↑` `↓` y pulsa `Enter`. La TUI pide la etiqueta. Déjala vacía para usar `latest`.
 
@@ -32,7 +32,7 @@ También puedes escribir el nombre completo con su etiqueta, por ejemplo `nginx:
 - `Tab` cambia el lugar de descarga: Docker Hub, GitHub, Amazon ECR, Quay.io, Google Artifact Registry, GitLab, Azure Container Registry u otro registro.
 - `F2` abre la lista de registros. Escribe para filtrarla.
 - Algunos registros necesitan un host, por ejemplo tu dirección de Amazon ECR. En ese caso, la ventana muestra una línea para el host.
-- `F3` inicia sesión en el registro.
+- `F3` inicia sesión en el registro. El menú **Acciones** (`a`) también tiene **Iniciar sesión**: elige un registro e inicia sesión antes de descargar.
 
 La búsqueda solo funciona en Docker Hub. Para los otros registros, escribe el nombre de la imagen.
 

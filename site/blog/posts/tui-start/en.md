@@ -51,7 +51,7 @@ The TUI fits a terminal of 80×24.
 | `PgUp` `PgDn` | Move ten rows |
 | `Home` `End` or `g` `G` | Go to the first or the last row |
 | `Alt+←` `Alt+→` | Go back or forward through the lists you opened |
-| `/` | Search the list. `Enter` keeps the search, `Esc` clears it |
+| `/`, `Ctrl+F` or `Ctrl+K` | Search the list. `Enter` keeps the search, `Esc` clears it |
 | `Enter` or `i` | Show all details. `Esc` goes back |
 | `F5` | Refresh |
 

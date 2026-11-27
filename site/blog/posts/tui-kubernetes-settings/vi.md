@@ -28,6 +28,17 @@ TUI dùng `kubectl` và các ngữ cảnh (context) của nó. Hãy cài `kubect
 
 Danh sách hiện mỗi tài nguyên dưới dạng `namespace/name`. Nhấn `Enter` để xem tài nguyên dưới dạng JSON. **Làm mới** đọc lại danh sách. TUI chỉ đọc cụm. TUI không thay đổi cụm.
 
+## Thực hành trong Hướng dẫn
+
+Nhấn `F8`. **Hướng dẫn** cài một tệp bài học và chạy các bài tập của nó trong một môi trường thực hành.
+
+1. Tải một tệp bài học, ví dụ `volume-api.podbag` từ bài [Đọc JSON từ volume qua HTTP](../volume-api-lab/).
+2. Chọn **Chọn tệp** và nhập đường dẫn của tệp.
+3. Chọn **Cài mô-đun**.
+4. Chọn **Bắt đầu thực hành**.
+
+**Gỡ mô-đun** gỡ bài học. Để xem các mô-đun thực hành của Podbag Desktop và CLI, hãy xem [Thực hành GUI](/vi/training/).
+
 ## Thay đổi cài đặt
 
 Nhấn `F9`.

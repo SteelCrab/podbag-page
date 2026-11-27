@@ -28,6 +28,17 @@ The TUI uses `kubectl` and its contexts. Install `kubectl` first.
 
 The list shows each resource as `namespace/name`. Press `Enter` to see it as JSON. **Refresh** reads the list again. The TUI only reads the cluster. It does not change it.
 
+## Run a lab in Tutorials
+
+Press `F8`. **Tutorials** installs a lesson file and runs its exercises in a practice lab.
+
+1. Download a lesson file, for example `volume-api.podbag` from [the volume API lab](../volume-api-lab/).
+2. Choose **Choose file** and enter the file's path.
+3. Choose **Install module**.
+4. Choose **Start lab**.
+
+**Remove module** removes the lesson. For the hands-on modules of Podbag Desktop and the CLI, see [GUI practice](/training/).
+
 ## Change the settings
 
 Press `F9`.

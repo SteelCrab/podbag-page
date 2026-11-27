@@ -51,7 +51,7 @@ Kasya ang TUI sa terminal na 80×24.
 | `PgUp` `PgDn` | Lumipat nang sampung row |
 | `Home` `End` o `g` `G` | Pumunta sa una o sa huling row |
 | `Alt+←` `Alt+→` | Bumalik o umabante sa mga listahang binuksan mo |
-| `/` | Maghanap sa listahan. Pinapanatili ng `Enter` ang paghahanap. Binubura ito ng `Esc` |
+| `/`, `Ctrl+F` o `Ctrl+K` | Maghanap sa listahan. Pinapanatili ng `Enter` ang paghahanap. Binubura ito ng `Esc` |
 | `Enter` o `i` | Ipakita ang lahat ng detalye. Bumabalik ang `Esc` |
 | `F5` | I-refresh |
 

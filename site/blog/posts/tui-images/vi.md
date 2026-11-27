@@ -19,7 +19,7 @@ Nhấn `2` để mở danh sách Image. Danh sách hiện tên, ID, dung lượn
 
 ## Tải image
 
-1. Nhấn `p`. Cửa sổ **Tải image** mở ra.
+1. Nhấn `p`. Cửa sổ **Tải image** mở ra. Ở bất kỳ danh sách nào, `Ctrl+Shift+P` cũng mở cửa sổ này.
 2. Gõ một tên, ví dụ `nginx`. Với Docker Hub, kết quả hiện sau khi bạn gõ hai chữ cái.
 3. Chọn một kết quả bằng `↑` `↓` và nhấn `Enter`. TUI hỏi tag. Để trống để dùng `latest`.
 
@@ -32,7 +32,7 @@ Bạn cũng có thể gõ tên đầy đủ kèm tag, ví dụ `nginx:alpine`, r
 - `Tab` đổi nơi tải image: Docker Hub, GitHub, Amazon ECR, Quay.io, Google Artifact Registry, GitLab, Azure Container Registry hoặc một registry khác.
 - `F2` mở danh sách registry. Gõ chữ để lọc danh sách.
 - Một số registry cần host, ví dụ địa chỉ Amazon ECR của bạn. Khi đó, cửa sổ hiện thêm một dòng host.
-- `F3` đăng nhập vào registry.
+- `F3` đăng nhập vào registry. Menu Thao tác (`a`) cũng có mục **Đăng nhập**: chọn một registry và đăng nhập trước khi tải image.
 
 Tìm kiếm chỉ hoạt động với Docker Hub. Với các registry khác, hãy gõ tên image.
 

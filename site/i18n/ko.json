@@ -186,6 +186,7 @@
   "training_side": "트레이닝 안내",
   "training_guides": "블로그의 가이드",
   "training_tabs": "트레이닝 구분",
+  "training_tab_gui_usage": "GUI 사용법",
   "training_tab_gui": "GUI 실습",
   "training_tab_tui": "TUI 사용법",
   "tui_title": "Podbag TUI 사용법",
@@ -195,5 +196,13 @@
   "tui_keys": "자주 쓰는 키",
   "tui_key": "키",
   "tui_action": "하는 일",
-  "tui_guides": "사용법"
+  "tui_guides": "사용법",
+  "gui_title": "Podbag Desktop 사용법",
+  "gui_description": "podbag의 앱 Podbag Desktop의 사용법입니다. 사이드바의 페이지와 컨테이너, 이미지, 볼륨, 네트워크, 엔진, 쿠버네티스, 설정 안내가 있습니다.",
+  "gui_lead": "Podbag Desktop은 컨테이너, 이미지, 볼륨, 네트워크를 창에 보여줍니다. 주제를 골라 사용법을 읽습니다.",
+  "gui_intro": "Podbag Desktop은 Linux와 macOS에서 실행됩니다. Windows 지원은 시험 단계이고 WSL 2가 필요합니다. <a href=\"https://github.com/SteelCrab/podbag/releases/latest\">최신 릴리스</a>에서 내 시스템에 맞는 패키지를 받습니다. 앱에는 CLI가 들어 있습니다.",
+  "gui_pages": "사이드바",
+  "gui_page": "페이지",
+  "gui_action": "하는 일",
+  "gui_guides": "사용법"
 }

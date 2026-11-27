@@ -51,7 +51,7 @@ La TUI cabe en una terminal de 80×24.
 | `PgUp` `PgDn` | Mueve diez filas |
 | `Home` `End` o `g` `G` | Va a la primera o a la última fila |
 | `Alt+←` `Alt+→` | Vuelve atrás o adelante por las listas que abriste |
-| `/` | Busca en la lista. `Enter` mantiene la búsqueda y `Esc` la borra |
+| `/`, `Ctrl+F` o `Ctrl+K` | Busca en la lista. `Enter` mantiene la búsqueda y `Esc` la borra |
 | `Enter` o `i` | Muestra todos los detalles. `Esc` vuelve atrás |
 | `F5` | Actualiza |
 

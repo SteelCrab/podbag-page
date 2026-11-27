@@ -19,7 +19,7 @@ Pindutin ang `2` para buksan ang listahan ng Mga image. Ipinapakita nito ang pan
 
 ## Kumuha ng image
 
-1. Pindutin ang `p`. Bubukas ang window na **Kunin ang image**.
+1. Pindutin ang `p`. Bubukas ang window na **Kunin ang image**. Sa kahit anong listahan, binubuksan din ito ng `Ctrl+Shift+P`.
 2. Mag-type ng pangalan, halimbawa `nginx`. Sa Docker Hub, lumalabas ang mga resulta pagkatapos ng dalawang letra.
 3. Pumili ng resulta gamit ang `↑` `↓` at pindutin ang `Enter`. Itatanong ng TUI ang tag. Iwanan itong walang laman para sa `latest`.
 
@@ -32,7 +32,7 @@ Puwede mo ring i-type ang buong pangalan kasama ang tag, halimbawa `nginx:alpine
 - Pinapalitan ng `Tab` kung saan ka kukuha: Docker Hub, GitHub, Amazon ECR, Quay.io, Google Artifact Registry, GitLab, Azure Container Registry o ibang registry.
 - Binubuksan ng `F2` ang listahan ng mga registry. Mag-type para salain ito.
 - May mga registry na kailangan ng host, halimbawa ang address ng iyong Amazon ECR. Kung gayon, may linya ng host sa window.
-- Nagla-log in ang `F3` sa registry.
+- Nagla-log in ang `F3` sa registry. May **Mag-log in** din ang menu ng mga aksyon (`a`): pumili ng registry at mag-log in bago ka kumuha.
 
 Sa Docker Hub lang gumagana ang paghahanap. Sa ibang mga registry, i-type ang pangalan ng image.
 

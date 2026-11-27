@@ -49,7 +49,7 @@ Type `exit` to go back to the TUI. The message line shows how the shell ended. T
 
 ## Remove containers
 
-`d` removes the selected container. The TUI asks first. A running container is stopped, then removed.
+`d` or `Delete` removes the selected container. The TUI asks first. A running container is stopped, then removed.
 
 ![podbag tui asks before it removes the report container](tui-remove-en.png)
 

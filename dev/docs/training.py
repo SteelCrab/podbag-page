@@ -12,13 +12,18 @@ stops on a bad file. Then it writes:
 - /training/modules/<id>.podbag: the files, byte for byte.
 - /training/catalog.json: {"format": "podbag-training-catalog-v1", "modules": [{"id", "file",
   "sha256"}, …]}. The apps read it to find new and changed modules.
-- /training/ and /<lang>/training/: a page that lists the modules (the "GUI" tab).
-- /training/tui/ and /<lang>/training/tui/: how to use `podbag tui` (the "TUI" tab): the
+- /training/gui/ and /<lang>/training/gui/: how to use Podbag Desktop (the first tab): where
+  to get it, the pages of its sidebar and the GUI guides (blog posts) from gui.json, as cards.
+- /training/ and /<lang>/training/: a page that lists the modules (the "GUI practice" tab).
+- /training/tui/ and /<lang>/training/tui/: how to use `podbag tui` (the last tab): the
   main keys and the TUI guides (blog posts) from tui.json, as cards. The TUI has no
   practice module.
 
-tui.json: {"guides": ["<post slug>", …], "minutes": {"<slug>": 5},
-"keys": [{"keys": ["a", "F2"], "words": {"<lang>": "…"}}, …]}, with words in every language.
+gui.json: {"guides": ["<post slug>", …], "minutes": {"<slug>": 5},
+"pages": [{"names": {"<lang>": "Images"}, "words": {"<lang>": "…"}}, …]}, with the names that
+Podbag Desktop shows and the words in every language.
+tui.json: the same, with "keys": [{"keys": ["a", "F2"], "words": {"<lang>": "…"}}, …] in place
+of "pages".
 
 The rules for a module file:
 
@@ -336,9 +341,10 @@ def load(folder):
     return modules
 
 
-def load_tui(source, langs):
-    """SOURCE (site/training/tui.json) when it is a good list of TUI guides and keys."""
-    where = "site/training/tui.json"
+def load_usage(source, langs, kind):
+    """SOURCE (site/training/KIND.json, KIND "gui" or "tui") when it is a good list of guides
+    and table rows: "pages" for the GUI, "keys" for the TUI."""
+    where = f"site/training/{kind}.json"
     guides = source.get("guides") if isinstance(source, dict) else None
     if not isinstance(guides, list) or not guides:
         raise SystemExit(f'{where}: write {{"guides": ["<post slug>", …]}}')
@@ -352,17 +358,22 @@ def load_tui(source, langs):
         minutes = times.get(slug)
         if not (type(minutes) is int and 1 <= minutes <= 240):
             raise SystemExit(f"{where}: minutes of {slug} must be a number from 1 to 240")
-    keys = source.get("keys")
-    if not isinstance(keys, list) or not keys:
-        raise SystemExit(f'{where}: write {{"keys": [{{"keys": ["q"], "words": {{…}}}}]}}')
-    for n, row in enumerate(keys, 1):
-        names = row.get("keys") if isinstance(row, dict) else None
-        if not isinstance(names, list) or not names or not all(plain(k) for k in names):
-            raise SystemExit(f"{where}: key row {n} needs keys")
-        words = row.get("words")
+    table, row_name = ("pages", "page") if kind == "gui" else ("keys", "key")
+    rows = source.get(table)
+    if not isinstance(rows, list) or not rows:
+        raise SystemExit(f'{where}: write {{"{table}": [{{…, "words": {{…}}}}]}}')
+    for n, row in enumerate(rows, 1):
+        row = row if isinstance(row, dict) else {}
+        if kind == "tui":
+            names = row.get("keys")
+            if not isinstance(names, list) or not names or not all(plain(k) for k in names):
+                raise SystemExit(f"{where}: key row {n} needs keys")
         for lang in langs:
+            names, words = row.get("names"), row.get("words")
+            if kind == "gui" and (not isinstance(names, dict) or not plain(names.get(lang))):
+                raise SystemExit(f"{where}: page row {n} has no {lang} name")
             if not isinstance(words, dict) or not plain(words.get(lang)):
-                raise SystemExit(f"{where}: key row {n} has no {lang} words")
+                raise SystemExit(f"{where}: {row_name} row {n} has no {lang} words")
     return source
 
 
@@ -380,18 +391,20 @@ def short_title(title):
 
 
 class Hub:
-    """Writes /training/ (GUI practice) and /training/tui/ (the TUI guide) in each language,
-    with the blog's layout."""
+    """Writes /training/gui/ (the GUI guide), /training/ (GUI practice) and /training/tui/
+    (the TUI guide) in each language, with the blog's layout."""
 
-    def __init__(self, out, site, words, modules, tui):
-        self.out, self.site, self.words, self.modules, self.tui = out, site, words, modules, tui
+    def __init__(self, out, site, words, modules, usage):
+        self.out, self.site, self.words, self.modules = out, site, words, modules
+        self.usage = usage  # {"gui": gui.json, "tui": tui.json}
         self.pages = blog.Builder(out, site, words)
 
     def path(self, lang):
         return self.site.path_of(lang) + "training/"
 
-    def tui_path(self, lang):
-        return self.path(lang) + "tui/"
+    def usage_path(self, kind):
+        """The address of the KIND ("gui" or "tui") guide in a language."""
+        return lambda lang: self.path(lang) + f"{kind}/"
 
     def time(self, minutes, w):
         if len(minutes) == 1:
@@ -463,9 +476,11 @@ class Hub:
                 f"</ul></section></aside>")
 
     def band(self, lang, w, root, current, lead):
-        """The title, LEAD and the two tabs: GUI practice and the TUI guide (CURRENT: 0 or 1)."""
-        tabs = [(root + self.path(lang), w["training_tab_gui"]),
-                (root + self.tui_path(lang), w["training_tab_tui"])]
+        """The title, LEAD and the three tabs: the GUI guide, GUI practice and the TUI guide
+        (CURRENT: 0, 1 or 2)."""
+        tabs = [(root + self.usage_path("gui")(lang), w["training_tab_gui_usage"]),
+                (root + self.path(lang), w["training_tab_gui"]),
+                (root + self.usage_path("tui")(lang), w["training_tab_tui"])]
         nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if n == current else ""}>{label}</a>'
                       for n, (h, label) in enumerate(tabs))
         return (f'<div class="band training-band"><div class="wrap">'
@@ -504,30 +519,38 @@ class Hub:
                    f'<h2 class="list-title">{w["training_outside_title"]}</h2>'
                    f'<p>{w["training_outside"]}</p></div>')
         self.write(lang, self.path, w["training_title"], w["training_description"],
-                   self.band(lang, w, root, 0, w["training_lead"]), content)
+                   self.band(lang, w, root, 1, w["training_lead"]), content)
 
-    def tui_page(self, lang):
-        w = self.words[lang]
-        root = "../" * self.tui_path(lang).count("/")
+    def usage_page(self, lang, kind):
+        """/training/KIND/: how to start the GUI or the TUI, a table of its pages or keys and
+        its guides as cards."""
+        w, usage, path_of = self.words[lang], self.usage[kind], self.usage_path(kind)
+        root = "../" * path_of(lang).count("/")
         items = []
-        for slug in self.tui["guides"]:
-            post = self.find(slug, lang, f"site/training/tui.json: no blog post {slug}")
+        for slug in usage["guides"]:
+            post = self.find(slug, lang, f"site/training/{kind}.json: no blog post {slug}")
             items.append(self.card("guide", slug, short_title(post.title), post,
                                    root + self.pages.post_path(post),
-                                   [self.time([self.tui["minutes"][slug]], w)], root))
-        rows = "".join(
-            "<tr><td>" + " ".join(f"<kbd>{html.escape(k)}</kbd>" for k in row["keys"])
-            + f'</td><td>{html.escape(row["words"][lang])}</td></tr>' for row in self.tui["keys"])
-        start = blog.code_block("podbag tui", "sh", lang, blog.copy_button(w))
+                                   [self.time([usage["minutes"][slug]], w)], root))
+        if kind == "tui":
+            start = blog.code_block("podbag tui", "sh", lang, blog.copy_button(w))
+            table, head = "keys", (w["tui_keys"], w["tui_key"], w["tui_action"])
+            rows = ["<tr><td>" + " ".join(f"<kbd>{html.escape(k)}</kbd>" for k in row["keys"])
+                    + f'</td><td>{html.escape(row["words"][lang])}</td></tr>' for row in usage["keys"]]
+        else:
+            start = ""
+            table, head = "keys pages", (w["gui_pages"], w["gui_page"], w["gui_action"])
+            rows = [f'<tr><td>{html.escape(row["names"][lang])}</td>'
+                    f'<td>{html.escape(row["words"][lang])}</td></tr>' for row in usage["pages"]]
         content = (f'<div class="training">'
-                   f'<p>{w["tui_intro"]}</p>{start}'
-                   f'<h2 class="list-title">{w["tui_keys"]}</h2>'
-                   f'<table class="keys"><thead><tr><th scope="col">{w["tui_key"]}</th>'
-                   f'<th scope="col">{w["tui_action"]}</th></tr></thead><tbody>{rows}</tbody></table>'
-                   f'<h2 class="list-title">{w["tui_guides"]}</h2>'
+                   f'<p>{w[f"{kind}_intro"]}</p>{start}'
+                   f'<h2 class="list-title">{head[0]}</h2>'
+                   f'<table class="{table}"><thead><tr><th scope="col">{head[1]}</th>'
+                   f'<th scope="col">{head[2]}</th></tr></thead><tbody>{"".join(rows)}</tbody></table>'
+                   f'<h2 class="list-title">{w[f"{kind}_guides"]}</h2>'
                    f'<ul class="modules" role="list">{"".join(items)}</ul></div>')
-        self.write(lang, self.tui_path, w["tui_title"], w["tui_description"],
-                   self.band(lang, w, root, 1, w["tui_lead"]), content)
+        self.write(lang, path_of, w[f"{kind}_title"], w[f"{kind}_description"],
+                   self.band(lang, w, root, {"gui": 0, "tui": 2}[kind], w[f"{kind}_lead"]), content)
 
 
 def build(out, site, words):
@@ -538,13 +561,16 @@ def build(out, site, words):
     for name, raw, *_ in modules:
         (target / f"{name}.podbag").write_bytes(raw)
     (out / "training" / "catalog.json").write_text(catalog(modules))
-    try:
-        source = json.loads((site.SITE / "training" / "tui.json").read_text())
-    except (OSError, json.JSONDecodeError) as error:
-        raise SystemExit(f"site/training/tui.json: {error}")
-    tui = load_tui(source, [code for code, _ in site.LANGS])
-    hub = Hub(out, site, words, modules, tui)
+    usage = {}
+    for kind in ("gui", "tui"):
+        try:
+            source = json.loads((site.SITE / "training" / f"{kind}.json").read_text())
+        except (OSError, json.JSONDecodeError) as error:
+            raise SystemExit(f"site/training/{kind}.json: {error}")
+        usage[kind] = load_usage(source, [code for code, _ in site.LANGS], kind)
+    hub = Hub(out, site, words, modules, usage)
     for code, _ in site.LANGS:
+        hub.usage_page(code, "gui")
         hub.page(code)
-        hub.tui_page(code)
+        hub.usage_page(code, "tui")
     return len(modules)

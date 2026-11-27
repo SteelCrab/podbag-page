@@ -186,6 +186,7 @@
   "training_side": "关于实训",
   "training_guides": "博客中的指南",
   "training_tabs": "实训分类",
+  "training_tab_gui_usage": "GUI 使用方法",
   "training_tab_gui": "GUI 实训",
   "training_tab_tui": "TUI 使用方法",
   "tui_title": "Podbag TUI 使用方法",
@@ -195,5 +196,13 @@
   "tui_keys": "常用按键",
   "tui_key": "按键",
   "tui_action": "作用",
-  "tui_guides": "使用指南"
+  "tui_guides": "使用指南",
+  "gui_title": "Podbag Desktop 使用方法",
+  "gui_description": "podbag 的应用 Podbag Desktop 的使用方法：侧边栏中的页面，以及容器、镜像、卷、网络、引擎、Kubernetes 和设置的简短指南。",
+  "gui_lead": "Podbag Desktop 在窗口中显示容器、镜像、卷和网络。选择一个主题，阅读使用方法。",
+  "gui_intro": "Podbag Desktop 可以在 Linux 和 macOS 上运行。Windows 支持还处于试验阶段，需要 WSL 2。从<a href=\"https://github.com/SteelCrab/podbag/releases/latest\">最新版本</a>下载适合你系统的安装包。应用中包含 CLI。",
+  "gui_pages": "侧边栏",
+  "gui_page": "页面",
+  "gui_action": "作用",
+  "gui_guides": "使用指南"
 }
