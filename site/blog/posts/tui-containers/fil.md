@@ -49,7 +49,7 @@ Ipinapakita ng `Enter` o `i` ang lahat ng detalye ng container bilang JSON: ang 
 
 ## Alisin ang mga container
 
-Inaalis ng `d` ang napiling container. Nagtatanong muna ang TUI. Ang tumatakbong container ay ihihinto muna, saka aalisin.
+Inaalis ng `d` o `Delete` ang napiling container. Nagtatanong muna ang TUI. Ang tumatakbong container ay ihihinto muna, saka aalisin.
 
 ![Nagtatanong ang podbag tui bago nito alisin ang container na report](tui-remove-fil.png)
 

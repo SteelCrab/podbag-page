@@ -186,6 +186,7 @@
   "training_side": "Về Thực hành",
   "training_guides": "Hướng dẫn trên blog",
   "training_tabs": "Các mục Thực hành",
+  "training_tab_gui_usage": "Cách dùng GUI",
   "training_tab_gui": "Thực hành GUI",
   "training_tab_tui": "Cách dùng TUI",
   "tui_title": "Cách dùng Podbag TUI",
@@ -195,5 +196,13 @@
   "tui_keys": "Các phím chính",
   "tui_key": "Phím",
   "tui_action": "Tác dụng",
-  "tui_guides": "Hướng dẫn"
+  "tui_guides": "Hướng dẫn",
+  "gui_title": "Cách dùng Podbag Desktop",
+  "gui_description": "Cách dùng Podbag Desktop, ứng dụng của podbag: các trang trên thanh bên và hướng dẫn ngắn về container, image, volume, mạng, engine, Kubernetes và cài đặt.",
+  "gui_lead": "Podbag Desktop hiển thị container, image, volume và mạng trong một cửa sổ. Chọn một chủ đề và đọc cách dùng.",
+  "gui_intro": "Podbag Desktop chạy trên Linux và macOS. Hỗ trợ Windows đang ở giai đoạn thử nghiệm và cần WSL 2. Tải gói cho hệ thống của bạn từ <a href=\"https://github.com/SteelCrab/podbag/releases/latest\">bản phát hành mới nhất</a>. Ứng dụng có sẵn CLI.",
+  "gui_pages": "Thanh bên",
+  "gui_page": "Trang",
+  "gui_action": "Tác dụng",
+  "gui_guides": "Hướng dẫn"
 }

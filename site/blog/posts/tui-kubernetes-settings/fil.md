@@ -28,6 +28,17 @@ Ginagamit ng TUI ang `kubectl` at ang mga context nito. I-install muna ang `kube
 
 Ipinapakita ng listahan ang bawat resource bilang `namespace/name`. Pindutin ang `Enter` para makita ito bilang JSON. Binabasa ulit ng **I-refresh** ang listahan. Binabasa lang ng TUI ang cluster. Hindi nito binabago ang cluster.
 
+## Magpatakbo ng lab sa Mga tutorial
+
+Pindutin ang `F8`. Nag-i-install ang **Mga tutorial** ng lesson file at pinapatakbo nito ang mga exercise ng file sa isang practice lab.
+
+1. Mag-download ng lesson file, halimbawa ang `volume-api.podbag` mula sa [Basahin ang JSON mula sa volume gamit ang HTTP](../volume-api-lab/).
+2. Piliin ang **Pumili ng file** at ilagay ang path ng file.
+3. Piliin ang **I-install ang module**.
+4. Piliin ang **Simulan ang lab**.
+
+Inaalis ng **Alisin ang module** ang lesson. Para sa mga hands-on module ng Podbag Desktop at ng CLI, tingnan ang [Pagsasanay sa GUI](/fil/training/).
+
 ## Baguhin ang mga setting
 
 Pindutin ang `F9`.

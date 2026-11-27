@@ -49,7 +49,7 @@ Gõ `exit` để quay lại TUI. Dòng thông báo cho biết shell đã kết t
 
 ## Xóa container
 
-`d` xóa container đang chọn. TUI hỏi trước. Container đang chạy sẽ bị dừng, rồi bị xóa.
+`d` hoặc `Delete` xóa container đang chọn. TUI hỏi trước. Container đang chạy sẽ bị dừng, rồi bị xóa.
 
 ![podbag tui hỏi trước khi xóa container report](tui-remove-vi.png)
 

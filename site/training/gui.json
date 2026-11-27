@@ -1,0 +1,209 @@
+{
+  "guides": [
+    "gui-start",
+    "gui-containers",
+    "gui-images",
+    "gui-volumes-networks",
+    "gui-engines",
+    "gui-kubernetes-settings"
+  ],
+  "minutes": {
+    "gui-start": 5,
+    "gui-containers": 5,
+    "gui-images": 5,
+    "gui-volumes-networks": 5,
+    "gui-engines": 5,
+    "gui-kubernetes-settings": 5
+  },
+  "pages": [
+    {
+      "label": "migration.title",
+      "names": {
+        "en": "Migrate",
+        "ko": "마이그레이션",
+        "ja": "移行",
+        "zh-CN": "迁移",
+        "fil": "Ilipat",
+        "es": "Migrar",
+        "vi": "Di chuyển"
+      },
+      "words": {
+        "en": "Copy containers, images and volumes from one engine to another.",
+        "ko": "컨테이너, 이미지, 볼륨을 한 엔진에서 다른 엔진으로 복사합니다.",
+        "ja": "コンテナ、イメージ、ボリュームを、あるエンジンから別のエンジンへコピーします。",
+        "zh-CN": "把容器、镜像和卷从一个引擎复制到另一个引擎。",
+        "fil": "Kopyahin ang mga container, image at volume mula sa isang engine papunta sa iba.",
+        "es": "Copia contenedores, imágenes y volúmenes de un motor a otro.",
+        "vi": "Sao chép container, image và volume từ một engine sang engine khác."
+      }
+    },
+    {
+      "label": "nav.containers",
+      "names": {
+        "en": "Containers",
+        "ko": "컨테이너",
+        "ja": "コンテナ",
+        "zh-CN": "容器",
+        "fil": "Mga container",
+        "es": "Contenedores",
+        "vi": "Container"
+      },
+      "words": {
+        "en": "Start, stop, pause and remove containers. Read their logs and open a shell.",
+        "ko": "컨테이너를 시작, 중지, 일시 중지, 삭제합니다. 로그를 읽고 셸을 엽니다.",
+        "ja": "コンテナを開始、停止、一時停止、削除します。ログを読み、シェルを開きます。",
+        "zh-CN": "启动、停止、暂停和删除容器。读取日志并打开 shell。",
+        "fil": "Simulan, ihinto, i-pause at alisin ang mga container. Basahin ang mga log nila at magbukas ng shell.",
+        "es": "Inicia, detén, pausa y elimina contenedores. Lee sus registros y abre una shell.",
+        "vi": "Chạy, dừng, tạm dừng và xóa container. Đọc nhật ký và mở shell."
+      }
+    },
+    {
+      "label": "nav.images",
+      "names": {
+        "en": "Images",
+        "ko": "이미지",
+        "ja": "イメージ",
+        "zh-CN": "镜像",
+        "fil": "Mga image",
+        "es": "Imágenes",
+        "vi": "Image"
+      },
+      "words": {
+        "en": "Pull images from registries, import them from Docker and remove them.",
+        "ko": "레지스트리에서 이미지를 받고, Docker에서 가져오고, 삭제합니다.",
+        "ja": "レジストリからイメージを取得し、Docker から取り込み、削除します。",
+        "zh-CN": "从镜像仓库拉取镜像，从 Docker 导入镜像，并删除镜像。",
+        "fil": "Kumuha ng mga image mula sa mga registry, i-import ang mga ito mula sa Docker at alisin ang mga ito.",
+        "es": "Descarga imágenes de registros, impórtalas de Docker y elimínalas.",
+        "vi": "Tải image từ registry, nhập image từ Docker và xóa image."
+      }
+    },
+    {
+      "label": "nav.volumes",
+      "names": {
+        "en": "Volumes",
+        "ko": "볼륨",
+        "ja": "ボリューム",
+        "zh-CN": "卷",
+        "fil": "Mga volume",
+        "es": "Volúmenes",
+        "vi": "Volume"
+      },
+      "words": {
+        "en": "Create and remove volumes.",
+        "ko": "볼륨을 만들고 삭제합니다.",
+        "ja": "ボリュームを作成、削除します。",
+        "zh-CN": "创建和删除卷。",
+        "fil": "Gumawa at mag-alis ng mga volume.",
+        "es": "Crea y elimina volúmenes.",
+        "vi": "Tạo và xóa volume."
+      }
+    },
+    {
+      "label": "nav.networks",
+      "names": {
+        "en": "Networks",
+        "ko": "네트워크",
+        "ja": "ネットワーク",
+        "zh-CN": "网络",
+        "fil": "Mga network",
+        "es": "Redes",
+        "vi": "Mạng"
+      },
+      "words": {
+        "en": "See the networks and remove the ones you made.",
+        "ko": "네트워크를 보고, 직접 만든 네트워크를 삭제합니다.",
+        "ja": "ネットワークを見て、自分で作成したネットワークを削除します。",
+        "zh-CN": "查看网络，并删除你创建的网络。",
+        "fil": "Tingnan ang mga network at alisin ang mga ginawa mo.",
+        "es": "Mira las redes y elimina las que creaste.",
+        "vi": "Xem các mạng và xóa những mạng bạn đã tạo."
+      }
+    },
+    {
+      "label": "nav.tutorials",
+      "names": {
+        "en": "Training",
+        "ko": "Training",
+        "ja": "Training",
+        "zh-CN": "Training",
+        "fil": "Training",
+        "es": "Training",
+        "vi": "Training"
+      },
+      "words": {
+        "en": "Install and start the hands-on modules of GUI practice.",
+        "ko": "GUI 실습의 모듈을 설치하고 시작합니다.",
+        "ja": "GUI 実習のモジュールをインストールして始めます。",
+        "zh-CN": "安装并启动 GUI 实训的实操模块。",
+        "fil": "I-install at simulan ang mga hands-on module ng Pagsasanay sa GUI.",
+        "es": "Instala e inicia los módulos prácticos de Práctica con GUI.",
+        "vi": "Cài và bắt đầu các mô-đun thực hành của Thực hành GUI."
+      }
+    },
+    {
+      "label": "nav.kubernetes",
+      "names": {
+        "en": "Kubernetes",
+        "ko": "쿠버네티스",
+        "ja": "Kubernetes",
+        "zh-CN": "Kubernetes",
+        "fil": "Kubernetes",
+        "es": "Kubernetes",
+        "vi": "Kubernetes"
+      },
+      "words": {
+        "en": "See the pods, services, deployments and volume claims of a cluster.",
+        "ko": "클러스터의 파드, 서비스, 디플로이먼트, 볼륨 클레임을 봅니다.",
+        "ja": "クラスタの Pod、Service、デプロイメント、ボリューム要求を見ます。",
+        "zh-CN": "查看集群中的 Pod、Service、部署和持久卷申领。",
+        "fil": "Tingnan ang mga pod, service, deployment at volume claim ng isang cluster.",
+        "es": "Mira los pods, servicios, despliegues y solicitudes de volumen de un clúster.",
+        "vi": "Xem Pod, Service, Deployment và yêu cầu ổ đĩa của một cụm."
+      }
+    },
+    {
+      "label": "nav.settings",
+      "names": {
+        "en": "Settings",
+        "ko": "설정",
+        "ja": "設定",
+        "zh-CN": "设置",
+        "fil": "Mga setting",
+        "es": "Ajustes",
+        "vi": "Cài đặt"
+      },
+      "words": {
+        "en": "Set the startup, the language, the theme, the engine, the VM, updates and the terminal command.",
+        "ko": "시작, 언어, 테마, 엔진, VM, 업데이트, 터미널 명령을 설정합니다.",
+        "ja": "起動、言語、テーマ、エンジン、VM、アップデート、ターミナルコマンドを設定します。",
+        "zh-CN": "设置启动、语言、主题、引擎、虚拟机、更新和终端命令。",
+        "fil": "I-set ang pagsisimula, ang wika, ang tema, ang engine, ang VM, ang mga update at ang command sa terminal.",
+        "es": "Configura el inicio, el idioma, el tema, el motor, la VM, las actualizaciones y el comando de terminal.",
+        "vi": "Đặt khởi động, ngôn ngữ, giao diện, engine, VM, cập nhật và lệnh terminal."
+      }
+    },
+    {
+      "label": "vm.title",
+      "names": {
+        "en": "Linux VM",
+        "ko": "Linux VM",
+        "ja": "Linux VM",
+        "zh-CN": "Linux 虚拟机",
+        "fil": "Linux VM",
+        "es": "VM Linux",
+        "vi": "Linux VM"
+      },
+      "words": {
+        "en": "On macOS and Windows: see the VM's CPU and memory, and start or stop the VM.",
+        "ko": "macOS와 Windows: VM의 CPU와 메모리를 보고, VM을 시작하거나 멈춥니다.",
+        "ja": "macOS と Windows: VM の CPU とメモリを見て、VM を開始、停止します。",
+        "zh-CN": "在 macOS 和 Windows 上：查看 VM 的 CPU 和内存，并启动或停止 VM。",
+        "fil": "Sa macOS at Windows: tingnan ang CPU at memory ng VM, at simulan o ihinto ang VM.",
+        "es": "En macOS y Windows: mira la CPU y la memoria de la VM, e inicia o detén la VM.",
+        "vi": "Trên macOS và Windows: xem CPU và bộ nhớ của VM, bật hoặc dừng VM."
+      }
+    }
+  ]
+}

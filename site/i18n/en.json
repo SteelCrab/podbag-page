@@ -186,6 +186,7 @@
   "training_side": "About Training",
   "training_guides": "Guides on the blog",
   "training_tabs": "Training sections",
+  "training_tab_gui_usage": "How to use the GUI",
   "training_tab_gui": "GUI practice",
   "training_tab_tui": "How to use the TUI",
   "tui_title": "How to use the Podbag TUI",
@@ -195,5 +196,13 @@
   "tui_keys": "Main keys",
   "tui_key": "Key",
   "tui_action": "What it does",
-  "tui_guides": "Guides"
+  "tui_guides": "Guides",
+  "gui_title": "How to use Podbag Desktop",
+  "gui_description": "How to use Podbag Desktop, the app for podbag: the pages of its sidebar and short guides for containers, images, volumes, networks, engines, Kubernetes and settings.",
+  "gui_lead": "Podbag Desktop shows your containers, images, volumes and networks in a window. Pick a topic and read how to use it.",
+  "gui_intro": "Podbag Desktop runs on Linux and macOS. Windows support is experimental and needs WSL 2. Get the package for your system from the <a href=\"https://github.com/SteelCrab/podbag/releases/latest\">latest release</a>. The app includes the CLI.",
+  "gui_pages": "The sidebar",
+  "gui_page": "Page",
+  "gui_action": "What it does",
+  "gui_guides": "Guides"
 }

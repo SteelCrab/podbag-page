@@ -49,7 +49,7 @@ podbag exec -it web sh
 
 ## 删除容器
 
-`d` 删除选中的容器。TUI 会先询问你。正在运行的容器会先停止，再删除。
+`d` 或 `Delete` 删除选中的容器。TUI 会先询问你。正在运行的容器会先停止，再删除。
 
 ![podbag tui 在删除 report 容器之前先询问](tui-remove-zh-CN.png)
 

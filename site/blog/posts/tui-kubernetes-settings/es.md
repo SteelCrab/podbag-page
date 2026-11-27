@@ -28,6 +28,17 @@ La TUI usa `kubectl` y sus contextos. Instala `kubectl` primero.
 
 La lista muestra cada recurso como `namespace/nombre`. Pulsa `Enter` para verlo en JSON. **Actualizar** vuelve a leer la lista. La TUI solo lee el clúster. No lo cambia.
 
+## Haz una práctica en Tutoriales
+
+Pulsa `F8`. **Tutoriales** instala un archivo de lección y ejecuta sus ejercicios en un entorno de práctica.
+
+1. Descarga un archivo de lección, por ejemplo `volume-api.podbag` de [Práctica · Leer por HTTP el JSON de un volumen](../volume-api-lab/).
+2. Elige **Elegir archivo** y escribe la ruta del archivo.
+3. Elige **Instalar módulo**.
+4. Elige **Iniciar práctica**.
+
+**Eliminar módulo** elimina la lección. Para los módulos prácticos de Podbag Desktop y la CLI, consulta [Práctica con GUI](/es/training/).
+
 ## Cambia los ajustes
 
 Pulsa `F9`.

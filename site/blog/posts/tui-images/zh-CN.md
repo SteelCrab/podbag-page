@@ -19,7 +19,7 @@ draft: false
 
 ## 拉取镜像
 
-1. 按 `p`。**拉取镜像**窗口会打开。
+1. 按 `p`。**拉取镜像**窗口会打开。在任意列表中按 `Ctrl+Shift+P` 也能打开它。
 2. 输入名称，例如 `nginx`。在 Docker Hub 上，输入两个字符后就会显示结果。
 3. 用 `↑` `↓` 选择一个结果，然后按 `Enter`。TUI 会询问标签。留空表示使用 `latest`。
 
@@ -32,7 +32,7 @@ draft: false
 - `Tab` 切换拉取位置：Docker Hub、GitHub、Amazon ECR、Quay.io、Google Artifact Registry、GitLab、Azure Container Registry 或其他镜像仓库。
 - `F2` 打开镜像仓库列表。输入文字可以筛选列表。
 - 有些镜像仓库需要主机地址，例如你的 Amazon ECR 地址。这时窗口中会显示一行主机地址。
-- `F3` 登录镜像仓库。
+- `F3` 登录镜像仓库。操作菜单（`a`）中也有**登录**：拉取之前，先选择镜像仓库并登录。
 
 搜索只适用于 Docker Hub。对于其他镜像仓库，请直接输入镜像名称。
 

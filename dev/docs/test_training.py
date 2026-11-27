@@ -4,6 +4,7 @@ usage: python3 -m unittest dev/docs/test_training.py
 """
 import copy
 import importlib.util
+import itertools
 import json
 import re
 import sys
@@ -20,6 +21,9 @@ import training  # noqa: E402
 SOURCE = HERE.parents[1] / "site" / "training"
 IDS = json.loads((SOURCE / "catalog.json").read_text())["modules"]
 TUI = json.loads((SOURCE / "tui.json").read_text())
+GUI = json.loads((SOURCE / "gui.json").read_text())
+# The usage tabs: their folder under /training/ and their source.
+USAGE = {"gui": GUI, "tui": TUI}
 
 
 def html_text(fragment):
@@ -284,7 +288,7 @@ class Rules(unittest.TestCase):
         langs = ["en", "ko"]
         good = {"guides": ["tui-start"], "minutes": {"tui-start": 5},
                 "keys": [{"keys": ["q"], "words": {"en": "Quit", "ko": "끝내기"}}]}
-        self.assertEqual(training.load_tui(good, langs)["guides"], ["tui-start"])
+        self.assertEqual(training.load_usage(good, langs, "tui")["guides"], ["tui-start"])
         for change, words in [
             (lambda t: t.update(guides=[]), "guides"),
             (lambda t: t.update(guides=["Bad slug"]), "bad guide"),
@@ -296,8 +300,29 @@ class Rules(unittest.TestCase):
             tui = copy.deepcopy(good)
             change(tui)
             with self.subTest(words), self.assertRaises(SystemExit) as caught:
-                training.load_tui(tui, langs)
+                training.load_usage(tui, langs, "tui")
             self.assertIn(words, str(caught.exception))
+            self.assertIn("site/training/tui.json", str(caught.exception))
+
+    def test_a_bad_gui_list_stops_the_build(self):
+        langs = ["en", "ko"]
+        good = {"guides": ["gui-start"], "minutes": {"gui-start": 5},
+                "pages": [{"names": {"en": "Images", "ko": "이미지"},
+                           "words": {"en": "Pull images", "ko": "이미지 받기"}}]}
+        self.assertEqual(training.load_usage(good, langs, "gui")["guides"], ["gui-start"])
+        for change, words in [
+            (lambda g: g.update(guides=[]), "guides"),
+            (lambda g: g.update(minutes={"gui-start": 0}), "minutes of gui-start"),
+            (lambda g: g.update(pages=[]), "pages"),
+            (lambda g: g["pages"][0]["names"].pop("ko"), "page row 1 has no ko name"),
+            (lambda g: g["pages"][0]["words"].pop("en"), "page row 1 has no en words"),
+        ]:
+            gui = copy.deepcopy(good)
+            change(gui)
+            with self.subTest(words), self.assertRaises(SystemExit) as caught:
+                training.load_usage(gui, langs, "gui")
+            self.assertIn(words, str(caught.exception))
+            self.assertIn("site/training/gui.json", str(caught.exception))
 
     def test_a_bad_module_stops_the_build(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -512,7 +537,7 @@ class Built(unittest.TestCase):
             label = f'<span class="label">{words["nav_training"]}</span></a>'
             base = self.out / self.site.path_of(code)
             for page in ("index.html", "blog/index.html", "training/index.html",
-                         "training/tui/index.html"):
+                         "training/gui/index.html", "training/tui/index.html"):
                 html = (base / page).read_text()
                 nav = re.search(r'<nav aria-label=.*?</nav>', html, re.S).group(0)
                 link = re.search(r'<a href="([^"]*)"[^>]*><svg[^>]*>(?:(?!</a>).)*' + re.escape(label),
@@ -523,40 +548,43 @@ class Built(unittest.TestCase):
                 current = re.findall(r'<a href="([^"]*)" aria-current="true">', nav)
                 expected = {"index.html": [], "blog/index.html": ["blog"],
                             "training/index.html": ["training"],
+                            "training/gui/index.html": ["training"],
                             "training/tui/index.html": ["training"]}[page]
                 self.assertEqual([Path(c.rstrip("/")).name or "." for c in current], expected,
                                  (code, page))
 
-    def test_training_has_gui_and_tui_tabs(self):
-        """Both Training pages start with two tabs: GUI practice (/training/) and the TUI
-        guide (/training/tui/). The open one is marked."""
+    def test_training_has_three_tabs(self):
+        """Every Training page starts with three tabs: how to use the GUI (/training/gui/),
+        GUI practice (/training/) and how to use the TUI (/training/tui/). The open one is
+        marked."""
         for code, _ in self.site.LANGS:
             words = json.loads((self.site.SITE / f"i18n/{code}.json").read_text())
             base = self.out / self.site.path_of(code) / "training"
-            for page, current in ((base / "index.html", 0), (base / "tui/index.html", 1)):
+            pages = [base / "gui/index.html", base / "index.html", base / "tui/index.html"]
+            for current, page in enumerate(pages):
                 with self.subTest(code=code, page=page.relative_to(self.out)):
                     html = page.read_text()
                     nav = re.search(r'<nav class="band-nav"[^>]*>(.*?)</nav>', html).group(1)
                     tabs = re.findall(r'<a href="([^"]+)"( aria-current="page")?>([^<]+)</a>', nav)
                     self.assertEqual([t[2] for t in tabs],
-                                     [words["training_tab_gui"], words["training_tab_tui"]])
+                                     [words["training_tab_gui_usage"], words["training_tab_gui"],
+                                      words["training_tab_tui"]])
                     self.assertEqual([(page.parent / t[0]).resolve() for t in tabs],
-                                     [base.resolve(), (base / "tui").resolve()])
-                    self.assertEqual([bool(t[1]) for t in tabs], [current == 0, current == 1])
+                                     [p.parent.resolve() for p in pages])
+                    self.assertEqual([bool(t[1]) for t in tabs], [n == current for n in range(3)])
 
-    def test_the_tui_page_lists_every_guide_as_a_card(self):
-        """/training/tui/ lists the TUI guides in order as cards like the blog list: the
-        guide's picture, the title linking to the guide in the page's language, its time and
-        summary. It has no practice module."""
+    def test_the_usage_pages_list_every_guide_as_a_card(self):
+        """/training/gui/ and /training/tui/ list their guides in order as cards like the blog
+        list: the guide's picture, the title linking to the guide in the page's language, its
+        time and summary. They have no practice module."""
         posts = HERE.parents[1] / "site/blog/posts"
-        for code, _ in self.site.LANGS:
-            page = self.out / self.site.path_of(code) / "training/tui/index.html"
+        for (kind, usage), (code, _) in itertools.product(USAGE.items(), self.site.LANGS):
+            page = self.out / self.site.path_of(code) / f"training/{kind}/index.html"
             html = page.read_text()
-            self.assertIn("podbag tui</code>", html)
             self.assertNotIn("podbag lab", html)
             self.assertEqual(re.findall(r'<li class="post-card guide reveal" id="([a-z0-9-]+)">', html),
-                             TUI["guides"], code)
-            for slug in TUI["guides"]:
+                             usage["guides"], code)
+            for slug in usage["guides"]:
                 with self.subTest(code=code, slug=slug):
                     item = re.search(rf'<li class="post-card guide reveal" id="{slug}">(.*?)</li>',
                                      html).group(1)
@@ -575,7 +603,30 @@ class Built(unittest.TestCase):
                     summary = re.search(r'^summary: "?(.*?)"?$', text, re.M).group(1)
                     words = re.sub(r"[`*]", "", summary).split()[:3]
                     self.assertIn(" ".join(words), html_text(item))
-                    self.assertIn(str(TUI["minutes"][slug]), html_text(item))
+                    self.assertIn(str(usage["minutes"][slug]), html_text(item))
+
+    def test_the_tui_page_starts_the_tui(self):
+        for code, _ in self.site.LANGS:
+            html = (self.out / self.site.path_of(code) / "training/tui/index.html").read_text()
+            self.assertIn("podbag tui</code>", html)
+
+    def test_the_gui_page_links_to_the_app(self):
+        """/training/gui/ says where to get Podbag Desktop."""
+        for code, _ in self.site.LANGS:
+            html = (self.out / self.site.path_of(code) / "training/gui/index.html").read_text()
+            intro = re.search(r'<div class="training"><p>(.*?)</p>', html).group(1)
+            self.assertIn('href="https://github.com/SteelCrab/podbag/releases/latest"', intro, code)
+
+    def test_the_gui_page_shows_the_sidebar(self):
+        """/training/gui/ names each page of the sidebar with Podbag Desktop's own words."""
+        for code, _ in self.site.LANGS:
+            html = (self.out / self.site.path_of(code) / "training/gui/index.html").read_text()
+            table = re.search(r'<table class="keys pages">(.*?)</table>', html, re.S).group(1)
+            rows = re.findall(r"<tr><td>(.*?)</td><td>(.*?)</td></tr>", table)
+            self.assertEqual(len(rows), len(GUI["pages"]), code)
+            for (name, what), row in zip(rows, GUI["pages"]):
+                self.assertEqual(html_text(name), row["names"][code])
+                self.assertEqual(html_text(what), row["words"][code])
 
     def test_the_tui_page_shows_the_main_keys(self):
         for code, _ in self.site.LANGS:
@@ -588,14 +639,15 @@ class Built(unittest.TestCase):
                                  [html_escape(k) for k in row["keys"]])
                 self.assertEqual(html_text(what), row["words"][code])
 
-    def test_the_tui_pages_name_each_other(self):
-        for code, _ in self.site.LANGS:
-            html = (self.out / self.site.path_of(code) / "training/tui/index.html").read_text()
-            url = f"https://podbag.dev/{self.site.path_of(code)}training/tui/"
+    def test_the_usage_pages_name_each_other(self):
+        for kind, (code, _) in itertools.product(USAGE, self.site.LANGS):
+            html = (self.out / self.site.path_of(code) / f"training/{kind}/index.html").read_text()
+            url = f"https://podbag.dev/{self.site.path_of(code)}training/{kind}/"
             self.assertIn(f'<link rel="canonical" href="{url}">', html)
             for other, _ in self.site.LANGS:
                 self.assertIn(f'<link rel="alternate" hreflang="{other}" '
-                              f'href="https://podbag.dev/{self.site.path_of(other)}training/tui/">', html)
+                              f'href="https://podbag.dev/{self.site.path_of(other)}training/{kind}/">',
+                              html)
 
     def test_no_broken_links(self):
         problems, _ = check_links.check(self.out)

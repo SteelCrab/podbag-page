@@ -186,6 +186,7 @@
   "training_side": "Tungkol sa Pagsasanay",
   "training_guides": "Mga gabay sa blog",
   "training_tabs": "Mga bahagi ng Pagsasanay",
+  "training_tab_gui_usage": "Paano gamitin ang GUI",
   "training_tab_gui": "Pagsasanay sa GUI",
   "training_tab_tui": "Paano gamitin ang TUI",
   "tui_title": "Paano gamitin ang Podbag TUI",
@@ -195,5 +196,13 @@
   "tui_keys": "Mga pangunahing key",
   "tui_key": "Key",
   "tui_action": "Ginagawa nito",
-  "tui_guides": "Mga gabay"
+  "tui_guides": "Mga gabay",
+  "gui_title": "Paano gamitin ang Podbag Desktop",
+  "gui_description": "Paano gamitin ang Podbag Desktop, ang app para sa podbag: ang mga page ng sidebar nito at maiikling gabay para sa container, image, volume, network, engine, Kubernetes at setting.",
+  "gui_lead": "Ipinapakita ng Podbag Desktop ang iyong mga container, image, volume at network sa isang window. Pumili ng paksa at basahin kung paano ito gamitin.",
+  "gui_intro": "Tumatakbo ang Podbag Desktop sa Linux at macOS. Pang-eksperimento pa lang ang suporta sa Windows, at kailangan nito ng WSL 2. Kunin ang package para sa iyong system mula sa <a href=\"https://github.com/SteelCrab/podbag/releases/latest\">pinakabagong release</a>. Kasama sa app ang CLI.",
+  "gui_pages": "Ang sidebar",
+  "gui_page": "Page",
+  "gui_action": "Ginagawa nito",
+  "gui_guides": "Mga gabay"
 }

@@ -51,7 +51,7 @@ TUI vừa với terminal có kích thước 80×24.
 | `PgUp` `PgDn` | Di chuyển mười dòng |
 | `Home` `End` hoặc `g` `G` | Đến dòng đầu hoặc dòng cuối |
 | `Alt+←` `Alt+→` | Quay lại hoặc tiến tới giữa các danh sách bạn đã mở |
-| `/` | Tìm trong danh sách. `Enter` giữ kết quả tìm, `Esc` xóa nó |
+| `/`, `Ctrl+F` hoặc `Ctrl+K` | Tìm trong danh sách. `Enter` giữ kết quả tìm, `Esc` xóa nó |
 | `Enter` hoặc `i` | Hiện tất cả chi tiết. `Esc` để quay lại |
 | `F5` | Làm mới |
 

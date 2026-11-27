@@ -49,7 +49,7 @@ Escribe `exit` para volver a la TUI. La línea de mensajes muestra cómo termin�
 
 ## Elimina contenedores
 
-`d` elimina el contenedor seleccionado. La TUI pregunta antes. Si el contenedor está en ejecución, primero lo detiene y luego lo elimina.
+`d` o `Delete` elimina el contenedor seleccionado. La TUI pregunta antes. Si el contenedor está en ejecución, primero lo detiene y luego lo elimina.
 
 ![podbag tui pregunta antes de eliminar el contenedor report](tui-remove-es.png)
 
