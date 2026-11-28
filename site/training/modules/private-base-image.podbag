@@ -59,6 +59,10 @@
       "check": {
         "kind": "image-exists",
         "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "pull",
+        "name": "docker.io/library/busybox:1.37.0"
       }
     },
     {
@@ -144,6 +148,10 @@
       "check": {
         "kind": "image-absent",
         "name": "127.0.0.1:{port}/training/base:1"
+      },
+      "ui": {
+        "action": "remove-image",
+        "name": "127.0.0.1:{port}/training/base:1"
       }
     },
     {
@@ -211,6 +219,10 @@
       "command": "podbag rm -f registry",
       "check": {
         "kind": "container-absent",
+        "name": "registry"
+      },
+      "ui": {
+        "action": "remove",
         "name": "registry"
       }
     },

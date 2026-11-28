@@ -74,12 +74,17 @@ UI_STEPS = {  # module → {step key: (action, name)}, the table of the plan
         "remove": ("remove", "web"),
     },
     "health-checks": {"remove": ("remove", "web")},
+    "hosts-and-dns": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "remove": ("remove", "dns-demo"),
+    },
     "image-basics": {
         "pull": ("pull", "docker.io/library/busybox:1.37.0"),
         "removeTag": ("remove-image", "my-busybox:1"),
         "removeImage": ("remove-image", "docker.io/library/busybox:1.37.0"),
     },
     "image-build": {"remove": ("remove", "web"), "removeImage": ("remove-image", "my-site:1")},
+    "image-compression": {"pull": ("pull", "docker.io/library/busybox:1.37.0")},
     "local-registry": {
         "pull": ("pull", "docker.io/library/busybox:1.37.0"),
         "removeTag": ("remove-image", "127.0.0.1:{port}/training/busybox:1"),
@@ -98,6 +103,11 @@ UI_STEPS = {  # module → {step key: (action, name)}, the table of the plan
         "unpause": ("resume", "web"),
         "remove": ("remove", "site"),
     },
+    "private-base-image": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "removeBase": ("remove-image", "127.0.0.1:{port}/training/base:1"),
+        "removeRegistry": ("remove", "registry"),
+    },
     "resource-limits": {"remove": ("remove", "app")},
     "restart-policies": {
         "logsJob": ("logs", "job"),
@@ -109,6 +119,11 @@ UI_STEPS = {  # module → {step key: (action, name)}, the table of the plan
     "system-checks": {
         "pull": ("pull", "docker.io/library/busybox:1.37.0"),
         "removeImage": ("remove-image", "docker.io/library/busybox:1.37.0"),
+    },
+    "udp-ports": {
+        "pull": ("pull", "docker.io/library/busybox:1.37.0"),
+        "logs": ("logs", "udp-server"),
+        "remove": ("remove", "udp-server"),
     },
     "volume-persistence": {
         "create": ("create-volume", "training-data"),
@@ -486,7 +501,7 @@ class UiSteps(unittest.TestCase):
                 if "ui" in step:
                     found.setdefault(name, {})[step["key"]] = (step["ui"]["action"], step["ui"]["name"])
         self.assertEqual(found, UI_STEPS)
-        self.assertEqual(sum(len(v) for v in found.values()), 51)
+        self.assertEqual(sum(len(v) for v in found.values()), 60)
         self.assertEqual(found["pause-and-rename"]["unpause"], ("resume", "web"))
 
     def test_ui_keeps_the_format(self):
@@ -497,7 +512,7 @@ class UiSteps(unittest.TestCase):
             self.assertIn(module["format"], {*training.COURSES, *training.LEGACY}, name)
             formats[module["format"]] += 1
         # Exact counts, as on origin/main on 2026-11-27 (a new module changes them on purpose).
-        self.assertEqual(formats, {"podbag-course-v1": 5, "podbag-course-v2": 16,
+        self.assertEqual(formats, {"podbag-course-v1": 5, "podbag-course-v2": 20,
                                    "podbag-container-basics-v1": 1, "podbag-cli-gui-volumes-v1": 1})
 
 

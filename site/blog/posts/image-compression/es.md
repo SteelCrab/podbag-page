@@ -25,6 +25,14 @@ podbag lab start image-compression
 
 Necesitas una versión de Podbag con compresión de imágenes (después de v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start image-compression --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Descarga la imagen busybox
 
 La sesión de práctica empieza sin imágenes. Descarga una pequeña.
@@ -32,6 +40,9 @@ La sesión de práctica empieza sin imágenes. Descarga una pequeña.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 Podbag comprueba que la imagen está ahí.
 

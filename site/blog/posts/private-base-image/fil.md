@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 Kailangan mo ng build ng Podbag na nagpu-pull ng mga base image gamit ang login mo (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 May dalawang folder mula sa module ang practice folder:
 
 - `auth/htpasswd`: ang user na `training` na may password na `podbag-training`. Nakaimbak ang password bilang bcrypt hash, isang anyo na hindi na maibabalik sa password.
@@ -37,6 +45,9 @@ Ang image na ito ang magiging pribadong base image.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang docker.io/library/busybox:1.37.0**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `docker.io/library/busybox:1.37.0` at pindutin ang `Enter`.
 
 Sinusuri ng Podbag na nandoon ang image.
 
@@ -80,6 +91,9 @@ Kung walang login, tatanggihan ng registry ang push. Hinahanap ng Podbag ang `di
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na 127.0.0.1:18112/training/base:1** at kumpirmahin.
+- **Sa TUI:** Piliin ang `127.0.0.1:18112/training/base:1` sa **Mga image**, pindutin ang `d`, saka ang `y`.
+
 Ngayon, kailangang i-pull ng build ang base image mula sa registry. Sinusuri ng Podbag na wala na ang pangalan.
 
 ## Mag-build sa pribadong base image
@@ -111,6 +125,9 @@ Inaalis ang login sa `docker/config.json`. Mabibigo na ngayon ang bagong pag-pul
 ## Maglinis at tapusin
 
 Burahin ang registry. Tumatakbo pa ito, kaya inihihinto muna ito ng `-f`.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → registry → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `registry` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f registry

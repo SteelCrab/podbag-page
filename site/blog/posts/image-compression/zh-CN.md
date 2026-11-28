@@ -25,6 +25,14 @@ podbag lab start image-compression
 
 需要支持镜像压缩的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start image-compression --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 拉取 busybox 镜像
 
 练习环境一开始没有镜像。先拉取一个小镜像。
@@ -32,6 +40,9 @@ podbag lab start image-compression
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 Podbag 会检查镜像是否存在。
 

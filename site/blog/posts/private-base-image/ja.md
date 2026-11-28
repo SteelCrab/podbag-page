@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 あなたのログインでベースイメージを取得する Podbag のビルドが必要です(v0.3.2 より後)。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 実習用のフォルダーには、モジュールの 2 つのフォルダーがあります。
 
 - `auth/htpasswd`: ユーザー `training` とパスワード `podbag-training` です。パスワードは bcrypt ハッシュで保存されます。ハッシュは、パスワードに戻せない形です。
@@ -37,6 +45,9 @@ podbag lab start private-base-image
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → docker.io/library/busybox:1.37.0 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `docker.io/library/busybox:1.37.0` と入力し、`Enter` を押します。
 
 Podbag はイメージがあることを確認します。
 
@@ -80,6 +91,9 @@ podbag push 127.0.0.1:18112/training/base:1
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → イメージ 127.0.0.1:18112/training/base:1 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `127.0.0.1:18112/training/base:1` を選び、`d` を押してから `y` を押します。
+
 これで、ビルドはレジストリからベースイメージを取得する必要があります。Podbag は名前が消えたことを確認します。
 
 ## 非公開のベースイメージでビルドする
@@ -111,6 +125,9 @@ podbag logout 127.0.0.1:18112
 ## 片付けて終了する
 
 レジストリを削除します。まだ実行中なので、`-f` で先に停止します。
+
+- **Podbag Desktop で:** **実習コンテナ → registry → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `registry` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm -f registry

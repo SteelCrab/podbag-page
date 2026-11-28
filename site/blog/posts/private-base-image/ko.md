@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 로그인 정보로 베이스 이미지를 받는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 실습 폴더에는 모듈이 만든 폴더 두 개가 있습니다.
 
 - `auth/htpasswd`: 사용자 `training`과 비밀번호 `podbag-training`이 들어 있습니다. 비밀번호는 bcrypt 해시로 저장됩니다. 해시는 원래 비밀번호로 되돌릴 수 없는 형태입니다.
@@ -37,6 +45,9 @@ podbag lab start private-base-image
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 Podbag은 이미지가 있는지 확인합니다.
 
@@ -80,6 +91,9 @@ podbag push 127.0.0.1:18112/training/base:1
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 127.0.0.1:18112/training/base:1 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `127.0.0.1:18112/training/base:1` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 이제 빌드는 베이스 이미지를 레지스트리에서 받아야 합니다. Podbag은 이 이름이 없어졌는지 확인합니다.
 
 ## 비공개 베이스 이미지로 빌드하기
@@ -111,6 +125,9 @@ podbag logout 127.0.0.1:18112
 ## 정리 및 실습 종료
 
 레지스트리를 삭제합니다. 아직 실행 중이므로 `-f`가 먼저 멈춥니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → registry → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `registry` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f registry

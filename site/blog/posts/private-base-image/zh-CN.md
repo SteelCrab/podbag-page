@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 需要能用你的登录信息拉取基础镜像的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 练习文件夹中有本模块的两个文件夹：
 
 - `auth/htpasswd`：用户 `training`，密码为 `podbag-training`。密码以 bcrypt 哈希保存，这种形式无法还原成密码。
@@ -37,6 +45,9 @@ podbag lab start private-base-image
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 Podbag 会检查镜像是否存在。
 
@@ -80,6 +91,9 @@ podbag push 127.0.0.1:18112/training/base:1
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 127.0.0.1:18112/training/base:1**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `127.0.0.1:18112/training/base:1`，按 `d`，再按 `y`。
+
 现在构建必须从镜像仓库拉取基础镜像。Podbag 会检查该名称是否已不存在。
 
 ## 基于私有基础镜像构建
@@ -111,6 +125,9 @@ podbag logout 127.0.0.1:18112
 ## 清理并结束
 
 删除镜像仓库。它仍在运行，所以 `-f` 会先停止它。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → registry → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `registry`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f registry

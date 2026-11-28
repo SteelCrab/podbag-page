@@ -25,6 +25,14 @@ podbag lab start image-compression
 
 Bạn cần bản Podbag có tính năng nén image (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start image-compression --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kéo image busybox
 
 Phiên thực hành bắt đầu mà không có image nào. Hãy kéo một image nhỏ.
@@ -32,6 +40,9 @@ Phiên thực hành bắt đầu mà không có image nào. Hãy kéo một imag
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image đã có.
 

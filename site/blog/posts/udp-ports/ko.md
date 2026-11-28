@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 Training 카탈로그를 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## busybox 이미지 받기
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 Podbag은 이미지가 있는지 확인합니다.
 
@@ -69,6 +80,9 @@ UDP는 답을 보내지 않으므로 이 명령은 아무것도 출력하지 않
 podbag logs udp-server
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → udp-server → 로그**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `udp-server` 선택 후 `l` 키를 누릅니다.
+
 출력은 `Hello over UDP`입니다. Podbag은 이 줄을 확인합니다.
 
 macOS에서는 공개한 UDP 포트도 TCP 포트처럼 Mac의 `localhost`에서 응답합니다. UDP 클라이언트의 흐름은 90초 동안 오가는 데이터가 없으면 끝납니다.
@@ -76,6 +90,9 @@ macOS에서는 공개한 UDP 포트도 TCP 포트처럼 Mac의 `localhost`에서
 ## 정리 및 실습 종료
 
 서버를 삭제합니다. 아직 실행 중이므로 `-f`가 먼저 멈춥니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → udp-server → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `udp-server` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f udp-server

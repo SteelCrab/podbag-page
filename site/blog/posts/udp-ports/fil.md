@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## I-pull ang image na busybox
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang docker.io/library/busybox:1.37.0**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `docker.io/library/busybox:1.37.0` at pindutin ang `Enter`.
 
 Sinusuri ng Podbag na nandoon ang image.
 
@@ -69,6 +80,9 @@ Ipinakita ng server ang natanggap nito. Makikita ito sa mga log.
 podbag logs udp-server
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → udp-server → Mga log**.
+- **Sa TUI:** Piliin ang `udp-server` sa **Mga container** at pindutin ang `l`.
+
 Ang output ay `Hello over UDP`. Hinahanap ng Podbag ang linyang ito.
 
 Sa macOS, sumasagot din sa `localhost` ng Mac ang na-publish na UDP port, tulad ng TCP port. Natatapos ang daloy ng UDP client pagkatapos ng 90 segundo na walang trapiko.
@@ -76,6 +90,9 @@ Sa macOS, sumasagot din sa `localhost` ng Mac ang na-publish na UDP port, tulad 
 ## Maglinis at tapusin
 
 Burahin ang server. Tumatakbo pa ito, kaya inihihinto muna ito ng `-f`.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → udp-server → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `udp-server` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f udp-server

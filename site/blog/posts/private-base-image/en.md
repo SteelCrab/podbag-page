@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 You need a Podbag build that pulls base images with your login (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 The practice folder has two folders from the module:
 
 - `auth/htpasswd`: the user `training` with the password `podbag-training`. The password is stored as a bcrypt hash, a form that cannot be turned back into the password.
@@ -37,6 +45,9 @@ This image becomes the private base image.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 Podbag checks that the image is there.
 
@@ -80,6 +91,9 @@ Without the login, the registry would refuse the push. Podbag checks the output 
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → Remove image 127.0.0.1:18112/training/base:1** and confirm.
+- **In the TUI:** Select `127.0.0.1:18112/training/base:1` in **Images**, press `d`, then `y`.
+
 Now the build has to pull the base image from the registry. Podbag checks that the name is gone.
 
 ## Build on the private base image
@@ -111,6 +125,9 @@ The login is removed from `docker/config.json`. A new pull of the base image wou
 ## Clean up and finish
 
 Remove the registry. It is still running, so `-f` stops it first.
+
+- **In Podbag Desktop:** Select **Practice containers → registry → Remove** and confirm.
+- **In the TUI:** Select `registry` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f registry

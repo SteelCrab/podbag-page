@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 Necesitas una versión de Podbag que descargue las imágenes base con tu inicio de sesión (después de v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 La carpeta de práctica tiene dos carpetas del módulo:
 
 - `auth/htpasswd`: el usuario `training` con la contraseña `podbag-training`. La contraseña se guarda como un hash bcrypt, una forma que no se puede convertir de nuevo en la contraseña.
@@ -37,6 +45,9 @@ Esta imagen será la imagen base privada.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 Podbag comprueba que la imagen está ahí.
 
@@ -80,6 +91,9 @@ Sin el inicio de sesión, el registro rechazaría la subida. Podbag busca `diges
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la imagen 127.0.0.1:18112/training/base:1** y confirma.
+- **En la TUI:** Selecciona `127.0.0.1:18112/training/base:1` en **Imágenes**, pulsa `d` y luego `y`.
+
 Ahora el build tiene que descargar la imagen base desde el registro. Podbag comprueba que el nombre ya no existe.
 
 ## Construye sobre la imagen base privada
@@ -111,6 +125,9 @@ El inicio de sesión se elimina de `docker/config.json`. Una nueva descarga de l
 ## Elimina el registro y termina
 
 Elimina el registro. Sigue en ejecución, así que `-f` lo detiene primero.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → registry → Eliminar** y confirma.
+- **En la TUI:** Selecciona `registry` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f registry

@@ -25,11 +25,22 @@ podbag lab start hosts-and-dns
 
 You need a Podbag build with `--add-host` and `--dns` (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start hosts-and-dns --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Pull the busybox image
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 Podbag checks that the image is there.
 
@@ -86,6 +97,9 @@ Podbag checks for the line `options ndots:2`.
 ## Clean up and finish
 
 Remove the container. It is still running, so `-f` stops it first.
+
+- **In Podbag Desktop:** Select **Practice containers → dns-demo → Remove** and confirm.
+- **In the TUI:** Select `dns-demo` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f dns-demo
