@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kéo image busybox
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image đã có.
 
@@ -69,6 +80,9 @@ Máy chủ đã in những gì nó nhận được. Nhật ký hiển thị đi�
 podbag logs udp-server
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → udp-server → Nhật ký**.
+- **Trong TUI:** Chọn `udp-server` trong **Container** rồi nhấn `l`.
+
 Kết quả là `Hello over UDP`. Podbag tìm dòng này.
 
 Trên macOS, cổng UDP đã công bố cũng trả lời trên `localhost` của máy Mac, giống như cổng TCP. Luồng của một client UDP kết thúc sau 90 giây không có dữ liệu.
@@ -76,6 +90,9 @@ Trên macOS, cổng UDP đã công bố cũng trả lời trên `localhost` củ
 ## Dọn dẹp và kết thúc
 
 Xóa máy chủ. Nó vẫn đang chạy, nên `-f` dừng nó trước.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → udp-server → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `udp-server` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f udp-server

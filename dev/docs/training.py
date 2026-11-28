@@ -37,6 +37,9 @@ The rules for a module file:
 - Commands are one podbag command: no shell operators, substitutions, redirections or
   patterns outside single quotes, at most 1,000 characters. "exit" is the finish step's.
 - Each check has the fields of its kind (see FIELDS). Ids in RESERVED are the app's.
+- A step may have "ui": {"action", "name"}: a known action of UI_CHECKS, a plain name, a check
+  kind of that action; prune names a kind (PRUNE_KINDS). The app ignores it before the
+  release that knows it.
 - The older formats (see LEGACY) keep their fixed ids as file names and have no steps.
 - These are the app's rules (parse_package in podbag's src/volume_lesson.rs); keep both
   the same.
@@ -103,6 +106,19 @@ V2_KINDS = {"image-exists", "image-absent", "container-created", "container-stop
             "container-in-network", "container-not-in-network", "volume-absent",
             "output-contains", "file-exists"}
 MAX_COMMAND = 1000
+# What a learner does in a UI to complete a step: the check kinds each action may complete.
+# The app's UI_CHECKS in src/volume_lesson/course.rs (a test compares both).
+UI_CHECKS = {
+    "start": {"container-running"}, "stop": {"container-stopped", "container-exited"},
+    "restart": {"container-restarted", "container-running"}, "pause": {"container-paused"},
+    "resume": {"container-running", "container-published"}, "remove": {"container-absent"},
+    "logs": {"output-has-line", "output-contains"}, "inspect": {"output-contains", "output-has-line"},
+    "pull": {"image-exists"}, "remove-image": {"image-absent"}, "create-volume": {"volume-exists"},
+    "remove-volume": {"volume-absent"}, "remove-network": {"network-absent"},
+    "prune": {"containers-empty", "volumes-empty", "image-absent", "network-absent"},
+}
+PRUNE_KINDS = {"containers", "images", "volumes", "networks"}
+UI_NAME_MAX = 200
 # Ids a course cannot have: the app's built-in labs, the library's other files, and names
 # Windows keeps for devices.
 RESERVED = ({"container-basics", "volume-basics", "tui-volumes", "catalog", "cli-tui-volumes",
@@ -164,6 +180,18 @@ def check_fields(check, where):
                 raise Invalid(f"{where}: {field} must be a whole number")
         elif not plain(value):
             raise Invalid(f"{where}: {field} must be one line of text")
+
+
+def ui_ok(ui, kind, port):
+    """Whether UI (a step's "ui") is one the app accepts for a step with check kind KIND."""
+    if not isinstance(ui, dict):
+        return False
+    action, name = ui.get("action"), ui.get("name")
+    return (isinstance(action, str) and action in UI_CHECKS and plain(name)
+            and not re.search(r"\s", name) and len(name.encode()) <= UI_NAME_MAX
+            and kind in UI_CHECKS[action]
+            and (action != "prune" or name in PRUNE_KINDS)
+            and (port is not None or "{port}" not in name))
 
 
 def practice_path(path):
@@ -234,6 +262,8 @@ def check_course(module, name):
             raise Invalid(f"{where}: the check uses {{port}}, but the module has no port")
         if kind == "file-exists" and not practice_path(check["path"]):
             raise Invalid(f"{where}: file-exists checks a path outside the practice directory")
+        if "ui" in step and not ui_ok(step["ui"], kind, port):
+            raise Invalid(f"{where}: the ui cannot do this step: {step['ui']!r}")
         if kind.startswith("desktop-"):
             if "command" in step:
                 raise Invalid(f"{where}: a Desktop step has no command")
@@ -443,9 +473,19 @@ class Hub:
         title = short_title(words.get("title") or module["translations"]["en"]["title"])
         facts = [self.time(minutes, w),
                  f'<a href="{root}training/modules/{name}.podbag" download>{w["training_download"]}</a>']
-        start = blog.code_block(f"podbag lab start {name}", "sh", lang, blog.copy_button(w))
+        button = blog.copy_button(w)
+
+        def start(command):
+            return blog.code_block(command, "sh", lang, button)
+
+        if module["format"] in COURSES:
+            extra = (f'<p class="track">{w["training_track_desktop"]}</p>{start(f"podbag lab start {name}")}'
+                     f'<p class="track">{w["training_track_tui"]}</p>{start(f"podbag lab start {name} --tui")}'
+                     f'<p class="note">{w["training_tracks_note"]}</p>')
+        else:
+            extra = start(f"podbag lab start {name}")
         return self.card("module", name, title, self.post(name, module, lang),
-                         self.guide(name, module, lang, root), facts, root, start)
+                         self.guide(name, module, lang, root), facts, root, extra)
 
     def post(self, name, module, lang):
         """The module's guide post in LANG, or in English when it has none."""

@@ -54,6 +54,10 @@
       "check": {
         "kind": "volume-exists",
         "name": "training-data"
+      },
+      "ui": {
+        "action": "create-volume",
+        "name": "training-data"
       }
     },
     {
@@ -89,6 +93,10 @@
       "check": {
         "kind": "container-absent",
         "name": "app-a"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "app-a"
       }
     },
     {
@@ -122,6 +130,10 @@
       "command": "podbag rm app-b",
       "check": {
         "kind": "container-absent",
+        "name": "app-b"
+      },
+      "ui": {
+        "action": "remove",
         "name": "app-b"
       }
     },

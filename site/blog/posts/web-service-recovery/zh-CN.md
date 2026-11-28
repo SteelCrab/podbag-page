@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Training 列出恢复步骤并显示启动命令](start-en.png)
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行服务器并查看故障
 
 从 Training 复制命令。服务器在后台启动，并检查环境变量 `SITE_TITLE`。这条命令没有设置该变量，所以启动脚本以退出码 `1` 退出。
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 打开**实验容器 → lab-web**。在容器详情中找到 `Exited (1)`。打开这个容器后，Training 会进入查看日志的步骤。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `Enter`。
+
 ![实验容器详情显示 lab-web 以退出码 1 退出](failed-en.png)
 
 ## 读取启动日志
@@ -54,6 +65,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 ```sh
 podbag logs lab-web
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 日志**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `l`。
 
 ![查看已退出的容器后，Training 突出显示日志命令](logs-step-en.png)
 
@@ -67,6 +81,9 @@ podbag logs lab-web
 podbag rm lab-web
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，按 `d`，再按 `y`。
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 前往**实验容器 → lab-web → 查看端口**。点击**在浏览器中打开**。页面显示 **Recovered Podbag site**。Podbag 会检查 HTTP 200 响应和预期的标题。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18082/`。页面显示后按 `o`。
+
 ![运行中服务器的详情显示 localhost 地址和浏览器按钮](ports-en.png)
 
 ![恢复后的页面显示 Recovered Podbag site](page-en.png)
@@ -82,6 +104,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 ## 清理并结束
 
 在 Desktop 中选择**实验容器 → lab-web → 停止**。在同一个终端中删除容器，然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，然后按 `x`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → lab-web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `lab-web`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm lab-web

@@ -160,6 +160,10 @@
       "check": {
         "kind": "container-absent",
         "name": "web"
+      },
+      "ui": {
+        "action": "remove",
+        "name": "web"
       }
     },
     {
@@ -176,6 +180,10 @@
       "command": "podbag rmi my-site:1",
       "check": {
         "kind": "image-absent",
+        "name": "my-site:1"
+      },
+      "ui": {
+        "action": "remove-image",
         "name": "my-site:1"
       }
     },

@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 `training $` 프롬프트에서 계속 진행합니다. 실습 디렉터리에는 `note.txt` 파일이 있습니다. 내용은 `Hello from note.txt` 한 줄입니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 백그라운드에서 컨테이너 실행하기
 
 `app` 컨테이너를 실행합니다. 이 컨테이너는 `/reply.txt`를 쓰고 기다립니다.
@@ -83,6 +91,11 @@ Podbag은 실습 디렉터리에 `busybox.tar`가 있는지 확인합니다.
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 docker.io/library/busybox:1.37.0 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `docker.io/library/busybox:1.37.0` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 Podbag은 컨테이너가 사라졌는지 확인하고, 이어서 이미지가 사라졌는지 확인합니다.
 

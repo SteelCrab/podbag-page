@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start local-registry --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kéo image busybox
 
 Trước tiên, lấy image mà bạn sẽ đẩy lên ở bước sau.
@@ -34,6 +42,9 @@ Trước tiên, lấy image mà bạn sẽ đẩy lên ở bước sau.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image `busybox:1.37.0` đã có.
 
@@ -71,6 +82,9 @@ podbag gửi từng layer tới registry, rồi gửi manifest. Manifest là dan
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image 127.0.0.1:18105/training/busybox:1** và xác nhận.
+- **Trong TUI:** Chọn `127.0.0.1:18105/training/busybox:1` trong **Image**, nhấn `d`, rồi nhấn `y`.
+
 Lệnh này chỉ xóa tên. Tên `busybox:1.37.0` vẫn trỏ tới image, nên các tệp của image vẫn còn. Podbag kiểm tra rằng tên `127.0.0.1:18105/training/busybox:1` không còn.
 
 ## Kéo image về lại
@@ -78,6 +92,9 @@ Lệnh này chỉ xóa tên. Tên `busybox:1.37.0` vẫn trỏ tới image, nên
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải 127.0.0.1:18105/training/busybox:1**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `127.0.0.1:18105/training/busybox:1` rồi nhấn `Enter`.
 
 podbag yêu cầu image từ registry của bạn và lưu lại image dưới tên đó. Podbag kiểm tra rằng tên này đã có.
 
@@ -92,6 +109,9 @@ Container in dòng chữ rồi dừng. `--rm` xóa nó ngay. Podbag kiểm tra r
 ## Dọn dẹp và kết thúc
 
 Xóa registry. Nó vẫn đang chạy, nên `-f` dừng nó trước.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → registry → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `registry` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f registry

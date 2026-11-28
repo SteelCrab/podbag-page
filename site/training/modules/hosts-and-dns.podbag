@@ -54,6 +54,10 @@
       "check": {
         "kind": "image-exists",
         "name": "docker.io/library/busybox:1.37.0"
+      },
+      "ui": {
+        "action": "pull",
+        "name": "docker.io/library/busybox:1.37.0"
       }
     },
     {
@@ -155,6 +159,10 @@
       "command": "podbag rm -f dns-demo",
       "check": {
         "kind": "container-absent",
+        "name": "dns-demo"
+      },
+      "ui": {
+        "action": "remove",
         "name": "dns-demo"
       }
     },

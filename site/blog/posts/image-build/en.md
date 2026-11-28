@@ -25,7 +25,17 @@ Open **Training** in Podbag Desktop and select **Build an image from a Dockerfil
 podbag lab start image-build
 ```
 
-Continue at the `training $` prompt. The session puts a folder named `my-site` in the practice directory. It has two files. `index.html` is the page:
+Continue at the `training $` prompt.
+
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start image-build --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
+The session puts a folder named `my-site` in the practice directory. It has two files. `index.html` is the page:
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ You give no command. The container runs the `CMD` from the Dockerfile. Podbag ch
 
 Go to **Practice containers → web → View ports**. Select **Open in browser**. The page displays **Hello from my-site**. Podbag checks for an HTTP 200 response and this text.
 
+- **In Podbag Desktop:** Select **Practice containers → web → View ports**.
+- **In the TUI:** Select `web` in **Containers** and press `Enter`.
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18095/` in a browser. When the page shows, press `o`.
+
 ## Clean up and finish
 
 In Desktop, select **Practice containers → web → Stop**. Then remove the container and the image in the same terminal.
+
+- **In Podbag Desktop:** Select **Practice containers → web → Stop**.
+- **In the TUI:** Select `web` in **Containers** and press `x`.
+- **In Podbag Desktop:** Select **Practice containers → web → Remove** and confirm.
+- **In the TUI:** Select `web` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → Remove image my-site:1** and confirm.
+- **In the TUI:** Select `my-site:1` in **Images**, press `d`, then `y`.
 
 ```sh
 podbag rm web

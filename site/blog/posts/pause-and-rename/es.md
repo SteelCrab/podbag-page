@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Ejecuta un servidor web
 
 Ejecuta un pequeño servidor web llamado `web`. Sirve el texto `Hello from web` y publica el puerto `18090` en tu computadora. Si `18090` ya está en uso, usa el puerto que indica Training.
@@ -41,6 +49,9 @@ Podbag comprueba que `web` publica el puerto y que la página muestra `Hello fro
 podbag pause web
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Pausar**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `p`.
+
 El servidor está congelado. Si ahora abres `http://127.0.0.1:18090/`, la página no carga. Podbag comprueba que `web` está en el estado `paused`.
 
 ## Mira Paused en la lista
@@ -56,6 +67,9 @@ El estado de `web` termina en `(Paused)`. Un contenedor en pausa sigue contando 
 ```sh
 podbag unpause web
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Reanudar**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `p`.
 
 El servidor vuelve a funcionar y responde a las solicitudes. Podbag comprueba la página otra vez.
 
@@ -81,9 +95,15 @@ La lista tiene `site` y no tiene `web`. Podbag comprueba que ningún contenedor 
 
 En Podbag Desktop, ve a **Contenedores de práctica → site → Ver puertos**. Selecciona **Abrir en el navegador**. La página muestra **Hello from web**. Podbag comprueba que hay una respuesta HTTP 200 y este texto.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → site → Ver puertos → Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18090/` en un navegador. Cuando se vea la página, pulsa `o`.
+
 ## Limpia y termina
 
 `site` sigue en ejecución. `rm -f` lo detiene y lo elimina.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → site → Eliminar** y confirma.
+- **En la TUI:** Selecciona `site` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f site

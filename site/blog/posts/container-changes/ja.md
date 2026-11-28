@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 `training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start container-changes --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## ファイルを書くコンテナを実行する
 
 `app` という名前のコンテナを実行します。このコンテナはファイル `/hello.txt` を 1 つ書いて終了します。`--rm` がないので、停止したコンテナは残ります。
@@ -80,6 +88,11 @@ podbag export -o app.tar app
 ## 片付けて終了する
 
 同じターミナルで、コンテナと新しいイメージを削除します。その後、実習を終了します。
+
+- **Podbag Desktop で:** **実習コンテナ → app → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → イメージ app-snapshot:1 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `app-snapshot:1` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm app

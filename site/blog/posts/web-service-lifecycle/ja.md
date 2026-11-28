@@ -41,6 +41,14 @@ podbag lab start web-service-lifecycle
 
 ![実習を開始する](start-en.png)
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start web-service-lifecycle --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 既定のポートがすでに使われている場合は、Training に表示されるポートを使います。コマンドとブラウザーのアドレスには同じポートが表示されます。
 
 ## サイト用のボリュームを作成する
@@ -50,6 +58,9 @@ Web ページを保存する `site-data` を作成します。
 ```sh
 podbag volume create site-data
 ```
+
+- **Podbag Desktop で:** **実習ボリューム → ボリューム site-data を作成**を選びます。
+- **TUI で:** **ボリューム**を開き、`v` を押して `site-data` と入力し、`Enter` を押します。
 
 ![サイト用のボリュームを作成する](create-en.png)
 
@@ -67,6 +78,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 **実習コンテナ → site-v1 → ポートを表示**を選びます。詳細パネルでアドレスを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → site-v1 → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `site-v1` を選び、`Enter` を押します。
+
 ![1 つ目のサーバーのポートを確認する](ports-en.png)
 
 ![1 つ目のサーバーのポートを確認する](gui-ports-en.png)
@@ -75,6 +89,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 **ブラウザーで開く**を選びます。ページに **My Podbag site** と表示されることを確認します。
 
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18081/` を開きます。ページが表示されたら `o` を押します。
+
 ![1 つ目のサーバーのページを開く](browser-en.png)
 
 ![1 つ目のサーバーのページを開く](web-browser-en.png)
@@ -82,6 +99,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ## 1 つ目のサーバーを停止する
 
 **実習コンテナ → site-v1 → 停止**を選びます。
+
+- **Podbag Desktop で:** **実習コンテナ → site-v1 → 停止**を選びます。
+- **TUI で:** **コンテナ**で `site-v1` を選び、`x` を押します。
 
 ![1 つ目のサーバーを停止する](stop-en.png)
 
@@ -94,6 +114,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 ```sh
 podbag rm site-v1
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → site-v1 → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `site-v1` を選び、`d` を押してから `y` を押します。
 
 ![1 つ目のサーバーを削除する](remove-en.png)
 
@@ -111,6 +134,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 **実習コンテナ → site-v2 → ポートを表示**を選びます。アドレスが 1 つ目のサーバーと同じであることを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → site-v2 → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `site-v2` を選び、`Enter` を押します。
+
 ![入れ替え用のサーバーのポートを確認する](portsReplacement-en.png)
 
 ![入れ替え用のサーバーのポートを確認する](gui-ports-replacement-en.png)
@@ -119,6 +145,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 もう一度**ブラウザーで開く**を選びます。ページには引き続き **My Podbag site** と表示されます。Desktop は新しいリクエストで応答を確認します。
 
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18081/` を開きます。ページが表示されたら `o` を押します。
+
 ![入れ替え用のサーバーのページを開く](browserReplacement-en.png)
 
 ![入れ替え用のサーバーのページを開く](web-browserReplacement-en.png)
@@ -126,6 +155,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 ## 入れ替え用のサーバーを停止する
 
 **実習コンテナ → site-v2 → 停止**を選びます。
+
+- **Podbag Desktop で:** **実習コンテナ → site-v2 → 停止**を選びます。
+- **TUI で:** **コンテナ**で `site-v2` を選び、`x` を押します。
 
 ![入れ替え用のサーバーを停止する](stopReplacement-en.png)
 
@@ -139,11 +171,17 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 podbag rm site-v2
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → site-v2 → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `site-v2` を選び、`d` を押してから `y` を押します。
+
 ![入れ替え用のサーバーを削除する](removeReplacement-en.png)
 
 ## サイト用のボリュームの詳細を開く
 
 **実習ボリューム → site-data** を選び、残っているボリュームを確認します。
+
+- **Podbag Desktop で:** **実習ボリューム → site-data**を選びます。
+- **TUI で:** **ボリューム**で `site-data` を選び、`Enter` を押します。
 
 ![サイト用のボリュームの詳細を開く](inspect-en.png)
 
@@ -152,6 +190,9 @@ podbag rm site-v2
 ## サイト用のボリュームを削除する
 
 **削除**を選び、ボリューム名を確認します。
+
+- **Podbag Desktop で:** **実習ボリューム → site-data → 削除**を選び、確認します。
+- **TUI で:** **ボリューム**で `site-data` を選び、`d` を押してから `y` を押します。
 
 ![サイト用のボリュームを削除する](delete-en.png)
 

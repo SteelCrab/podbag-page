@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行带限制的容器
 
 运行一个名为 `app` 的安静容器。它最多使用 64 MiB 内存和半个 CPU。`-d` 选项让它在后台运行，`sleep 3600` 让它保持运行一小时。
@@ -90,6 +98,9 @@ podbag exec app cat /sys/fs/cgroup/memory.max
 ## 清理并结束
 
 删除容器。`app` 仍在运行，所以 `-f` 会先停止它。然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f app

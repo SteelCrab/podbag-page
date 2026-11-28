@@ -25,7 +25,17 @@ Abre **Training** en Podbag Desktop y selecciona **Ejecuta dos servicios con Doc
 podbag lab start docker-compose
 ```
 
-Continúa en el prompt `training $`. En esta shell, `docker` va al motor de la sesión de práctica. La sesión pone `compose.yaml` en el directorio de práctica:
+Continúa en el prompt `training $`.
+
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
+En esta shell, `docker` va al motor de la sesión de práctica. La sesión pone `compose.yaml` en el directorio de práctica:
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose puso los dos contenedores en `lab_default`. podbag da a cada contenedor 
 ## Abre la página en Desktop
 
 Ve a **Contenedores de práctica → web → Ver puertos**. Selecciona **Abrir en el navegador**. La página muestra **Hello from api**. Podbag comprueba que hay una respuesta HTTP 200 y este texto.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Ver puertos**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `Enter`.
+- **En Podbag Desktop:** Selecciona **Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18107/` en un navegador. Cuando se vea la página, pulsa `o`.
 
 ## Limpia y termina
 

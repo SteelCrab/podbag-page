@@ -25,7 +25,17 @@ Podbag Desktop에서 **Training**을 열고 **Docker Compose로 서비스 두 �
 podbag lab start docker-compose
 ```
 
-`training $` 프롬프트에서 계속 진행합니다. 이 셸에서 `docker`는 실습 환경의 엔진으로 연결됩니다. 실습 디렉터리에는 `compose.yaml`이 있습니다.
+`training $` 프롬프트에서 계속 진행합니다.
+
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
+이 셸에서 `docker`는 실습 환경의 엔진으로 연결됩니다. 실습 디렉터리에는 `compose.yaml`이 있습니다.
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose는 두 컨테이너를 `lab_default`에 연결했습니다. podbag은 �
 ## Desktop에서 페이지 열기
 
 **실습 컨테이너 → web → 포트 보기**로 이동합니다. **브라우저에서 열기**를 선택합니다. 페이지에 **Hello from api**가 표시됩니다. Podbag은 HTTP 200 응답과 이 문구를 확인합니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `Enter` 키를 누릅니다.
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18107/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
 
 ## 정리 및 실습 종료
 

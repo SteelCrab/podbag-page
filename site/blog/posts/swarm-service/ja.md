@@ -27,6 +27,14 @@ podbag lab start swarm-service
 
 `training $` プロンプトが表示されたら続けます。このシェルでは、`docker` は実習環境のエンジンに接続します。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start swarm-service --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## swarm を開始する
 
 ```sh

@@ -25,7 +25,17 @@ Podbag Desktop で **Training** を開き、**Docker Compose で 2 つのサー�
 podbag lab start docker-compose
 ```
 
-`training $` プロンプトが表示されたら続けます。このシェルでは、`docker` は実習環境のエンジンに接続します。実習環境は、実習用のディレクトリに `compose.yaml` を置きます。
+`training $` プロンプトが表示されたら続けます。
+
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start docker-compose --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
+このシェルでは、`docker` は実習環境のエンジンに接続します。実習環境は、実習用のディレクトリに `compose.yaml` を置きます。
 
 ```yaml
 name: lab
@@ -87,6 +97,11 @@ Compose は両方のコンテナを `lab_default` に置きました。podbag �
 ## Desktop でページを開く
 
 **実習コンテナ → web → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Hello from api** と表示されます。Podbag は、HTTP 200 の応答とこのテキストを確認します。
+
+- **Podbag Desktop で:** **実習コンテナ → web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`Enter` を押します。
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18107/` を開きます。ページが表示されたら `o` を押します。
 
 ## 片付けて終了する
 

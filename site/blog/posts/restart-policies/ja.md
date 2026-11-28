@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## 失敗するジョブを実行する
 
 `job` という名前のコンテナを実行します。このコンテナは `try` と表示し、エラーコード `1` で終了します。`--restart on-failure:3` オプションは、エラーの後にコンテナを再起動します。再起動は最大 3 回です。
@@ -53,6 +61,9 @@ podbag inspect job
 podbag logs job
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → job → ログ**を選びます。
+- **TUI で:** **コンテナ**で `job` を選び、`l` を押します。
+
 `try` が 4 回表示されます。最初の実行と 3 回の再起動の分です。Podbag は `try` の行を確認します。
 
 ジョブを削除します。ジョブは停止しているので、`rm` に `-f` は必要ありません。
@@ -60,6 +71,9 @@ podbag logs job
 ```sh
 podbag rm job
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → job → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `job` を選び、`d` を押してから `y` を押します。
 
 ## 終了するたびにコンテナを再起動する
 
@@ -79,6 +93,9 @@ Podbag は、`app` が少なくとも 1 回再起動するまで待ちます。P
 podbag stop app
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → app → 停止**を選びます。
+- **TUI で:** **コンテナ**で `app` を選び、`x` を押します。
+
 Podbag は `app` が停止したことを確認します。すべてのコンテナを一覧表示し、停止したままであることを確認します。
 
 ```sh
@@ -95,11 +112,17 @@ podbag ps -a
 podbag start app
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → app → 開始**を選びます。
+- **TUI で:** **コンテナ**で `app` を選び、`s` を押します。
+
 Podbag は `app` が実行中であることを確認します。
 
 ## 片付けて終了する
 
 コンテナを削除します。実行中の可能性があるので、`-f` で先に停止します。その後、実習を終了します。
+
+- **Podbag Desktop で:** **実習コンテナ → app → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm -f app

@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training lista los pasos de red y muestra el comando de inicio](start-en.png)
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start container-network --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Crea una red y ejecuta el servidor api
 
 Copia cada comando de Training. Primero, crea una red llamada `lab-net`.
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 Ve a **Contenedores de práctica → web → Ver puertos**. Selecciona **Abrir en el navegador**. La página muestra **Hello from api**. Podbag comprueba que hay una respuesta HTTP 200 y este texto.
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Ver puertos**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `Enter`.
+- **En Podbag Desktop:** Selecciona **Abrir en el navegador**.
+- **En la TUI:** Abre `http://127.0.0.1:18083/` en un navegador. Cuando se vea la página, pulsa `o`.
+
 ![Los detalles del servidor web muestran la dirección de localhost y el botón del navegador](ports-en.png)
 
 ![La página web muestra Hello from api](page-en.png)
@@ -80,6 +93,15 @@ Ve a **Contenedores de práctica → web → Ver puertos**. Selecciona **Abrir e
 ## Limpia y termina
 
 En Desktop, selecciona **Contenedores de práctica → web → Detener**. Luego elimina los dos contenedores y la red en la misma terminal. `api` sigue en ejecución, así que `-f` lo detiene antes de eliminarlo. Una red se puede eliminar cuando ningún contenedor la usa.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Detener**.
+- **En la TUI:** Selecciona `web` en **Contenedores** y pulsa `x`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → web → Eliminar** y confirma.
+- **En la TUI:** Selecciona `web` en **Contenedores**, pulsa `d` y luego `y`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → api → Eliminar** y confirma.
+- **En la TUI:** Selecciona `api` en **Contenedores**, pulsa `d` y luego `y`.
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la red lab-net** y confirma.
+- **En la TUI:** Selecciona `lab-net` en **Redes**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm web

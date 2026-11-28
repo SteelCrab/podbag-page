@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start network-connect --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Gumawa ng dalawang network
 
 Gawin ang mga network na `front-net` at `back-net`. Hiwalay na bridge ang bawat isa, na may sariling mga address.
@@ -64,6 +72,9 @@ Binabago lang ng Podbag ang mga network ng container habang nakahinto ito. Magka
 podbag stop api
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → api → Ihinto**.
+- **Sa TUI:** Piliin ang `api` sa **Mga container** at pindutin ang `x`.
+
 Sinusuri ng Podbag na nasa state na `exited` ang `api`.
 
 ## Ikonekta ang api sa back-net
@@ -82,6 +93,9 @@ Sinusuri ng Podbag na nasa `back-net` na ang `api`.
 podbag start api
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → api → Simulan**.
+- **Sa TUI:** Piliin ang `api` sa **Mga container** at pindutin ang `s`.
+
 Nagsisimula ang `api` na may dalawang network. `front-net` pa rin ang una nitong network.
 
 ## Tawagin ang api mula sa back-net
@@ -98,6 +112,9 @@ Ipinapakita ng terminal ang `Hello from api`. Sinusuri ng Podbag ang output na i
 
 Ihinto ulit ang `api`. Pagkatapos, alisin dito ang `back-net` gamit ang `podbag network disconnect`.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → api → Ihinto**.
+- **Sa TUI:** Piliin ang `api` sa **Mga container** at pindutin ang `x`.
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Sinusuri ng Podbag na wala na sa `back-net` ang `api`. Hindi mo maidiskonekta an
 ## Maglinis at tapusin
 
 Alisin ang `api`. Pagkatapos, alisin ang dalawang network sa iisang command. Maaaring alisin ang network kapag walang container na gumagamit nito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → api → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `api` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang network na back-net** at kumpirmahin.
+- **Sa TUI:** Piliin ang `back-net` sa **Mga network**, pindutin ang `d`, saka ang `y`.
+
+Inaalis ng command na `podbag network rm front-net back-net` ang dalawang network. Sa Podbag Desktop at sa TUI, `back-net` lang ang inaalis sa hakbang na ito. Mawawala ang `front-net` kapag natapos ang session.
 
 ```sh
 podbag rm api

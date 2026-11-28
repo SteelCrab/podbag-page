@@ -25,11 +25,22 @@ podbag lab start hosts-and-dns
 
 Bạn cần bản Podbag có `--add-host` và `--dns` (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start hosts-and-dns --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kéo image busybox
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image đã có.
 
@@ -86,6 +97,9 @@ Podbag tìm dòng `options ndots:2`.
 ## Dọn dẹp và kết thúc
 
 Xóa container. Nó vẫn đang chạy, nên `-f` dừng nó trước.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → dns-demo → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `dns-demo` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f dns-demo

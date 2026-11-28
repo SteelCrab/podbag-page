@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start container-changes --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a container that writes a file
 
 Run a container named `app`. It writes one file, `/hello.txt`, and ends. There is no `--rm`, so the stopped container stays.
@@ -80,6 +88,11 @@ The archive lands in the practice directory. Podbag checks that `app.tar` is the
 ## Clean up and finish
 
 Remove the container and the new image in the same terminal. Then end the session.
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → Remove image app-snapshot:1** and confirm.
+- **In the TUI:** Select `app-snapshot:1` in **Images**, press `d`, then `y`.
 
 ```sh
 podbag rm app

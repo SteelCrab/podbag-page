@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 `training $` 프롬프트에서 계속 진행합니다. 실습 환경에는 비어 있는 별도의 이미지 저장소가 있습니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start image-basics --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 이미지 내려받기
 
 `pull`은 레지스트리에서 이미지를 내려받습니다. 레지스트리는 이미지를 보관하는 서버입니다. `docker.io`는 Docker Hub입니다.
@@ -34,6 +42,9 @@ podbag lab start image-basics
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 podbag은 레이어를 하나씩 내려받으며 진행 상황을 출력합니다. Podbag은 `docker.io/library/busybox:1.37.0` 이미지가 저장됐는지 확인합니다.
 
@@ -75,6 +86,9 @@ podbag run --rm my-busybox:1 echo Hello from my-busybox
 podbag rmi my-busybox:1
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 my-busybox:1 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `my-busybox:1` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 podbag은 `Untagged: docker.io/library/my-busybox:1`을 출력합니다. Podbag은 태그가 사라졌는지 확인합니다.
 
 ## 원래 이미지가 남았는지 확인하기
@@ -94,6 +108,9 @@ podbag images
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 docker.io/library/busybox:1.37.0 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `docker.io/library/busybox:1.37.0` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 Podbag은 이미지가 사라졌는지 확인합니다.
 

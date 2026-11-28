@@ -25,7 +25,17 @@ Dockerfile 是一个文本文件，写着制作镜像的步骤。`podbag build` 
 podbag lab start image-build
 ```
 
-出现 `training $` 提示符后继续。实验会在练习目录中放入一个名为 `my-site` 的文件夹。其中有两个文件。`index.html` 是页面：
+出现 `training $` 提示符后继续。
+
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start image-build --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
+实验会在练习目录中放入一个名为 `my-site` 的文件夹。其中有两个文件。`index.html` 是页面：
 
 ```text
 Hello from my-site
@@ -74,9 +84,21 @@ podbag run -d --name web -p 127.0.0.1:18095:8080 my-site:1
 
 前往**实验容器 → web → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from my-site**。Podbag 会检查 HTTP 200 响应和这段文字。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18095/`。页面显示后按 `o`。
+
 ## 清理并结束
 
 在 Desktop 中选择**实验容器 → web → 停止**。然后在同一个终端中删除容器和镜像。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `x`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `web`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 my-site:1**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `my-site:1`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm web

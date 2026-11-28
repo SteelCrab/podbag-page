@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start network-connect --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 创建两个网络
 
 创建网络 `front-net` 和 `back-net`。每个网络都是独立的网桥，有自己的地址。
@@ -64,6 +72,9 @@ Podbag 只在容器停止时更改它的网络。更改从下次启动开始生�
 podbag stop api
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → api → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `api`，然后按 `x`。
+
 Podbag 会检查 `api` 是否处于 `exited` 状态。
 
 ## 将 api 连接到 back-net
@@ -82,6 +93,9 @@ Podbag 会检查 `api` 现在是否在 `back-net` 中。
 podbag start api
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → api → 启动**。
+- **在 TUI 中：** 在**容器**中选择 `api`，然后按 `s`。
+
 `api` 启动后连接两个网络。它的第一个网络仍然是 `front-net`。
 
 ## 从 back-net 调用 api
@@ -98,6 +112,9 @@ podbag run --rm --network back-net docker.io/library/busybox:1.37.0 wget -qO- ht
 
 再次停止 `api`。然后用 `podbag network disconnect` 将它从 `back-net` 中移除。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → api → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `api`，然后按 `x`。
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag 会检查 `api` 是否已不在 `back-net` 中。容器不能断开与第
 ## 清理并结束
 
 删除 `api`。然后用一条命令删除两个网络。没有容器使用网络时，才能删除网络。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → api → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `api`，按 `d`，再按 `y`。
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除网络 back-net**并确认。
+- **在 TUI 中：** 在**网络**中选择 `back-net`，按 `d`，再按 `y`。
+
+命令 `podbag network rm front-net back-net` 会同时删除两个网络。在 Podbag Desktop 和 TUI 中，这一步只删除 `back-net`。`front-net` 会在实验结束时删除。
 
 ```sh
 podbag rm api

@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 Training 카탈로그가 있는 Podbag 빌드(v0.3.2 이후)가 필요합니다. `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 시작하지 않고 컨테이너 만들기
 
 `podbag create`는 컨테이너를 만들지만 프로그램을 시작하지 않습니다. 이 프로그램은 작은 셸 반복문입니다. 중지 신호(`TERM`)를 받을 때까지 실행되고, 신호를 받으면 종료 코드 `0`으로 끝납니다.
@@ -53,6 +61,9 @@ podbag ps -a
 podbag start app
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 시작**을 누릅니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `s` 키를 누릅니다.
+
 Podbag은 `app`이 실행 중인지 확인합니다.
 
 ## 컨테이너 중지
@@ -62,6 +73,9 @@ Podbag은 `app`이 실행 중인지 확인합니다.
 ```sh
 podbag stop app
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `x` 키를 누릅니다.
 
 Podbag은 `app`이 `exited` 상태인지 확인합니다.
 
@@ -80,6 +94,9 @@ podbag ps -a
 ```sh
 podbag restart app
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 재시작**을 누릅니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `r` 키를 누릅니다.
 
 Podbag은 `app`이 다시 실행 중인지 확인합니다.
 
@@ -104,6 +121,9 @@ podbag ps -a
 ## 컨테이너 삭제하고 마치기
 
 `podbag rm`은 중지된 컨테이너를 삭제합니다. 실행 중인 컨테이너는 `rm -f`로 삭제합니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm app

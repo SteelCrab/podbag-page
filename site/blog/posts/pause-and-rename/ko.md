@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 Training 카탈로그가 있는 Podbag 빌드(v0.3.2 이후)가 필요합니다. `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 웹 서버 실행
 
 `web`이라는 작은 웹 서버를 실행합니다. 이 서버는 `Hello from web`이라는 글자를 보여 주고, 내 컴퓨터의 `18090` 포트로 공개됩니다. `18090` 포트가 이미 사용 중이면 Training에 표시된 포트를 사용합니다.
@@ -41,6 +49,9 @@ Podbag은 `web`이 포트를 공개하는지, 페이지에 `Hello from web`이 �
 podbag pause web
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 일시 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `p` 키를 누릅니다.
+
 서버가 멈춥니다. 지금 `http://127.0.0.1:18090/`을 열면 페이지가 열리지 않습니다. Podbag은 `web`이 `paused` 상태인지 확인합니다.
 
 ## 목록에서 Paused 확인
@@ -56,6 +67,9 @@ podbag ps
 ```sh
 podbag unpause web
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → web → 다시 시작**을 누릅니다.
+- **TUI에서:** **컨테이너**에서 `web` 선택 후 `p` 키를 누릅니다.
 
 서버가 다시 실행되고 요청에 응답합니다. Podbag은 페이지를 다시 확인합니다.
 
@@ -81,9 +95,15 @@ podbag ps -a
 
 Podbag Desktop에서 **실습 컨테이너 → site → 포트 보기**를 누릅니다. **브라우저에서 열기**를 누릅니다. 페이지에 **Hello from web**이 표시됩니다. Podbag은 HTTP 200 응답과 이 글자를 확인합니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → site → 포트 보기 → 브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18090/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ## 실습 리소스 정리
 
 `site`는 아직 실행 중입니다. `rm -f`는 컨테이너를 중지한 뒤 삭제합니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → site → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `site` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f site

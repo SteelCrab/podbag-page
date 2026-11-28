@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Gumawa ng container nang hindi ito sinisimulan
 
 Ginagawa ng `podbag create` ang container pero hindi nito sinisimulan ang program. Maliit na shell loop ang program. Tumatakbo ito hanggang makatanggap ng stop signal (`TERM`). Pagkatapos, natatapos ito sa exit code na `0`.
@@ -53,6 +61,9 @@ Pinapatakbo ng `podbag start` ang program ng container na nagawa na o nakahinto.
 podbag start app
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Simulan**.
+- **Sa TUI:** Piliin ang `app` sa **Mga container** at pindutin ang `s`.
+
 Sinusuri ng Podbag na tumatakbo ang `app`.
 
 ## Ihinto ang container
@@ -62,6 +73,9 @@ Nagpapadala ang `podbag stop` ng signal na `TERM`. Maaaring tapusin ng program a
 ```sh
 podbag stop app
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Ihinto**.
+- **Sa TUI:** Piliin ang `app` sa **Mga container** at pindutin ang `x`.
 
 Sinusuri ng Podbag na nasa state na `exited` ang `app`.
 
@@ -80,6 +94,9 @@ Inihihinto ng `podbag restart` ang container kung tumatakbo ito, at saka ito sin
 ```sh
 podbag restart app
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → I-restart**.
+- **Sa TUI:** Piliin ang `app` sa **Mga container** at pindutin ang `r`.
 
 Sinusuri ng Podbag na tumatakbo ulit ang `app`.
 
@@ -104,6 +121,9 @@ podbag ps -a
 ## Alisin ang container at tapusin
 
 Inaalis ng `podbag rm` ang nakahintong container. Kailangan ng `rm -f` para sa tumatakbong container.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm app

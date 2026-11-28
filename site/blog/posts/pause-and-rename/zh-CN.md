@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行 Web 服务器
 
 运行一个名为 `web` 的小型 Web 服务器。它提供文字 `Hello from web`，并在你的电脑上发布端口 `18090`。如果 `18090` 已被占用，请使用 Training 中显示的端口。
@@ -41,6 +49,9 @@ Podbag 会检查 `web` 是否发布了端口，以及页面是否显示 `Hello f
 podbag pause web
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 暂停**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `p`。
+
 服务器被冻结。如果现在打开 `http://127.0.0.1:18090/`，页面无法加载。Podbag 会检查 `web` 是否处于 `paused` 状态。
 
 ## 在列表中查看 Paused
@@ -56,6 +67,9 @@ podbag ps
 ```sh
 podbag unpause web
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 恢复**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `p`。
 
 服务器再次运行并响应请求。Podbag 会再次检查页面。
 
@@ -81,9 +95,15 @@ podbag ps -a
 
 在 Podbag Desktop 中，前往**实验容器 → site → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from web**。Podbag 会检查 HTTP 200 响应和这段文字。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → site → 查看端口 → 在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18090/`。页面显示后按 `o`。
+
 ## 清理并结束
 
 `site` 仍在运行。`rm -f` 会停止并删除它。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → site → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `site`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f site

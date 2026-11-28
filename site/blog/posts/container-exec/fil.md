@@ -25,6 +25,14 @@ podbag lab start container-exec
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start container-exec --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng container na may environment variable
 
 Ang environment variable ay pangalan na may value na nababasa ng mga program. Nagbibigay ng isa sa container ang option na `-e`. Pinapatakbo ng container ang `sleep 3600`. Kaya tumatakbo ito nang isang oras at wala nang iba pang ginagawa. Pinapatakbo ito ng option na `-d` sa background.
@@ -110,6 +118,9 @@ Para ikaw mismo ang magbukas ng shell sa container, gamitin ang `podbag exec -it
 ## Maglinis at tapusin
 
 Tumatakbo pa rin ang `app`. Inihihinto at inaalis ito ng `rm -f`. Kasama nitong naaalis ang mga file nito, pati ang `/tmp/note.txt`.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f app

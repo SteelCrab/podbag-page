@@ -25,6 +25,14 @@ podbag lab start system-checks
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start system-checks --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## システムを確認する
 
 `podbag check` は、Podbag がこのシステムで必要とするものを 1 行ずつ表示します。たとえば、カーネル、cgroup v2、keeper です。keeper は、バックグラウンドでコンテナを見守る小さなプロセスです。
@@ -42,6 +50,9 @@ podbag check
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → docker.io/library/busybox:1.37.0 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `docker.io/library/busybox:1.37.0` と入力し、`Enter` を押します。
 
 Podbag はイメージがあることを確認します。
 
@@ -78,6 +89,9 @@ podbag system verify
 ## 片付けて終了する
 
 イメージを削除します。その後、実習を終了します。
+
+- **Podbag Desktop で:** **実習コンテナ → イメージ docker.io/library/busybox:1.37.0 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `docker.io/library/busybox:1.37.0` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0

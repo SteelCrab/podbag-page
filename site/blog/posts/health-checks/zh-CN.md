@@ -25,6 +25,14 @@ podbag lab start health-checks
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start health-checks --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 运行带健康检查的 Web 服务器
 
 运行一个名为 `web` 的 Web 服务器。它在 `8080` 端口上提供文字 `Hello from web`。如果默认端口 `18100` 已被占用，请使用 Training 中显示的端口。
@@ -62,9 +70,17 @@ podbag inspect web
 
 前往**实验容器 → web → 查看端口**。点击**在浏览器中打开**。页面显示 **Hello from web**。Podbag 会检查 HTTP 200 响应和这段文字。
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 查看端口**。
+- **在 TUI 中：** 在**容器**中选择 `web`，然后按 `Enter`。
+- **在 Podbag Desktop 中：** 选择**在浏览器中打开**。
+- **在 TUI 中：** 在浏览器中打开 `http://127.0.0.1:18100/`。页面显示后按 `o`。
+
 ## 清理并结束
 
 删除容器。`web` 仍在运行，所以 `-f` 会先停止它。然后结束实验。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → web → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `web`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f web

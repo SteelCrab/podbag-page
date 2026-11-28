@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy container có giới hạn
 
 Chạy một container không làm gì tên `app`. Nó được dùng tối đa 64 MiB bộ nhớ và một nửa CPU. Tùy chọn `-d` chạy nó ở chế độ nền, và `sleep 3600` giữ nó chạy trong một giờ.
@@ -90,6 +98,9 @@ Kết quả giờ là `134217728`, tức là 128 MiB. Podbag kiểm tra con số
 ## Dọn dẹp và kết thúc
 
 Xóa container. `app` vẫn đang chạy, nên `-f` dừng nó trước. Sau đó kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f app

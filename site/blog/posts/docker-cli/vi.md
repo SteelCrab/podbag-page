@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 Tiếp tục tại dấu nhắc `training $`. Trong shell này, `docker` đi tới phiên thực hành. Phiên phục vụ Docker API trên socket riêng và đặt `DOCKER_HOST` trỏ tới socket đó. Các cài đặt docker khác của bạn không thay đổi.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Hỏi engine về phiên bản
 
 ```sh
@@ -40,6 +48,9 @@ Kết quả có hai phần. `Client` là lệnh docker. `Server` là engine mà 
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Lệnh docker yêu cầu podbag kéo image. podbag tải image và giữ nó trong kho riêng. Podbag kiểm tra rằng image `busybox:1.37.0` đã có.
 
@@ -73,9 +84,19 @@ podbag hiển thị cùng container đó. Chỉ có một engine, còn `docker` 
 
 Đi tới **Container thực hành → web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Hello from the Docker CLI**. Podbag kiểm tra phản hồi HTTP 200 và dòng chữ này.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xem cổng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18106/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ## Dọn dẹp và kết thúc
 
 Dừng và xóa container bằng `docker`. Podbag kiểm tra rằng `web` dừng, rồi kiểm tra rằng nó không còn.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Dừng**.
+- **Trong TUI:** Chọn `web` trong **Container** rồi nhấn `x`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `web` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 docker stop web

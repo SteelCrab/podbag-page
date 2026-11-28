@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 Training 카탈로그를 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 실패하는 작업 실행
 
 `job`이라는 컨테이너를 실행합니다. 이 컨테이너는 `try`를 출력하고 오류 코드 `1`로 끝납니다. `--restart on-failure:3` 옵션은 오류가 나면 최대 3번까지 다시 시작합니다.
@@ -53,6 +61,9 @@ podbag inspect job
 podbag logs job
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → job → 로그**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `job` 선택 후 `l` 키를 누릅니다.
+
 `try`가 4번 출력됩니다. 첫 실행과 3번의 재시작입니다. Podbag은 `try` 줄을 확인합니다.
 
 작업을 삭제합니다. 이미 멈췄으므로 `rm`에 `-f`가 필요 없습니다.
@@ -60,6 +71,9 @@ podbag logs job
 ```sh
 podbag rm job
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → job → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `job` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ## 끝날 때마다 다시 시작
 
@@ -79,6 +93,9 @@ Podbag은 `app`이 한 번 이상 재시작할 때까지 기다립니다. Podbag
 podbag stop app
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `x` 키를 누릅니다.
+
 Podbag은 `app`이 중지됐는지 확인합니다. 모든 컨테이너를 보고 계속 멈춰 있는지 확인합니다.
 
 ```sh
@@ -95,11 +112,17 @@ podbag ps -a
 podbag start app
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 시작**을 누릅니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `s` 키를 누릅니다.
+
 Podbag은 `app`이 실행 중인지 확인합니다.
 
 ## 실습 리소스 정리
 
 컨테이너를 삭제합니다. 실행 중일 수 있으므로 `-f` 옵션으로 먼저 중지합니다. 그다음 실습을 끝냅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f app

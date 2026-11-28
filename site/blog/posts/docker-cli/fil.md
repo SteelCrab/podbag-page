@@ -27,6 +27,14 @@ podbag lab start docker-cli
 
 Magpatuloy sa prompt na `training $`. Sa shell na ito, papunta sa practice session ang `docker`. Inihahain ng session ang Docker API sa sarili nitong socket at itinatakda ang `DOCKER_HOST` dito. Hindi nagbabago ang iba mong setting ng docker.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start docker-cli --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Itanong sa engine ang bersiyon nito
 
 ```sh
@@ -40,6 +48,9 @@ May dalawang bahagi ang output. Ang `Client` ay ang docker command. Ang `Server`
 ```sh
 docker pull docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → I-pull ang docker.io/library/busybox:1.37.0**.
+- **Sa TUI:** Buksan ang **Mga image**, pindutin ang `p`, i-type ang `docker.io/library/busybox:1.37.0` at pindutin ang `Enter`.
 
 Hinihiling ng docker command sa podbag na kunin ang image. Dina-download ito ng podbag at iniimbak sa sarili nitong imbakan. Sinusuri ng Podbag na may image na `busybox:1.37.0`.
 
@@ -73,9 +84,19 @@ Ipinapakita ng podbag ang parehong container. Iisa ang engine, at dalawang paraa
 
 Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from the Docker CLI**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18106/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ## Maglinis at tapusin
 
 Ihinto at alisin ang container gamit ang `docker`. Sinusuri ng Podbag na humihinto ang `web`, at saka na wala na ito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Ihinto**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `x`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 docker stop web

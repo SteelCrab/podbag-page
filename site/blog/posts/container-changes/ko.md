@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 `training $` 프롬프트에서 계속 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start container-changes --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 파일을 쓰는 컨테이너 실행하기
 
 `app` 컨테이너를 실행합니다. 이 컨테이너는 `/hello.txt` 파일 하나를 쓰고 끝납니다. `--rm`이 없으므로 중지된 컨테이너가 남습니다.
@@ -80,6 +88,11 @@ podbag export -o app.tar app
 ## 정리 및 실습 종료
 
 같은 터미널에서 컨테이너와 새 이미지를 삭제합니다. 그다음 실습을 종료합니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → 이미지 app-snapshot:1 삭제**를 누르고 확인합니다.
+- **TUI에서:** **이미지**에서 `app-snapshot:1` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm app

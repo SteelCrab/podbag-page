@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Inililista ng Training ang mga hakbang ng network at ipinapakita ang command sa pagsisimula](start-en.png)
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start container-network --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Gumawa ng network at patakbuhin ang api server
 
 Kopyahin ang bawat command mula sa Training. Una, gumawa ng network na `lab-net`.
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from api**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18083/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ![Ipinapakita ng detalye ng web server ang localhost address at ang button ng browser](ports-en.png)
 
 ![Ipinapakita ng web page ang Hello from api](page-en.png)
@@ -80,6 +93,15 @@ Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin a
 ## Maglinis at tapusin
 
 Sa Desktop, piliin ang **Mga practice container → web → Ihinto**. Pagkatapos, alisin ang dalawang container at ang network sa parehong terminal. Tumatakbo pa ang `api`, kaya inihihinto muna ito ng `-f` bago alisin. Maaaring alisin ang network kapag walang container na gumagamit nito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Ihinto**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `x`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → api → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `api` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang network na lab-net** at kumpirmahin.
+- **Sa TUI:** Piliin ang `lab-net` sa **Mga network**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm web

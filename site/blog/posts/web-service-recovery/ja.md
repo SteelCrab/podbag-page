@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Training に復旧の手順と開始コマンドが表示されます](start-en.png)
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## サーバーを実行して失敗を調べる
 
 Training からコマンドをコピーします。サーバーはバックグラウンドで起動し、環境変数 `SITE_TITLE` を確認します。このコマンドではこの設定がないので、起動スクリプトはコード `1` で終了します。
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 **実習コンテナ → lab-web** を開きます。コンテナの詳細で `Exited (1)` を探します。このコンテナを開くと、Training はログの手順に進みます。
 
+- **Podbag Desktop で:** **実習コンテナ → lab-web**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`Enter` を押します。
+
 ![実習コンテナの詳細に、コード 1 で終了した lab-web が表示されます](failed-en.png)
 
 ## 起動ログを読む
@@ -54,6 +65,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 ```sh
 podbag logs lab-web
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → lab-web → ログ**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`l` を押します。
 
 ![終了したコンテナを調べた後、Training でログのコマンドが強調されます](logs-step-en.png)
 
@@ -67,6 +81,9 @@ podbag logs lab-web
 podbag rm lab-web
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → lab-web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`d` を押してから `y` を押します。
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 **実習コンテナ → lab-web → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Recovered Podbag site** と表示されます。Podbag は、HTTP 200 の応答と期待どおりのタイトルを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → lab-web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`Enter` を押します。
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18082/` を開きます。ページが表示されたら `o` を押します。
+
 ![実行中のサーバーの詳細に、localhost のアドレスとブラウザーのボタンが表示されます](ports-en.png)
 
 ![復旧したページに Recovered Podbag site と表示されます](page-en.png)
@@ -82,6 +104,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 ## 片付けて終了する
 
 Desktop で**実習コンテナ → lab-web → 停止**を選びます。同じターミナルでコンテナを削除し、実習を終了します。
+
+- **Podbag Desktop で:** **実習コンテナ → lab-web → 停止**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`x` を押します。
+- **Podbag Desktop で:** **実習コンテナ → lab-web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm lab-web

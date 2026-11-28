@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 Continúa en el prompt `training $`. La sesión de práctica tiene su propio almacén de imágenes vacío.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start image-basics --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Descarga una imagen
 
 `pull` descarga una imagen de un registro. Un registro es un servidor que guarda imágenes. `docker.io` es Docker Hub.
@@ -34,6 +42,9 @@ Continúa en el prompt `training $`. La sesión de práctica tiene su propio alm
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 podbag muestra cada capa mientras la descarga. Podbag comprueba que la imagen `docker.io/library/busybox:1.37.0` ya está guardada.
 
@@ -75,6 +86,9 @@ La terminal muestra `Hello from my-busybox`. Podbag comprueba esta salida.
 podbag rmi my-busybox:1
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la imagen my-busybox:1** y confirma.
+- **En la TUI:** Selecciona `my-busybox:1` en **Imágenes**, pulsa `d` y luego `y`.
+
 podbag muestra `Untagged: docker.io/library/my-busybox:1`. Podbag comprueba que la etiqueta ya no existe.
 
 ## Comprueba que la imagen original sigue ahí
@@ -94,6 +108,9 @@ Elimina el último nombre. Ahora ningún nombre apunta a la imagen.
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la imagen docker.io/library/busybox:1.37.0** y confirma.
+- **En la TUI:** Selecciona `docker.io/library/busybox:1.37.0` en **Imágenes**, pulsa `d` y luego `y`.
 
 Podbag comprueba que la imagen ya no existe.
 

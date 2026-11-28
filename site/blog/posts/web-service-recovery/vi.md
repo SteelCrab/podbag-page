@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Training liệt kê các bước khôi phục và hiển thị lệnh bắt đầu](start-en.png)
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy máy chủ và xem lỗi
 
 Sao chép lệnh từ Training. Máy chủ chạy ở chế độ nền và kiểm tra biến môi trường `SITE_TITLE`. Lệnh này không đặt biến đó. Vì vậy, script khởi động thoát với mã `1`.
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 Mở **Container thực hành → lab-web**. Tìm `Exited (1)` trong chi tiết container. Khi bạn mở container này, Training chuyển sang bước đọc nhật ký.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `Enter`.
+
 ![Chi tiết trong Container thực hành cho thấy lab-web đã thoát với mã 1](failed-en.png)
 
 ## Đọc nhật ký khởi động
@@ -54,6 +65,9 @@ Quay lại cùng terminal. Nhật ký cho biết tiến trình cần cài đặt
 ```sh
 podbag logs lab-web
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Nhật ký**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `l`.
 
 ![Training làm nổi bật lệnh đọc nhật ký sau khi bạn xem container đã thoát](logs-step-en.png)
 
@@ -67,6 +81,9 @@ Xóa container bị lỗi để dùng lại tên của nó. Sau đó chạy lệ
 podbag rm lab-web
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `lab-web` trong **Container**, nhấn `d`, rồi nhấn `y`.
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 Đi tới **Container thực hành → lab-web → Xem cổng**. Chọn **Mở trong trình duyệt**. Trang hiển thị **Recovered Podbag site**. Podbag kiểm tra phản hồi HTTP 200 và tiêu đề mong đợi.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Xem cổng**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `Enter`.
+- **Trong Podbag Desktop:** Chọn **Mở trong trình duyệt**.
+- **Trong TUI:** Mở `http://127.0.0.1:18082/` trong trình duyệt. Khi trang hiện ra, nhấn `o`.
+
 ![Chi tiết máy chủ đang chạy hiển thị địa chỉ localhost và nút mở trình duyệt](ports-en.png)
 
 ![Trang đã khôi phục hiển thị Recovered Podbag site](page-en.png)
@@ -82,6 +104,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 ## Dọn dẹp và kết thúc
 
 Trong Desktop, chọn **Container thực hành → lab-web → Dừng**. Xóa container trong cùng terminal và kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Dừng**.
+- **Trong TUI:** Chọn `lab-web` trong **Container** rồi nhấn `x`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → lab-web → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `lab-web` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm lab-web

@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 `training $` プロンプトが表示されたら続けます。実習環境には、専用の空のイメージストアがあります。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start image-basics --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## イメージを取得する
 
 `pull` はレジストリからイメージをダウンロードします。レジストリは、イメージを保存するサーバーです。`docker.io` は Docker Hub です。
@@ -34,6 +42,9 @@ podbag lab start image-basics
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → docker.io/library/busybox:1.37.0 を取得**を選びます。
+- **TUI で:** **イメージ**を開き、`p` を押して `docker.io/library/busybox:1.37.0` と入力し、`Enter` を押します。
 
 podbag は、ダウンロードする各レイヤーを表示します。Podbag は、イメージ `docker.io/library/busybox:1.37.0` が保存されたことを確認します。
 
@@ -75,6 +86,9 @@ podbag run --rm my-busybox:1 echo Hello from my-busybox
 podbag rmi my-busybox:1
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → イメージ my-busybox:1 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `my-busybox:1` を選び、`d` を押してから `y` を押します。
+
 podbag は `Untagged: docker.io/library/my-busybox:1` と表示します。Podbag はタグが消えたことを確認します。
 
 ## 元のイメージが残っていることを確認する
@@ -94,6 +108,9 @@ podbag images
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → イメージ docker.io/library/busybox:1.37.0 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `docker.io/library/busybox:1.37.0` を選び、`d` を押してから `y` を押します。
 
 Podbag はイメージが消えたことを確認します。
 

@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## 制限を付けてコンテナを実行する
 
 何もしないコンテナ `app` を実行します。このコンテナが使えるのは、最大 64 MiB のメモリと CPU 半分です。`-d` オプションはバックグラウンドで実行し、`sleep 3600` は 1 時間動き続けます。
@@ -90,6 +98,9 @@ podbag exec app cat /sys/fs/cgroup/memory.max
 ## 片付けて終了する
 
 コンテナを削除します。`app` はまだ実行中なので、`-f` で先に停止します。その後、実習を終了します。
+
+- **Podbag Desktop で:** **実習コンテナ → app → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm -f app

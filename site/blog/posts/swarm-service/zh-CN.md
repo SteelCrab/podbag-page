@@ -27,6 +27,14 @@ podbag lab start swarm-service
 
 出现 `training $` 提示符后继续。在这个 shell 中，`docker` 会连接到练习环境的引擎。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start swarm-service --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 启动 swarm
 
 ```sh

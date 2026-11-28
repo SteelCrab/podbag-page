@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![실습 시작하기](start-ko.png)
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start web-basics --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 기본 포트가 사용 중이면 Training에 표시된 포트를 사용합니다. 실행 명령과 접속 주소에 같은 포트가 표시됩니다.
 
 ## 웹 서버 실행하기
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 **실습 컨테이너 → lab-web → 포트 보기**를 누릅니다. 기본 연결은 `127.0.0.1:18080 → 8080/tcp`입니다. 앞 숫자는 컴퓨터의 포트입니다. 뒤 숫자는 컨테이너의 포트입니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 포트 보기**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `Enter` 키를 누릅니다.
+
 ![Desktop에서 포트 확인하기](ports-ko.png)
 
 ![Desktop에서 포트 확인하기](gui-ports-ko.png)
@@ -65,6 +76,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 **브라우저에서 열기**를 누릅니다. 페이지에 **Podbag Training**이 표시됩니다. Desktop이 로컬 주소의 HTTP 200 응답과 본문을 확인합니다.
 
+- **Podbag Desktop에서:** **브라우저에서 열기**를 누릅니다.
+- **TUI에서:** 브라우저에서 `http://127.0.0.1:18080/` 주소를 엽니다. 페이지가 보이면 `o` 키를 누릅니다.
+
 ![브라우저에서 페이지 열기](browser-ko.png)
 
 ![브라우저에서 페이지 열기](web-browser-en.png)
@@ -72,6 +86,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ## Desktop에서 웹 서버 중지하기
 
 **실습 컨테이너**로 돌아갑니다. `lab-web`의 행에서 **중지**를 누릅니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `x` 키를 누릅니다.
 
 ![Desktop에서 웹 서버 중지하기](stop-ko.png)
 
@@ -84,6 +101,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ```sh
 podbag rm lab-web
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → lab-web → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `lab-web` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ![중지한 컨테이너 삭제하기](remove-ko.png)
 

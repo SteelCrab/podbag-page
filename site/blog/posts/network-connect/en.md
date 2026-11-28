@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start network-connect --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Create two networks
 
 Create the networks `front-net` and `back-net`. Each one is a separate bridge with its own addresses.
@@ -64,6 +72,9 @@ Podbag changes the networks of a container only while it is stopped. The change 
 podbag stop api
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → api → Stop**.
+- **In the TUI:** Select `api` in **Containers** and press `x`.
+
 Podbag checks that `api` is in the state `exited`.
 
 ## Connect api to back-net
@@ -82,6 +93,9 @@ Podbag checks that `api` is now on `back-net`.
 podbag start api
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → api → Start**.
+- **In the TUI:** Select `api` in **Containers** and press `s`.
+
 `api` starts with two networks. Its first network is still `front-net`.
 
 ## Call api from back-net
@@ -98,6 +112,9 @@ The terminal prints `Hello from api`. Podbag checks this output. Each alias work
 
 Stop `api` again. Then remove `back-net` from it with `podbag network disconnect`.
 
+- **In Podbag Desktop:** Select **Practice containers → api → Stop**.
+- **In the TUI:** Select `api` in **Containers** and press `x`.
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag checks that `api` is no longer on `back-net`. You cannot disconnect a con
 ## Clean up and finish
 
 Remove `api`. Then remove both networks in one command. A network can be removed when no container uses it.
+
+- **In Podbag Desktop:** Select **Practice containers → api → Remove** and confirm.
+- **In the TUI:** Select `api` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → Remove network back-net** and confirm.
+- **In the TUI:** Select `back-net` in **Networks**, press `d`, then `y`.
+
+The command `podbag network rm front-net back-net` removes both networks. In Podbag Desktop and the TUI, this step removes `back-net` only. `front-net` goes away when the session ends.
 
 ```sh
 podbag rm api

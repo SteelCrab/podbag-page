@@ -25,6 +25,14 @@ podbag lab start container-exec
 
 Training 카탈로그가 있는 Podbag 빌드(v0.3.2 이후)가 필요합니다. `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start container-exec --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 환경 변수를 넣어 컨테이너 실행
 
 환경 변수는 프로그램이 읽을 수 있는 이름과 값입니다. `-e` 옵션으로 컨테이너에 환경 변수를 넣습니다. 이 컨테이너는 `sleep 3600`을 실행합니다. 그래서 다른 일은 하지 않고 한 시간 동안 실행 상태로 있습니다. `-d` 옵션은 컨테이너를 백그라운드로 실행합니다.
@@ -110,6 +118,9 @@ Podbag은 목록에 `note.txt` 줄이 있는지 확인합니다.
 ## 실습 리소스 정리
 
 `app`은 아직 실행 중입니다. `rm -f`는 컨테이너를 중지한 뒤 삭제합니다. `/tmp/note.txt`를 포함한 컨테이너의 파일도 함께 사라집니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ```sh
 podbag rm -f app

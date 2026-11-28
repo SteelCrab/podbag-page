@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Crea un contenedor sin iniciarlo
 
 `podbag create` crea el contenedor, pero no inicia su programa. El programa es un pequeño bucle de shell. Se ejecuta hasta que recibe una señal de parada (`TERM`). Entonces termina con el código de salida `0`.
@@ -53,6 +61,9 @@ El estado de `app` es `Created`. Podbag comprueba que la salida contiene esta pa
 podbag start app
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Iniciar**.
+- **En la TUI:** Selecciona `app` en **Contenedores** y pulsa `s`.
+
 Podbag comprueba que `app` está en ejecución.
 
 ## Detén el contenedor
@@ -62,6 +73,9 @@ Podbag comprueba que `app` está en ejecución.
 ```sh
 podbag stop app
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Detener**.
+- **En la TUI:** Selecciona `app` en **Contenedores** y pulsa `x`.
 
 Podbag comprueba que `app` está en el estado `exited`.
 
@@ -80,6 +94,9 @@ El estado es `Exited (0)`. El programa terminó sin errores. El contenedor sigue
 ```sh
 podbag restart app
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Reiniciar**.
+- **En la TUI:** Selecciona `app` en **Contenedores** y pulsa `r`.
 
 Podbag comprueba que `app` vuelve a estar en ejecución.
 
@@ -104,6 +121,9 @@ El estado es `Exited (137)`. Compáralo con `Exited (0)` después de `stop`. Usa
 ## Elimina el contenedor y termina
 
 `podbag rm` elimina un contenedor detenido. Para uno en ejecución necesitas `rm -f`.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm app

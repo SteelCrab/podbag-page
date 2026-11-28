@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training にネットワークの手順と開始コマンドが表示されます](start-en.png)
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start container-network --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## ネットワークを作成して api サーバーを実行する
 
 各コマンドを Training からコピーします。まず、`lab-net` という名前のネットワークを作成します。
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 **実習コンテナ → web → ポートを表示**に移動します。**ブラウザーで開く**を選びます。ページに **Hello from api** と表示されます。Podbag は、HTTP 200 の応答とこのテキストを確認します。
 
+- **Podbag Desktop で:** **実習コンテナ → web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`Enter` を押します。
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18083/` を開きます。ページが表示されたら `o` を押します。
+
 ![Web サーバーの詳細に、localhost のアドレスとブラウザーのボタンが表示されます](ports-en.png)
 
 ![Web ページに Hello from api と表示されます](page-en.png)
@@ -80,6 +93,15 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 ## 片付けて終了する
 
 Desktop で**実習コンテナ → web → 停止**を選びます。次に、同じターミナルで 2 つのコンテナとネットワークを削除します。`api` はまだ実行中なので、`-f` で停止してから削除します。ネットワークは、どのコンテナも使っていなければ削除できます。
+
+- **Podbag Desktop で:** **実習コンテナ → web → 停止**を選びます。
+- **TUI で:** **コンテナ**で `web` を選び、`x` を押します。
+- **Podbag Desktop で:** **実習コンテナ → web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `web` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → api → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `api` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → ネットワーク lab-net を削除**を選び、確認します。
+- **TUI で:** **ネットワーク**で `lab-net` を選び、`d` を押してから `y` を押します。
 
 ```sh
 podbag rm web

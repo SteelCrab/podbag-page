@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 Magpatuloy sa prompt na `training $`. Naglalagay ang session ng file na `note.txt` sa practice directory. May isang linya ito: `Hello from note.txt`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng container sa background
 
 Magpatakbo ng container na `app`. Isinusulat nito ang `/reply.txt` at saka naghihintay.
@@ -83,6 +91,11 @@ Tumatakbo pa ang `app`, kaya inihihinto muna ito ng `-f` bago alisin. Pagkatapos
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → Alisin ang image na docker.io/library/busybox:1.37.0** at kumpirmahin.
+- **Sa TUI:** Piliin ang `docker.io/library/busybox:1.37.0` sa **Mga image**, pindutin ang `d`, saka ang `y`.
 
 Sinusuri ng Podbag na wala na ang container, at saka na wala na ang image.
 

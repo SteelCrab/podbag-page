@@ -25,6 +25,14 @@ podbag lab start health-checks
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start health-checks --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng web server na may health check
 
 Magpatakbo ng web server na `web`. Inihahain nito ang text na `Hello from web` sa port na `8080`. Gamitin ang port na nasa Training kung gamit na ang default na `18100`.
@@ -62,9 +70,17 @@ Ipinapakita ng bahaging `health` ang `"status": "healthy"`, ang bilang ng sunod-
 
 Pumunta sa **Mga practice container → web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Hello from web**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang text na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18100/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ## Maglinis at tapusin
 
 Alisin ang container. Tumatakbo pa ang `web`, kaya inihihinto muna ito ng `-f`. Pagkatapos, tapusin ang session.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f web

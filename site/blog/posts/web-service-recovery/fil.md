@@ -35,6 +35,14 @@ podbag lab start web-service-recovery
 
 ![Inililista ng Training ang mga hakbang sa pag-aayos at ipinapakita ang command sa pagsisimula](start-en.png)
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start web-service-recovery --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Patakbuhin ang server at siyasatin ang pagkabigo
 
 Kopyahin ang command mula sa Training. Nagsisimula ang server sa background at hinahanap nito ang environment variable na `SITE_TITLE`. Hindi itinatakda ng command na ito ang setting. Kaya lumalabas ang startup script na may code na `1`.
@@ -45,6 +53,9 @@ podbag run -d --name lab-web --network none docker.io/library/busybox:1.37.0 sh 
 
 Buksan ang **Mga practice container → lab-web**. Hanapin ang `Exited (1)` sa detalye ng container. Lilipat ang Training sa hakbang ng log kapag binuksan mo ang container na ito.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `Enter`.
+
 ![Ipinapakita ng detalye sa Mga practice container na lumabas ang lab-web na may code na 1](failed-en.png)
 
 ## Basahin ang startup log
@@ -54,6 +65,9 @@ Bumalik sa parehong terminal. Sinasabi ng log kung aling setting ang kailangan n
 ```sh
 podbag logs lab-web
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Mga log**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `l`.
 
 ![Naka-highlight sa Training ang command ng log pagkatapos siyasatin ang lumabas na container](logs-step-en.png)
 
@@ -67,6 +81,9 @@ Alisin ang nabigong container para magamit ulit ang pangalan nito. Pagkatapos, p
 podbag rm lab-web
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+
 ```sh
 podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Podbag site' docker.io/library/busybox:1.37.0 sh -c 'if [ -z "$SITE_TITLE" ]; then echo "SITE_TITLE is required" >&2; exit 1; fi; mkdir -p /www && printf "%s\n" "$SITE_TITLE" > /www/index.html && exec httpd -f -p 8080 -h /www'
 ```
@@ -75,6 +92,11 @@ podbag run -d --name lab-web -p 127.0.0.1:18082:8080 -e 'SITE_TITLE=Recovered Po
 
 Pumunta sa **Mga practice container → lab-web → Tingnan ang mga port**. Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Recovered Podbag site**. Sinusuri ng Podbag kung may tugon na HTTP 200 at ang inaasahang title.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `Enter`.
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18082/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ![Ipinapakita ng detalye ng tumatakbong server ang localhost address at ang button ng browser](ports-en.png)
 
 ![Ipinapakita ng naayos na page ang Recovered Podbag site](page-en.png)
@@ -82,6 +104,11 @@ Pumunta sa **Mga practice container → lab-web → Tingnan ang mga port**. Pili
 ## Maglinis at tapusin
 
 Sa Desktop, piliin ang **Mga practice container → lab-web → Ihinto**. Alisin ang container sa parehong terminal at tapusin ang session.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Ihinto**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `x`.
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm lab-web

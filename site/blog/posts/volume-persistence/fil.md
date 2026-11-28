@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![Simulan ang practice session](start-en.png)
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Gumawa ng volume
 
 Gumawa ng named volume na `training-data` sa practice session.
@@ -50,6 +58,9 @@ Gumawa ng named volume na `training-data` sa practice session.
 ```sh
 podbag volume create training-data
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice volume → Gumawa ng volume na training-data**.
+- **Sa TUI:** Buksan ang **Mga volume**, pindutin ang `v`, i-type ang `training-data` at pindutin ang `Enter`.
 
 ![Gumawa ng volume](create-en.png)
 
@@ -70,6 +81,9 @@ Alisin ang nakahintong container. Mananatili ang volume sa practice session.
 ```sh
 podbag rm app-a
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app-a → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app-a` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ![Alisin ang app-a](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ Alisin ang pangalawang container para mapalaya ang volume bago mo ito burahin.
 podbag rm app-b
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app-b → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app-b` sa **Mga container**, pindutin ang `d`, saka ang `y`.
+
 ![Alisin ang app-b](removeReader-en.png)
 
 ## Buksan ang detalye ng volume
 
 Piliin ang **Mga practice volume → training-data**. Ipinapakita ng detalye ang pangalan at mount point nito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice volume → training-data**.
+- **Sa TUI:** Piliin ang `training-data` sa **Mga volume** at pindutin ang `Enter`.
 
 ![Buksan ang detalye ng volume](inspect-en.png)
 
@@ -106,6 +126,9 @@ Piliin ang **Mga practice volume → training-data**. Ipinapakita ng detalye ang
 ## Burahin ang volume sa Desktop
 
 Piliin ang **Alisin** at tiyaking `training-data` ang pangalan sa dialog. Mabubura ang volume at ang file nito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice volume → training-data → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `training-data` sa **Mga volume**, pindutin ang `d`, saka ang `y`.
 
 ![Burahin ang volume sa Desktop](delete-en.png)
 

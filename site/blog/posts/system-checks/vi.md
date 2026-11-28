@@ -25,6 +25,14 @@ podbag lab start system-checks
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start system-checks --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Kiểm tra hệ thống
 
 `podbag check` liệt kê những gì Podbag cần trên hệ thống này, mỗi mục một dòng. Ví dụ: nhân Linux, cgroup v2 và keeper. Keeper là tiến trình nhỏ theo dõi các container ở chế độ nền.
@@ -42,6 +50,9 @@ Phiên thực hành bắt đầu mà chưa có image nào. Hãy kéo một image
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image đã có.
 
@@ -78,6 +89,9 @@ Kết quả kết thúc bằng `0 damaged`. Podbag tìm các từ này. Nếu m�
 ## Dọn dẹp và kết thúc
 
 Xóa image. Sau đó kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image docker.io/library/busybox:1.37.0** và xác nhận.
+- **Trong TUI:** Chọn `docker.io/library/busybox:1.37.0` trong **Image**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0

@@ -25,6 +25,14 @@ podbag lab start image-compression
 
 이미지 압축을 지원하는 Podbag 빌드가 필요합니다(v0.3.2 이후). `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start image-compression --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## busybox 이미지 받기
 
 실습 환경에는 처음에 이미지가 없습니다. 작은 이미지를 받습니다.
@@ -32,6 +40,9 @@ podbag lab start image-compression
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → docker.io/library/busybox:1.37.0 받기**를 누릅니다.
+- **TUI에서:** **이미지** 탭을 열고 `p` 키를 누른 뒤 `docker.io/library/busybox:1.37.0` 입력 후 `Enter` 키를 누릅니다.
 
 Podbag은 이미지가 있는지 확인합니다.
 

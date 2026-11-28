@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![Simulan ang practice session](start-en.png)
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start web-basics --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 Kung gamit na ang default na port, gamitin ang port na nasa Training. Pareho ang port sa command at sa address ng browser.
 
 ## Patakbuhin ang web server
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 Buksan ang **Mga practice container → lab-web → Tingnan ang mga port**. Ang default na mapping ay `127.0.0.1:18080 → 8080/tcp`. Sa computer mo ang unang port. Sa container ang pangalawa.
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Tingnan ang mga port**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `Enter`.
+
 ![Tingnan ang port mapping sa Desktop](ports-en.png)
 
 ![Tingnan ang port mapping sa Desktop](gui-ports-en.png)
@@ -65,6 +76,9 @@ Buksan ang **Mga practice container → lab-web → Tingnan ang mga port**. Ang 
 
 Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Podbag Training**. Sinusuri ng Desktop na nagbabalik ang lokal na address ng HTTP 200 at ng inaasahang text.
 
+- **Sa Podbag Desktop:** Piliin ang **Buksan sa browser**.
+- **Sa TUI:** Buksan ang `http://127.0.0.1:18080/` sa browser. Kapag lumabas ang page, pindutin ang `o`.
+
 ![Buksan ang page sa browser](browser-en.png)
 
 ![Buksan ang page sa browser](web-browser-en.png)
@@ -72,6 +86,9 @@ Piliin ang **Buksan sa browser**. Ipinapakita ng page ang **Podbag Training**. S
 ## Ihinto ang server sa Desktop
 
 Bumalik sa **Mga practice container**. Hanapin ang `lab-web` at piliin ang **Ihinto** sa hanay nito.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Ihinto**.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container** at pindutin ang `x`.
 
 ![Ihinto ang server sa Desktop](stop-en.png)
 
@@ -84,6 +101,9 @@ Patakbuhin ang command sa pag-alis sa parehong terminal. Lalabas ang susunod na 
 ```sh
 podbag rm lab-web
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → lab-web → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `lab-web` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ![Alisin ang nakahintong container](remove-en.png)
 

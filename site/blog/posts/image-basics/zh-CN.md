@@ -27,6 +27,14 @@ podbag lab start image-basics
 
 出现 `training $` 提示符后继续。练习环境有自己的空镜像存储。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start image-basics --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 拉取镜像
 
 `pull` 从镜像仓库下载镜像。镜像仓库是存储镜像的服务器。`docker.io` 就是 Docker Hub。
@@ -34,6 +42,9 @@ podbag lab start image-basics
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 podbag 在下载每个层时都会打印出来。Podbag 会检查镜像 `docker.io/library/busybox:1.37.0` 是否已存储。
 
@@ -75,6 +86,9 @@ podbag run --rm my-busybox:1 echo Hello from my-busybox
 podbag rmi my-busybox:1
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 my-busybox:1**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `my-busybox:1`，按 `d`，再按 `y`。
+
 podbag 打印 `Untagged: docker.io/library/my-busybox:1`。Podbag 会检查标签是否已删除。
 
 ## 确认原镜像仍然保留
@@ -94,6 +108,9 @@ podbag images
 ```sh
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 docker.io/library/busybox:1.37.0**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `docker.io/library/busybox:1.37.0`，按 `d`，再按 `y`。
 
 Podbag 会检查镜像是否已删除。
 

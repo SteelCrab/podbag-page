@@ -25,6 +25,14 @@ podbag lab start container-exec
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start container-exec --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy container với một biến môi trường
 
 Biến môi trường là một tên kèm giá trị mà chương trình có thể đọc. Tùy chọn `-e` đưa một biến vào container. Container chạy `sleep 3600`, nên nó chạy trong một giờ và không làm gì khác. Tùy chọn `-d` chạy nó ở chế độ nền.
@@ -110,6 +118,9 @@ Podbag kiểm tra rằng danh sách có dòng `note.txt`.
 ## Dọn dẹp và kết thúc
 
 `app` vẫn đang chạy. `rm -f` dừng rồi xóa nó. Các tệp của nó, gồm cả `/tmp/note.txt`, cũng bị xóa theo.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f app

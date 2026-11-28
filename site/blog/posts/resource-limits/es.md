@@ -25,6 +25,14 @@ podbag lab start resource-limits
 
 Necesitas una versión de Podbag con el catálogo de Training (posterior a v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start resource-limits --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Ejecuta un contenedor con límites
 
 Ejecuta un contenedor llamado `app` que no hace nada. Recibe como máximo 64 MiB de memoria y la mitad de una CPU. La opción `-d` lo ejecuta en segundo plano, y `sleep 3600` lo mantiene activo durante una hora.
@@ -90,6 +98,9 @@ Ahora la salida es `134217728`, es decir, 128 MiB. Podbag comprueba este número
 ## Limpia y termina
 
 Elimina el contenedor. `app` sigue en ejecución, así que `-f` lo detiene primero. Luego termina la sesión.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f app

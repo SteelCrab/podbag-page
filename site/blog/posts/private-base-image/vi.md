@@ -25,6 +25,14 @@ podbag lab start private-base-image
 
 Bạn cần bản Podbag kéo image nền bằng thông tin đăng nhập của bạn (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start private-base-image --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 Thư mục thực hành có hai thư mục từ mô-đun:
 
 - `auth/htpasswd`: người dùng `training` với mật khẩu `podbag-training`. Mật khẩu được lưu dưới dạng bcrypt hash, một dạng không thể đổi ngược lại thành mật khẩu.
@@ -37,6 +45,9 @@ Image này sẽ trở thành image nền riêng tư.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Tải docker.io/library/busybox:1.37.0**.
+- **Trong TUI:** Mở **Image**, nhấn `p`, gõ `docker.io/library/busybox:1.37.0` rồi nhấn `Enter`.
 
 Podbag kiểm tra rằng image đã có.
 
@@ -80,6 +91,9 @@ Nếu không đăng nhập, registry sẽ từ chối lần đẩy này. Podbag 
 podbag rmi 127.0.0.1:18112/training/base:1
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image 127.0.0.1:18112/training/base:1** và xác nhận.
+- **Trong TUI:** Chọn `127.0.0.1:18112/training/base:1` trong **Image**, nhấn `d`, rồi nhấn `y`.
+
 Bây giờ lần build phải kéo image nền từ registry. Podbag kiểm tra rằng tên này không còn.
 
 ## Build trên image nền riêng tư
@@ -111,6 +125,9 @@ Thông tin đăng nhập bị xóa khỏi `docker/config.json`. Một lần kéo
 ## Dọn dẹp và kết thúc
 
 Xóa registry. Nó vẫn đang chạy, nên `-f` dừng nó trước.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → registry → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `registry` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f registry

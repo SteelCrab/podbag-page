@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![실습 시작하기](start-ko.png)
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 볼륨 만들기
 
 실습 환경에 `training-data`라는 이름으로 볼륨을 만듭니다.
@@ -50,6 +58,9 @@ podbag lab start volume-persistence
 ```sh
 podbag volume create training-data
 ```
+
+- **Podbag Desktop에서:** **실습 볼륨 → 볼륨 training-data 만들기**를 누릅니다.
+- **TUI에서:** **볼륨** 탭을 열고 `v` 키를 누른 뒤 `training-data` 입력 후 `Enter` 키를 누릅니다.
 
 ![볼륨 만들기](create-ko.png)
 
@@ -70,6 +81,9 @@ podbag run --name app-a --network none -v training-data:/data docker.io/library/
 ```sh
 podbag rm app-a
 ```
+
+- **Podbag Desktop에서:** **실습 컨테이너 → app-a → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app-a` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ![app-a 삭제하기](removeWriter-ko.png)
 
@@ -93,11 +107,17 @@ podbag run --name app-b --network none -v training-data:/data:ro docker.io/libra
 podbag rm app-b
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → app-b → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `app-b` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
 ![app-b 삭제하기](removeReader-ko.png)
 
 ## 볼륨 상세 정보 열기
 
 **실습 볼륨 → training-data**를 누릅니다. 상세 정보에서 볼륨 이름과 마운트 경로를 확인합니다.
+
+- **Podbag Desktop에서:** **실습 볼륨 → training-data**를 누릅니다.
+- **TUI에서:** **볼륨**에서 `training-data` 선택 후 `Enter` 키를 누릅니다.
 
 ![볼륨 상세 정보 열기](inspect-ko.png)
 
@@ -106,6 +126,9 @@ podbag rm app-b
 ## Desktop에서 볼륨 삭제하기
 
 **삭제**를 누릅니다. 확인 창에 `training-data`가 표시되는지 확인하고 삭제합니다. 볼륨과 그 안의 파일이 삭제됩니다.
+
+- **Podbag Desktop에서:** **실습 볼륨 → training-data → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **볼륨**에서 `training-data` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
 
 ![Desktop에서 볼륨 삭제하기](delete-ko.png)
 

@@ -27,6 +27,14 @@ podbag lab start copy-and-archive
 
 `training $` プロンプトが表示されたら続けます。実習環境は、実習用のディレクトリに `note.txt` というファイルを置きます。このファイルには `Hello from note.txt` の 1 行があります。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start copy-and-archive --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## コンテナをバックグラウンドで実行する
 
 `app` という名前のコンテナを実行します。このコンテナは `/reply.txt` を書いてから待機します。
@@ -83,6 +91,11 @@ Podbag は、実習用のディレクトリに `busybox.tar` があることを�
 podbag rm -f app
 podbag rmi docker.io/library/busybox:1.37.0
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → app → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `app` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → イメージ docker.io/library/busybox:1.37.0 を削除**を選び、確認します。
+- **TUI で:** **イメージ**で `docker.io/library/busybox:1.37.0` を選び、`d` を押してから `y` を押します。
 
 Podbag は、コンテナが消えたことを確認し、次にイメージが消えたことを確認します。
 

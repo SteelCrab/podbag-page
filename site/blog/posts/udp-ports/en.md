@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Pull the busybox image
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → Pull docker.io/library/busybox:1.37.0**.
+- **In the TUI:** Open **Images**, press `p`, type `docker.io/library/busybox:1.37.0` and press `Enter`.
 
 Podbag checks that the image is there.
 
@@ -69,6 +80,9 @@ The server printed what it got. The logs show it.
 podbag logs udp-server
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → udp-server → Logs**.
+- **In the TUI:** Select `udp-server` in **Containers** and press `l`.
+
 The output is `Hello over UDP`. Podbag checks for this line.
 
 On macOS, a published UDP port also answers on the Mac's `localhost`, like a TCP port. A UDP client's flow ends after 90 seconds without traffic.
@@ -76,6 +90,9 @@ On macOS, a published UDP port also answers on the Mac's `localhost`, like a TCP
 ## Clean up and finish
 
 Remove the server. It is still running, so `-f` stops it first.
+
+- **In Podbag Desktop:** Select **Practice containers → udp-server → Remove** and confirm.
+- **In the TUI:** Select `udp-server` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f udp-server

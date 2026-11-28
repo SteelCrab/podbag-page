@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 Kailangan mo ng build ng Podbag na may Training catalog (pagkatapos ng v0.3.2). Magpatuloy sa prompt na `training $`.
 
+Para gawin ang mga hakbang sa TUI sa halip na sa Podbag Desktop, idagdag ang `--tui`.
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+Sa TUI, pindutin ang `:` para buksan ang training shell sa isang hakbang na command. I-type ang `exit` para bumalik sa TUI. Pindutin ang `q` para tapusin ang practice session.
+
 ## Magpatakbo ng job na nabibigo
 
 Magpatakbo ng container na `job`. Ipinapakita nito ang `try` at natatapos ito sa error code na `1`. Sinisimulan ito ulit ng option na `--restart on-failure:3` pagkatapos ng error, hanggang 3 beses.
@@ -53,6 +61,9 @@ Itinatago ng mga log ang output ng bawat pagpapatakbo.
 podbag logs job
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → job → Mga log**.
+- **Sa TUI:** Piliin ang `job` sa **Mga container** at pindutin ang `l`.
+
 Apat na beses lumalabas ang salitang `try`: ang unang pagpapatakbo at ang 3 restart. Hinahanap ng Podbag ang linyang `try`.
 
 Alisin ang job. Huminto na ito, kaya hindi kailangan ng `rm` ang `-f`.
@@ -60,6 +71,9 @@ Alisin ang job. Huminto na ito, kaya hindi kailangan ng `rm` ang `-f`.
 ```sh
 podbag rm job
 ```
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → job → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `job` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ## Simulan ulit ang container pagkatapos ng bawat paglabas
 
@@ -79,6 +93,9 @@ Inihihinto ng `podbag stop` ang container. Tinatapos din nito ang mga restart ha
 podbag stop app
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Ihinto**.
+- **Sa TUI:** Piliin ang `app` sa **Mga container** at pindutin ang `x`.
+
 Sinusuri ng Podbag na huminto na ang `app`. Ilista ang lahat ng container para makitang nananatili itong nakahinto.
 
 ```sh
@@ -95,11 +112,17 @@ Sinisimulan ng `podbag start` ang container at ibinabalik ang mga restart.
 podbag start app
 ```
 
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Simulan**.
+- **Sa TUI:** Piliin ang `app` sa **Mga container** at pindutin ang `s`.
+
 Sinusuri ng Podbag na tumatakbo ang `app`.
 
 ## Maglinis at tapusin
 
 Alisin ang container. Maaaring tumatakbo ito, kaya inihihinto muna ito ng `-f`. Pagkatapos, tapusin ang session.
+
+- **Sa Podbag Desktop:** Piliin ang **Mga practice container → app → Alisin** at kumpirmahin.
+- **Sa TUI:** Piliin ang `app` sa **Mga container**, pindutin ang `d`, saka ang `y`.
 
 ```sh
 podbag rm -f app

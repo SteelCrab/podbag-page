@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 拉取 busybox 镜像
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 Podbag 会检查镜像是否存在。
 
@@ -69,6 +80,9 @@ UDP 不会回复，所以这条命令没有输出。Podbag 会检查服务器是
 podbag logs udp-server
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → udp-server → 日志**。
+- **在 TUI 中：** 在**容器**中选择 `udp-server`，然后按 `l`。
+
 输出为 `Hello over UDP`。Podbag 会检查这一行。
 
 在 macOS 上，发布的 UDP 端口也能像 TCP 端口一样，通过 Mac 的 `localhost` 访问。UDP 客户端的数据流在 90 秒没有流量后会结束。
@@ -76,6 +90,9 @@ podbag logs udp-server
 ## 清理并结束
 
 删除服务器。它仍在运行，所以 `-f` 会先停止它。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → udp-server → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `udp-server`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f udp-server

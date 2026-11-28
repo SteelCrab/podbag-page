@@ -25,6 +25,14 @@ podbag lab start restart-policies
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start restart-policies --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy một tác vụ bị lỗi
 
 Chạy một container tên `job`. Nó in `try` và kết thúc với mã lỗi `1`. Tùy chọn `--restart on-failure:3` chạy lại nó sau mỗi lỗi, tối đa 3 lần.
@@ -53,6 +61,9 @@ Nhật ký giữ đầu ra của mọi lần chạy.
 podbag logs job
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → job → Nhật ký**.
+- **Trong TUI:** Chọn `job` trong **Container** rồi nhấn `l`.
+
 Chữ `try` được in 4 lần: lần chạy đầu và 3 lần khởi động lại. Podbag tìm một dòng `try`.
 
 Xóa tác vụ này. Nó đã dừng, nên `rm` không cần `-f`.
@@ -60,6 +71,9 @@ Xóa tác vụ này. Nó đã dừng, nên `rm` không cần `-f`.
 ```sh
 podbag rm job
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → job → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `job` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ## Chạy lại container sau mỗi lần thoát
 
@@ -79,6 +93,9 @@ Podbag chờ đến khi `app` đã khởi động lại ít nhất một lần. 
 podbag stop app
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Dừng**.
+- **Trong TUI:** Chọn `app` trong **Container** rồi nhấn `x`.
+
 Podbag kiểm tra rằng `app` đã dừng. Liệt kê tất cả container để thấy nó vẫn ở trạng thái dừng.
 
 ```sh
@@ -95,11 +112,17 @@ Trạng thái của `app` là `Exited`. Podbag tìm chữ này.
 podbag start app
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Chạy**.
+- **Trong TUI:** Chọn `app` trong **Container** rồi nhấn `s`.
+
 Podbag kiểm tra rằng `app` đang chạy.
 
 ## Dọn dẹp và kết thúc
 
 Xóa container. Nó có thể đang chạy, nên `-f` dừng nó trước. Sau đó kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm -f app

@@ -25,11 +25,22 @@ podbag lab start udp-ports
 
 Necesitas una versión de Podbag con el catálogo de Training (después de v0.3.2). Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start udp-ports --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Descarga la imagen busybox
 
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 Podbag comprueba que la imagen está ahí.
 
@@ -69,6 +80,9 @@ El servidor mostró lo que recibió. Los registros (logs) lo muestran.
 podbag logs udp-server
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → udp-server → Registros**.
+- **En la TUI:** Selecciona `udp-server` en **Contenedores** y pulsa `l`.
+
 La salida es `Hello over UDP`. Podbag busca esta línea.
 
 En macOS, un puerto UDP publicado también responde en el `localhost` del Mac, como un puerto TCP. El flujo de un cliente UDP termina después de 90 segundos sin tráfico.
@@ -76,6 +90,9 @@ En macOS, un puerto UDP publicado también responde en el `localhost` del Mac, c
 ## Elimina el servidor y termina
 
 Elimina el servidor. Sigue en ejecución, así que `-f` lo detiene primero.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → udp-server → Eliminar** y confirma.
+- **En la TUI:** Selecciona `udp-server` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f udp-server

@@ -41,6 +41,14 @@ podbag lab start web-basics
 
 ![実習を開始する](start-en.png)
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start web-basics --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 既定のポートがすでに使われている場合は、Training に表示されるポートを使います。コマンドとブラウザーのアドレスには同じポートが表示されます。
 
 ## Web サーバーを実行する
@@ -57,6 +65,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 **実習コンテナ → lab-web → ポートを表示**を開きます。既定の対応は `127.0.0.1:18080 → 8080/tcp` です。最初のポートはこのコンピューターのポートです。2 つ目のポートはコンテナのポートです。
 
+- **Podbag Desktop で:** **実習コンテナ → lab-web → ポートを表示**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`Enter` を押します。
+
 ![Desktop でポートの対応を確認する](ports-en.png)
 
 ![Desktop でポートの対応を確認する](gui-ports-en.png)
@@ -65,6 +76,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 
 **ブラウザーで開く**を選びます。ページに **Podbag Training** と表示されます。Desktop は、ローカルのアドレスが HTTP 200 と期待どおりのテキストを返すことを確認します。
 
+- **Podbag Desktop で:** **ブラウザーで開く**を選びます。
+- **TUI で:** ブラウザーで `http://127.0.0.1:18080/` を開きます。ページが表示されたら `o` を押します。
+
 ![ブラウザーでページを開く](browser-en.png)
 
 ![ブラウザーでページを開く](web-browser-en.png)
@@ -72,6 +86,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ## Desktop でサーバーを停止する
 
 **実習コンテナ**に戻ります。`lab-web` を探し、その行の**停止**を選びます。
+
+- **Podbag Desktop で:** **実習コンテナ → lab-web → 停止**を選びます。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`x` を押します。
 
 ![Desktop でサーバーを停止する](stop-en.png)
 
@@ -84,6 +101,9 @@ podbag run -d --name lab-web -p 127.0.0.1:18080:8080 docker.io/library/busybox:1
 ```sh
 podbag rm lab-web
 ```
+
+- **Podbag Desktop で:** **実習コンテナ → lab-web → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `lab-web` を選び、`d` を押してから `y` を押します。
 
 ![停止したコンテナを削除する](remove-en.png)
 

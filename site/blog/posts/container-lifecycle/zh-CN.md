@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 需要带有 Training 目录的 Podbag 版本（v0.3.2 之后）。出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 创建容器但不启动
 
 `podbag create` 会创建容器，但不会启动其中的程序。这个程序是一个小型 shell 循环。它会一直运行，直到收到停止信号（`TERM`），然后以退出码 `0` 结束。
@@ -53,6 +61,9 @@ podbag ps -a
 podbag start app
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 启动**。
+- **在 TUI 中：** 在**容器**中选择 `app`，然后按 `s`。
+
 Podbag 会检查 `app` 是否正在运行。
 
 ## 停止容器
@@ -62,6 +73,9 @@ Podbag 会检查 `app` 是否正在运行。
 ```sh
 podbag stop app
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 停止**。
+- **在 TUI 中：** 在**容器**中选择 `app`，然后按 `x`。
 
 Podbag 会检查 `app` 是否处于 `exited` 状态。
 
@@ -80,6 +94,9 @@ podbag ps -a
 ```sh
 podbag restart app
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 重启**。
+- **在 TUI 中：** 在**容器**中选择 `app`，然后按 `r`。
 
 Podbag 会检查 `app` 是否再次运行。
 
@@ -104,6 +121,9 @@ podbag ps -a
 ## 删除容器并结束
 
 `podbag rm` 删除已停止的容器。正在运行的容器需要使用 `rm -f`。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → app → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `app`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm app

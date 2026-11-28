@@ -35,6 +35,14 @@ podbag lab start container-network
 
 ![Training lists the network steps and shows the start command](start-en.png)
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start container-network --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Create a network and run the api server
 
 Copy each command from Training. First, create a network named `lab-net`.
@@ -73,6 +81,11 @@ podbag run -d --name web --network lab-net -p 127.0.0.1:18083:8080 docker.io/lib
 
 Go to **Practice containers → web → View ports**. Select **Open in browser**. The page displays **Hello from api**. Podbag checks for an HTTP 200 response and this text.
 
+- **In Podbag Desktop:** Select **Practice containers → web → View ports**.
+- **In the TUI:** Select `web` in **Containers** and press `Enter`.
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18083/` in a browser. When the page shows, press `o`.
+
 ![The web server details show the localhost address and browser button](ports-en.png)
 
 ![The web page displays Hello from api](page-en.png)
@@ -80,6 +93,15 @@ Go to **Practice containers → web → View ports**. Select **Open in browser**
 ## Clean up and finish
 
 In Desktop, select **Practice containers → web → Stop**. Then remove both containers and the network in the same terminal. `api` is still running, so `-f` stops it before removing it. A network can be removed when no container uses it.
+
+- **In Podbag Desktop:** Select **Practice containers → web → Stop**.
+- **In the TUI:** Select `web` in **Containers** and press `x`.
+- **In Podbag Desktop:** Select **Practice containers → web → Remove** and confirm.
+- **In the TUI:** Select `web` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → api → Remove** and confirm.
+- **In the TUI:** Select `api` in **Containers**, press `d`, then `y`.
+- **In Podbag Desktop:** Select **Practice containers → Remove network lab-net** and confirm.
+- **In the TUI:** Select `lab-net` in **Networks**, press `d`, then `y`.
 
 ```sh
 podbag rm web

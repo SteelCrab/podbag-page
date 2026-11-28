@@ -25,6 +25,14 @@ podbag lab start pause-and-rename
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start pause-and-rename --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Run a web server
 
 Run a small web server named `web`. It serves the text `Hello from web` and publishes port `18090` on your computer. Use the port shown in Training if `18090` is already in use.
@@ -41,6 +49,9 @@ Podbag checks that `web` publishes the port and that the page shows `Hello from 
 podbag pause web
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → web → Pause**.
+- **In the TUI:** Select `web` in **Containers** and press `p`.
+
 The server is frozen. If you open `http://127.0.0.1:18090/` now, the page does not load. Podbag checks that `web` is in the state `paused`.
 
 ## See Paused in the list
@@ -56,6 +67,9 @@ The status of `web` ends with `(Paused)`. A paused container still counts as up,
 ```sh
 podbag unpause web
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → web → Resume**.
+- **In the TUI:** Select `web` in **Containers** and press `p`.
 
 The server runs again and answers requests. Podbag checks the page again.
 
@@ -81,9 +95,15 @@ The list has `site` and no `web`. Podbag checks that no container is named `web`
 
 In Podbag Desktop, go to **Practice containers → site → View ports**. Select **Open in browser**. The page displays **Hello from web**. Podbag checks for an HTTP 200 response and this text.
 
+- **In Podbag Desktop:** Select **Practice containers → site → View ports → Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18090/` in a browser. When the page shows, press `o`.
+
 ## Clean up and finish
 
 `site` is still running. `rm -f` stops it and removes it.
+
+- **In Podbag Desktop:** Select **Practice containers → site → Remove** and confirm.
+- **In the TUI:** Select `site` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm -f site

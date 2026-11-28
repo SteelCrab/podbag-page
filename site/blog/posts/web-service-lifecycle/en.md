@@ -41,6 +41,14 @@ podbag lab start web-service-lifecycle
 
 ![Start the practice session](start-en.png)
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start web-service-lifecycle --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 If the default port is already in use, use the port in Training. The command and browser address show the same port.
 
 ## Create the site volume
@@ -50,6 +58,9 @@ Create `site-data` to hold the web page.
 ```sh
 podbag volume create site-data
 ```
+
+- **In Podbag Desktop:** Select **Practice volumes → Create volume site-data**.
+- **In the TUI:** Open **Volumes**, press `v`, type `site-data` and press `Enter`.
 
 ![Create the site volume](create-en.png)
 
@@ -67,6 +78,9 @@ podbag run -d --name site-v1 -p 127.0.0.1:18081:8080 -v site-data:/site docker.i
 
 Select **Practice containers → site-v1 → View ports**. Check the address in the detail panel.
 
+- **In Podbag Desktop:** Select **Practice containers → site-v1 → View ports**.
+- **In the TUI:** Select `site-v1` in **Containers** and press `Enter`.
+
 ![Check the first server ports](ports-en.png)
 
 ![Check the first server ports](gui-ports-en.png)
@@ -75,6 +89,9 @@ Select **Practice containers → site-v1 → View ports**. Check the address in 
 
 Select **Open in browser**. Confirm that the page displays **My Podbag site**.
 
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18081/` in a browser. When the page shows, press `o`.
+
 ![Open the first server page](browser-en.png)
 
 ![Open the first server page](web-browser-en.png)
@@ -82,6 +99,9 @@ Select **Open in browser**. Confirm that the page displays **My Podbag site**.
 ## Stop the first server
 
 Select **Practice containers → site-v1 → Stop**.
+
+- **In Podbag Desktop:** Select **Practice containers → site-v1 → Stop**.
+- **In the TUI:** Select `site-v1` in **Containers** and press `x`.
 
 ![Stop the first server](stop-en.png)
 
@@ -94,6 +114,9 @@ Run the removal command. The container disappears and `site-data` stays in the p
 ```sh
 podbag rm site-v1
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → site-v1 → Remove** and confirm.
+- **In the TUI:** Select `site-v1` in **Containers**, press `d`, then `y`.
 
 ![Remove the first server](remove-en.png)
 
@@ -111,6 +134,9 @@ podbag run -d --name site-v2 -p 127.0.0.1:18081:8080 -v site-data:/site:ro docke
 
 Select **Practice containers → site-v2 → View ports**. Confirm the address matches the first server.
 
+- **In Podbag Desktop:** Select **Practice containers → site-v2 → View ports**.
+- **In the TUI:** Select `site-v2` in **Containers** and press `Enter`.
+
 ![Check the replacement server ports](portsReplacement-en.png)
 
 ![Check the replacement server ports](gui-ports-replacement-en.png)
@@ -119,6 +145,9 @@ Select **Practice containers → site-v2 → View ports**. Confirm the address m
 
 Select **Open in browser** again. The page still displays **My Podbag site**. Desktop checks the response with a new request.
 
+- **In Podbag Desktop:** Select **Open in browser**.
+- **In the TUI:** Open `http://127.0.0.1:18081/` in a browser. When the page shows, press `o`.
+
 ![Open the replacement server page](browserReplacement-en.png)
 
 ![Open the replacement server page](web-browserReplacement-en.png)
@@ -126,6 +155,9 @@ Select **Open in browser** again. The page still displays **My Podbag site**. De
 ## Stop the replacement server
 
 Select **Practice containers → site-v2 → Stop**.
+
+- **In Podbag Desktop:** Select **Practice containers → site-v2 → Stop**.
+- **In the TUI:** Select `site-v2` in **Containers** and press `x`.
 
 ![Stop the replacement server](stopReplacement-en.png)
 
@@ -139,11 +171,17 @@ Remove the stopped container in the same terminal.
 podbag rm site-v2
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → site-v2 → Remove** and confirm.
+- **In the TUI:** Select `site-v2` in **Containers**, press `d`, then `y`.
+
 ![Remove the replacement server](removeReplacement-en.png)
 
 ## Open the site volume details
 
 Select **Practice volumes → site-data** to see the remaining volume.
+
+- **In Podbag Desktop:** Select **Practice volumes → site-data**.
+- **In the TUI:** Select `site-data` in **Volumes** and press `Enter`.
 
 ![Open the site volume details](inspect-en.png)
 
@@ -152,6 +190,9 @@ Select **Practice volumes → site-data** to see the remaining volume.
 ## Delete the site volume
 
 Select **Remove** and confirm the volume name.
+
+- **In Podbag Desktop:** Select **Practice volumes → site-data → Remove** and confirm.
+- **In the TUI:** Select `site-data` in **Volumes**, press `d`, then `y`.
 
 ![Delete the site volume](delete-en.png)
 

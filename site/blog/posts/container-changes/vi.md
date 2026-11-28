@@ -27,6 +27,14 @@ podbag lab start container-changes
 
 Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start container-changes --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Chạy container ghi một tệp
 
 Chạy một container tên `app`. Nó ghi một tệp, `/hello.txt`, rồi kết thúc. Lệnh không có `--rm`, nên container đã dừng vẫn còn.
@@ -80,6 +88,11 @@ Tệp lưu trữ nằm trong thư mục thực hành. Podbag kiểm tra rằng `
 ## Dọn dẹp và kết thúc
 
 Xóa container và image mới trong cùng terminal. Sau đó kết thúc phiên.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa image app-snapshot:1** và xác nhận.
+- **Trong TUI:** Chọn `app-snapshot:1` trong **Image**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm app

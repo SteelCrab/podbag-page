@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start network-connect --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Tạo hai mạng
 
 Tạo hai mạng `front-net` và `back-net`. Mỗi mạng là một bridge riêng với dải địa chỉ riêng.
@@ -64,6 +72,9 @@ Podbag chỉ đổi mạng của container khi container đã dừng. Thay đổ
 podbag stop api
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → api → Dừng**.
+- **Trong TUI:** Chọn `api` trong **Container** rồi nhấn `x`.
+
 Podbag kiểm tra rằng `api` ở trạng thái `exited`.
 
 ## Kết nối api với back-net
@@ -82,6 +93,9 @@ Podbag kiểm tra rằng `api` giờ đã ở trong `back-net`.
 podbag start api
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → api → Chạy**.
+- **Trong TUI:** Chọn `api` trong **Container** rồi nhấn `s`.
+
 `api` chạy với hai mạng. Mạng đầu tiên của nó vẫn là `front-net`.
 
 ## Gọi api từ back-net
@@ -98,6 +112,9 @@ Terminal in `Hello from api`. Podbag kiểm tra kết quả này. Mỗi bí danh
 
 Dừng `api` một lần nữa. Sau đó gỡ `back-net` khỏi nó bằng `podbag network disconnect`.
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → api → Dừng**.
+- **Trong TUI:** Chọn `api` trong **Container** rồi nhấn `x`.
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag kiểm tra rằng `api` không còn ở trong `back-net`. Bạn không th
 ## Dọn dẹp và kết thúc
 
 Xóa `api`. Sau đó xóa cả hai mạng bằng một lệnh. Chỉ xóa được mạng khi không còn container nào dùng nó.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → api → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `api` trong **Container**, nhấn `d`, rồi nhấn `y`.
+- **Trong Podbag Desktop:** Chọn **Container thực hành → Xóa mạng back-net** và xác nhận.
+- **Trong TUI:** Chọn `back-net` trong **Mạng**, nhấn `d`, rồi nhấn `y`.
+
+Lệnh `podbag network rm front-net back-net` xóa cả hai mạng. Trong Podbag Desktop và TUI, bước này chỉ xóa `back-net`. `front-net` mất đi khi phiên kết thúc.
 
 ```sh
 podbag rm api

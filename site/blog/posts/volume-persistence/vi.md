@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![Bắt đầu phiên thực hành](start-en.png)
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Tạo volume
 
 Tạo volume có tên `training-data` trong phiên thực hành.
@@ -50,6 +58,9 @@ Tạo volume có tên `training-data` trong phiên thực hành.
 ```sh
 podbag volume create training-data
 ```
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → Tạo volume training-data**.
+- **Trong TUI:** Mở **Volume**, nhấn `v`, gõ `training-data` rồi nhấn `Enter`.
 
 ![Tạo volume](create-en.png)
 
@@ -70,6 +81,9 @@ Xóa container đã dừng. Volume vẫn còn trong phiên thực hành.
 ```sh
 podbag rm app-a
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app-a → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app-a` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ![Xóa app-a](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ Xóa container thứ hai để giải phóng volume trước khi xóa volume.
 podbag rm app-b
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app-b → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app-b` trong **Container**, nhấn `d`, rồi nhấn `y`.
+
 ![Xóa app-b](removeReader-en.png)
 
 ## Mở chi tiết volume
 
 Chọn **Volume thực hành → training-data**. Phần chi tiết hiển thị tên và điểm gắn (mount point) của volume.
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → training-data**.
+- **Trong TUI:** Chọn `training-data` trong **Volume** rồi nhấn `Enter`.
 
 ![Mở chi tiết volume](inspect-en.png)
 
@@ -106,6 +126,9 @@ Chọn **Volume thực hành → training-data**. Phần chi tiết hiển thị
 ## Xóa volume trong Desktop
 
 Chọn **Xóa** và kiểm tra rằng hộp thoại ghi tên `training-data`. Volume và tệp bên trong bị xóa.
+
+- **Trong Podbag Desktop:** Chọn **Volume thực hành → training-data → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `training-data` trong **Volume**, nhấn `d`, rồi nhấn `y`.
 
 ![Xóa volume trong Desktop](delete-en.png)
 

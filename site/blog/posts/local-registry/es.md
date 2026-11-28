@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 Continúa en el prompt `training $`.
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start local-registry --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Descarga la imagen busybox
 
 Primero, obtén la imagen que vas a subir después.
@@ -34,6 +42,9 @@ Primero, obtén la imagen que vas a subir después.
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar docker.io/library/busybox:1.37.0**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `docker.io/library/busybox:1.37.0` y pulsa `Enter`.
 
 Podbag comprueba que existe la imagen `busybox:1.37.0`.
 
@@ -71,6 +82,9 @@ podbag envía cada capa al registro y después el manifiesto. El manifiesto es l
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Eliminar la imagen 127.0.0.1:18105/training/busybox:1** y confirma.
+- **En la TUI:** Selecciona `127.0.0.1:18105/training/busybox:1` en **Imágenes**, pulsa `d` y luego `y`.
+
 Esto elimina solo el nombre. El nombre `busybox:1.37.0` sigue apuntando a la imagen, así que sus archivos se quedan. Podbag comprueba que el nombre `127.0.0.1:18105/training/busybox:1` ya no existe.
 
 ## Vuelve a descargar la imagen
@@ -78,6 +92,9 @@ Esto elimina solo el nombre. El nombre `busybox:1.37.0` sigue apuntando a la ima
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → Descargar 127.0.0.1:18105/training/busybox:1**.
+- **En la TUI:** Abre **Imágenes**, pulsa `p`, escribe `127.0.0.1:18105/training/busybox:1` y pulsa `Enter`.
 
 podbag pide la imagen a tu registro y la vuelve a guardar con ese nombre. Podbag comprueba que existe el nombre.
 
@@ -92,6 +109,9 @@ El contenedor muestra el texto y se detiene. `--rm` lo elimina enseguida. Podbag
 ## Limpia y termina
 
 Elimina el registro. Sigue en ejecución, así que `-f` lo detiene primero.
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → registry → Eliminar** y confirma.
+- **En la TUI:** Selecciona `registry` en **Contenedores**, pulsa `d` y luego `y`.
 
 ```sh
 podbag rm -f registry

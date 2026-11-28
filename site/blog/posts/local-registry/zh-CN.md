@@ -27,6 +27,14 @@ podbag lab start local-registry
 
 出现 `training $` 提示符后继续。
 
+要在 TUI 而不是 Podbag Desktop 中完成这些步骤，请加上 `--tui`。
+
+```sh
+podbag lab start local-registry --tui
+```
+
+在 TUI 中，按 `:` 打开 Training 终端来执行命令步骤，输入 `exit` 返回 TUI，按 `q` 结束实验。
+
 ## 拉取 busybox 镜像
 
 首先，获取稍后要推送的镜像。
@@ -34,6 +42,9 @@ podbag lab start local-registry
 ```sh
 podbag pull docker.io/library/busybox:1.37.0
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 docker.io/library/busybox:1.37.0**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `docker.io/library/busybox:1.37.0` 并按 `Enter`。
 
 Podbag 会检查镜像 `busybox:1.37.0` 是否存在。
 
@@ -71,6 +82,9 @@ podbag 把每个层发送到镜像仓库，然后发送清单。清单是镜像�
 podbag rmi 127.0.0.1:18105/training/busybox:1
 ```
 
+- **在 Podbag Desktop 中：** 选择**实验容器 → 删除镜像 127.0.0.1:18105/training/busybox:1**并确认。
+- **在 TUI 中：** 在**镜像**中选择 `127.0.0.1:18105/training/busybox:1`，按 `d`，再按 `y`。
+
 这只会删除名称。名称 `busybox:1.37.0` 仍然指向该镜像，所以镜像文件会保留。Podbag 会检查名称 `127.0.0.1:18105/training/busybox:1` 是否已删除。
 
 ## 拉取回镜像
@@ -78,6 +92,9 @@ podbag rmi 127.0.0.1:18105/training/busybox:1
 ```sh
 podbag pull 127.0.0.1:18105/training/busybox:1
 ```
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → 拉取 127.0.0.1:18105/training/busybox:1**。
+- **在 TUI 中：** 打开**镜像**，按 `p`，输入 `127.0.0.1:18105/training/busybox:1` 并按 `Enter`。
 
 podbag 向你的镜像仓库请求该镜像，并再次以这个名称存储。Podbag 会检查该名称是否存在。
 
@@ -92,6 +109,9 @@ podbag run --rm 127.0.0.1:18105/training/busybox:1 echo "Hello from the registry
 ## 清理并结束
 
 删除镜像仓库。它仍在运行，所以 `-f` 会先停止它。
+
+- **在 Podbag Desktop 中：** 选择**实验容器 → registry → 删除**并确认。
+- **在 TUI 中：** 在**容器**中选择 `registry`，按 `d`，再按 `y`。
 
 ```sh
 podbag rm -f registry

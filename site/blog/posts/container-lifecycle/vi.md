@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 Bạn cần bản Podbag có danh mục Training (sau v0.3.2). Tiếp tục tại dấu nhắc `training $`.
 
+Để làm các bước trong TUI thay cho Podbag Desktop, hãy thêm `--tui`.
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+Trong TUI, nhấn `:` để mở shell Training cho bước chạy lệnh, gõ `exit` để quay lại TUI và nhấn `q` để kết thúc phiên.
+
 ## Tạo container mà không chạy
 
 `podbag create` tạo container nhưng không chạy chương trình của nó. Chương trình là một vòng lặp shell nhỏ. Nó chạy cho đến khi nhận tín hiệu dừng (`TERM`). Sau đó nó kết thúc với mã thoát `0`.
@@ -53,6 +61,9 @@ Trạng thái của `app` là `Created`. Podbag kiểm tra rằng kết quả c�
 podbag start app
 ```
 
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Chạy**.
+- **Trong TUI:** Chọn `app` trong **Container** rồi nhấn `s`.
+
 Podbag kiểm tra rằng `app` đang chạy.
 
 ## Dừng container
@@ -62,6 +73,9 @@ Podbag kiểm tra rằng `app` đang chạy.
 ```sh
 podbag stop app
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Dừng**.
+- **Trong TUI:** Chọn `app` trong **Container** rồi nhấn `x`.
 
 Podbag kiểm tra rằng `app` ở trạng thái `exited`.
 
@@ -80,6 +94,9 @@ Trạng thái là `Exited (0)`. Chương trình đã kết thúc mà không có 
 ```sh
 podbag restart app
 ```
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Khởi động lại**.
+- **Trong TUI:** Chọn `app` trong **Container** rồi nhấn `r`.
 
 Podbag kiểm tra rằng `app` đang chạy lại.
 
@@ -104,6 +121,9 @@ Trạng thái là `Exited (137)`. Hãy so sánh với `Exited (0)` sau `stop`. D
 ## Xóa container và kết thúc
 
 `podbag rm` xóa container đã dừng. Container đang chạy cần `rm -f`.
+
+- **Trong Podbag Desktop:** Chọn **Container thực hành → app → Xóa** và xác nhận.
+- **Trong TUI:** Chọn `app` trong **Container**, nhấn `d`, rồi nhấn `y`.
 
 ```sh
 podbag rm app

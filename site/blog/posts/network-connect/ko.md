@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 Training 카탈로그가 있는 Podbag 빌드(v0.3.2 이후)가 필요합니다. `training $` 프롬프트가 나오면 다음 단계로 진행합니다.
 
+Podbag Desktop 대신 TUI에서 실습하려면 `--tui`를 붙입니다.
+
+```sh
+podbag lab start network-connect --tui
+```
+
+TUI에서는 `:` 키로 명령 단계용 Training 셸을 열고, `exit`를 입력해 TUI로 돌아오며, `q` 키로 실습을 끝냅니다.
+
 ## 네트워크 두 개 만들기
 
 `front-net`과 `back-net` 네트워크를 만듭니다. 각 네트워크는 자기 주소를 가진 별도의 브리지입니다.
@@ -64,6 +72,9 @@ Podbag은 중지된 컨테이너의 네트워크만 바꿉니다. 바뀐 내용�
 podbag stop api
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → api → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `api` 선택 후 `x` 키를 누릅니다.
+
 Podbag은 `api`가 `exited` 상태인지 확인합니다.
 
 ## api를 back-net에 연결
@@ -82,6 +93,9 @@ Podbag은 `api`가 이제 `back-net`에 있는지 확인합니다.
 podbag start api
 ```
 
+- **Podbag Desktop에서:** **실습 컨테이너 → api → 시작**을 누릅니다.
+- **TUI에서:** **컨테이너**에서 `api` 선택 후 `s` 키를 누릅니다.
+
 `api`는 네트워크 두 개를 가지고 시작합니다. 첫 번째 네트워크는 여전히 `front-net`입니다.
 
 ## back-net에서 api 호출
@@ -98,6 +112,9 @@ podbag run --rm --network back-net docker.io/library/busybox:1.37.0 wget -qO- ht
 
 `api`를 다시 중지합니다. 그런 다음 `podbag network disconnect`로 `back-net` 연결을 끊습니다.
 
+- **Podbag Desktop에서:** **실습 컨테이너 → api → 중지**를 누릅니다.
+- **TUI에서:** **컨테이너**에서 `api` 선택 후 `x` 키를 누릅니다.
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag은 `api`가 더 이상 `back-net`에 없는지 확인합니다. 컨테이
 ## 실습 리소스 정리
 
 `api`를 삭제합니다. 그런 다음 명령 하나로 네트워크 두 개를 삭제합니다. 네트워크는 사용하는 컨테이너가 없을 때 삭제할 수 있습니다.
+
+- **Podbag Desktop에서:** **실습 컨테이너 → api → 삭제**를 누르고 확인합니다.
+- **TUI에서:** **컨테이너**에서 `api` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+- **Podbag Desktop에서:** **실습 컨테이너 → 네트워크 back-net 삭제**를 누르고 확인합니다.
+- **TUI에서:** **네트워크**에서 `back-net` 선택 후 `d` 키, `y` 키를 차례로 누릅니다.
+
+`podbag network rm front-net back-net` 명령은 네트워크 두 개를 모두 삭제합니다. Podbag Desktop과 TUI에서는 이 단계에서 `back-net`만 삭제합니다. `front-net`은 실습을 끝낼 때 함께 사라집니다.
 
 ```sh
 podbag rm api

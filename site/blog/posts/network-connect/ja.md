@@ -25,6 +25,14 @@ podbag lab start network-connect
 
 Training カタログがある Podbag のビルド（v0.3.2 より後）が必要です。`training $` プロンプトが表示されたら続けます。
 
+Podbag Desktop の代わりに TUI で手順を進めるには、`--tui` を付けます。
+
+```sh
+podbag lab start network-connect --tui
+```
+
+TUI では、コマンドの手順で `:` を押すと Training シェルが開きます。`exit` と入力すると TUI に戻ります。`q` を押すと実習を終了します。
+
 ## 2 つのネットワークを作成する
 
 ネットワーク `front-net` と `back-net` を作成します。それぞれが独立したブリッジで、専用のアドレスを持ちます。
@@ -64,6 +72,9 @@ Podbag は、停止しているコンテナのネットワークだけを変更�
 podbag stop api
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → api → 停止**を選びます。
+- **TUI で:** **コンテナ**で `api` を選び、`x` を押します。
+
 Podbag は `api` が `exited` の状態であることを確認します。
 
 ## api を back-net につなぐ
@@ -82,6 +93,9 @@ Podbag は `api` が `back-net` に参加したことを確認します。
 podbag start api
 ```
 
+- **Podbag Desktop で:** **実習コンテナ → api → 開始**を選びます。
+- **TUI で:** **コンテナ**で `api` を選び、`s` を押します。
+
 `api` は 2 つのネットワークで起動します。最初のネットワークは引き続き `front-net` です。
 
 ## back-net から api を呼び出す
@@ -98,6 +112,9 @@ podbag run --rm --network back-net docker.io/library/busybox:1.37.0 wget -qO- ht
 
 もう一度 `api` を停止します。次に、`podbag network disconnect` で `api` から `back-net` を外します。
 
+- **Podbag Desktop で:** **実習コンテナ → api → 停止**を選びます。
+- **TUI で:** **コンテナ**で `api` を選び、`x` を押します。
+
 ```sh
 podbag stop api
 podbag network disconnect back-net api
@@ -108,6 +125,13 @@ Podbag は `api` が `back-net` から外れたことを確認します。最初
 ## 片付けて終了する
 
 `api` を削除します。次に、1 つのコマンドで両方のネットワークを削除します。ネットワークは、どのコンテナも使っていなければ削除できます。
+
+- **Podbag Desktop で:** **実習コンテナ → api → 削除**を選び、確認します。
+- **TUI で:** **コンテナ**で `api` を選び、`d` を押してから `y` を押します。
+- **Podbag Desktop で:** **実習コンテナ → ネットワーク back-net を削除**を選び、確認します。
+- **TUI で:** **ネットワーク**で `back-net` を選び、`d` を押してから `y` を押します。
+
+`podbag network rm front-net back-net` コマンドは、両方のネットワークを削除します。Podbag Desktop と TUI では、この手順で削除するのは `back-net` だけです。`front-net` は、実習を終了するときに一緒に消えます。
 
 ```sh
 podbag rm api

@@ -43,6 +43,14 @@ podbag lab start volume-persistence
 
 ![Inicia la sesión de práctica](start-en.png)
 
+Para hacer los pasos en la TUI en lugar de Podbag Desktop, añade `--tui`.
+
+```sh
+podbag lab start volume-persistence --tui
+```
+
+En la TUI, pulsa `:` para abrir la shell de Training cuando un paso pida un comando, escribe `exit` para volver a la TUI y pulsa `q` para terminar la sesión.
+
 ## Crea el volumen
 
 Crea el volumen con nombre `training-data` en la sesión de práctica.
@@ -50,6 +58,9 @@ Crea el volumen con nombre `training-data` en la sesión de práctica.
 ```sh
 podbag volume create training-data
 ```
+
+- **En Podbag Desktop:** Selecciona **Volúmenes de práctica → Crear el volumen training-data**.
+- **En la TUI:** Abre **Volúmenes**, pulsa `v`, escribe `training-data` y pulsa `Enter`.
 
 ![Crea el volumen](create-en.png)
 
@@ -70,6 +81,9 @@ Elimina el contenedor detenido. El volumen sigue en la sesión de práctica.
 ```sh
 podbag rm app-a
 ```
+
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app-a → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app-a` en **Contenedores**, pulsa `d` y luego `y`.
 
 ![Elimina app-a](removeWriter-en.png)
 
@@ -93,11 +107,17 @@ Elimina el segundo contenedor para liberar el volumen antes de borrarlo.
 podbag rm app-b
 ```
 
+- **En Podbag Desktop:** Selecciona **Contenedores de práctica → app-b → Eliminar** y confirma.
+- **En la TUI:** Selecciona `app-b` en **Contenedores**, pulsa `d` y luego `y`.
+
 ![Elimina app-b](removeReader-en.png)
 
 ## Abre los detalles del volumen
 
 Selecciona **Volúmenes de práctica → training-data**. Los detalles muestran su nombre y su punto de montaje.
+
+- **En Podbag Desktop:** Selecciona **Volúmenes de práctica → training-data**.
+- **En la TUI:** Selecciona `training-data` en **Volúmenes** y pulsa `Enter`.
 
 ![Abre los detalles del volumen](inspect-en.png)
 
@@ -106,6 +126,9 @@ Selecciona **Volúmenes de práctica → training-data**. Los detalles muestran 
 ## Elimina el volumen en Desktop
 
 Selecciona **Eliminar** y comprueba que el cuadro de diálogo nombra `training-data`. Confirma. Se borran el volumen y su archivo.
+
+- **En Podbag Desktop:** Selecciona **Volúmenes de práctica → training-data → Eliminar** y confirma.
+- **En la TUI:** Selecciona `training-data` en **Volúmenes**, pulsa `d` y luego `y`.
 
 ![Elimina el volumen en Desktop](delete-en.png)
 

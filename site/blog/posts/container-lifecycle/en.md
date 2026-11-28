@@ -25,6 +25,14 @@ podbag lab start container-lifecycle
 
 You need a Podbag build with the Training catalog (after v0.3.2). Continue at the `training $` prompt.
 
+To do the steps in the TUI instead of Podbag Desktop, add `--tui`.
+
+```sh
+podbag lab start container-lifecycle --tui
+```
+
+In the TUI, press `:` to open the training shell for a command step, type `exit` to return to the TUI, and press `q` to end the session.
+
 ## Create a container without starting it
 
 `podbag create` makes the container but does not start its program. The program is a small shell loop. It runs until it gets a stop signal (`TERM`), and then it ends with exit code `0`.
@@ -53,6 +61,9 @@ The status of `app` is `Created`. Podbag checks that the output contains this wo
 podbag start app
 ```
 
+- **In Podbag Desktop:** Select **Practice containers → app → Start**.
+- **In the TUI:** Select `app` in **Containers** and press `s`.
+
 Podbag checks that `app` is running.
 
 ## Stop the container
@@ -62,6 +73,9 @@ Podbag checks that `app` is running.
 ```sh
 podbag stop app
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → app → Stop**.
+- **In the TUI:** Select `app` in **Containers** and press `x`.
 
 Podbag checks that `app` is in the state `exited`.
 
@@ -80,6 +94,9 @@ The status is `Exited (0)`. The program ended without an error. The container st
 ```sh
 podbag restart app
 ```
+
+- **In Podbag Desktop:** Select **Practice containers → app → Restart**.
+- **In the TUI:** Select `app` in **Containers** and press `r`.
 
 Podbag checks that `app` is running again.
 
@@ -104,6 +121,9 @@ The status is `Exited (137)`. Compare it with `Exited (0)` after `stop`. Use `st
 ## Remove the container and finish
 
 `podbag rm` removes a stopped container. A running one needs `rm -f`.
+
+- **In Podbag Desktop:** Select **Practice containers → app → Remove** and confirm.
+- **In the TUI:** Select `app` in **Containers**, press `d`, then `y`.
 
 ```sh
 podbag rm app
