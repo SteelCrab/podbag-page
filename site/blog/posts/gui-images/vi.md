@@ -45,6 +45,10 @@ Khi engine là podbag và máy có cài Docker, trang **Image** có nút **Nhậ
 
 ![Cửa sổ Nhập image từ Docker của Podbag Desktop](gui-import-vi.png)
 
+## Chạy một image
+
+**Chạy** trên dòng của một image mở biểu mẫu chạy container với image đó đã được điền sẵn. Xem [Chạy một container mới](../gui-containers/).
+
 ## Xem và xóa image
 
 Nhấp vào một image để xem tag, dung lượng và các container đang dùng nó. **Xóa** xóa image. **Dọn dẹp** xóa tất cả image không có container nào dùng. Ứng dụng hỏi trước.

@@ -28,6 +28,8 @@ TUI 使用 `kubectl` 及其上下文。请先安装 `kubectl`。
 
 列表以 `namespace/name` 的形式显示每个资源。按 `Enter` 以 JSON 格式查看它。**刷新**会重新读取列表。TUI 只读取集群，不会更改集群。
 
+在 OpenShift 集群上，**Route** 也是一种资源类型。只有当集群的 API 提供 Route 时，TUI 才会显示它。Route 依次显示主机和路径、Service 以及 TLS 模式，例如 `default/shop   shop.example.com/cart  frontend  edge`。
+
 ## 在教程中运行实验
 
 按 `F8`。**教程**会安装课程文件，并在练习环境中运行其中的练习。

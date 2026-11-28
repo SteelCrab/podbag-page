@@ -4,7 +4,7 @@ date: 2026-11-27
 author: team
 categories: [how-to]
 tags: [desktop, gui, kubernetes, settings]
-summary: "Mira los pods, servicios, despliegues y solicitudes de volumen de un clúster, y configura el inicio, el idioma, el tema, la VM, las actualizaciones y el comando de terminal."
+summary: "Mira los pods, servicios, despliegues, solicitudes de volumen y Routes de OpenShift de un clúster, y configura el inicio, el idioma, el tema, la VM, las actualizaciones y el comando de terminal."
 image: gui-settings-es.png
 image_alt: "La página Ajustes de Podbag Desktop"
 outline: "En esta guía"
@@ -27,6 +27,16 @@ La app usa `kubectl` y sus contextos. Instala `kubectl` primero.
 ![La lista Pods del contexto dev en Podbag Desktop](gui-kubernetes-es.png)
 
 Haz clic en un elemento para verlo completo en JSON. La página Kubernetes solo lee. No cambia nada en el clúster.
+
+## Mira los Routes de OpenShift
+
+En un clúster de OpenShift, la página Kubernetes tiene también una pestaña **Routes**, y la barra lateral lista **Routes**. Un Route es la dirección pública de un Servicio. La app muestra los Routes solo cuando la API del clúster ofrece `route.openshift.io/v1`. Los demás clústeres no tienen la pestaña Routes.
+
+![La lista Routes del contexto ocp en Podbag Desktop](gui-routes-es.png)
+
+La lista muestra el **Host**, la **Ruta**, el **Servicio** y el modo de **TLS** de cada Route. Haz clic en un host para abrir su dirección en el navegador. La dirección empieza con `https://` cuando el Route tiene ajustes de TLS. Si no, empieza con `http://`.
+
+**Migrar** no copia los Routes. El host de un Route pertenece a su clúster.
 
 ## Cambia los ajustes
 

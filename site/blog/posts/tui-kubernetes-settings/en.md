@@ -28,6 +28,8 @@ The TUI uses `kubectl` and its contexts. Install `kubectl` first.
 
 The list shows each resource as `namespace/name`. Press `Enter` to see it as JSON. **Refresh** reads the list again. The TUI only reads the cluster. It does not change it.
 
+On an OpenShift cluster, **Routes** is also a resource type. The TUI shows it only when the cluster's API serves Routes. A Route shows its host and path, its Service and its TLS mode, for example `default/shop   shop.example.com/cart  frontend  edge`.
+
 ## Run a lab in Tutorials
 
 Press `F8`. **Tutorials** installs a lesson file and runs its exercises in a practice lab.

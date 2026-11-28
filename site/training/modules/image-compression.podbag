@@ -1,0 +1,212 @@
+{
+  "format": "podbag-course-v2",
+  "id": "image-compression",
+  "translations": {
+    "en": {
+      "title": "Podbag Training · Compress unused images",
+      "guide": "Start the session with podbag lab start image-compression.",
+      "url": "https://podbag.dev/blog/image-compression/"
+    },
+    "ko": {
+      "title": "Podbag Training · 쓰지 않는 이미지 압축하기",
+      "guide": "podbag lab start image-compression 명령으로 실습을 시작합니다.",
+      "url": "https://podbag.dev/ko/blog/image-compression/"
+    },
+    "ja": {
+      "title": "Podbag Training · 使っていないイメージを圧縮する",
+      "guide": "podbag lab start image-compression で実習を開始します。",
+      "url": "https://podbag.dev/ja/blog/image-compression/"
+    },
+    "zh-CN": {
+      "title": "Podbag Training · 压缩未使用的镜像",
+      "guide": "用 podbag lab start image-compression 开始实验。",
+      "url": "https://podbag.dev/zh-CN/blog/image-compression/"
+    },
+    "fil": {
+      "title": "Podbag Training · I-compress ang mga image na hindi ginagamit",
+      "guide": "Simulan ang session gamit ang podbag lab start image-compression.",
+      "url": "https://podbag.dev/fil/blog/image-compression/"
+    },
+    "es": {
+      "title": "Podbag Training · Comprime las imágenes que no usas",
+      "guide": "Inicia la sesión con podbag lab start image-compression.",
+      "url": "https://podbag.dev/es/blog/image-compression/"
+    },
+    "vi": {
+      "title": "Podbag Training · Nén các image không dùng",
+      "guide": "Bắt đầu phiên thực hành bằng podbag lab start image-compression.",
+      "url": "https://podbag.dev/vi/blog/image-compression/"
+    }
+  },
+  "steps": [
+    {
+      "key": "pull",
+      "names": {
+        "en": "Pull the busybox image",
+        "ko": "busybox 이미지 받기",
+        "ja": "busybox イメージを取得する",
+        "zh-CN": "拉取 busybox 镜像",
+        "fil": "I-pull ang busybox image",
+        "es": "Descarga la imagen busybox",
+        "vi": "Tải image busybox"
+      },
+      "command": "podbag pull docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "image-exists",
+        "name": "docker.io/library/busybox:1.37.0"
+      }
+    },
+    {
+      "key": "compress",
+      "names": {
+        "en": "Compress the image",
+        "ko": "이미지 압축하기",
+        "ja": "イメージを圧縮する",
+        "zh-CN": "压缩镜像",
+        "fil": "I-compress ang image",
+        "es": "Comprime la imagen",
+        "vi": "Nén image"
+      },
+      "command": "podbag system compress docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "output-contains",
+        "text": "Compressed 1 images"
+      }
+    },
+    {
+      "key": "diskUsage",
+      "names": {
+        "en": "Read the Compressed row of system df",
+        "ko": "system df의 Compressed 행 읽기",
+        "ja": "system df の Compressed 行を読む",
+        "zh-CN": "查看 system df 的 Compressed 行",
+        "fil": "Basahin ang Compressed na row ng system df",
+        "es": "Lee la fila Compressed de system df",
+        "vi": "Đọc dòng Compressed của system df"
+      },
+      "command": "podbag system df",
+      "check": {
+        "kind": "output-contains",
+        "text": "Compressed"
+      }
+    },
+    {
+      "key": "run",
+      "names": {
+        "en": "Run a container from the compressed image",
+        "ko": "압축된 이미지로 컨테이너 실행하기",
+        "ja": "圧縮したイメージでコンテナーを実行する",
+        "zh-CN": "用压缩的镜像运行容器",
+        "fil": "Patakbuhin ang container mula sa naka-compress na image",
+        "es": "Ejecuta un contenedor con la imagen comprimida",
+        "vi": "Chạy container từ image đã nén"
+      },
+      "command": "podbag run --rm docker.io/library/busybox:1.37.0 echo \"Hello from a compressed image\"",
+      "check": {
+        "kind": "stdout-equals",
+        "text": "Hello from a compressed image"
+      }
+    },
+    {
+      "key": "diskUsageAgain",
+      "names": {
+        "en": "See that the image is decompressed",
+        "ko": "이미지가 압축 해제됐는지 보기",
+        "ja": "イメージが展開されたことを確認する",
+        "zh-CN": "确认镜像已解压",
+        "fil": "Tingnan na na-decompress na ang image",
+        "es": "Comprueba que la imagen ya no está comprimida",
+        "vi": "Xem image đã được giải nén"
+      },
+      "command": "podbag system df",
+      "check": {
+        "kind": "output-contains",
+        "text": "0B (0B before)"
+      }
+    },
+    {
+      "key": "compressAgain",
+      "names": {
+        "en": "Compress the image again",
+        "ko": "이미지 다시 압축하기",
+        "ja": "イメージをもう一度圧縮する",
+        "zh-CN": "再次压缩镜像",
+        "fil": "I-compress ulit ang image",
+        "es": "Vuelve a comprimir la imagen",
+        "vi": "Nén image lần nữa"
+      },
+      "command": "podbag system compress docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "output-contains",
+        "text": "Compressed 1 images"
+      }
+    },
+    {
+      "key": "decompress",
+      "names": {
+        "en": "Decompress the image now",
+        "ko": "이미지를 지금 압축 해제하기",
+        "ja": "イメージを今すぐ展開する",
+        "zh-CN": "立即解压镜像",
+        "fil": "I-decompress ngayon ang image",
+        "es": "Descomprime la imagen ahora",
+        "vi": "Giải nén image ngay"
+      },
+      "command": "podbag system decompress docker.io/library/busybox:1.37.0",
+      "check": {
+        "kind": "output-contains",
+        "text": "Decompressed 1 images"
+      }
+    },
+    {
+      "key": "showSetting",
+      "names": {
+        "en": "Show the compression setting",
+        "ko": "압축 설정 보기",
+        "ja": "圧縮の設定を表示する",
+        "zh-CN": "查看压缩设置",
+        "fil": "Ipakita ang setting ng compression",
+        "es": "Muestra el ajuste de compresión",
+        "vi": "Xem cài đặt nén"
+      },
+      "command": "podbag system compression",
+      "check": {
+        "kind": "output-contains",
+        "text": "Image compression:"
+      }
+    },
+    {
+      "key": "turnOn",
+      "names": {
+        "en": "Turn on idle compression",
+        "ko": "idle 압축 켜기",
+        "ja": "idle 圧縮をオンにする",
+        "zh-CN": "开启 idle 压缩",
+        "fil": "I-on ang idle compression",
+        "es": "Activa la compresión idle",
+        "vi": "Bật nén idle"
+      },
+      "command": "podbag system compression idle --after 3d",
+      "check": {
+        "kind": "output-contains",
+        "text": "Image compression: idle (images unused for 3d)"
+      }
+    },
+    {
+      "key": "finish",
+      "names": {
+        "en": "End the practice session",
+        "ko": "실습 종료하기",
+        "ja": "実習を終了する",
+        "zh-CN": "结束实验",
+        "fil": "Tapusin ang session",
+        "es": "Termina la sesión",
+        "vi": "Kết thúc phiên thực hành"
+      },
+      "command": "exit",
+      "check": {
+        "kind": "finish"
+      }
+    }
+  ]
+}
